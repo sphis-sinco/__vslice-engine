@@ -45,6 +45,9 @@ import funkin.api.newgrounds.NewgroundsClient;
 import funkin.mobile.input.ControlsHandler;
 import funkin.mobile.util.InAppPurchasesUtil;
 #end
+#if FEATURE_POLYMOD_MODS
+import funkin.modding.PolymodHandler;
+#end
 
 @:nullSafety
 class MainMenuState extends MusicBeatState
@@ -310,7 +313,7 @@ class MainMenuState extends MusicBeatState
   {
     if (leftWatermarkText == null) return;
 
-    leftWatermarkText.text = 'Friday Night Funkin\' v0.7.5';
+    leftWatermarkText.text = 'V-Slice Engine ${Constants.VERSION}';
 
     #if FEATURE_NEWGROUNDS
     if (NewgroundsClient.instance.isLoggedIn())
@@ -319,9 +322,14 @@ class MainMenuState extends MusicBeatState
     }
     #end
 
-    leftWatermarkText.text += '\nV-Slice Engine ${Constants.VERSION}';
-
-    leftWatermarkText.y -= 15;
+    #if FEATURE_POLYMOD_MODS
+    var modList:Array<String> = PolymodHandler.getAllModsList();
+    if (modList.length > 0)
+    {
+      leftWatermarkText.text += '\n\nMods:\n' + modList.join("\n");
+      leftWatermarkText.y -= (modList.length + 2) * 15;
+    }
+    #end
   }
 
   function playMenuMusic():Void
