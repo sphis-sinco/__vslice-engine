@@ -84,14 +84,14 @@ class StressSong extends Song
   {
     var videoPath = 'stressCutscene';
 
-    if (Constants.CENSOR_EXPLETIVES)
+    if (!Preferences.naughtyness)
     {
       videoPath += '-censored';
     }
 
     VideoCutscene.play(Paths.videos(videoPath));
   }
-  
+
   /**
    * Don't replay the cutscene between restarts.
    */

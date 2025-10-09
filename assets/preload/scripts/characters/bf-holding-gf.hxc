@@ -47,10 +47,6 @@ class BFHoldingGFCharacter extends MultiSparrowCharacter
       // 21 - fucking
       randomCensor = [1, 3, 8, 13, 17, 21];
     }
-    else if (Constants.CENSOR_EXPLETIVES)
-    {
-      randomCensor = [13, 21];
-    }
 
     return Paths.sound('jeffGameover/jeffGameover-' + FlxG.random.int(1, 25, randomCensor));
   }

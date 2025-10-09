@@ -153,34 +153,10 @@ class Project extends HXProject
    */
   static final EXCLUDE_ASSETS_NATIVE:Array<String> = ["*.mp3"];
 
-  /**
-   * Asset path globs to exclude on platforms with `CENSOR_EXPLETIVES` enabled.
-   */
-  static final EXCLUDE_ASSETS_CENSORED:Array<String> = ["stressCutscene.mp4", "stressPicoCutscene.mp4", "darnellCutscene.mp4"];
-
-  /**
-   * Asset path globs to exclude on platforms with `CENSOR_EXPLETIVES` disabled.
-   */
-  static final EXCLUDE_ASSETS_UNCENSORED:Array<String> = [
-    "stressCutscene-censored.mp4",
-    "stressPicoCutscene-censored.mp4",
-    "darnellCutscene-censored.mp4"
-  ];
-
   //
   // BUILD FLAGS
   // Inverse build flags are automatically populated.
   //
-
-  /**
-   * `-DCENSOR_EXPLETIVES`
-   * If enabled, specifically disable "sexual explitives" in the game.
-   * This will forcibly censor these words (even if naughtyness is enabled), while leaving other swears.
-   *
-   * NOTE: This is needed because the Android platform specifically hates "fuck" and "cunt",
-   * but is fine with other naughtyness such as "cock", "asshole", implied sex, cigarettes, etc.
-   */
-  static final CENSOR_EXPLETIVES:FeatureFlag = "CENSOR_EXPLETIVES";
 
   /**
    * `-DEMBED_ASSETS`
@@ -786,9 +762,6 @@ class Project extends HXProject
     // Should be true only on debug mobile builds.
     TESTING_ADS.apply(this, isDebug() && FEATURE_MOBILE_ADVERTISEMENTS.isEnabled(this));
 
-    // Should be true on mobile builds.
-    CENSOR_EXPLETIVES.apply(this, isMobile());
-
     //
     // FEATURE FLAGS
     //
@@ -1226,15 +1199,6 @@ class Project extends HXProject
     var exclude = EXCLUDE_ASSETS.concat(isWeb() ? EXCLUDE_ASSETS_WEB : EXCLUDE_ASSETS_NATIVE);
     var shouldPreload = PRELOAD_ALL.isEnabled(this);
     var shouldEmbed = EMBED_ASSETS.isEnabled(this);
-
-    if (CENSOR_EXPLETIVES.isEnabled(this))
-    {
-      exclude = exclude.concat(EXCLUDE_ASSETS_CENSORED);
-    }
-    else
-    {
-      exclude = exclude.concat(EXCLUDE_ASSETS_UNCENSORED);
-    }
 
     if (shouldEmbed)
     {

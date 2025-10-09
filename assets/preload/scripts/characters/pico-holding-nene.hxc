@@ -147,10 +147,6 @@ class PicoHoldingNeneCharacter extends SparrowCharacter
       // 9 - ass, bitch
       randomCensor = [4, 7, 8, 9];
     }
-    else if (Constants.CENSOR_EXPLETIVES)
-    {
-      randomCensor = [4, 8];
-    }
 
     return Paths.sound('jeffGameover-pico/jeffGameover-' + FlxG.random.int(1, 10, randomCensor));
   }
