@@ -8,7 +8,7 @@
       "animType": "sparrow",
       "name": "stageBack",
       "isPixel": false,
-      "assetPath": "week1/stageback",
+      "assetPath": "stageback",
       "scroll": [0.9, 0.9],
       "animations": []
     },
@@ -20,7 +20,7 @@
       "animType": "sparrow",
       "name": "stageFront",
       "isPixel": false,
-      "assetPath": "week1/stagefront",
+      "assetPath": "stagefront",
       "scroll": [0.9, 0.9],
       "animations": []
     },
@@ -32,7 +32,7 @@
       "animType": "sparrow",
       "name": "stageCurtains",
       "isPixel": false,
-      "assetPath": "week1/stagecurtains",
+      "assetPath": "stagecurtains",
       "scroll": [1.3, 1.3],
       "animations": []
     }
