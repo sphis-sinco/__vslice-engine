@@ -4,7 +4,11 @@
       "header": "Friday Night Funkin' (V-Slice Engine)",
       "body": [
         { "line": "A video game modification created by" },
-        { "line": "Sphis - Programmer" }
+        { "line": "Sphis - Lead Programmer" },
+
+        { "line": "With the (unintended) assistance of" },
+        { "line": "PurSnake - Hashlink support" },
+        { "line": "NotHyper-474 - Better path's/overall caching in PolymodAssetLibrary (Pre-Caching)" }
       ]
     },
     {
