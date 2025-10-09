@@ -261,6 +261,8 @@ class FunkinPreloader extends FlxBasePreloader
     touchHereSprite.addChild(touchHereToPlay);
     addChild(touchHereSprite);
     #end
+
+    InitState.coreInit();
   }
 
   function makeText(txtX:Float, txtY:Float, txt:String, color:Int):TextField
@@ -879,7 +881,7 @@ class FunkinPreloader extends FlxBasePreloader
     var percentage:Int = Math.floor(percent * 100);
     progressRightText.text = '$percentage%';
 
-    if (currentState.getProgressLeftText() != null) trace('Preloader state: ' + currentState + ' (' + percentage + '%, ' + elapsed + 's)');
+    // if (currentState.getProgressLeftText() != null) trace('Preloader state: ' + currentState + ' (' + percentage + '%, ' + elapsed + 's)');
 
     super.update(percent);
   }

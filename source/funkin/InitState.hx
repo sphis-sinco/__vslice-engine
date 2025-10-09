@@ -68,7 +68,8 @@ class InitState extends FlxState
   public override function create():Void
   {
     // Setup a bunch of important Flixel stuff.
-    setupShit();
+    coreInit();
+    nonCoreInit();
 
     // Load player options from save data.
     // Flixel has already loaded the save data, so we can just use it.
@@ -83,7 +84,7 @@ class InitState extends FlxState
   /**
    * Setup a bunch of important Flixel stuff.
    */
-  function setupShit():Void
+  public static function coreInit():Void
   {
     if (!_coreInitialized)
     {
@@ -128,66 +129,6 @@ class InitState extends FlxState
       funkin.external.apple.AudioSession.initialize();
       #end
 
-      // This ain't a pixel art game! (most of the time)
-      FlxSprite.defaultAntialiasing = true;
-
-      // Disable default keybinds for volume (we manually control volume in MusicBeatState with custom binds)
-      FlxG.sound.volumeUpKeys = [];
-      FlxG.sound.volumeDownKeys = [];
-      FlxG.sound.muteKeys = [];
-
-      // A small jumpstart to the soundtray, it usually sets itself to inactive (somewhere...)
-      // but that makes our soundtray not show up on init if we have the game muted.
-      // We set it to active so it at least calls it's update function once (see FlxGame.onEnterFrame(), it's called there)
-      // and also see FunkinSoundTray.update() to see what we do and how we check if we are muted or not
-      #if !mobile
-      FlxG.game.soundTray.active = true;
-      #end
-
-      // Set the game to a lower frame rate while it is in the background.
-      FlxG.game.focusLostFramerate = 30;
-
-      // Makes Flixel use frame times instead of locked movements per frame for things like tweens
-      FlxG.fixedTimestep = false;
-
-      setupFlixelDebug();
-
-      //
-      // FLIXEL TRANSITIONS
-      //
-
-      // Diamond Transition
-      var diamond:FlxGraphic = FlxGraphic.fromClass(GraphicTransTileDiamond);
-      diamond.persist = true;
-      diamond.destroyOnNoUse = false;
-
-      // NOTE: tileData is ignored if TransitionData.type is FADE instead of TILES.
-      var tileData:TransitionTileData = {asset: diamond, width: 32, height: 32};
-
-      FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 1, new FlxPoint(0, -1), tileData,
-        new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
-      FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.7, new FlxPoint(0, 1), tileData,
-        new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
-
-      FlxG.signals.gameResized.add(function(width:Int, height:Int) {
-        FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 1, new FlxPoint(0, -1), tileData,
-          new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
-        FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.7, new FlxPoint(0, 1), tileData,
-          new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
-      });
-
-      // SDL for some reason enables VSync on focus lost/gained in Android
-      // Since we don't really need VSync on Android we're gonna forcefully disable it on these signals for now
-      // This is fixed on SDL3 from what I've heared but that doodoo isn't working poperly for Android
-      #if android
-      FlxG.signals.focusLost.add(function() {
-        WindowUtil.setVSyncMode(lime.ui.WindowVSyncMode.OFF);
-      });
-      FlxG.signals.focusGained.add(function() {
-        WindowUtil.setVSyncMode(lime.ui.WindowVSyncMode.OFF);
-      });
-      #end
-
       //
       // NEWGROUNDS API SETUP
       //
@@ -206,79 +147,12 @@ class InitState extends FlxState
       });
       #end
 
-      //
-      // ANDROID SETUP
-      //
-      #if android
-      FlxG.android.preventDefaultKeys = [flixel.input.android.FlxAndroidKey.BACK];
-      #end
-
-      //
-      // FLIXEL PLUGINS
-      //
-      // Plugins provide a useful interface for globally active Flixel objects,
-      // that receive update events regardless of the current state.
-      // TODO: Move scripted Module behavior to a Flixel plugin.
-      #if FEATURE_DEBUG_FUNCTIONS
-      funkin.util.plugins.MemoryGCPlugin.initialize();
-      #end
-      #if FEATURE_SCREENSHOTS
-      funkin.util.plugins.ScreenshotPlugin.initialize();
-      #end
-      #if FEATURE_NEWGROUNDS
-      funkin.util.plugins.NewgroundsMedalPlugin.initialize();
-      #end
-      funkin.util.plugins.EvacuateDebugPlugin.initialize();
-      funkin.util.plugins.ForceCrashPlugin.initialize();
-      funkin.util.plugins.ReloadAssetsDebugPlugin.initialize();
-      #if !mobile
-      funkin.util.plugins.VolumePlugin.initialize();
-      #end
-      funkin.util.plugins.WatchPlugin.initialize();
-      #if mobile
-      funkin.util.plugins.TouchPointerPlugin.initialize();
-      funkin.mobile.input.ControlsHandler.initInputTrackers();
-      #end
-
       _coreInitialized = true;
     }
-
-    //
-    // GAME DATA PARSING
-    //
-
-    // NOTE: Registries must be imported and not referenced with fully qualified names,
-    // to ensure build macros work properly.
-    trace('Parsing game data...');
-    SongEventRegistry.loadEventCache(); // SongEventRegistry is structured differently so it's not a BaseRegistry.
-    SongRegistry.instance.loadEntries();
-    LevelRegistry.instance.loadEntries();
-    NoteStyleRegistry.instance.loadEntries();
-    PlayerRegistry.instance.loadEntries();
-    ConversationRegistry.instance.loadEntries();
-    DialogueBoxRegistry.instance.loadEntries();
-    SpeakerRegistry.instance.loadEntries();
-    FreeplayStyleRegistry.instance.loadEntries();
-    AlbumRegistry.instance.loadEntries();
-    StageRegistry.instance.loadEntries();
-    StickerRegistry.instance.loadEntries();
-
-    // TODO: CharacterDataParser doesn't use json2object, so it's way slower than the other parsers and more prone to syntax errors.
-    // Move it to use a BaseRegistry.
-    CharacterDataParser.loadCharacterCache();
-
-    NoteKindManager.loadScripts();
-
-    ModuleHandler.buildModuleCallbacks();
-    ModuleHandler.loadModuleCache();
-    ModuleHandler.callOnCreate();
-
-    funkin.input.Cursor.hide();
-
-    #if !html5
-    // This fucking breaks on HTML5 builds because the "shared" library isn't loaded yet.
-    funkin.FunkinMemory.initialCache();
-    #end
+    else
+    {
+      trace('important shit already init');
+    }
   }
 
   /**
@@ -489,8 +363,103 @@ class InitState extends FlxState
   }
 
   @:nullSafety(Off) // Meh, remove when flixel.system.debug.log.LogStyle is null safe
-  function setupFlixelDebug():Void
+  static function nonCoreInit():Void
   {
+    funkin.input.Cursor.hide();
+
+    // This ain't a pixel art game! (most of the time)
+    FlxSprite.defaultAntialiasing = true;
+
+    // Disable default keybinds for volume (we manually control volume in MusicBeatState with custom binds)
+    FlxG.sound.volumeUpKeys = [];
+    FlxG.sound.volumeDownKeys = [];
+    FlxG.sound.muteKeys = [];
+
+    // A small jumpstart to the soundtray, it usually sets itself to inactive (somewhere...)
+    // but that makes our soundtray not show up on init if we have the game muted.
+    // We set it to active so it at least calls it's update function once (see FlxGame.onEnterFrame(), it's called there)
+    // and also see FunkinSoundTray.update() to see what we do and how we check if we are muted or not
+    #if !mobile
+    FlxG.game.soundTray.active = true;
+    #end
+
+    // Set the game to a lower frame rate while it is in the background.
+    FlxG.game.focusLostFramerate = 30;
+
+    // Makes Flixel use frame times instead of locked movements per frame for things like tweens
+    FlxG.fixedTimestep = false;
+
+    //
+    // FLIXEL TRANSITIONS
+    //
+
+    // Diamond Transition
+    var diamond:FlxGraphic = FlxGraphic.fromClass(GraphicTransTileDiamond);
+    diamond.persist = true;
+    diamond.destroyOnNoUse = false;
+
+    // NOTE: tileData is ignored if TransitionData.type is FADE instead of TILES.
+    var tileData:TransitionTileData = {asset: diamond, width: 32, height: 32};
+
+    FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 1, new FlxPoint(0, -1), tileData,
+      new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
+    FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.7, new FlxPoint(0, 1), tileData,
+      new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
+
+    FlxG.signals.gameResized.add(function(width:Int, height:Int) {
+      FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 1, new FlxPoint(0, -1), tileData,
+        new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
+      FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.7, new FlxPoint(0, 1), tileData,
+        new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
+    });
+
+    //
+    // ANDROID SETUP
+    //
+
+    // SDL for some reason enables VSync on focus lost/gained in Android
+    // Since we don't really need VSync on Android we're gonna forcefully disable it on these signals for now
+    // This is fixed on SDL3 from what I've heared but that doodoo isn't working poperly for Android
+    #if android
+    FlxG.signals.focusLost.add(function() {
+      WindowUtil.setVSyncMode(lime.ui.WindowVSyncMode.OFF);
+    });
+    FlxG.signals.focusGained.add(function() {
+      WindowUtil.setVSyncMode(lime.ui.WindowVSyncMode.OFF);
+    });
+    #end
+
+    #if android
+    FlxG.android.preventDefaultKeys = [flixel.input.android.FlxAndroidKey.BACK];
+    #end
+
+    //
+    // FLIXEL PLUGINS
+    //
+    // Plugins provide a useful interface for globally active Flixel objects,
+    // that receive update events regardless of the current state.
+    // TODO: Move scripted Module behavior to a Flixel plugin.
+    #if FEATURE_DEBUG_FUNCTIONS
+    funkin.util.plugins.MemoryGCPlugin.initialize();
+    #end
+    #if FEATURE_SCREENSHOTS
+    funkin.util.plugins.ScreenshotPlugin.initialize();
+    #end
+    #if FEATURE_NEWGROUNDS
+    funkin.util.plugins.NewgroundsMedalPlugin.initialize();
+    #end
+    funkin.util.plugins.EvacuateDebugPlugin.initialize();
+    funkin.util.plugins.ForceCrashPlugin.initialize();
+    funkin.util.plugins.ReloadAssetsDebugPlugin.initialize();
+    #if !mobile
+    funkin.util.plugins.VolumePlugin.initialize();
+    #end
+    funkin.util.plugins.WatchPlugin.initialize();
+    #if mobile
+    funkin.util.plugins.TouchPointerPlugin.initialize();
+    funkin.mobile.input.ControlsHandler.initInputTrackers();
+    #end
+
     //
     // FLIXEL DEBUG SETUP
     //
@@ -565,6 +534,41 @@ class InitState extends FlxState
       FlxG.sound.music.pause();
       FlxG.sound.music.time += FlxG.elapsed * 1000;
     });
+    #end
+
+    //
+    // GAME DATA PARSING
+    //
+
+    // NOTE: Registries must be imported and not referenced with fully qualified names,
+    // to ensure build macros work properly.
+    trace('Parsing game data...');
+    SongEventRegistry.loadEventCache(); // SongEventRegistry is structured differently so it's not a BaseRegistry.
+    SongRegistry.instance.loadEntries();
+    LevelRegistry.instance.loadEntries();
+    NoteStyleRegistry.instance.loadEntries();
+    PlayerRegistry.instance.loadEntries();
+    ConversationRegistry.instance.loadEntries();
+    DialogueBoxRegistry.instance.loadEntries();
+    SpeakerRegistry.instance.loadEntries();
+    FreeplayStyleRegistry.instance.loadEntries();
+    AlbumRegistry.instance.loadEntries();
+    StageRegistry.instance.loadEntries();
+    StickerRegistry.instance.loadEntries();
+
+    // TODO: CharacterDataParser doesn't use json2object, so it's way slower than the other parsers and more prone to syntax errors.
+    // Move it to use a BaseRegistry.
+    CharacterDataParser.loadCharacterCache();
+
+    NoteKindManager.loadScripts();
+
+    ModuleHandler.buildModuleCallbacks();
+    ModuleHandler.loadModuleCache();
+    ModuleHandler.callOnCreate();
+
+    #if !html5
+    // This fucking breaks on HTML5 builds because the "shared" library isn't loaded yet.
+    funkin.FunkinMemory.initialCache();
     #end
   }
 
