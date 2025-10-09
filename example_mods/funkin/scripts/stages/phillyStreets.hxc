@@ -158,7 +158,7 @@ class PhillyStreetsStage extends Stage
   {
     super.buildStage();
 
-    scrollingSky = new FlxTiledSprite(Paths.image('phillyStreets/phillySkybox'), 2922, 718, true, false);
+    scrollingSky = new FlxTiledSprite(Paths.image('weekend1/phillyStreets/phillySkybox'), 2922, 718, true, false);
     scrollingSky.setPosition(-650, -375);
     scrollingSky.scrollFactor.set(0.1, 0.1);
     scrollingSky.zIndex = 10;
