@@ -313,21 +313,23 @@ class MainMenuState extends MusicBeatState
   {
     if (leftWatermarkText == null) return;
 
-    leftWatermarkText.text = 'V-Slice Engine ${Constants.VERSION}';
-
-    #if FEATURE_NEWGROUNDS
-    if (NewgroundsClient.instance.isLoggedIn())
-    {
-      leftWatermarkText.text += ' | Newgrounds: Logged in as ${NewgroundsClient.instance.user?.name}';
-    }
-    #end
+    leftWatermarkText.text = '';
 
     #if FEATURE_POLYMOD_MODS
     var modList:Array<String> = PolymodHandler.getAllModsList();
     if (modList.length > 0)
     {
-      leftWatermarkText.text += '\n\nMods:\n' + modList.join("\n");
+      leftWatermarkText.text += 'Mods:\n' + modList.join("\n") + "\n\n";
       leftWatermarkText.y -= (modList.length + 2) * 15;
+    }
+    #end
+
+    leftWatermarkText.text += 'V-Slice Engine ${Constants.VERSION}';
+
+    #if FEATURE_NEWGROUNDS
+    if (NewgroundsClient.instance.isLoggedIn())
+    {
+      leftWatermarkText.text += ' | Newgrounds: Logged in as ${NewgroundsClient.instance.user?.name}';
     }
     #end
   }
