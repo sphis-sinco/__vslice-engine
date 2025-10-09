@@ -1216,6 +1216,9 @@ class Project extends HXProject
     addAssetLibrary("default", shouldEmbed, shouldPreloadDefault);
     addAssetPath("assets/preload", "assets", "default", ["*"], exclude, shouldEmbed, "assets");
 
+    if (!REDIRECT_ASSETS_FOLDER.isEnabled(this))
+      addAssetPath("example_mods/funkin", "mods/funkin", "default", ["*"], exclude, shouldEmbed, "mods");
+
     if (!HARDCODED_CREDITS.isEnabled(this))
       addAsset("assets/exclude/data/credits.json", "assets/data/credits.json", "default", shouldEmbed);
 
