@@ -218,7 +218,7 @@ class PolymodInterpEx extends Interp
     {
       if (!registeredScriptedClasses.contains(name))
       {
-        Polymod.debug('Registering scripted class $name');
+        // Polymod.debug('Registering scripted class $name');
         registeredScriptedClasses.push(name);
       }
       _scriptClassDescriptors.set(name, c);
