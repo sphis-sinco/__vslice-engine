@@ -62,7 +62,7 @@ class Preferences
     #if NO_FEATURE_NAUGHTYNESS
     return false;
     #else
-    return Save?.instance?.options?.naughtyness ?? true;
+    return Save?.instance?.options?.naughtyness ?? #if mobile false #else true #end;
     #end
   }
 
