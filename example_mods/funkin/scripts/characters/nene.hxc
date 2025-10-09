@@ -226,7 +226,7 @@ class NeneCharacter extends MultiSparrowCharacter
     if (scriptEvent.eventData.eventKind == "FocusCamera")
     {
       var eventProps = scriptEvent.eventData.value;
-      switch (Std.parseInt(eventProps.char))
+      switch (eventProps.char)
       {
         case 0:
           movePupilsRight();

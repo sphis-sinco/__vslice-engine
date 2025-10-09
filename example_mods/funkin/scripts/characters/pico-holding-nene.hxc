@@ -87,7 +87,7 @@ class PicoHoldingNeneCharacter extends SparrowCharacter
   {
     if (name == "firstDeath")
     {
-      new FlxTimer().start(0.58, afterPicoDeathNeneIntro);
+      new FlxTimer().start(0.58, _ -> afterPicoDeathNeneIntro());
 
       createDeathSprites();
       GameOverSubState.instance.add(deathSpriteRetry);

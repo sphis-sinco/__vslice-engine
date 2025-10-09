@@ -39,11 +39,11 @@ class IntroSubState extends MusicBeatSubState
     #if html5
     trace('Playing web video ${LIGHTS_VIDEO_PATH}');
     playVideoHTML5(LIGHTS_VIDEO_PATH);
-    #end
-
-    #if hxvlc
+    #elseif hxvlc
     trace('Playing native video ${LIGHTS_VIDEO_PATH}');
     playVideoNative(LIGHTS_VIDEO_PATH);
+    #else
+    onLightsEnd();
     #end
 
     // // Im TOO lazy to even care, so uh, yep
