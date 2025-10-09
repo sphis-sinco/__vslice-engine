@@ -1868,7 +1868,7 @@ class PolymodInterpEx extends Interp
                 }
                 else
                 {
-                  Polymod.warning(SCRIPT_CLASS_MODULE_ALREADY_IMPORTED, 'Scripted class ${clsName} has already been imported.', origin);
+                  // Polymod.warning(SCRIPT_CLASS_MODULE_ALREADY_IMPORTED, 'Scripted class ${clsName} has already been imported.', origin);
                 }
                 continue;
               }
