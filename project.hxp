@@ -29,17 +29,15 @@ class Project extends HXProject
   /**
    * The build's number and version code.
    * Used when publishing the game to mobile app stores. Should increment with each patch.
-   *
-   * Hehehe, I'm not using it for mobile, I'm just adding an extra thing to the version >:)
    */
-  static final BUILD_NUMBER:Int = 65;
+  static final BUILD_NUMBER:Int = 56;
 
   /**
    * The game's version number, as a Semantic Versioning string with no prefix.
    * REMEMBER TO CHANGE THIS WHEN THE GAME UPDATES!
    * You only have to change it here, the rest of the game will query this value.
    */
-  static final VERSION:String = '0.1.0-${BUILD_NUMBER}';
+  static final VERSION:String = '0.1.0';
 
   /**
    * The game's name. Used as the default window title.
@@ -750,7 +748,7 @@ class Project extends HXProject
     EXCLUDE_ARMV7.apply(this, false);
 
     // Should be true unless explicitly requested.
-    HARDCODED_CREDITS.apply(this, true);
+    HARDCODED_CREDITS.apply(this, false);
     UNLOCK_EVERYTHING.apply(this, true);
 
     // Should be true only on web builds.

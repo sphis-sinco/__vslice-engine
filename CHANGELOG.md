@@ -8,6 +8,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.0] - 2025-10-08
 
+### Removed
+
+- `CENSOR_EXPLETIVES` feature flag
+
+### Changed
+
+- The `HARDCODED_CREDITS` feature flag is disabled by default now
+- The `FEATURE_NEWGROUNDS` feature flag is disabled by default now
+- [MOBILE] `Preferences.naughtyness` is disabled by default
+- The `CENSOR_EXPLETIVES`  feature flag has been replaced with `Preferences.naughtyness`
+- Instances of "Friday Night Funkin'" have " (V-Slice engine)" appended to the end of it
+- The Discord presence large image text uses `Constants.TITLE` now
+
 # Friday Night Funkin
 
 ## [0.7.5] - 2025-09-19
