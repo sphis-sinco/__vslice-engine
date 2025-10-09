@@ -787,7 +787,7 @@ class Project extends HXProject
     FEATURE_DISCORD_RPC.apply(this, isDesktop() && !FEATURE_DEBUG_FUNCTIONS.isEnabled(this));
 
     // Newgrounds features
-    FEATURE_NEWGROUNDS.apply(this, !isMobile());
+    FEATURE_NEWGROUNDS.apply(this, false);
     FEATURE_NEWGROUNDS_DEBUG.apply(this, false);
     FEATURE_NEWGROUNDS_TESTING_MEDALS.apply(this, FEATURE_NEWGROUNDS.isEnabled(this) && FEATURE_DEBUG_FUNCTIONS.isEnabled(this));
     FEATURE_NEWGROUNDS_AUTOLOGIN.apply(this, FEATURE_NEWGROUNDS.isEnabled(this) && isWeb());
