@@ -74,7 +74,7 @@ class NoteStyle implements IRegistryEntry<NoteStyleData>
 
   public function buildNoteSprite(target:NoteSprite):Void
   {
-    trace(_data);
+    // trace(_data);
 
     // Apply the note sprite frames.
     var atlas:Null<FlxAtlasFrames> = buildNoteFrames(false);
