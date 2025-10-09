@@ -47,6 +47,10 @@ class Main extends Sprite
     CrashHandler.initialize();
     CrashHandler.queryStatus();
 
+    #if hl
+    openfl.utils._internal.Log.level = NONE;
+    #end
+
     Lib.current.addChild(new Main());
   }
 
