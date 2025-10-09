@@ -1,6 +1,13 @@
 {
   "entries": [
     {
+      "header": "Friday Night Funkin' (V-Slice Engine)",
+      "body": [
+        { "line": "A video game modification created by" },
+        { "line": "Sphis - Programmer" }
+      ]
+    },
+    {
       "header": "Friday Night Funkin'",
       "body": [
         { "line": "A video game created by" },
