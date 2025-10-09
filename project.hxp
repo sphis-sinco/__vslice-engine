@@ -27,17 +27,19 @@ class Project extends HXProject
   //
 
   /**
+   * The build's number and version code.
+   * Used when publishing the game to mobile app stores. Should increment with each patch.
+   *
+   * Hehehe, I'm not using it for mobile, I'm just adding an extra thing to the version >:)
+   */
+  static final BUILD_NUMBER:Int = 64;
+
+  /**
    * The game's version number, as a Semantic Versioning string with no prefix.
    * REMEMBER TO CHANGE THIS WHEN THE GAME UPDATES!
    * You only have to change it here, the rest of the game will query this value.
    */
-  static final VERSION:String = "0.1.0";
-
-  /**
-   * The build's number and version code.
-   * Used when publishing the game to mobile app stores. Should increment with each patch.
-   */
-  static final BUILD_NUMBER:Int = 56;
+  static final VERSION:String = '0.1.0-${BUILD_NUMBER}';
 
   /**
    * The game's name. Used as the default window title.
