@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "name": "Pico (Pixel)",
-  "assetPath": "weeb/portrait-pico",
+  "assetPath": "week6/weeb/portrait-pico",
   "flipX": false,
   "isPixel": true,
   "scale": 5.4,

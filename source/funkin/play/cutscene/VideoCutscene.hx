@@ -98,7 +98,7 @@ class VideoCutscene
 
     #if NO_FEATURE_VIDEO_PLAYBACK
     trace("WARNING: Video playback is not enabled. Calling video end callback instead.");
-    finishVideo();
+    finishVideo(0.5);
     #else
     #if html5
     playVideoHTML5(rawFilePath);

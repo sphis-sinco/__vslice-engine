@@ -19,6 +19,7 @@ import funkin.audio.FunkinSound;
 import funkin.play.cutscene.VideoCutscene;
 import funkin.play.cutscene.CutsceneType;
 import funkin.play.PlayStatePlaylist;
+import funkin.Preferences;
 
 class DarnellSong extends Song
 {

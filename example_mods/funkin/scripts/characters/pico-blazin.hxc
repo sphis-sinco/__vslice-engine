@@ -31,7 +31,7 @@ class PicoBlazinCharacter extends AnimateAtlasCharacter
     PauseSubState.musicSuffix = '-pico';
 
     // Precache the death anim.
-    FunkinMemory.cacheTexture(Paths.image('picoBlazinDeathConfirm', 'weekend1'));
+    FunkinMemory.cacheTexture(Paths.image('picoBlazinDeathConfirm'));
   }
 
   var cantUppercut = false;

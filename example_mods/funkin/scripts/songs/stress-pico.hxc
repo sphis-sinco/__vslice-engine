@@ -18,6 +18,7 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import flixel.util.FlxTimerManager;
+import funkin.Preferences;
 
 class StressPicoMixSong extends Song
 {

@@ -5,6 +5,7 @@ import funkin.play.PlayStatePlaylist;
 import funkin.util.Constants;
 import funkin.modding.base.ScriptedFlxSpriteGroup;
 import funkin.play.cutscene.VideoCutscene;
+import funkin.Preferences;
 
 class StressSong extends Song
 {
