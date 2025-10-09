@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **BASE GAME IS A MOD NOW**
 - importedClasses no longer have multiple traces in the terminal during non-core initalization
 - Core initalization values happen in the preloader now
 - Moved Level folders to the images/preload folder
