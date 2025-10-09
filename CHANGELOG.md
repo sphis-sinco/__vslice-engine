@@ -10,15 +10,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Hashlink (`lime test hl` / `lime build hl`) support
 - `Friday Night Funkin (V-Slice Engine)` Credits
 
 ### Removed
 
+- Polymod duplicate imports warning in the terminal
 - Removed Level Libraries
 - `CENSOR_EXPLETIVES` feature flag
 
 ### Changed
 
+- importedClasses no longer have multiple traces in the terminal during non-core initalization
+- Core initalization values happen in the preloader now
 - Moved Level folders to the images/preload folder
 - The `HARDCODED_CREDITS` feature flag is disabled by default now
 - The `FEATURE_NEWGROUNDS` feature flag is disabled by default now
