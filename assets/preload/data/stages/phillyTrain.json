@@ -8,7 +8,7 @@
       "animType": "sparrow",
       "name": "sky",
       "isPixel": false,
-      "assetPath": "philly/sky",
+      "assetPath": "week3/philly/sky",
       "scroll": [0.1, 0.1],
       "animations": []
     },
@@ -20,7 +20,7 @@
       "animType": "sparrow",
       "name": "city",
       "isPixel": false,
-      "assetPath": "philly/city",
+      "assetPath": "week3/philly/city",
       "scroll": [0.3, 0.3],
       "animations": []
     },
@@ -32,7 +32,7 @@
       "animType": "sparrow",
       "name": "lights0",
       "isPixel": false,
-      "assetPath": "philly/win0",
+      "assetPath": "week3/philly/win0",
       "scroll": [0.3, 0.3],
       "animations": []
     },
@@ -44,7 +44,7 @@
       "animType": "sparrow",
       "name": "lights1",
       "isPixel": false,
-      "assetPath": "philly/win1",
+      "assetPath": "week3/philly/win1",
       "scroll": [0.3, 0.3],
       "animations": []
     },
@@ -56,7 +56,7 @@
       "animType": "sparrow",
       "name": "lights2",
       "isPixel": false,
-      "assetPath": "philly/win2",
+      "assetPath": "week3/philly/win2",
       "scroll": [0.3, 0.3],
       "animations": []
     },
@@ -68,7 +68,7 @@
       "animType": "sparrow",
       "name": "lights3",
       "isPixel": false,
-      "assetPath": "philly/win3",
+      "assetPath": "week3/philly/win3",
       "scroll": [0.3, 0.3],
       "animations": []
     },
@@ -80,7 +80,7 @@
       "animType": "sparrow",
       "name": "lights4",
       "isPixel": false,
-      "assetPath": "philly/win4",
+      "assetPath": "week3/philly/win4",
       "scroll": [0.3, 0.3],
       "animations": []
     },
@@ -92,7 +92,7 @@
       "animType": "sparrow",
       "name": "behindTrain",
       "isPixel": false,
-      "assetPath": "philly/behindTrain",
+      "assetPath": "week3/philly/behindTrain",
       "scroll": [1, 1],
       "animations": []
     },
@@ -104,7 +104,7 @@
       "animType": "sparrow",
       "name": "train",
       "isPixel": false,
-      "assetPath": "philly/train",
+      "assetPath": "week3/philly/train",
       "scroll": [1, 1],
       "animations": []
     },
@@ -116,7 +116,7 @@
       "animType": "sparrow",
       "name": "street",
       "isPixel": false,
-      "assetPath": "philly/street",
+      "assetPath": "week3/philly/street",
       "scroll": [1, 1],
       "animations": []
     }
@@ -141,5 +141,5 @@
     }
   },
   "name": "Philly (Train)",
-  "directory": "week3"
+  "directory": "shared"
 }

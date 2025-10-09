@@ -16,14 +16,14 @@
       "animType": "sparrow",
       "name": "brightLightSmall",
       "isPixel": false,
-      "assetPath": "erect/brightLightSmall",
+      "assetPath": "week1/erect/brightLightSmall",
       "scroll": [1.2, 1.2],
       "alpha": 1,
       "animations": []
     },
     {
       "name": "crowd",
-      "assetPath": "erect/crowd",
+      "assetPath": "week1/erect/crowd",
       "position": [682, 290],
       "scale": [1, 1],
       "scroll": [0.8, 0.8],
@@ -49,7 +49,7 @@
       "animType": "sparrow",
       "name": "bg",
       "isPixel": false,
-      "assetPath": "erect/bg",
+      "assetPath": "week1/erect/bg",
       "scroll": [1, 1],
       "animations": []
     },
@@ -61,7 +61,7 @@
       "animType": "sparrow",
       "name": "server",
       "isPixel": false,
-      "assetPath": "erect/server",
+      "assetPath": "week1/erect/server",
       "scroll": [1, 1],
       "animations": []
     },
@@ -73,7 +73,7 @@
       "animType": "sparrow",
       "name": "lights",
       "isPixel": false,
-      "assetPath": "erect/lights",
+      "assetPath": "week1/erect/lights",
       "scroll": [1.2, 1.2],
       "animations": []
     },
@@ -85,7 +85,7 @@
       "animType": "sparrow",
       "name": "orangeLight",
       "isPixel": false,
-      "assetPath": "erect/orangeLight",
+      "assetPath": "week1/erect/orangeLight",
       "scroll": [1, 1],
       "alpha": 1,
       "animations": []
@@ -98,7 +98,7 @@
       "animType": "sparrow",
       "name": "lightgreen",
       "isPixel": false,
-      "assetPath": "erect/lightgreen",
+      "assetPath": "week1/erect/lightgreen",
       "scroll": [1, 1],
       "alpha": 1,
       "animations": []
@@ -111,7 +111,7 @@
       "animType": "sparrow",
       "name": "lightred",
       "isPixel": false,
-      "assetPath": "erect/lightred",
+      "assetPath": "week1/erect/lightred",
       "scroll": [1, 1],
       "alpha": 1,
       "animations": []
@@ -124,7 +124,7 @@
       "animType": "sparrow",
       "name": "lightAbove",
       "isPixel": false,
-      "assetPath": "erect/lightAbove",
+      "assetPath": "week1/erect/lightAbove",
       "scroll": [1, 1],
       "alpha": 1,
       "animations": []
@@ -146,5 +146,5 @@
     "gf": { "zIndex": 100, "cameraOffsets": [0, 0], "position": [501.5, 825] }
   },
   "name": "Main Stage [Erect]",
-  "directory": "week1"
+  "directory": "shared"
 }

@@ -12,7 +12,7 @@
     },
     {
       "name": "bg",
-      "assetPath": "christmas/evilBG",
+      "assetPath": "week5/christmas/evilBG",
       "position": [-400, -500],
       "scale": [0.8, 0.8],
       "scroll": [0.2, 0.2],
@@ -20,7 +20,7 @@
     },
     {
       "name": "evilTree",
-      "assetPath": "christmas/evilTree",
+      "assetPath": "week5/christmas/evilTree",
       "position": [300, -300],
       "scale": [1, 1],
       "scroll": [0.2, 0.2],
@@ -28,7 +28,7 @@
     },
     {
       "name": "evilSnow",
-      "assetPath": "christmas/evilSnow",
+      "assetPath": "week5/christmas/evilSnow",
       "position": [-500, 700],
       "scale": [1, 1],
       "scroll": [1, 1],
@@ -48,5 +48,5 @@
       "cameraOffsets": [150, -100]
     }
   },
-  "directory": "week5"
+  "directory": "shared"
 }

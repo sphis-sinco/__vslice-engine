@@ -11,7 +11,7 @@
       "animType": "sparrow",
       "isPixel": false,
       "scroll": [0.1, 0.1],
-      "assetPath": "limo/limoSunset",
+      "assetPath": "week4/limo/limoSunset",
       "animations": []
     },
     {
@@ -24,7 +24,7 @@
       "isPixel": false,
       "startingAnimation": "drive",
       "scroll": [0.4, 0.4],
-      "assetPath": "limo/bgLimo",
+      "assetPath": "week4/limo/bgLimo",
       "animations": [
         {
           "offsets": [0, 0],
@@ -47,7 +47,7 @@
       "isPixel": false,
       "startingAnimation": "drive",
       "scroll": [1, 1],
-      "assetPath": "limo/limoDrive",
+      "assetPath": "week4/limo/limoDrive",
       "animations": [
         {
           "offsets": [0, 0],
@@ -69,7 +69,7 @@
       "animType": "sparrow",
       "isPixel": false,
       "scroll": [1, 1],
-      "assetPath": "limo/fastCarLol",
+      "assetPath": "week4/limo/fastCarLol",
       "animations": []
     },
     {
@@ -82,7 +82,7 @@
       "isPixel": false,
       "startingAnimation": "danceRight",
       "scroll": [0.4, 0.4],
-      "assetPath": "limo/henchmen",
+      "assetPath": "week4/limo/henchmen",
       "animations": [
         {
           "offsets": [0, 0],
@@ -116,7 +116,7 @@
       "isPixel": false,
       "startingAnimation": "danceRight",
       "scroll": [0.4, 0.4],
-      "assetPath": "limo/henchmen",
+      "assetPath": "week4/limo/henchmen",
       "animations": [
         {
           "offsets": [0, 0],
@@ -150,7 +150,7 @@
       "isPixel": false,
       "startingAnimation": "danceLeft",
       "scroll": [0.4, 0.4],
-      "assetPath": "limo/henchmen",
+      "assetPath": "week4/limo/henchmen",
       "animations": [
         {
           "offsets": [0, 0],
@@ -184,7 +184,7 @@
       "isPixel": false,
       "startingAnimation": "danceLeft",
       "scroll": [0.4, 0.4],
-      "assetPath": "limo/henchmen",
+      "assetPath": "week4/limo/henchmen",
       "animations": [
         {
           "offsets": [0, 0],
@@ -218,7 +218,7 @@
       "isPixel": false,
       "startingAnimation": "danceLeft",
       "scroll": [0.4, 0.4],
-      "assetPath": "limo/henchmen",
+      "assetPath": "week4/limo/henchmen",
       "animations": [
         {
           "offsets": [0, 0],
@@ -261,5 +261,5 @@
     }
   },
   "name": "Limo Ride",
-  "directory": "week4"
+  "directory": "shared"
 }

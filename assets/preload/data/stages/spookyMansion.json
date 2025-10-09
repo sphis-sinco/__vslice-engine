@@ -17,7 +17,7 @@
       "name": "halloweenBG",
       "isPixel": false,
       "startingAnimation": "idle",
-      "assetPath": "halloween_bg",
+      "assetPath": "week2/halloween_bg",
       "scroll": [1, 1],
       "animations": [
         {
@@ -56,5 +56,5 @@
     }
   },
   "name": "Spooky Mansion",
-  "directory": "week2"
+  "directory": "shared"
 }

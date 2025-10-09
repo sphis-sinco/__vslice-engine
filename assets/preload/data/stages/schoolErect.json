@@ -8,7 +8,7 @@
       "animType": "sparrow",
       "name": "sky",
       "isPixel": true,
-      "assetPath": "weeb/erect/weebSky",
+      "assetPath": "week6/weeb/erect/weebSky",
       "scroll": [0.2, 0.2],
       "animations": []
     },
@@ -20,7 +20,7 @@
       "animType": "sparrow",
       "name": "school",
       "isPixel": true,
-      "assetPath": "weeb/erect/weebSchool",
+      "assetPath": "week6/weeb/erect/weebSchool",
       "scroll": [0.75, 0.75],
       "animations": []
     },
@@ -32,7 +32,7 @@
       "animType": "sparrow",
       "name": "backTrees",
       "isPixel": true,
-      "assetPath": "weeb/erect/weebBackTrees",
+      "assetPath": "week6/weeb/erect/weebBackTrees",
       "scroll": [0.5, 0.5],
       "animations": []
     },
@@ -44,7 +44,7 @@
       "animType": "sparrow",
       "name": "street",
       "isPixel": true,
-      "assetPath": "weeb/erect/weebStreet",
+      "assetPath": "week6/weeb/erect/weebStreet",
       "scroll": [1, 1],
       "animations": []
     },
@@ -56,7 +56,7 @@
       "animType": "sparrow",
       "name": "treesFG",
       "isPixel": true,
-      "assetPath": "weeb/erect/weebTreesBack",
+      "assetPath": "week6/weeb/erect/weebTreesBack",
       "scroll": [1, 1],
       "animations": []
     },
@@ -69,7 +69,7 @@
       "name": "treesBG",
       "startingAnimation": "treeLoop",
       "isPixel": true,
-      "assetPath": "weeb/erect/weebTrees",
+      "assetPath": "week6/weeb/erect/weebTrees",
       "scroll": [1, 1],
       "animations": [
         {
@@ -94,7 +94,7 @@
       "name": "petals",
       "startingAnimation": "leaves",
       "isPixel": true,
-      "assetPath": "weeb/erect/petals",
+      "assetPath": "week6/weeb/erect/petals",
       "scroll": [0.85, 0.85],
       "animations": [
         {
@@ -117,7 +117,7 @@
       "name": "freaks",
       "startingAnimation": "danceLeft",
       "isPixel": true,
-      "assetPath": "weeb/bgFreaks",
+      "assetPath": "week6/weeb/bgFreaks",
       "scroll": [0.9, 0.9],
       "alpha": 0,
       "animations": [
@@ -184,5 +184,5 @@
     "gf": { "zIndex": 100, "cameraOffsets": [40, 40], "position": [724, 763] }
   },
   "name": "School (Date) [Erect]",
-  "directory": "week6"
+  "directory": "shared"
 }

@@ -8,7 +8,7 @@
       "animType": "sparrow",
       "name": "phillySkyline",
       "isPixel": false,
-      "assetPath": "phillyStreets/erect/phillySkyline",
+      "assetPath": "weekend1/phillyStreets/erect/phillySkyline",
       "scroll": [0.2, 0.2],
       "alpha": 1,
       "animations": []
@@ -21,7 +21,7 @@
       "animType": "sparrow",
       "name": "phillyForegroundCity",
       "isPixel": false,
-      "assetPath": "phillyStreets/erect/phillyForegroundCity",
+      "assetPath": "weekend1/phillyStreets/erect/phillyForegroundCity",
       "scroll": [0.3, 0.3],
       "alpha": 1,
       "animations": []
@@ -34,7 +34,7 @@
       "animType": "sparrow",
       "name": "phillyForegroundCity2",
       "isPixel": false,
-      "assetPath": "phillyStreets/erect/phillyForegroundCity",
+      "assetPath": "weekend1/phillyStreets/erect/phillyForegroundCity",
       "scroll": [0.3, 0.3],
       "alpha": 1,
       "angle": 5,
@@ -49,7 +49,7 @@
       "animType": "sparrow",
       "name": "phillyConstruction2",
       "isPixel": false,
-      "assetPath": "phillyStreets/erect/phillyConstruction",
+      "assetPath": "weekend1/phillyStreets/erect/phillyConstruction",
       "scroll": [0.7, 1],
       "alpha": 1,
       "animations": []
@@ -62,7 +62,7 @@
       "animType": "sparrow",
       "name": "phillyHighwayLights",
       "isPixel": false,
-      "assetPath": "phillyStreets/erect/phillyHighwayLights",
+      "assetPath": "weekend1/phillyStreets/erect/phillyHighwayLights",
       "scroll": [0.8, 0.8],
       "alpha": 1,
       "animations": []
@@ -75,7 +75,7 @@
       "animType": "sparrow",
       "name": "phillyHighwayLights_lightmap",
       "isPixel": false,
-      "assetPath": "phillyStreets/phillyHighwayLights_lightmap",
+      "assetPath": "weekend1/phillyStreets/phillyHighwayLights_lightmap",
       "scroll": [0.8, 0.8],
       "alpha": 1,
       "animations": []
@@ -88,7 +88,7 @@
       "animType": "sparrow",
       "name": "phillyHighway2",
       "isPixel": false,
-      "assetPath": "phillyStreets/erect/phillyHighway",
+      "assetPath": "weekend1/phillyStreets/erect/phillyHighway",
       "scroll": [0.8, 0.8],
       "alpha": 1,
       "animations": []
@@ -101,7 +101,7 @@
       "animType": "sparrow",
       "name": "grey1",
       "isPixel": false,
-      "assetPath": "phillyStreets/erect/greyGradient",
+      "assetPath": "weekend1/phillyStreets/erect/greyGradient",
       "scroll": [1, 1],
       "alpha": 0.3,
       "animations": []
@@ -114,7 +114,7 @@
       "animType": "sparrow",
       "name": "grey2",
       "isPixel": false,
-      "assetPath": "phillyStreets/erect/greyGradient",
+      "assetPath": "weekend1/phillyStreets/erect/greyGradient",
       "scroll": [1, 1],
       "alpha": 0.8,
       "animations": []
@@ -127,7 +127,7 @@
       "animType": "sparrow",
       "name": "phillyCars",
       "isPixel": false,
-      "assetPath": "phillyStreets/erect/phillyCars",
+      "assetPath": "weekend1/phillyStreets/erect/phillyCars",
       "scroll": [0.9, 1],
       "alpha": 1,
       "animations": [
@@ -173,7 +173,7 @@
       "animType": "sparrow",
       "name": "phillyCars2",
       "isPixel": false,
-      "assetPath": "phillyStreets/erect/phillyCars",
+      "assetPath": "weekend1/phillyStreets/erect/phillyCars",
       "scroll": [0.9, 1],
       "alpha": 1,
       "animations": [
@@ -219,7 +219,7 @@
       "animType": "sparrow",
       "name": "phillyTraffic",
       "isPixel": false,
-      "assetPath": "phillyStreets/erect/phillyTraffic",
+      "assetPath": "weekend1/phillyStreets/erect/phillyTraffic",
       "scroll": [0.9, 1],
       "alpha": 1,
       "animations": [
@@ -247,7 +247,7 @@
       "animType": "sparrow",
       "name": "phillyTraffic_lightmap",
       "isPixel": false,
-      "assetPath": "phillyStreets/erect/phillyTraffic_lightmap",
+      "assetPath": "weekend1/phillyStreets/erect/phillyTraffic_lightmap",
       "scroll": [0.9, 1],
       "alpha": 1,
       "animations": []
@@ -260,7 +260,7 @@
       "animType": "sparrow",
       "name": "phillyForeground",
       "isPixel": false,
-      "assetPath": "phillyStreets/erect/phillyForeground",
+      "assetPath": "weekend1/phillyStreets/erect/phillyForeground",
       "scroll": [1, 1],
       "alpha": 1,
       "animations": []
@@ -274,7 +274,7 @@
       "name": "paper",
       "isPixel": false,
       "startingAnimation": "paperBlow",
-      "assetPath": "phillyStreets/erect/paper",
+      "assetPath": "weekend1/phillyStreets/erect/paper",
       "scroll": [1.1, 1.1],
       "alpha": 0,
       "animations": [
@@ -308,5 +308,5 @@
     }
   },
   "name": "Philly (Streets) [Erect]",
-  "directory": "weekend1"
+  "directory": "shared"
 }

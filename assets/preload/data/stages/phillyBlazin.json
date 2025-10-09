@@ -8,7 +8,7 @@
       "position": [-600, -175],
       "animType": "sparrow",
       "name": "skyAdditive",
-      "assetPath": "phillyBlazin/skyBlur",
+      "assetPath": "weekend1/phillyBlazin/skyBlur",
       "scroll": [0.0, 0.0],
       "scale": [1.75, 1.75]
     },
@@ -17,7 +17,7 @@
       "position": [50, -300],
       "animType": "sparrow",
       "name": "lightning",
-      "assetPath": "phillyBlazin/lightning",
+      "assetPath": "weekend1/phillyBlazin/lightning",
       "scroll": [0.0, 0.0],
       "scale": [1.75, 1.75],
       "animations": [
@@ -33,7 +33,7 @@
       "position": [-600, -175],
       "animType": "sparrow",
       "name": "phillyForegroundCity",
-      "assetPath": "phillyBlazin/streetBlur",
+      "assetPath": "weekend1/phillyBlazin/streetBlur",
       "scroll": [0.0, 0.0],
       "scale": [1.75, 1.75]
     },
@@ -42,7 +42,7 @@
       "position": [-600, -175],
       "animType": "sparrow",
       "name": "foregroundMultiply",
-      "assetPath": "phillyBlazin/streetBlur",
+      "assetPath": "weekend1/phillyBlazin/streetBlur",
       "scroll": [0.0, 0.0],
       "scale": [1.75, 1.75]
     },
@@ -75,5 +75,5 @@
       "cameraOffsets": [500, 200]
     }
   },
-  "directory": "weekend1"
+  "directory": "shared"
 }

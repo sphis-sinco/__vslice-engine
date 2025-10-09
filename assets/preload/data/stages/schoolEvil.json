@@ -15,7 +15,7 @@
       "animType": "sparrow",
       "name": "school",
       "isPixel": true,
-      "assetPath": "weeb/evil/weebSchool",
+      "assetPath": "week6/weeb/evil/weebSchool",
       "scroll": [0.75, 0.75],
       "animations": []
     },
@@ -27,7 +27,7 @@
       "animType": "sparrow",
       "name": "backTrees",
       "isPixel": true,
-      "assetPath": "weeb/evil/weebBackTrees",
+      "assetPath": "week6/weeb/evil/weebBackTrees",
       "scroll": [0.5, 0.5],
       "animations": []
     },
@@ -39,7 +39,7 @@
       "animType": "sparrow",
       "name": "street",
       "isPixel": true,
-      "assetPath": "weeb/evil/weebStreet",
+      "assetPath": "week6/weeb/evil/weebStreet",
       "scroll": [1, 1],
       "animations": []
     },
@@ -51,7 +51,7 @@
       "animType": "sparrow",
       "name": "trees",
       "isPixel": true,
-      "assetPath": "weeb/evil/weebTrees",
+      "assetPath": "week6/weeb/evil/weebTrees",
       "scroll": [1, 1],
       "animations": []
     }
@@ -72,5 +72,5 @@
     "gf": { "zIndex": 100, "cameraOffsets": [40, 40], "position": [724, 823] }
   },
   "name": "School (Hate)",
-  "directory": "week6"
+  "directory": "shared"
 }
