@@ -32,7 +32,7 @@ class Project extends HXProject
    *
    * Hehehe, I'm not using it for mobile, I'm just adding an extra thing to the version >:)
    */
-  static final BUILD_NUMBER:Int = 64;
+  static final BUILD_NUMBER:Int = 65;
 
   /**
    * The game's version number, as a Semantic Versioning string with no prefix.

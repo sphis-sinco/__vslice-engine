@@ -310,7 +310,7 @@ class MainMenuState extends MusicBeatState
   {
     if (leftWatermarkText == null) return;
 
-    leftWatermarkText.text = Constants.VERSION;
+    leftWatermarkText.text = 'Friday Night Funkin\' v0.7.5';
 
     #if FEATURE_NEWGROUNDS
     if (NewgroundsClient.instance.isLoggedIn())
@@ -318,6 +318,10 @@ class MainMenuState extends MusicBeatState
       leftWatermarkText.text += ' | Newgrounds: Logged in as ${NewgroundsClient.instance.user?.name}';
     }
     #end
+
+    leftWatermarkText.text += '\nV-Slice Engine ${Constants.VERSION}';
+
+    leftWatermarkText.y -= 15;
   }
 
   function playMenuMusic():Void
