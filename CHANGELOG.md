@@ -8,12 +8,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.0] - 2025-10-08
 
+### Added
+
+- `Friday Night Funkin (V-Slice Engine)` Credits
+
 ### Removed
 
+- Removed Level Libraries
 - `CENSOR_EXPLETIVES` feature flag
 
 ### Changed
 
+- Moved Level folders to the images/preload folder
 - The `HARDCODED_CREDITS` feature flag is disabled by default now
 - The `FEATURE_NEWGROUNDS` feature flag is disabled by default now
 - [MOBILE] `Preferences.naughtyness` is disabled by default
