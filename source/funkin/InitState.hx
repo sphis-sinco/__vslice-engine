@@ -461,7 +461,7 @@ class InitState extends FlxState
     }
 
     // TODO: Rework loading behavior so we don't have to do this.
-    Paths.setCurrentLevel(levelId);
+    Paths.setCurrentLevel('shared');
     PlayStatePlaylist.campaignId = levelId;
 
     PlayStatePlaylist.playlistSongIds = currentLevel.getSongs();

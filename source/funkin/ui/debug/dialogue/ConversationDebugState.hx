@@ -22,7 +22,7 @@ class ConversationDebugState extends MusicBeatState
     super();
 
     // TODO: Fix this BS
-    Paths.setCurrentLevel('week6');
+    // Paths.setCurrentLevel('week6');
   }
 
   public override function create():Void

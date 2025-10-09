@@ -11,7 +11,7 @@ class Paths
 {
   static var currentLevel:Null<String> = null;
 
-  public static function setCurrentLevel(name:Null<String>):Void
+  public static function setCurrentLevel(name:Null<String> = 'shared'):Void
   {
     if (name == null)
     {

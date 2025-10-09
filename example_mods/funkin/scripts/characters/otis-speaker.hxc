@@ -113,6 +113,8 @@ class OtisSpeakerCharacter extends SparrowCharacter
 
   function updateMuzzle()
   {
+    if (muzzleFlash == null) return;
+
     if (muzzleFlash.animation.curAnim.curFrame > 1)
     {
       muzzleFlash.blend = null;

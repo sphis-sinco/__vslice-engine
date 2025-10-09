@@ -74,7 +74,7 @@ class DebugBoundingState extends FlxState
 
   override function create():Void
   {
-    Paths.setCurrentLevel('week1');
+    // Paths.setCurrentLevel('week1');
 
     hudCam = new FlxCamera();
     hudCam.bgColor.alpha = 0;

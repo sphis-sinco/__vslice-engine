@@ -599,7 +599,7 @@ class StoryMenuState extends MusicBeatState
       prop.playConfirm();
     }
 
-    Paths.setCurrentLevel(currentLevel.id);
+    Paths.setCurrentLevel('default');
 
     PlayStatePlaylist.playlistSongIds = currentLevel.getSongs();
     PlayStatePlaylist.isStoryMode = true;
