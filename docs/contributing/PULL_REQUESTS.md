@@ -1,130 +1,4 @@
-# Contributing
-Welcome to the Contributing Guide!
-You can contribute to the Funkin' repository by opening issues or pull requests.
-
-This guide will cover best practices for each type of contribution.
-
-# Table of Contents
-<details open>
-<summary><b>Contents</b></summary>
-
-[Part 1: Etiquette](https://github.com/FunkinCrew/Funkin/blob/main/docs/CONTRIBUTING.md#part-1-etiquette)
-
-<details>
-<summary><a href="https://github.com/FunkinCrew/Funkin/blob/main/docs/CONTRIBUTING.md#part-2-issues">Part 2: Issues</a></summary>
-
-* [Requirements](https://github.com/FunkinCrew/Funkin/blob/main/docs/CONTRIBUTING.md#requirements)
-
-* [Rejected Features](https://github.com/FunkinCrew/Funkin/blob/main/docs/CONTRIBUTING.md#rejected-features)
-
-* [Issue Types](https://github.com/FunkinCrew/Funkin/blob/main/docs/CONTRIBUTING.md#issue-types)
-
-* [Before You Submit...](https://github.com/FunkinCrew/Funkin/blob/main/docs/CONTRIBUTING.md#before-you-submit)
-
-</details>
-
-<details>
-
-<summary><a href="https://github.com/FunkinCrew/Funkin/blob/main/docs/CONTRIBUTING.md#part-3-pull-requests">Part 3: Pull Requests</a></summary>
-
-* [Choosing a base branch](https://github.com/FunkinCrew/Funkin/blob/main/docs/CONTRIBUTING.md#choosing-a-base-branch)
-
-* [Merge conflicts and rebasing](https://github.com/FunkinCrew/Funkin/blob/main/docs/CONTRIBUTING.md#merge-conflicts-and-rebasing)
-
-* [Code PRs](https://github.com/FunkinCrew/Funkin/blob/main/docs/CONTRIBUTING.md#code-prs)
-
-* [Documentation PRs](https://github.com/FunkinCrew/Funkin/blob/main/docs/CONTRIBUTING.md#documentation-prs)
-
-* [GitHub PRs](https://github.com/FunkinCrew/Funkin/blob/main/docs/CONTRIBUTING.md#github-prs)
-
-* [funkin.assets PRs](https://github.com/FunkinCrew/Funkin/blob/main/docs/CONTRIBUTING.md#funkinassets-prs)
-
-  * [Charting PRs](https://github.com/FunkinCrew/Funkin/blob/main/docs/CONTRIBUTING.md#charting-prs)
-
-</details>
-
-[Closing](https://github.com/FunkinCrew/Funkin/blob/main/docs/CONTRIBUTING.md#closing)
-
-</details>
-
-
-# Part 1: Etiquette
-- Be respectful to one another. We're here to help each other out!
-- Keep your titles clear and concise. Do not type the whole description into the title.
-- Do not spam by creating unnecessary issues and pull requests.
-- Use common sense!
-
-# Part 2: Issues
-Issues serve many purposes, from reporting bugs to suggesting new features.
-This section provides guidelines to follow when [opening an issue](https://github.com/FunkinCrew/Funkin/issues).
-
-## Requirements
-Make sure you're playing:
-- the latest version of the game (currently v0.7.5)
-- without any mods
-- on [Newgrounds](https://www.newgrounds.com/portal/view/770371) or downloaded from [itch.io](https://ninja-muffin24.itch.io/funkin)
-
-## Rejected Features
-If you want to **suggest a feature**, make sure it hasn't already been rejected.
-Here's a list of commonly suggested features and the reasons why they won't be added:
-
-| Feature | Reason |
-| ------- | ------- |
-| Combo Break + Accuracy Displays | https://github.com/FunkinCrew/Funkin/pull/2681#issuecomment-2156308982 |
-| Toggleable Ghost Tapping | https://github.com/FunkinCrew/Funkin/pull/2564#issuecomment-2119701802 |
-| Perfectly Centered Strumlines | _same as above^_ |
-| MultiKey, 9k, More than 4 keys, etc. | https://github.com/FunkinCrew/Funkin/issues/4243#issuecomment-2692371969 |
-| Flashy Combo Milestones | https://github.com/FunkinCrew/Funkin/pull/4700#issuecomment-2798916579 |
-| Losing Icons for DD and Parents | https://github.com/FunkinCrew/Funkin/issues/3048#issuecomment-2243491536 |
-| Playable GF / Speaker BF / Speaker Pico | https://github.com/FunkinCrew/Funkin/issues/2953#issuecomment-2216985230 |
-| New Intro Text Lines | https://github.com/FunkinCrew/Funkin/issues/5031#issuecomment-2855593376 |
-| Fresh (Chill Mix) as Title Screen Music | https://github.com/FunkinCrew/Funkin/pull/4282#issuecomment-2709334718 |
-| Difficulty Ratings above 20 | https://github.com/FunkinCrew/Funkin/issues/3075#issuecomment-2368984497 |
-| Quick Restart Keybind (not R) | https://github.com/FunkinCrew/Funkin/issues/3268#issuecomment-2351095232 |
-| Countdown after Unpausing Song | https://github.com/FunkinCrew/Funkin/issues/2721#issuecomment-2159330106 |
-| "Philly Glow" Effect from Psych Engine | https://github.com/FunkinCrew/Funkin/issues/3788#issuecomment-2688966982 |
-| Importing Charts from Psych Engine (and other mod content) | https://github.com/FunkinCrew/Funkin/issues/2586#issuecomment-2125733327 |
-| Backwards Compatibility for Modding | https://github.com/FunkinCrew/Funkin/issues/3949#issuecomment-2608391329 |
-| Lua Support | https://github.com/FunkinCrew/Funkin/issues/2643#issuecomment-2143718093 |
-
-## Issue Types
-Choose the issue template that best suits your needs!
-Here's what each template is designed for:
-
-### Bug Report ([view list](https://github.com/FunkinCrew/Funkin/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22type%3A%20minor%20bug%22))
-For minor bugs and general issues with the game. Choose this one if none of the others fit your needs.
-
-### Crash Report ([view list](https://github.com/FunkinCrew/Funkin/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22type%3A%20major%20bug%22))
-For crashes and freezes like the [Null Object Reference](https://github.com/FunkinCrew/Funkin/issues/2209) problem from v0.3.0.
-
-### Charting Issue ([view list](https://github.com/FunkinCrew/Funkin/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22type%3A%20charting%20issue%22))
-For misplaced notes, wonky camera movements, broken song events, and everything related to the game's charts.
-
-### Enhancement ([view list](https://github.com/FunkinCrew/Funkin/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22type%3A%20enhancement%22))
-For suggestions to add new features or improve existing ones. We'd love to hear your ideas!
-
-### Compiling Help (only after reading the [Troubleshooting Guide](https://github.com/FunkinCrew/Funkin/blob/main/docs/TROUBLESHOOTING.md))
-For issues with compiling the game. Legacy versions (before v0.3.0) are not supported.
-
-> [!TIP]
-> If none of the above Issue templates suit your inquiry (e.g. Questions or Coding Help), please [open a discussion](https://github.com/FunkinCrew/Funkin/discussions).
-
-## Before You Submit...
-Complete the Issue Checklist at the top of your template!
-
-> [!IMPORTANT]
-> If you do not complete each step of the Issue Checklist, **your issue may be closed.**
-
-Be sure to use the search bar on the Issues page to check that your issue hasn't already been reported by someone else.
-Duplicate issues make it harder to keep track of important issues with the game.
-
-Also only report one issue or enhancement at a time! If you have multiple bug reports or suggestions, split them up into separate submissions so they can be checked off one by one.
-
-Once you're sure your issue is unique and specific, feel free to submit it.
-
-**Thank you for opening issues!**
-
-# Part 3: Pull Requests
+# PULL REQUESTS
 Community members are welcome to contribute their changes by [opening pull requests](https://github.com/FunkinCrew/Funkin/pulls).
 This section covers guidelines for opening and managing pull requests (PRs).
 
@@ -136,12 +10,12 @@ When creating a branch in your fork, base your branch on either the `develop` or
 > Instead, make a separate branch for your additions (ex. `docs/fix-typo` or `minor-bugfix`).
 
 Choose the `develop` branch if you modify:
-- Game code (`.hx` files)
+- Engine code (`.hx` files)
 - Any other type of file
 
 Choose the `main` branch if you modify:
 - Documentation (`.md` files)
-- GitHub files (`.yml` files or anything in the `.github` folder)
+- GitHub files (`.yml` files or anything in the `.github` folder, if it exists)
 
 > [!TIP]
 > When in doubt, base your branch on the `develop` branch.
@@ -153,7 +27,7 @@ Once you’re satisfied with the changes you’ve made, open a PR and base it on
 Keeping your pull request clean and easy to review increases the chance that it will be accepted!
 
 Our maintenance policy is as follows:
-- If we require changes to your PR, we will label your PR `status: needs revision`.
+- If your PR requires changes you will get a label saying so.
 - We may also leave a comment under your PR specifying what changes you should make.
 - If you receive a comment, you have 90 days to implement the requested changes.
 - After this period, your PR will be closed due to inactivity and labeled `status: stale`.
@@ -162,7 +36,7 @@ Our maintenance policy is as follows:
 This policy ensures that PRs awaiting review are up to date and ready to merge.
 
 ### Merge conflicts and rebasing
-Some game updates introduce significant breaking changes that may create merge conflicts in your PR. To resolve them, you will need to update or rebase your PR.
+Some engine updates introduce significant breaking changes that may create merge conflicts in your PR. To resolve them, you will need to update or rebase your PR.
 
 Most merge conflicts are small and will only require you to modify a few files to resolve them.
 However, some changes are so big that your commit history will be a total mess!
@@ -388,28 +262,3 @@ GitHub-related PRs make changes such as **tweaking Issue Templates** or **updati
 This involves modifying one or several of the repository’s `.yml` files, or any other file in the `.github` folder.
 
 Please test these changes on your fork’s main branch to avoid breaking anything in this repository (e.g. GitHub Actions, issue templates, etc.)!
-
-## funkin.assets PRs
-The `assets` submodule has its own repository called [funkin.assets](https://github.com/FunkinCrew/funkin.assets).
-
-If you only modify files in the `assets` folder, open a PR in the `funkin.assets` repository instead of the main repository.
-
-If you simultaneously modify files from both repositories, then open two separate PRs and explain the connection in your PR descriptions.
-
-Be sure to choose `develop` as the base branch for `funkin.assets` PRs, just as you would in the `Funkin` repository.
-
-### Charting PRs
-Charting PRs make changes such as **adjusting chart metadata**.
-
-This involves modifying one or several of the `funkin.assets` repository's `*-metadata.json` files, found in the `preload/data/songs/` directory.
-
-> [!CAUTION]
-> We **do not** accept changes to the chart `.json` file itself.
-> If you find an error in the game's charts, please open an issue in the `Funkin` repo, and the Funkin' Crew will review it and make tweaks themselves as necessary.
-
-These PRs should only be opened in the `funkin.assets` repository.
-
-# Closing
-Thank you for reading the Contributing Guide.
-
-We look forward to seeing your contributions to the game!
