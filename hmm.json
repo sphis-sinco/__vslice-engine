@@ -129,11 +129,6 @@
       "url": "https://github.com/FunkinCrew/hxdiscord_rpc"
     },
     {
-      "name": "hxgamemode",
-      "type": "haxelib",
-      "version": "1.0.1"
-    },
-    {
       "name": "hxjsonast",
       "type": "git",
       "dir": null,
