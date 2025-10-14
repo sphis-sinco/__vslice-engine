@@ -44,6 +44,7 @@ import funkin.api.discord.DiscordClient;
 import funkin.api.newgrounds.NewgroundsClient;
 #end
 import flixel.text.FlxText;
+import flixel.util.FlxTimer;
 
 /**
  * A core class which performs initialization of the game.
@@ -97,20 +98,22 @@ class InitState extends FlxState
     taskText.color = FlxColor.WHITE;
     add(taskText);
 
-    doTask('Created TaskText', null);
+    doTask('Waiting a bit so the TaskText is visble', null);
 
-    // Setup a bunch of important Flixel stuff.
-    coreInit();
-    nonCoreInit();
+    new FlxTimer().start(.1, timer -> {
+      // Setup a bunch of important Flixel stuff.
+      coreInit();
+      nonCoreInit();
 
-    // Load player options from save data.
-    // Flixel has already loaded the save data, so we can just use it.
-    Preferences.init();
+      // Load player options from save data.
+      // Flixel has already loaded the save data, so we can just use it.
+      Preferences.init();
 
-    // Load controls from save data.
-    PlayerSettings.init();
+      // Load controls from save data.
+      PlayerSettings.init();
 
-    startGame();
+      startGame();
+    });
   }
 
   /**
