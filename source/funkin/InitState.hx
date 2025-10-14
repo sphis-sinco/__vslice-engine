@@ -93,6 +93,7 @@ class InitState extends FlxState
     taskText = new FlxText();
     taskText.size = 16;
     taskText.alignment = 'center';
+    taskText.color = FlxColor.WHITE;
     add(taskText);
 
     // Setup a bunch of important Flixel stuff.
