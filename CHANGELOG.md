@@ -17,8 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- "killed line" msg in credits
 - Polymod duplicate imports warning in the terminal
-- Preload
 - Removed Level Libraries
 - `CENSOR_EXPLETIVES` feature flag
 
