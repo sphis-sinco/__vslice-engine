@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- InitState Task Text (You don't see it (probably) but its there, I dunno)
+- InitState Task Text (Not in sync but I think this can depend on ur pc, idk just a guess)
 - Empty save check for base game save
 - Define Util (Thanks [@PurSnake][PurSnake])
 - Main Menu Mod List (Thanks [@Trofem][Trofem])
