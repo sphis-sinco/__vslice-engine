@@ -397,7 +397,7 @@ class InitState extends FlxState
 
     // This ain't a pixel art game! (most of the time)
     doTask('Changing Default Antialiasing', () -> {
-      FlxSprite.defaultAntialiasing = true
+      FlxSprite.defaultAntialiasing = true;
     });
 
     // Disable default keybinds for volume (we manually control volume in MusicBeatState with custom binds)
