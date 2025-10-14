@@ -200,10 +200,10 @@ class PolymodHandler
     }
 
     var makeLog = function(item:String, ?suffix:String = '') {
-      trace('  * $item${(suffix.length > 0) ? '($suffix)' : ''}');
+      trace('  * $item${(suffix != null && suffix.length > 0) ? '($suffix)' : ''}');
     };
 
-    var fileList:Array<String> = Polymod.listModFiles(PolymodAssetType.IMAGE).sort(SortUtil.alphabetically);
+    var fileList:Array<String> = Polymod.listModFiles(PolymodAssetType.IMAGE);
     trace('Installed mods have added/replaced ${fileList.length} images.');
     for (item in fileList)
     {
@@ -211,7 +211,7 @@ class PolymodHandler
     }
 
     fileList = Polymod.listModFiles(PolymodAssetType.TEXT);
-    trace('Installed mods have added/replaced ${fileList.length} text files.').sort(SortUtil.alphabetically);
+    trace('Installed mods have added/replaced ${fileList.length} text files.');
     for (item in fileList)
     {
       if (item.endsWith('.hxc'))
@@ -238,7 +238,7 @@ class PolymodHandler
       }
     }
 
-    fileList = Polymod.listModFiles(PolymodAssetType.AUDIO_SOUND).sort(SortUtil.alphabetically);
+    fileList = Polymod.listModFiles(PolymodAssetType.AUDIO_SOUND);
     trace('Installed mods have added/replaced ${fileList.length} sound files.');
     for (item in fileList)
     {
@@ -487,6 +487,7 @@ class PolymodHandler
     output.addType('hxc', TextFileFormat.PLAINTEXT);
     output.addType('hx', TextFileFormat.PLAINTEXT);
 
+    @:privateAccess
     output.formats.remove('xml');
 
     // You can specify the format of a specific file, with file extension.
