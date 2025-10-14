@@ -52,8 +52,8 @@ import flixel.text.FlxText;
  * - Chooses whether to start via debug or via launching normally.
  *
  * It should not contain any sprites or rendering.
+ * :)
  */
-@:nullSafety
 class InitState extends FlxState
 {
   /**
@@ -66,7 +66,7 @@ class InitState extends FlxState
   /**
    * This is just some cool text to show wtf the game is doing LMAO
    */
-  static var taskText:FlxText = new FlxText();
+  static var taskText:FlxText;
 
   public override function update(elapsed:Float):Void
   {
@@ -90,6 +90,7 @@ class InitState extends FlxState
    */
   public override function create():Void
   {
+    taskText = new FlxText();
     taskText.size = 16;
     taskText.alignment = 'center';
     add(taskText);
