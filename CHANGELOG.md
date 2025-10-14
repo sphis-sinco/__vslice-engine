@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Save company (`Sphis`) and name (`FunkinVSE`)
 - `FEATURE_FILE_LOGGING` is enabled on release AND debug builds
 - `FEATURE_DEBUG_FILE_LOGGING` has been renamed to `FEATURE_FILE_LOGGING`
 - PolymodHandler "Installed mods have replaced # __ files" message is now in release builds
