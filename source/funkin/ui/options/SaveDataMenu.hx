@@ -17,6 +17,19 @@ class SaveDataMenu extends Page<OptionsState.OptionsMenuPageName>
 
     createItem("CLEAR SAVE DATA", openSaveDataPrompt);
 
+    #if (sys && desktop)
+    createItem("OPEN SAVE DATA FOLDER", function() {
+      @:privateAccess
+      var explorerProcess = new sys.io.Process('explorer', ['"%appdata%\\${Save.SAVE_PATH}"']);
+
+      if (explorerProcess.exitCode() != 0)
+      {
+        var message = explorerProcess.stderr.readAll().toString();
+        throw 'Could not open Save Data Folder\n\nError: $message';
+      }
+    });
+    #end
+
     #if FEATURE_NEWGROUNDS
     if (NewgroundsClient.instance.isLoggedIn())
     {
@@ -101,6 +114,7 @@ class SaveDataMenu extends Page<OptionsState.OptionsMenuPageName>
       prompt = null;
     }
   }
+
   public function openSaveDataPrompt()
   {
     openConfirmPrompt("This will delete
