@@ -30,6 +30,9 @@ class Save implements ConsoleClass
   static final SAVE_PATH:String = 'Sphis';
   static final SAVE_NAME:String = 'FunkinVSE';
 
+  static final SAVE_PATH_BASEGAME:String = 'FunkinCrew';
+  static final SAVE_NAME_BASEGAME:String = 'Funkin';
+
   static final SAVE_PATH_LEGACY:String = 'ninjamuffin99';
   static final SAVE_NAME_LEGACY:String = 'funkin';
 
@@ -1164,21 +1167,33 @@ class Save implements ConsoleClass
     switch (FlxG.save.status)
     {
       case EMPTY:
-        trace('[SAVE] Save data in slot ${slot} is empty, checking for legacy save data...');
-        var legacySaveData = fetchLegacySaveData();
-        if (legacySaveData != null)
+        trace('[SAVE] Save data in slot ${slot} is empty, checking for base game save data...');
+        var baseGameSaveData = fetchBaseGameSaveData();
+        if (baseGameSaveData != null)
         {
-          trace('[SAVE] Found legacy save data, converting...');
-          var gameSave = SaveDataMigrator.migrateFromLegacy(legacySaveData);
+          trace('[SAVE] Found base game save data, converting...');
+          var gameSave = SaveDataMigrator.migrate(baseGameSaveData);
           FlxG.save.mergeData(gameSave.data, true);
           return gameSave;
         }
         else
         {
-          trace('[SAVE] No legacy save data found.');
-          var gameSave = new Save();
-          FlxG.save.mergeData(gameSave.data, true);
-          return gameSave;
+          trace('[SAVE] No base game save data found, checking for (basgeame) legacy save data...');
+          var legacySaveData = fetchLegacySaveData();
+          if (legacySaveData != null)
+          {
+            trace('[SAVE] Found (basegame) legacy save data, converting...');
+            var gameSave = SaveDataMigrator.migrateFromLegacy(legacySaveData);
+            FlxG.save.mergeData(gameSave.data, true);
+            return gameSave;
+          }
+          else
+          {
+            trace('[SAVE] No (basegame) legacy save data found.');
+            var gameSave = new Save();
+            FlxG.save.mergeData(gameSave.data, true);
+            return gameSave;
+          }
         }
       case ERROR(_): // DEPRECATED: Unused
         return handleSaveDataError(slot);
@@ -1334,19 +1349,37 @@ class Save implements ConsoleClass
     return -1;
   }
 
-  static function fetchLegacySaveData():Null<RawSaveData_v1_0_0>
+  static function fetchBaseGameSaveData():Null<RawSaveData>
   {
-    trace("[SAVE] Checking for legacy save data...");
-    var legacySave:FlxSave = new FlxSave();
-    legacySave.bind(SAVE_NAME_LEGACY, SAVE_PATH_LEGACY);
-    if (legacySave.isEmpty())
+    trace("[SAVE] Checking for base game save data...");
+    var baseGame:FlxSave = new FlxSave();
+    baseGame.bind(SAVE_NAME_BASEGAME, SAVE_PATH_BASEGAME);
+    if (baseGame.isEmpty())
     {
-      trace("[SAVE] No legacy save data found.");
+      trace("[SAVE] No base game save data found.");
       return null;
     }
     else
     {
-      trace("[SAVE] Legacy save data found.");
+      trace("[SAVE] base game save data found.");
+      trace(baseGame.data);
+      return cast baseGame.data;
+    }
+  }
+
+  static function fetchLegacySaveData():Null<RawSaveData_v1_0_0>
+  {
+    trace("[SAVE] Checking for (basegame) legacy save data...");
+    var legacySave:FlxSave = new FlxSave();
+    legacySave.bind(SAVE_NAME_LEGACY, SAVE_PATH_LEGACY);
+    if (legacySave.isEmpty())
+    {
+      trace("[SAVE] No (basegame) legacy save data found.");
+      return null;
+    }
+    else
+    {
+      trace("[SAVE] (basegame) Legacy save data found.");
       trace(legacySave.data);
       return cast legacySave.data;
     }
