@@ -120,7 +120,7 @@ class CLIUtil
 
   static function printUsage():Void
   {
-    trace('Usage: Funkin.exe [--chart <chart>] [--stage <stage>] [--help] [--version]');
+    trace('Usage: FunkinVSE.exe [--chart <chart>] [--stage <stage>] [--help] [--version]');
   }
 
   static function buildDefaultParams():CLIParams
