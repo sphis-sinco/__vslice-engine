@@ -200,7 +200,7 @@ class PolymodHandler
     }
 
     var makeLog = function(item:String, ?suffix:String = '') {
-      trace('  * $item${(suffix != null && suffix.length > 0) ? '($suffix)' : ''}');
+      trace('  * $item${(suffix != null && suffix.length > 0) ? ' ($suffix)' : ''}');
     };
 
     var fileList:Array<String> = Polymod.listModFiles(PolymodAssetType.IMAGE);
