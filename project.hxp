@@ -784,7 +784,7 @@ class Project extends HXProject
 
     // Should be true on desktop, non-tester builds.
     // We don't want testers to accidentally leak songs to their Discord friends!
-    FEATURE_DISCORD_RPC.apply(this, isDesktop() && !(FEATURE_DEBUG_FUNCTIONS.isEnabled(this) || !isHashLink()));
+    FEATURE_DISCORD_RPC.apply(this, isDesktop() && (!FEATURE_DEBUG_FUNCTIONS.isEnabled(this) && !isHashLink()));
 
     // Newgrounds features
     FEATURE_NEWGROUNDS.apply(this, false);
