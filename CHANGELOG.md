@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- InitState Task Text
 - Empty save check for base game save
 - Define Util (Thanks [@PurSnake][PurSnake])
 - Main Menu Mod List (Thanks [@Trofem][Trofem])
