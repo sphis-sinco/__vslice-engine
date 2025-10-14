@@ -24,6 +24,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `FEATURE_FILE_LOGGING` is enabled on release AND debug builds
+- `FEATURE_DEBUG_FILE_LOGGING` has been renamed to `FEATURE_FILE_LOGGING`
+- PolymodHandler "Installed mods have added/replaced __ __ files" message is now in release builds
 - **BASE GAME IS A MOD NOW**
 - importedClasses no longer have multiple traces in the terminal during non-core initalization
 - The `HARDCODED_CREDITS` feature flag is disabled by default now

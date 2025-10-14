@@ -198,9 +198,8 @@ class PolymodHandler
       loadedModIds.push(mod.id);
     }
 
-    #if FEATURE_DEBUG_FUNCTIONS
     var fileList:Array<String> = Polymod.listModFiles(PolymodAssetType.IMAGE);
-    trace('Installed mods have replaced ${fileList.length} images.');
+    trace('Installed mods have added/replaced ${fileList.length} images.');
     for (item in fileList)
     {
       trace('  * $item');
@@ -214,26 +213,25 @@ class PolymodHandler
     }
 
     fileList = Polymod.listModFiles(PolymodAssetType.AUDIO_MUSIC);
-    trace('Installed mods have replaced ${fileList.length} music files.');
+    trace('Installed mods have added/replaced ${fileList.length} music files.');
     for (item in fileList)
     {
       trace('  * $item');
     }
 
     fileList = Polymod.listModFiles(PolymodAssetType.AUDIO_SOUND);
-    trace('Installed mods have replaced ${fileList.length} sound files.');
+    trace('Installed mods have added/replaced ${fileList.length} sound files.');
     for (item in fileList)
     {
       trace('  * $item');
     }
 
     fileList = Polymod.listModFiles(PolymodAssetType.AUDIO_GENERIC);
-    trace('Installed mods have replaced ${fileList.length} generic audio files.');
+    trace('Installed mods have added/replaced ${fileList.length} generic audio files.');
     for (item in fileList)
     {
       trace('  * $item');
     }
-    #end
   }
 
   static function buildFileSystem():polymod.fs.ZipFileSystem
