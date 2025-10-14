@@ -66,7 +66,7 @@ class InitState extends FlxState
   /**
    * This is just some cool text to show wtf the game is doing LMAO
    */
-  static var taskText:FlxText;
+  static var taskText:FlxText = new FlxText();
 
   public override function update(elapsed:Float):Void
   {
@@ -90,7 +90,6 @@ class InitState extends FlxState
    */
   public override function create():Void
   {
-    taskText = new FlxText();
     taskText.size = 16;
     taskText.alignment = 'center';
     add(taskText);
