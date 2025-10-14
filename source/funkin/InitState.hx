@@ -102,17 +102,16 @@ class InitState extends FlxState
 
     new FlxTimer().start(.1, timer -> {
       // Setup a bunch of important Flixel stuff.
-      coreInit();
-      nonCoreInit();
+      doTask('Core Initalization', coreInit);
+      doTask('Non-core Initalization', nonCoreInit);
 
-      // Load player options from save data.
       // Flixel has already loaded the save data, so we can just use it.
-      Preferences.init();
+      doTask('Loading Player Options From Save Data', Preferences.init);
 
       // Load controls from save data.
-      PlayerSettings.init();
+      doTask('Loading Controls from Save Data', PlayerSettings.init);
 
-      startGame();
+      doTask('Starting the Game', startGame);
     });
   }
 
