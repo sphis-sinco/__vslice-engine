@@ -20,7 +20,10 @@ class SaveDataMenu extends Page<OptionsState.OptionsMenuPageName>
     #if (sys && desktop)
     createItem("OPEN SAVE DATA FOLDER", function() {
       @:privateAccess
-      var explorerProcess = new sys.io.Process('explorer', ['"%appdata%\\${Save.SAVE_PATH}"']);
+      final explorerPath = '%appdata%\\${Save.SAVE_PATH}';
+      trace('explorerPath: ' + explorerPath);
+
+      var explorerProcess = new sys.io.Process('explorer', [explorerPath]);
 
       if (explorerProcess.exitCode() != 0)
       {
