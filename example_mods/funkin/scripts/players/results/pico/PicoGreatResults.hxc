@@ -6,7 +6,7 @@ class PicoGreatResults extends FlxAtlasSprite
 {
   function new(x:Float, y:Float)
   {
-    super(x, y, Paths.animateAtlas("resultScreen/results-pico/resultsGREAT", "shared"),
+    super(x, y, Paths.animateAtlas("resultScreen/results-pico/resultsGREAT"),
       {
         Reversed: false,
         // ?OnComplete:Void -> Void,

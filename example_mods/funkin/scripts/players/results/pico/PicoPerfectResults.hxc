@@ -6,7 +6,7 @@ class PicoPerfectResults extends FlxAtlasSprite
 {
   function new(x:Float, y:Float)
   {
-    super(x, y, Paths.animateAtlas("resultScreen/results-pico/resultsPERFECT", "shared"),
+    super(x, y, Paths.animateAtlas("resultScreen/results-pico/resultsPERFECT"),
       {
         Reversed: false,
         // ?OnComplete:Void -> Void,

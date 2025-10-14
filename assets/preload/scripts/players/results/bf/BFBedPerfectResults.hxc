@@ -6,7 +6,7 @@ class BFBedPerfectResults extends FlxAtlasSprite
 {
   function new(x:Float, y:Float)
   {
-    super(x, y, Paths.animateAtlas("resultScreen/results-bf/resultsPERFECT/bed", "shared"),
+    super(x, y, Paths.animateAtlas("resultScreen/results-bf/resultsPERFECT/bed"),
       {
         Reversed: false,
         // ?OnComplete:Void -> Void,
