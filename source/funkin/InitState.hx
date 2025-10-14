@@ -68,11 +68,6 @@ class InitState extends FlxState
    */
   static var taskText:FlxText;
 
-  public override function update(elapsed:Float):Void
-  {
-    if (taskText != null) taskText.screenCenter();
-  }
-
   /**
    * This changes the task text and performs a function so that its visually shown what initState is doing
    * @param task Task Name
@@ -81,7 +76,13 @@ class InitState extends FlxState
   static function doTask(task:String, action:Void->Void):Void
   {
     trace('Performing Task: $task');
-    if (taskText != null) taskText.text = 'Task:\n' + task;
+
+    if (taskText != null)
+    {
+      taskText.text = 'Task:\n' + task;
+      taskText.screenCenter();
+    }
+
     if (action != null) action();
   }
 
