@@ -39,15 +39,19 @@ class AnsiTrace
     untyped __define_feature__("use._hx_print", _hx_print(str));
     #elseif sys
     #if FEATURE_FILE_LOGGING
-    if (logFile == null)
+    try
     {
-      if (FileSystem.exists(logFileName)) FileSystem.deleteFile(logFileName);
+      if (logFile == null)
+      {
+        if (FileSystem.exists(logFileName)) FileSystem.deleteFile(logFileName);
 
-      logFile = File.write(logFileName);
+        logFile = File.write(logFileName);
 
-      lime.app.Application.current.onExit.add((_) -> logFile.close());
+        lime.app.Application.current.onExit.add((_) -> logFile.close());
+      }
+      if (logFile != null) logFile.writeString(logStr);
     }
-    if (logFile != null) logFile.writeString(logStr);
+    catch (_) {}
     #end
     Sys.println(str);
     #else
