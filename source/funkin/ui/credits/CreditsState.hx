@@ -225,7 +225,6 @@ class CreditsState extends MusicBeatState
       if (creditsLine.y + creditsLine.height <= 0)
       {
         creditsLine.kill();
-        trace("killed line");
       }
     });
   }
