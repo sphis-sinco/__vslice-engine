@@ -22,6 +22,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed Level Libraries
 - `CENSOR_EXPLETIVES` feature flag
 
+### Fixed
+- Prevent crash with missing credits.json with `-D NO_HARDCODED_CREDITS`
+
 ### Changed
 
 - `FEATURE_FILE_LOGGING` is enabled on release AND debug builds
