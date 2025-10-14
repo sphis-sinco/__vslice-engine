@@ -26,7 +26,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `FEATURE_FILE_LOGGING` is enabled on release AND debug builds
 - `FEATURE_DEBUG_FILE_LOGGING` has been renamed to `FEATURE_FILE_LOGGING`
-- PolymodHandler "Installed mods have added/replaced __ __ files" message is now in release builds
+- PolymodHandler "Installed mods have replaced # __ files" message is now in release builds
+  - removed general audio and music sections (they just ended up being sounds so ye)
+  - sound files have specification for music and sounds (by folder)
+  - text files have specification for scripts and json (by extension and folder)
+  - "replaced" is now "added/replaced"
 - **BASE GAME IS A MOD NOW**
 - importedClasses no longer have multiple traces in the terminal during non-core initalization
 - The `HARDCODED_CREDITS` feature flag is disabled by default now
