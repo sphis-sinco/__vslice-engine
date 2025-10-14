@@ -471,6 +471,8 @@ class PolymodHandler
     output.addType('hxc', TextFileFormat.PLAINTEXT);
     output.addType('hx', TextFileFormat.PLAINTEXT);
 
+    output.formats.remove('xml');
+
     // You can specify the format of a specific file, with file extension.
     // output.addFile("data/introText.txt", TextFileFormat.LINES)
     return output;
