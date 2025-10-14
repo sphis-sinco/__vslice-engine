@@ -413,18 +413,18 @@ class InitState extends FlxState
     // and also see FunkinSoundTray.update() to see what we do and how we check if we are muted or not
     #if !mobile
     doTask('Enabling Soundtray', () -> {
-      FlxG.game.soundTray.active = true
+      FlxG.game.soundTray.active = true;
     });
     #end
 
     // Set the game to a lower frame rate while it is in the background.
     doTask('Initalizing FocusLostFramerate', () -> {
-      FlxG.game.focusLostFramerate = 30
+      FlxG.game.focusLostFramerate = 30;
     });
 
     // Makes Flixel use frame times instead of locked movements per frame for things like tweens
     doTask('Forcing Flixel to use frame times for things like tweens', () -> {
-      FlxG.fixedTimestep = false
+      FlxG.fixedTimestep = false;
     });
 
     //
@@ -450,7 +450,7 @@ class InitState extends FlxState
           new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
         FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.7, new FlxPoint(0, 1), tileData,
           new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
-      })
+      });
     });
 
     //
@@ -467,11 +467,11 @@ class InitState extends FlxState
       });
       FlxG.signals.focusGained.add(function() {
         WindowUtil.setVSyncMode(lime.ui.WindowVSyncMode.OFF);
-      })
+      });
     });
 
     doTask('Setting Android preventDefaultKeys', () -> {
-      FlxG.android.preventDefaultKeys = [flixel.input.android.FlxAndroidKey.BACK]
+      FlxG.android.preventDefaultKeys = [flixel.input.android.FlxAndroidKey.BACK];
     });
     #end
 
@@ -524,7 +524,7 @@ class InitState extends FlxState
 
     // Disable using ~ to open the console (we use that for the Editor menu)
     doTask('Setting Debugger Keys to F2', () -> {
-      FlxG.debugger.toggleKeys = [F2]
+      FlxG.debugger.toggleKeys = [F2];
     });
     doTask('Initalizing Flixel Debugger Trackers', () -> TrackerUtil.initTrackers);
 
