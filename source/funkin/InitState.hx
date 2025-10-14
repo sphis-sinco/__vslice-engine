@@ -97,6 +97,8 @@ class InitState extends FlxState
     taskText.color = FlxColor.WHITE;
     add(taskText);
 
+    doTask('Created TaskText', null);
+
     // Setup a bunch of important Flixel stuff.
     coreInit();
     nonCoreInit();
