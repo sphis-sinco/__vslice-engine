@@ -128,54 +128,54 @@ class InitState extends FlxState
       //
 
       // Setup window events (like callbacks for onWindowClose) and fullscreen keybind setup
-      doTask('Initalizing Window Events', WindowUtil.initWindowEvents);
+      WindowUtil.initWindowEvents();
 
       #if FEATURE_DEBUG_TRACY
-      doTask('Initalizing Tracy', funkin.util.WindowUtil.initTracy);
+      funkin.util.WindowUtil.initTracy();
       #end
 
       #if FEATURE_HAPTICS
       // Setup Haptic feedback
-      doTask('Initalizing Haptics', extension.haptics.Haptic.initialize);
+      extension.haptics.Haptic.initialize();
       #end
 
       #if FEATURE_MOBILE_ADVERTISEMENTS
       // Setup Admob
-      doTask('Initalizing Mobile Ad Util', funkin.mobile.util.AdMobUtil.init);
+      funkin.mobile.util.AdMobUtil.init();
       #end
 
       #if FEATURE_MOBILE_IAP
       // Setup In-App purchases
-      doTask('Initalizing Mobile In-App Purchases Util', funkin.mobile.util.InAppPurchasesUtil.init);
+      funkin.mobile.util.InAppPurchasesUtil.init();
       #end
 
       #if FEATURE_MOBILE_IAR
       // Setup In-App reviews
-      doTask('Initalizing Mobile In-App Reviews Util', funkin.mobile.util.InAppReviewUtil.init);
+      funkin.mobile.util.InAppReviewUtil.init();
       #end
 
       #if android
       // Setup Callback util.
-      doTask('Initalizing Android Callback Util', funkin.external.android.CallbackUtil.init);
+      funkin.external.android.CallbackUtil.init();
       #end
 
       #if ios
       // Setup Audio session
-      doTask('Initalizing iOS AudioSession', funkin.external.apple.AudioSession.initialize);
+      funkin.external.apple.AudioSession.initialize();
       #end
 
       //
       // NEWGROUNDS API SETUP
       //
       #if FEATURE_NEWGROUNDS
-      doTask('Initalizing Newgrounds Client', NewgroundsClient.instance.init);
+      NewgroundsClient.instance.init();
       #end
 
       //
       // DISCORD API SETUP
       //
       #if FEATURE_DISCORD_RPC
-      doTask('Initalizing Discord Client', DiscordClient.instance.init);
+      DiscordClient.instance.init();
 
       lime.app.Application.current.onExit.add(function(exitCode) {
         DiscordClient.instance.shutdown();
@@ -400,64 +400,52 @@ class InitState extends FlxState
   @:nullSafety(Off) // Meh, remove when flixel.system.debug.log.LogStyle is null safe
   static function nonCoreInit():Void
   {
-    doTask('Hiding Cursor', funkin.input.Cursor.hide);
+    funkin.input.Cursor.hide();
 
     // This ain't a pixel art game! (most of the time)
-    doTask('Changing Default Antialiasing', () -> {
-      FlxSprite.defaultAntialiasing = true;
-    });
+    FlxSprite.defaultAntialiasing = true;
 
     // Disable default keybinds for volume (we manually control volume in MusicBeatState with custom binds)
-    doTask('Disabling Default Volume Keybinds', () -> {
-      FlxG.sound.volumeUpKeys = [];
-      FlxG.sound.volumeDownKeys = [];
-      FlxG.sound.muteKeys = [];
-    });
+    FlxG.sound.volumeUpKeys = [];
+    FlxG.sound.volumeDownKeys = [];
+    FlxG.sound.muteKeys = [];
 
     // A small jumpstart to the soundtray, it usually sets itself to inactive (somewhere...)
     // but that makes our soundtray not show up on init if we have the game muted.
     // We set it to active so it at least calls it's update function once (see FlxGame.onEnterFrame(), it's called there)
     // and also see FunkinSoundTray.update() to see what we do and how we check if we are muted or not
     #if !mobile
-    doTask('Enabling Soundtray', () -> {
-      FlxG.game.soundTray.active = true;
-    });
+    FlxG.game.soundTray.active = true;
     #end
 
     // Set the game to a lower frame rate while it is in the background.
-    doTask('Initalizing FocusLostFramerate', () -> {
-      FlxG.game.focusLostFramerate = 30;
-    });
+    FlxG.game.focusLostFramerate = 30;
 
     // Makes Flixel use frame times instead of locked movements per frame for things like tweens
-    doTask('Forcing Flixel to use frame times for things like tweens', () -> {
-      FlxG.fixedTimestep = false;
-    });
+    FlxG.fixedTimestep = false;
 
     //
     // FLIXEL TRANSITIONS
     //
 
-    doTask('Initalizing Transition', () -> {
-      // Diamond Transition
-      var diamond:FlxGraphic = FlxGraphic.fromClass(GraphicTransTileDiamond);
-      diamond.persist = true;
-      diamond.destroyOnNoUse = false;
+    // Diamond Transition
+    var diamond:FlxGraphic = FlxGraphic.fromClass(GraphicTransTileDiamond);
+    diamond.persist = true;
+    diamond.destroyOnNoUse = false;
 
-      // NOTE: tileData is ignored if TransitionData.type is FADE instead of TILES.
-      var tileData:TransitionTileData = {asset: diamond, width: 32, height: 32};
+    // NOTE: tileData is ignored if TransitionData.type is FADE instead of TILES.
+    var tileData:TransitionTileData = {asset: diamond, width: 32, height: 32};
 
+    FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 1, new FlxPoint(0, -1), tileData,
+      new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
+    FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.7, new FlxPoint(0, 1), tileData,
+      new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
+
+    FlxG.signals.gameResized.add(function(width:Int, height:Int) {
       FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 1, new FlxPoint(0, -1), tileData,
         new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
       FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.7, new FlxPoint(0, 1), tileData,
         new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
-
-      FlxG.signals.gameResized.add(function(width:Int, height:Int) {
-        FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 1, new FlxPoint(0, -1), tileData,
-          new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
-        FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.7, new FlxPoint(0, 1), tileData,
-          new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
-      });
     });
 
     //
@@ -468,18 +456,16 @@ class InitState extends FlxState
     // Since we don't really need VSync on Android we're gonna forcefully disable it on these signals for now
     // This is fixed on SDL3 from what I've heared but that doodoo isn't working poperly for Android
     #if android
-    doTask('Initalizing focus lost/gained VSync stuff', () -> {
-      FlxG.signals.focusLost.add(function() {
-        WindowUtil.setVSyncMode(lime.ui.WindowVSyncMode.OFF);
-      });
-      FlxG.signals.focusGained.add(function() {
-        WindowUtil.setVSyncMode(lime.ui.WindowVSyncMode.OFF);
-      });
+    FlxG.signals.focusLost.add(function() {
+      WindowUtil.setVSyncMode(lime.ui.WindowVSyncMode.OFF);
     });
+    FlxG.signals.focusGained.add(function() {
+      WindowUtil.setVSyncMode(lime.ui.WindowVSyncMode.OFF);
+    });
+    #end
 
-    doTask('Setting Android preventDefaultKeys', () -> {
-      FlxG.android.preventDefaultKeys = [flixel.input.android.FlxAndroidKey.BACK];
-    });
+    #if android
+    FlxG.android.preventDefaultKeys = [flixel.input.android.FlxAndroidKey.BACK];
     #end
 
     //
@@ -489,24 +475,24 @@ class InitState extends FlxState
     // that receive update events regardless of the current state.
     // TODO: Move scripted Module behavior to a Flixel plugin.
     #if FEATURE_DEBUG_FUNCTIONS
-    doTask('Initalizing MemoryGC Plugin', () -> funkin.util.plugins.MemoryGCPlugin.initialize);
+    funkin.util.plugins.MemoryGCPlugin.initialize();
     #end
     #if FEATURE_SCREENSHOTS
-    doTask('Initalizing Screenshot Plugin', () -> funkin.util.plugins.ScreenshotPlugin.initialize);
+    funkin.util.plugins.ScreenshotPlugin.initialize();
     #end
     #if FEATURE_NEWGROUNDS
-    doTask('Initalizing Newgrounds Medal Plugin', () -> funkin.util.plugins.NewgroundsMedalPlugin.initialize);
+    funkin.util.plugins.NewgroundsMedalPlugin.initialize();
     #end
-    doTask('Initalizing Evacuate Debug Plugin', () -> funkin.util.plugins.EvacuateDebugPlugin.initialize);
-    doTask('Initalizing Force Crash Plugin', () -> funkin.util.plugins.ForceCrashPlugin.initialize);
-    doTask('Initalizing Reload Assets Plugin', () -> funkin.util.plugins.ReloadAssetsDebugPlugin.initialize);
+    funkin.util.plugins.EvacuateDebugPlugin.initialize();
+    funkin.util.plugins.ForceCrashPlugin.initialize();
+    funkin.util.plugins.ReloadAssetsDebugPlugin.initialize();
     #if !mobile
-    doTask('Initalizing Volume Plugin', () -> funkin.util.plugins.VolumePlugin.initialize);
+    funkin.util.plugins.VolumePlugin.initialize();
     #end
-    doTask('Initalizing Watch Plugin', () -> funkin.util.plugins.WatchPlugin.initialize);
+    funkin.util.plugins.WatchPlugin.initialize();
     #if mobile
-    doTask('Initalizing Mobile Touch Pointer Plugin', () -> funkin.util.plugins.TouchPointerPlugin.initialize);
-    doTask('Initalizing Mobile Controls Handler', () -> funkin.mobile.input.ControlsHandler.initInputTrackers);
+    funkin.util.plugins.TouchPointerPlugin.initialize();
+    funkin.mobile.input.ControlsHandler.initInputTrackers();
     #end
 
     //
@@ -517,84 +503,71 @@ class InitState extends FlxState
 
     #if !debug
     // Make errors less annoying on release builds.
-    doTask('Removing error openConsole and sound', () -> {
-      LogStyle.ERROR.openConsole = false;
-      LogStyle.ERROR.errorSound = null;
-    });
+    LogStyle.ERROR.openConsole = false;
+    LogStyle.ERROR.errorSound = null;
     #end
 
     // Make errors and warnings less annoying.
-    doTask('Removing warning openConsole and sound', () -> {
+    LogStyle.WARNING.openConsole = false;
+    LogStyle.WARNING.errorSound = null;
+
+    // Disable using ~ to open the console (we use that for the Editor menu)
+    FlxG.debugger.toggleKeys = [F2];
+    TrackerUtil.initTrackers();
+    // Adds an additional Close Debugger button.
+    // This big obnoxious white button is for MOBILE, so that you can press it
+    // easily with your finger when debug bullshit pops up during testing lol!
+    FlxG.debugger.addButton(LEFT, new BitmapData(200, 200), function() {
+      FlxG.debugger.visible = false;
+
+      // Make errors and warnings less annoying.
+      // Forcing this always since I have never been happy to have the debugger to pop up
+      LogStyle.ERROR.openConsole = false;
+      LogStyle.ERROR.errorSound = null;
       LogStyle.WARNING.openConsole = false;
       LogStyle.WARNING.errorSound = null;
     });
 
-    // Disable using ~ to open the console (we use that for the Editor menu)
-    doTask('Setting Debugger Keys to F2', () -> {
-      FlxG.debugger.toggleKeys = [F2];
-    });
-    doTask('Initalizing Flixel Debugger Trackers', () -> TrackerUtil.initTrackers);
-
-    // Adds an additional Close Debugger button.
-    // This big obnoxious white button is for MOBILE, so that you can press it
-    // easily with your finger when debug bullshit pops up during testing lol!
-    doTask('Adding Mobile Close Debugger Button', () -> {
-      FlxG.debugger.addButton(LEFT, new BitmapData(200, 200), function() {
-        FlxG.debugger.visible = false;
-
-        // Make errors and warnings less annoying.
-        // Forcing this always since I have never been happy to have the debugger to pop up
-        LogStyle.ERROR.openConsole = false;
-        LogStyle.ERROR.errorSound = null;
-        LogStyle.WARNING.openConsole = false;
-        LogStyle.WARNING.errorSound = null;
-      });
-    });
-
     // Adds a red button to the debugger.
     // This pauses the game AND the music! This ensures the Conductor stops.
-    doTask('Adding Game and Music Pause Button', () -> {
-      FlxG.debugger.addButton(CENTER, new BitmapData(20, 20, true, 0xFFCC2233), function() {
-        if (FlxG.vcr.paused)
+    FlxG.debugger.addButton(CENTER, new BitmapData(20, 20, true, 0xFFCC2233), function() {
+      if (FlxG.vcr.paused)
+      {
+        FlxG.vcr.resume();
+
+        for (snd in FlxG.sound.list)
         {
-          FlxG.vcr.resume();
-
-          for (snd in FlxG.sound.list)
-          {
-            snd.resume();
-          }
-
-          FlxG.sound.music.resume();
+          snd.resume();
         }
-        else
-        {
-          FlxG.vcr.pause();
 
-          for (snd in FlxG.sound.list)
-          {
-            snd.pause();
-          }
-
-          FlxG.sound.music.pause();
-        }
-      });
-    });
-
-    // Adds a blue button to the debugger.
-    // This skips forward in the song.
-    doTask('Adding Song Skip Forward Button', () -> {
-      FlxG.debugger.addButton(CENTER, new BitmapData(20, 20, true, 0xFF2222CC), function() {
-        FlxG.game.debugger.vcr.onStep();
+        FlxG.sound.music.resume();
+      }
+      else
+      {
+        FlxG.vcr.pause();
 
         for (snd in FlxG.sound.list)
         {
           snd.pause();
-          snd.time += FlxG.elapsed * 1000;
         }
 
         FlxG.sound.music.pause();
-        FlxG.sound.music.time += FlxG.elapsed * 1000;
-      });
+      }
+    });
+
+    // Adds a blue button to the debugger.
+    // This skips forward in the song.
+    FlxG.debugger.addButton(CENTER, new BitmapData(20, 20, true, 0xFF2222CC), function() {
+      FlxG.game.debugger.vcr.onStep();
+
+      for (snd in FlxG.sound.list)
+      {
+        snd.pause();
+        snd.time += FlxG.elapsed * 1000;
+      }
+
+      FlxG.sound.music.pause();
+      FlxG.sound.music.time += FlxG.elapsed * 1000;
     });
     #end
 
@@ -604,34 +577,33 @@ class InitState extends FlxState
 
     // NOTE: Registries must be imported and not referenced with fully qualified names,
     // to ensure build macros work properly.
-    doTask('Parsing game data...', () -> {
-      SongEventRegistry.loadEventCache(); // SongEventRegistry is structured differently so it's not a BaseRegistry.
-      SongRegistry.instance.loadEntries();
-      LevelRegistry.instance.loadEntries();
-      NoteStyleRegistry.instance.loadEntries();
-      PlayerRegistry.instance.loadEntries();
-      ConversationRegistry.instance.loadEntries();
-      DialogueBoxRegistry.instance.loadEntries();
-      SpeakerRegistry.instance.loadEntries();
-      FreeplayStyleRegistry.instance.loadEntries();
-      AlbumRegistry.instance.loadEntries();
-      StageRegistry.instance.loadEntries();
-      StickerRegistry.instance.loadEntries();
+    trace('Parsing game data...');
+    SongEventRegistry.loadEventCache(); // SongEventRegistry is structured differently so it's not a BaseRegistry.
+    SongRegistry.instance.loadEntries();
+    LevelRegistry.instance.loadEntries();
+    NoteStyleRegistry.instance.loadEntries();
+    PlayerRegistry.instance.loadEntries();
+    ConversationRegistry.instance.loadEntries();
+    DialogueBoxRegistry.instance.loadEntries();
+    SpeakerRegistry.instance.loadEntries();
+    FreeplayStyleRegistry.instance.loadEntries();
+    AlbumRegistry.instance.loadEntries();
+    StageRegistry.instance.loadEntries();
+    StickerRegistry.instance.loadEntries();
 
-      // TODO: CharacterDataParser doesn't use json2object, so it's way slower than the other parsers and more prone to syntax errors.
-      // Move it to use a BaseRegistry.
-      CharacterDataParser.loadCharacterCache();
+    // TODO: CharacterDataParser doesn't use json2object, so it's way slower than the other parsers and more prone to syntax errors.
+    // Move it to use a BaseRegistry.
+    CharacterDataParser.loadCharacterCache();
 
-      NoteKindManager.loadScripts();
+    NoteKindManager.loadScripts();
 
-      ModuleHandler.buildModuleCallbacks();
-      ModuleHandler.loadModuleCache();
-      ModuleHandler.callOnCreate();
-    });
+    ModuleHandler.buildModuleCallbacks();
+    ModuleHandler.loadModuleCache();
+    ModuleHandler.callOnCreate();
 
     #if !html5
     // This fucking breaks on HTML5 builds because the "shared" library isn't loaded yet.
-    doTask('Initalizing Memory Cache', () -> funkin.FunkinMemory.initialCache);
+    funkin.FunkinMemory.initialCache();
     #end
   }
 
