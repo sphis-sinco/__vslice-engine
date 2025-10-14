@@ -66,7 +66,7 @@ class InitState extends FlxState
   /**
    * This is just some cool text to show wtf the game is doing LMAO
    */
-  public var taskText:FlxText;
+  static var taskText:FlxText;
 
   public override function update(elapsed:Float):Void
   {
@@ -78,7 +78,7 @@ class InitState extends FlxState
    * @param task Task Name
    * @param action Function
    */
-  public function doTask(task:String, action:Void->Void):Void
+  static function doTask(task:String, action:Void->Void):Void
   {
     trace('Performing Task: $task');
     if (taskText != null) taskText.text = 'Task:\n' + task;
