@@ -262,7 +262,7 @@ class FunkinPreloader extends FlxBasePreloader
     addChild(touchHereSprite);
     #end
 
-    InitState.coreInit();
+    // InitState.coreInit();
   }
 
   function makeText(txtX:Float, txtY:Float, txt:String, color:Int):TextField
