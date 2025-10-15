@@ -22,6 +22,8 @@
     {
       "header": "Funkin PR People (I yoinked some of their stuff hehe :])",
       "body": [
+        { "line": "Sphis - Fixed missing credits.json with -DNO_HARDCODED_CREDITS" },
+
         { "line": "Trofem - Main Menu Mod List" },
 
         { "line": "NotHyper-474 - Hashlink support" },

@@ -120,7 +120,7 @@ class Paths
 
   public static function videos(key:String, ?library:String):String
   {
-    return getPath('videos/$key.${Constants.EXT_VIDEO}', BINARY, library ?? 'videos');
+    return getPath('videos/$key.${Constants.EXT_VIDEO}', BINARY, library ?? '');
   }
 
   public static function voices(song:String, ?suffix:String = ''):String

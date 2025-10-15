@@ -25,6 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `CENSOR_EXPLETIVES` feature flag
 
 ### Fixed
+
+- `assets/videos/videos/` folder (now just `assets/videos/`)
 - Lag with more then 10(?) mods installed (Thanks [@PurSnake][PurSnake])
 - Prevent crash with missing credits.json with `-D NO_HARDCODED_CREDITS`
 
