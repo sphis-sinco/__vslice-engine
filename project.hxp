@@ -1085,7 +1085,7 @@ class Project extends HXProject
     config.set("ios.deployment", "16.0");
 
     // launchStoryboard = new LaunchStoryboard();
-    // launchStoryboard.path = "./LaunchScreen.storyboard";
+    // launchStoryboard.path = "./.dev/iOS/LaunchScreen.storyboard";
   }
 
   function configurePolymod()
@@ -1936,7 +1936,7 @@ class Project extends HXProject
   public function readASTCExclusion():Void
   {
     @:nullSafety(Off)
-    astcExcludes = haxe.Json.parse(File.getContent('./astc-compression-data.json')).excludes;
+    astcExcludes = haxe.Json.parse(File.getContent('./.dev/astc-compression/astc-compression-data.json')).excludes;
 
     for (i in 0...astcExcludes.length)
       astcExcludes[i] = astcExcludes[i].trim();
@@ -1974,7 +1974,7 @@ class Project extends HXProject
     info('Compressing ASTC textures...');
 
     var args:Array<String> = ['run', 'astc-compressor', 'compress-from-json'];
-    args = args.concat(['-json', './astc-compression-data.json']);
+    args = args.concat(['-json', './dev/astc-compression/astc-compression-data.json']);
 
     Sys.command('haxelib', args);
 
