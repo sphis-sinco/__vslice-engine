@@ -1,30 +1,30 @@
 {
-  "disableFormatting": false,
+        "disableFormatting": false,
 
-  "indentation": {
-    "character": "  ",
-    "tabWidth": 2,
-    "indentCaseLabels": true
-  },
-  "lineEnds": {
-    "anonFunctionCurly": {
-      "emptyCurly": "break",
-      "leftCurly": "after",
-      "rightCurly": "both"
-    },
-    "leftCurly": "both",
-    "rightCurly": "both"
-  },
+        "indentation": {
+                "character": "  ",
+                "tabWidth": 4,
+                "indentCaseLabels": true
+        },
+        "lineEnds": {
+                "anonFunctionCurly": {
+                        "emptyCurly": "break",
+                        "leftCurly": "after",
+                        "rightCurly": "both"
+                },
+                "leftCurly": "both",
+                "rightCurly": "both"
+        },
 
-  "sameLine": {
-    "ifBody": "same",
-    "ifElse": "next",
-    "doWhile": "next",
-    "tryBody": "next",
-    "tryCatch": "next"
-  },
+        "sameLine": {
+                "ifBody": "same",
+                "ifElse": "next",
+                "doWhile": "next",
+                "tryBody": "next",
+                "tryCatch": "next"
+        },
 
-  "whitespace": {
-    "switchPolicy": "around"
-  }
+        "whitespace": {
+                "switchPolicy": "around"
+        }
 }
