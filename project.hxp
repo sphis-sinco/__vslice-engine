@@ -47,7 +47,7 @@ class Project extends HXProject
   /**
    * A package name used for identifying the app on various app stores.
    */
-  static final PACKAGE_NAME:String = "com.sphis.fnfvse";
+  static final PACKAGE_NAME:String = "com.vsecrew.fnfvse";
 
   /**
    * The name of the generated executable file.
@@ -81,7 +81,7 @@ class Project extends HXProject
    * The company name for the game.
    * This appears in metadata in places I think.
    */
-  static final COMPANY:String = "Sphis";
+  static final COMPANY:String = "VSECrew";
 
   /**
    * The app's localization languages.
