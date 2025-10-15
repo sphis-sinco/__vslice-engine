@@ -886,7 +886,7 @@ class PlayState extends MusicBeatSubState
     // Initialize some debug stuff.
     #if FEATURE_DEBUG_FUNCTIONS
     // Display the version number (and git commit hash) in the bottom right corner.
-    this.rightWatermarkText.text = Constants.VERSION;
+    this.rightWatermarkText.text = 'VSE ' + Constants.VERSION;
 
     FlxG.console.registerObject('playState', this);
     #end
