@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `0.1.0` changelog entry date
 - Updated Title Texts:
   - "The Funkin Crew Inc" -> "VSE Crew"
   - "In association with" -> "Not in association with"
