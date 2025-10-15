@@ -13,9 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `FUNKIN_MOD` Feature Flag controlling if the `funkin` mod should be included
 - InitState Task Text (Not in sync but I think this can depend on ur pc, idk just a guess)
 - Empty save check for base game save
-- Define Util (Thanks [@PurSnake][PurSnake])
-- Main Menu Mod List (Thanks [@Trofem][Trofem])
-- Hashlink (`lime test hl` / `lime build hl`) support (Thanks [@NotHyper-474][NotHyper-474])
+- Define Util (Thanks @PurSnake)
+- Main Menu Mod List (Thanks @Trofem)
+- Hashlink (`lime test hl` / `lime build hl`) support (Thanks @NotHyper-474)
 - `Friday Night Funkin (V-Slice Engine)` Credits
 
 ### Removed
@@ -28,7 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - `assets/videos/videos/` folder (now just `assets/videos/`)
-- Lag with more then 10(?) mods installed (Thanks [@PurSnake][PurSnake])
+- Lag with more then 10(?) mods installed (Thanks @PurSnake)
 - Prevent crash with missing credits.json with `-D NO_HARDCODED_CREDITS`
 
 ### Changed
@@ -50,10 +50,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The `CENSOR_EXPLETIVES`  feature flag has been replaced with `Preferences.naughtyness`
 - Instances of "Friday Night Funkin'" have " (V-Slice engine)" appended to the end of it
 - The Discord presence large image text uses `Constants.TITLE` now
-
-[PurSnake]: https://github.com/PurSnake
-[Trofem]: https://github.com/Trofem
-[NotHyper-474]: https://github.com/NotHyper-474
 
 # Friday Night Funkin
 
