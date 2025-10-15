@@ -159,6 +159,13 @@ class Project extends HXProject
   //
 
   /**
+   * `-DFUNKIN_MOD`
+   * Whether to have the `funkin` mod included by default.
+   * Enabled by default on all platforms
+   */
+  static final FUNKIN_MOD:FeatureFlag = "FUNKIN_MOD";
+
+  /**
    * `-DEMBED_ASSETS`
    * Whether to embed all asset libraries into the executable.
    * Enabled on web, usually disabled on desktop.
@@ -743,13 +750,15 @@ class Project extends HXProject
     // BUILD FLAGS
     //
 
+
     // Should be false unless explicitly requested.
     GITHUB_BUILD.apply(this, false);
     EXCLUDE_ARMV7.apply(this, false);
+    HARDCODED_CREDITS.apply(this, false);
 
     // Should be true unless explicitly requested.
-    HARDCODED_CREDITS.apply(this, false);
     UNLOCK_EVERYTHING.apply(this, true);
+    FUNKIN_MOD.apply(this, true);
 
     // Should be true only on web builds.
     // Enabling embedding and preloading is required to preload assets properly.
@@ -1214,7 +1223,7 @@ class Project extends HXProject
     addAssetLibrary("default", shouldEmbed, shouldPreloadDefault);
     addAssetPath("assets/preload", "assets", "default", ["*"], exclude, shouldEmbed, "assets");
 
-    if (!REDIRECT_ASSETS_FOLDER.isEnabled(this))
+    if (!REDIRECT_ASSETS_FOLDER.isEnabled(this) && FUNKIN_MOD.isEnabled(this))
       addAssetPath("example_mods/funkin", "mods/funkin", "default", ["*"], exclude, shouldEmbed, "mods");
 
     if (!HARDCODED_CREDITS.isEnabled(this))

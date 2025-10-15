@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `FUNKIN_MOD` Feature Flag controlling if the `funkin` mod should be included
 - InitState Task Text (Not in sync but I think this can depend on ur pc, idk just a guess)
 - Empty save check for base game save
 - Define Util (Thanks [@PurSnake][PurSnake])
