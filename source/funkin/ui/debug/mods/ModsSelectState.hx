@@ -41,7 +41,7 @@ class ModsSelectState extends UISubState
   override public function create():Void
   {
     super.create();
-
+    @:privateAccess
     if (FlxG.game.parent.contains(Main.debugDisplay)) Main.debugDisplay.y = FlxG.height - 48 - Main.debugDisplay.background.height - 8;
 
     prevPersistentDraw = FlxG.state.persistentDraw;
