@@ -199,7 +199,7 @@ class ModInfoWindow extends VBox
           switch (pathObj.ext)
           {
             case "txt" | "json" | "xml" | "hx" | "hxc" | "hscript" | "hxs":
-              WindowManager.instance.addWindow(new ModTxtFileViewer(#if sys sys.io.File.getContent(fullPath) #else 'N/A' #end));
+              WindowManager.instance.addWindow(new ModTxtFileViewer(#if sys FileUtil.readStringFromPath(fullPath) #else 'N/A' #end));
 
             case "png" | "jpg" | "jpeg":
               var bitmap = openfl.display.BitmapData.fromFile(fullPath);
