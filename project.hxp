@@ -783,9 +783,8 @@ class Project extends HXProject
     // FEATURE FLAGS
     //
 
-    FEATURE_KOLO_MODMENU.apply(this, FEATURE_KOLO_MODMENU.isEnabled(this) && !isweb());
+    FEATURE_KOLO_MODMENU.apply(this, FEATURE_KOLO_MODMENU.isEnabled(this) && !isWeb());
     FEATURE_FUNKIN_MOD.apply(this, true);
-
 
     // Should be true on debug builds or if GITHUB_BUILD is enabled.
     FEATURE_DEBUG_FUNCTIONS.apply(this, isDebug() || GITHUB_BUILD.isEnabled(this));
