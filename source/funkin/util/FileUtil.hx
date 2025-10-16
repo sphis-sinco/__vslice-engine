@@ -67,8 +67,8 @@ class FileUtil
       'manifest/*',
       'plugins',
       'plugins/*',
-      'Funkin.exe',
-      'Funkin',
+      'FunkinVSE.exe',
+      'FunkinVSE',
       'icon.ico',
       'libvlc.dll',
       'libvlccore.dll',
@@ -116,7 +116,7 @@ class FileUtil
    * @param onCancel A callback that is called when the user closes the dialog without selecting a file.
    */
   public static function browseForBinaryFile(dialogTitle:String, ?typeFilter:Array<FileDialogExtensionInfo>, onSelect:(SelectedFileInfo) -> Void,
-      ?onCancel:() -> Void)
+      ?onCancel:() -> Void):Void
   {
     var onComplete = function(button, selectedFiles) {
       if (button == DialogButton.OK && selectedFiles.length > 0)
@@ -751,18 +751,13 @@ class FileUtil
 
   /**
    * Check if a path exists on the filesystem.
-   * Only works on native.
    *
    * @param path The path to the potential file or directory.
    * @return Whether the path exists.
    */
   public static function pathExists(path:String):Bool
   {
-    #if sys
-    return sys.FileSystem.exists(path);
-    #else
-    return false;
-    #end
+    return PolymodHandler.modFileSystem.exists(path);
   }
 
   /**
@@ -783,25 +778,13 @@ class FileUtil
 
   /**
    * Check if a path is a directory on the filesystem.
-   * Only works on native.
    *
    * @param path The path to the potential directory.
    * @return Whether the path exists and is a directory.
    */
   public static function directoryExists(path:String):Bool
   {
-    #if sys
-    try
-    {
-      return sys.FileSystem.isDirectory(path);
-    }
-    catch (e:Dynamic)
-    {
-      return false;
-    }
-    #else
-    throw 'Filesystem check is not supported on this platform.';
-    #end
+    return PolymodHandler.modFileSystem.isDirectory(path);
   }
 
   /**
@@ -815,7 +798,7 @@ class FileUtil
     if (!directoryExists(dir))
     {
       #if sys
-      sys.FileSystem.createDirectory(dir);
+      PolymodHandler.modFileSystem.createDirectory(dir);
       #else
       throw 'Directory creation is not supported on this platform.';
       #end
@@ -824,18 +807,13 @@ class FileUtil
 
   /**
    * List all entries in a directory.
-   * Only works on native.
    *
    * @param path The path to the directory.
    * @return An array of entries in the directory.
    */
   public static function readDir(path:String):Array<String>
   {
-    #if sys
-    return sys.FileSystem.readDirectory(path);
-    #else
-    throw 'Directory reading is not supported on this platform.';
-    #end
+    return PolymodHandler.modFileSystem.readDirectory(path);
   }
 
   /**

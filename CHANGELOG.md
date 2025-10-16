@@ -10,6 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Some `FileUtil` functions are no longer Native(Sys)-only
+  - `pathExists`
+  - `readDir`
+  - `directoryExists`
+- `FunkinVSE.exe` is a Protected Path now
+- `PolymodHandler`'s `modFileSystem` variable is public static now
 - `FUNKIN_MOD` Feature Flag has been renamed to `FEATURE_FUNKIN_MOD`
 
 ### Added

@@ -13,9 +13,7 @@ import haxe.ui.containers.VBox;
 import haxe.ui.containers.windows.WindowManager;
 import polymod.Polymod.ModMetadata;
 import thx.semver.VersionRule;
-#if sys
-import sys.FileSystem;
-#end
+import funkin.util.FileUtil;
 
 @:access(funkin.ui.debug.mods.ModsSelectState)
 @:build(haxe.ui.ComponentBuilder.build("assets/exclude/data/ui/mod-select/components/mod-info.xml"))
@@ -156,7 +154,7 @@ class ModInfoWindow extends VBox
     parentState.colorButtonLabels(data.dependencies.keys().array(), data.optionalDependencies.keys().array());
   }
 
-  function openDifferentMod(mod:String, version:VersionRule)
+  function openDifferentMod(mod:String, version:VersionRule):Void
   {
     parentState.cleanupBeforeSwitch();
 
@@ -177,14 +175,13 @@ class ModInfoWindow extends VBox
     }
   }
 
-  function fillUpTreeView(parent:TreeViewNode, path:String)
+  function fillUpTreeView(parent:TreeViewNode, path:String):Void
   {
-    #if sys
-    for (item in FileSystem.readDirectory(path))
+    for (item in FileUtil.readDir(path))
     {
       var fullPath = path + "/" + item;
       var pathObj = new haxe.io.Path(fullPath);
-      var isFolder = FileSystem.isDirectory(fullPath);
+      var isFolder = FileUtil.directoryExists(fullPath);
 
       var newNode = parent.addNode(
         {
@@ -202,7 +199,7 @@ class ModInfoWindow extends VBox
           switch (pathObj.ext)
           {
             case "txt" | "json" | "xml" | "hx" | "hxc" | "hscript" | "hxs":
-              WindowManager.instance.addWindow(new ModTxtFileViewer(sys.io.File.getContent(fullPath)));
+              WindowManager.instance.addWindow(new ModTxtFileViewer(PolymodHandler.modFileSystem.getContent(fullPath)));
 
             case "png" | "jpg" | "jpeg":
               var bitmap = openfl.display.BitmapData.fromFile(fullPath);
@@ -213,6 +210,5 @@ class ModInfoWindow extends VBox
         }
       }
     }
-    #end
   }
 }

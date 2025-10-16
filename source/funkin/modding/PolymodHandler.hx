@@ -73,7 +73,7 @@ class PolymodHandler
   public static var loadedModIds:Array<String> = [];
 
   // Use SysZipFileSystem on native and MemoryZipFilesystem on web.
-  static var modFileSystem:Null<ZipFileSystem> = null;
+  public static var modFileSystem:Null<ZipFileSystem> = null;
 
   /**
    * If the mods folder doesn't exist, create it.
