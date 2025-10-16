@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.1] - 2025-10-15
 
+### Changed
+
+- 0 mods loaded PolymodHandler message
+
+### Removed
+
+- PolymodHandler "Installed mods have replaced # __ files" message
+
 ### Fixed
 
 - `0.1.0` changelog entry date

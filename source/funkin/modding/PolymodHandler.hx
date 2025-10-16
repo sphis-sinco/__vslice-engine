@@ -184,7 +184,7 @@ class PolymodHandler
     {
       if (loadedModList.length == 0)
       {
-        trace('Mod loading complete. We loaded no mods / ${ids.length} mods.');
+        trace('Mod loading complete. We loaded 0 mods.');
       }
       else
       {
@@ -197,56 +197,6 @@ class PolymodHandler
     {
       trace('  * ${mod.title} v${mod.modVersion} [${mod.id}]');
       loadedModIds.push(mod.id);
-    }
-
-    var makeLog = function(item:String, ?suffix:String = '') {
-      trace('  * $item${(suffix != null && suffix.length > 0) ? ' ($suffix)' : ''}');
-    };
-
-    var fileList:Array<String> = Polymod.listModFiles(PolymodAssetType.IMAGE);
-    trace('Installed mods have added/replaced ${fileList.length} images.');
-    for (item in fileList)
-    {
-      makeLog(item);
-    }
-
-    fileList = Polymod.listModFiles(PolymodAssetType.TEXT);
-    trace('Installed mods have added/replaced ${fileList.length} text files.');
-    for (item in fileList)
-    {
-      if (item.endsWith('.hxc'))
-      {
-        makeLog(item, 'Script');
-      }
-
-      if (item.endsWith('.json') && !item.endsWith('spritemap1.json'))
-      {
-        if (item.startsWith('data/characters/')) makeLog(item, 'Character Json');
-        else if (item.startsWith('data/dialogue/boxes/')) makeLog(item, 'Dialogue Box Json');
-        else if (item.startsWith('data/dialogue/conversations/')) makeLog(item, 'Dialogue Conversation Json');
-        else if (item.startsWith('data/dialogue/speakers/')) makeLog(item, 'Dialogue Speaker / Portrait Json');
-        else if (item.startsWith('data/levels/')) makeLog(item, 'Level / Week Json');
-        else if (item.startsWith('data/notestyles/')) makeLog(item, 'Notestyle Json');
-        else if (item.startsWith('data/players/')) makeLog(item, 'Player Json');
-        else if (item.startsWith('data/songs/')) makeLog(item, 'Song Json');
-        else if (item.startsWith('data/stages/')) makeLog(item, 'Stage Json');
-        else if (item.startsWith('data/stickerpacks/')) makeLog(item, 'Stickerpack Json');
-        else if (item.startsWith('data/ui/freeplay/albums/')) makeLog(item, 'Album Json');
-        else if (item.startsWith('data/ui/freeplay/styles/')) makeLog(item, 'Player Style Json');
-        else
-          makeLog(item, 'General Json');
-      }
-    }
-
-    fileList = Polymod.listModFiles(PolymodAssetType.AUDIO_SOUND);
-    trace('Installed mods have added/replaced ${fileList.length} sound files.');
-    for (item in fileList)
-    {
-      if (item.startsWith('music/')) makeLog(item, 'Music Track');
-      if (item.startsWith('sounds/')) makeLog(item, 'Sound File');
-
-      if (item.startsWith('shared/music/')) makeLog(item, 'Music Track');
-      if (item.startsWith('shared/sounds/')) makeLog(item, 'Sound File');
     }
   }
 
