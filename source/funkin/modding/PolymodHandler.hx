@@ -73,7 +73,13 @@ class PolymodHandler
   public static var loadedModIds:Array<String> = [];
 
   // Use SysZipFileSystem on native and MemoryZipFilesystem on web.
-  public static var modFileSystem:Null<ZipFileSystem> = null;
+  public static var modFileSystem(get, set):ZipFileSystem = null;
+
+  static function get_modFileSystem():ZipFileSystem
+    return buildFileSystem();
+
+  static function set_modFileSystem(value:ZipFileSystem):ZipFileSystem
+    return buildFileSystem();
 
   /**
    * If the mods folder doesn't exist, create it.
@@ -139,8 +145,6 @@ class PolymodHandler
     }
 
     buildImports();
-
-    if (modFileSystem == null) modFileSystem = buildFileSystem();
 
     var loadedModList:Array<ModMetadata> = polymod.Polymod.init(
       {
@@ -483,8 +487,6 @@ class PolymodHandler
   public static function getAllMods():Array<ModMetadata>
   {
     trace('Scanning the mods folder...');
-
-    if (modFileSystem == null) modFileSystem = buildFileSystem();
 
     var modMetadata:Array<ModMetadata> = Polymod.scan(
       {
