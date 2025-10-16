@@ -1,43 +1,43 @@
 {
-  "entries": [
-    {
-      "header": "Friday Night Funkin' (V-Slice Engine)",
-      "body": [
-        { "line": "A video game modification created by" },
-        { "line": "Sphis" }
-      ]
-    },
-    {
-      "header": "V-Slice Engine Main Team",
-      "body": [
-        { "line": "Sphis - Lead Programmer" }
-      ]
-    },
-    {
-      "header": "V-Slice Engine Assistance",
-      "body": [
-        { "line": "PurSnake - Playtesting" }
-      ]
-    },
-    {
-      "header": "Funkin PR People (I yoinked some of their stuff hehe :])",
-      "body": [
-        { "line": "Sphis - Fixed missing credits.json with -DNO_HARDCODED_CREDITS" },
+    "entries": [
+        {
+            "header": "Friday Night Funkin' (V-Slice Engine)",
+            "body": [
+                { "line": "A video game modification created by" },
+                { "line": "Sphis" }
+            ]
+        },
+        {
+            "header": "V-Slice Engine Main Team",
+            "body": [{ "line": "Sphis - Lead Programmer" }]
+        },
+        {
+            "header": "V-Slice Engine Assistance",
+            "body": [{ "line": "PurSnake - Playtesting" }]
+        },
+        {
+            "header": "Funkin PR People (I yoinked some of their stuff hehe :])",
+            "body": [
+                { "line": "KoloInDaCrib - Mod Menu" },
 
-        { "line": "Trofem - Main Menu Mod List" },
+                {
+                    "line": "Sphis - Fixed missing credits.json with -DNO_HARDCODED_CREDITS"
+                },
 
-        { "line": "NotHyper-474 - Hashlink support" },
+                { "line": "Trofem - Main Menu Mod List" },
 
-        { "line": "PurSnake - DefineUtil (For modding)" },
-        { "line": "PurSnake - Better PolymodAssetLibrary Caching" }
-      ]
-    },
-    {
-      "header": "Friday Night Funkin'",
-      "body": [
-        { "line": "A video game created by" },
-        { "line": "The Funkin' Crew Inc." }
-      ]
-    }
-  ]
+                { "line": "NotHyper-474 - Hashlink support" },
+
+                { "line": "PurSnake - DefineUtil (For modding)" },
+                { "line": "PurSnake - Better PolymodAssetLibrary Caching" }
+            ]
+        },
+        {
+            "header": "Friday Night Funkin'",
+            "body": [
+                { "line": "A video game created by" },
+                { "line": "The Funkin' Crew Inc." }
+            ]
+        }
+    ]
 }

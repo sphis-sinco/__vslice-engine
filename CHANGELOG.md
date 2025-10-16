@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **MOD MENU** (Thanks again @KoloInDaCrib)
 - `FEATURE_KOLO_MODMENU` Feature Flag that adds the Mod Menu from [Kolo's Mod Menu PR](https://github.com/FunkinCrew/Funkin/pull/4223) (Thanks @KoloInDaCrib)
 
 ## [0.1.1] - 2025-10-15
