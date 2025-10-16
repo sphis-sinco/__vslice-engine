@@ -1,0 +1,19 @@
+import funkin.modding.module.Module;
+
+import funkin.ui.options.PreferencesMenu;
+
+class PreferencesTest extends Module
+{
+  override public function new()
+  {
+    super('preferences-test');
+  }
+
+  override public function onSubStateOpenEnd(event:SubStateScriptEvent)
+  {
+    if (PreferencesMenu.instance != null)
+    {
+      trace('hewo');
+    }
+  }
+}
