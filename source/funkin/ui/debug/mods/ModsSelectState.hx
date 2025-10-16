@@ -36,9 +36,9 @@ class ModsSelectState extends UISubState
    * A list for all enabled mods. The main point of this list is to provide priorities of enabled mods without focusing on dependencies.
    * Polymod handles sorting by dependencies internally upon loading mods.
    */
-  var changeableModList:Array<String> = [];
+  var changeableModList:Array<String>;
 
-  override public function create()
+  override public function create():Void
   {
     super.create();
 
@@ -76,7 +76,7 @@ class ModsSelectState extends UISubState
   }
 
   // This should also account for the mod order and put dependencies on the bottom.
-  function reloadModOrder()
+  function reloadModOrder():Void
   {
     modListUnloadedBox.removeAllComponents();
     modListLoadedBox.removeAllComponents();
@@ -178,7 +178,7 @@ class ModsSelectState extends UISubState
   /**
    * Order the mods so that the enabled mods are first.
    */
-  function listAllModsOrdered()
+  function listAllModsOrdered():Array<ModMetadata>
   {
     var allMods:Array<ModMetadata> = PolymodHandler.getAllMods().copy();
     var finishedList:Array<ModMetadata> = [];
@@ -211,7 +211,7 @@ class ModsSelectState extends UISubState
   /**
    * A clean-up of the menu to do before selecting another mod.
    */
-  function cleanupBeforeSwitch()
+  function cleanupBeforeSwitch():Void
   {
     for (window in WindowManager.instance.windows)
       WindowManager.instance.closeWindow(window);
@@ -231,7 +231,7 @@ class ModsSelectState extends UISubState
   /**
    * Color the buttons based on the provided arrays of required and optional mod ids.
    */
-  function colorButtonLabels(?required:Array<String>, ?optional:Array<String>)
+  function colorButtonLabels(?required:Array<String>, ?optional:Array<String>):Void
   {
     if (required == null) required = [];
     if (optional == null) optional = [];
@@ -249,7 +249,7 @@ class ModsSelectState extends UISubState
     }
   }
 
-  override public function close()
+  override public function close():Void
   {
     FlxG.state.persistentDraw = prevPersistentDraw;
     FlxG.state.persistentUpdate = prevPersistentUpdate;
@@ -264,7 +264,7 @@ class ModsSelectState extends UISubState
   /**
    * Load the selected mods.
    */
-  function save()
+  function save():Void
   {
     trace("Loading Mods: " + changeableModList);
 
@@ -273,7 +273,7 @@ class ModsSelectState extends UISubState
     modListApplyButton.disabled = true;
   }
 
-  override public function update(elapsed:Float)
+  override public function update(elapsed:Float):Void
   {
     super.update(elapsed);
 
