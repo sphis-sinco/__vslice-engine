@@ -87,8 +87,8 @@ class ModsSelectState extends UISubState
     {
       var isLoaded:Bool = changeableModList.contains(mod.id);
       var button = new ModButton(mod);
-      button.tooltip = "Click to Enable/Disable.\nRight Click to View Info.";
-      if (isLoaded) button.tooltip += "\nShift+Click to Move Upwards.\nCtrl+Click to Move Downwards.";
+      button.modButtonIcon.tooltip = "Click to Enable/Disable.\nRight Click to View Info.";
+      if (isLoaded) button.modButtonIcon.tooltip += "\nShift+Click to Move Upwards.\nCtrl+Click to Move Downwards.";
 
       button.onRightClick = function(_) {
         // Do not refresh if there is no change in the mods.
