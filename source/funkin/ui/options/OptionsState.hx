@@ -202,6 +202,11 @@ class OptionsMenu extends Page<OptionsMenuPageName>
       funkin.external.android.DataFolderUtil.openDataFolder();
     });
     #end
+    #if FEATURE_KOLO_MODMENU
+    createItem("MODS", function() {
+      FlxG.state.openSubState(new funkin.ui.debug.mods.ModsSelectState());
+    });
+    #end
     #if FEATURE_NEWGROUNDS
     if (NewgroundsClient.instance.isLoggedIn())
     {

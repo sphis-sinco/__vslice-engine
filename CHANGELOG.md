@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 # Friday Night Funkin (V-Slice Engine)
 
+## [0.2.0] - 2025-10-15
+
+### Changed
+
+- `FUNKIN_MOD` Feature Flag has been renamed to `FEATURE_FUNKIN_MOD`
+
+### Added
+
+- `FEATURE_KOLO_MODMENU` Feature Flag that adds the Mod Menu from [Kolo's Mod Menu PR](https://github.com/FunkinCrew/Funkin/pull/4223) (Thanks @KoloInDaCrib)
+
 ## [0.1.1] - 2025-10-15
 
 ### Changed

@@ -52,7 +52,7 @@ class PolymodHandler
   /**
    * Where relative to the executable that mods are located.
    */
-  static final MOD_FOLDER:String =
+  public static final MOD_FOLDER:String =
     #if (REDIRECT_ASSETS_FOLDER && macos)
     '../../../../../../../example_mods'
     #elseif REDIRECT_ASSETS_FOLDER
@@ -464,7 +464,7 @@ class PolymodHandler
    */
   public static function getAllModsList():Array<String>
   {
-    var modMetadata:Array<ModMetadata> = getAllMods(); // TODO: change to getEnabledMods()
+    var modMetadata:Array<ModMetadata> = loadEnabledMods();
     return [
       for (mod in modMetadata)
       {
@@ -513,7 +513,7 @@ class PolymodHandler
    */
   public static function getEnabledMods():Array<ModMetadata>
   {
-    var modIds:Array<String> = Save.instance.enabledModIds;
+    var modIds:Array<String> = #if FEATURE_KOLO_MODMENU Save.instance.enabledModIds; #else getAllModIds(); #end
     var modMetadata:Array<ModMetadata> = getAllMods();
     var enabledMods:Array<ModMetadata> = [];
     for (item in modMetadata)
@@ -538,8 +538,7 @@ class PolymodHandler
 
     // Forcibly reload Polymod so it finds any new files.
     // This will also register all scripts.
-    // TODO: Replace this with loadEnabledMods().
-    funkin.modding.PolymodHandler.loadAllMods();
+    funkin.modding.PolymodHandler.loadEnabledMods();
 
     // Reload everything that is cached.
     // Currently this freezes the game for a second but I guess that's tolerable?
