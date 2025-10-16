@@ -42,6 +42,8 @@ class ModsSelectState extends UISubState
   {
     super.create();
 
+    if (FlxG.game.parent.contains(Main.debugDisplay)) Main.debugDisplay.y = FlxG.height - 48 - Main.debugDisplay.background.height - 8;
+
     prevPersistentDraw = FlxG.state.persistentDraw;
     prevPersistentUpdate = FlxG.state.persistentUpdate;
 
@@ -275,6 +277,8 @@ class ModsSelectState extends UISubState
     Cursor.hide();
     WindowManager.instance.reset();
     ToolTipManager.instance.reset();
+
+    if (FlxG.game.parent.contains(Main.debugDisplay)) Main.debugDisplay.y = 10;
 
     super.close();
   }
