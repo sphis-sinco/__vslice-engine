@@ -42,7 +42,7 @@ class ModsSelectState extends UISubState
   {
     super.create();
     @:privateAccess
-    if (FlxG.game.parent.contains(Main.debugDisplay)) Main.debugDisplay.y = FlxG.height - 48 - Main.debugDisplay.background.height - 8;
+    if (FlxG.game.parent.contains(Main.debugDisplay)) Main.debugDisplay.y = FlxG.height - 48 - Main.debugDisplay.background.height - 16;
 
     prevPersistentDraw = FlxG.state.persistentDraw;
     prevPersistentUpdate = FlxG.state.persistentUpdate;

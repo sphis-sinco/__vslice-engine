@@ -5,8 +5,11 @@
   </hbox>
 
   <hbox horizontalAlign="center">
+      <label text="All mods:" />
       <label text="Click to Enable/Disable.\nRight Click to View Info." />
-      <label text="If Mod Loaded:\nShift+Click to Move Upwards.\nCtrl+Click to Move Downwards." />
+
+      <label text="Loaded mods only:" />
+      <label text="Shift+Click to Move Upwards.\nCtrl+Click to Move Downwards." />
   </hbox>
 
   <hbox horizontalAlign="right">
