@@ -203,7 +203,7 @@ class OptionsMenu extends Page<OptionsMenuPageName>
     });
     #end
     #if FEATURE_KOLO_MODMENU
-    createItem("MODS", function() {
+    createItem("MODS SELECT", function() {
       FlxG.state.openSubState(new funkin.ui.debug.mods.ModsSelectState());
     });
     #end
