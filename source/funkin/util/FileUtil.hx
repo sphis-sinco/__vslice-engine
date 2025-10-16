@@ -799,7 +799,7 @@ class FileUtil
     if (!directoryExists(dir))
     {
       #if sys
-      PolymodHandler.modFileSystem.createDirectory(dir);
+      sys.FileSystem.createDirectory(dir);
       #else
       throw 'Directory creation is not supported on this platform.';
       #end
