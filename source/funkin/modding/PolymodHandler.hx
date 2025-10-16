@@ -464,7 +464,7 @@ class PolymodHandler
    */
   public static function getAllModsList():Array<String>
   {
-    var modMetadata:Array<ModMetadata> = loadEnabledMods();
+    var modMetadata:Array<ModMetadata> = getEnabledMods();
     return [
       for (mod in modMetadata)
       {
