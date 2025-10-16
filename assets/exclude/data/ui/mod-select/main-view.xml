@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vbox width="100%" height="100%" style="background-color: $solid-background-color;">
-	<hbox width="100%" height="100%" >
+	<hbox width="100%" height="100%" horizontalAlign="right">
 		<vbox width="25%" height="100%">
 			<scrollview width="100%" height="100%" contentWidth="100%">
 				<collapsible text="Loaded Mods" width="100%">
@@ -14,7 +14,7 @@
 			</scrollview>
 		</vbox>
 
-		<box id="windowContainer" styleNames="window-manager-container" width="75%" height="100%" />
+		<box id="windowContainer" styleNames="window-manager-container" width="75%" height="100%" horizontalAlign="left"/>
 	</hbox>
 	<import source="components/style.xml" />
 	<import source="components/bottom-bar.xml" />

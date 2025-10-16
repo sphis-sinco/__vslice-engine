@@ -5,6 +5,8 @@
   </hbox>
 
   <hbox horizontalAlign="center">
+      <label text="Click to Enable/Disable.\nRight Click to View Info." />
+      <label text="\n(If Loaded: Shift+Click to Move Upwards.\nCtrl+Click to Move Downwards.)" />
   </hbox>
 
   <hbox horizontalAlign="right">

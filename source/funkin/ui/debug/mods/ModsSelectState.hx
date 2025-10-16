@@ -1,5 +1,6 @@
 package funkin.ui.debug.mods;
 
+import funkin.util.HaxeUIUtil;
 import flixel.FlxG;
 import funkin.audio.FunkinSound;
 import funkin.input.Cursor;
@@ -15,7 +16,6 @@ import haxe.ui.containers.windows.WindowManager;
 import haxe.ui.tooltips.ToolTipManager;
 import polymod.util.DependencyUtil;
 import polymod.Polymod.ModMetadata;
-import thx.semver.VersionRule;
 
 using StringTools;
 
@@ -87,8 +87,6 @@ class ModsSelectState extends UISubState
     {
       var isLoaded:Bool = changeableModList.contains(mod.id);
       var button = new ModButton(mod);
-      button.modButtonIcon.tooltip = "Click to Enable/Disable.\nRight Click to View Info.";
-      if (isLoaded) button.modButtonIcon.tooltip += "\nShift+Click to Move Upwards.\nCtrl+Click to Move Downwards.";
 
       button.onRightClick = function(_) {
         // Do not refresh if there is no change in the mods.
@@ -104,51 +102,71 @@ class ModsSelectState extends UISubState
 
         cleanupBeforeSwitch();
         button.styleNames = "modBoxSelected";
-        var infoWindow = new ModInfoWindow(this, mod);
-        windowContainer.addComponent(infoWindow);
+        try
+        {
+          var infoWindow = new ModInfoWindow(this, mod);
+          windowContainer.addComponent(infoWindow);
+        }
+        catch (e)
+        {
+          trace(e);
+        }
       }
 
       button.onClick = function(_) {
-        if (isLoaded)
+        try
         {
-          var modIndex:Int = changeableModList.indexOf(mod.id);
-          if (FlxG.keys.pressed.SHIFT) modIndex++;
-          else if (FlxG.keys.pressed.CONTROL) modIndex--;
-
-          var prevIndex:Int = changeableModList.indexOf(mod.id);
-          changeableModList.remove(mod.id);
-
-          if (prevIndex != modIndex)
+          if (isLoaded)
           {
-            // The priority of the mod has been changed.
-            modIndex = Std.int(flixel.math.FlxMath.bound(modIndex, 0, changeableModList.length - 1));
-            changeableModList.insert(modIndex, mod.id);
+            var modIndex:Int = changeableModList.indexOf(mod.id);
+            if (FlxG.keys.pressed.SHIFT) modIndex++;
+            else if (FlxG.keys.pressed.CONTROL) modIndex--;
+
+            var prevIndex:Int = changeableModList.indexOf(mod.id);
+            changeableModList.remove(mod.id);
+
+            if (prevIndex != modIndex)
+            {
+              // The priority of the mod has been changed.
+              modIndex = Std.int(flixel.math.FlxMath.bound(modIndex, 0, changeableModList.length - 1));
+              changeableModList.insert(modIndex, mod.id);
+            }
+            else
+            {
+              // Go through a list of all mods.
+
+              // If a mod depends on this mod to works and this mod's version satisfies the mod's version rule,
+              // remove it from the list.
+              for (childMod in allMods)
+              {
+                if (childMod.dependencies.exists(mod.id)
+                  && childMod.dependencies[mod.id].isSatisfiedBy(mod.modVersion)
+                  && changeableModList.contains(childMod.id)) changeableModList.remove(childMod.id);
+              }
+            }
           }
           else
           {
-            // Go through a list of all mods. If a mod depends on this mod to works and this mod's version satisfies the mod's version rule, remove it from the list.
+            changeableModList.push(mod.id);
+
+            // Go through a list of all mods.
+
+            // If a mod is a dependency of this mod and it's version satisfies this mod's version rule,
+            // add it to the list.
             for (childMod in allMods)
             {
-              if (childMod.dependencies.exists(mod.id)
-                && childMod.dependencies[mod.id].isSatisfiedBy(mod.modVersion)
-                && changeableModList.contains(childMod.id)) changeableModList.remove(childMod.id);
+              if (mod.dependencies.exists(childMod.id)
+                && mod.dependencies[childMod.id].isSatisfiedBy(childMod.modVersion)
+                && !changeableModList.contains(childMod.id)) changeableModList.push(childMod.id);
             }
           }
+
+          reloadModOrder();
         }
-        else
+        catch (e)
         {
-          changeableModList.push(mod.id);
-
-          // Go through a list of all mods. If a mod is a dependency of this mod and it's version satisfies this mod's version rule, add it to the list.
-          for (childMod in allMods)
-          {
-            if (mod.dependencies.exists(childMod.id)
-              && mod.dependencies[childMod.id].isSatisfiedBy(childMod.modVersion)
-              && !changeableModList.contains(childMod.id)) changeableModList.push(childMod.id);
-          }
+          trace(e);
         }
-
-        reloadModOrder();
       }
 
       if (isLoaded) modListLoadedBox.addComponent(button);
