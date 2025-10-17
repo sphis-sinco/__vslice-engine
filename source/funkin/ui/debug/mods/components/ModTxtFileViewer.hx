@@ -6,16 +6,17 @@ import haxe.ui.containers.windows.Window;
   <?xml version="1.0" encoding="utf-8"?>
   <window title="Text File" width="350" height="350">
     <scrollview width="100%" height="100%" contentWidth="100%">
-      <label id="modWindowFileLabel"/>
+      <textarea width="100%" height="100%" id="modWindowFileLabel"/>
     </scrollview>
   </window>
 ')
 class ModTxtFileViewer extends Window
 {
-  override public function new(txt:String)
+  override public function new(txt:String, ?filename:String)
   {
     super();
 
+    if (filename != null) title += ' ($filename)';
     modWindowFileLabel.text = txt;
   }
 }

@@ -199,13 +199,14 @@ class ModInfoWindow extends VBox
           switch (pathObj.ext)
           {
             default:
-              WindowManager.instance.addWindow(new ModTxtFileViewer(#if sys FileUtil.readStringFromPath(fullPath) #else 'N/A' #end));
+              WindowManager.instance.addWindow(new ModTxtFileViewer(#if sys FileUtil.readStringFromPath(fullPath) #else 'N/A' #end,
+                '${pathObj.file}.${pathObj.ext}'));
 
             case "png" | "jpg" | "jpeg":
               var bitmap = openfl.display.BitmapData.fromFile(fullPath);
               var graphic = flixel.graphics.FlxGraphic.fromBitmapData(bitmap, false, fullPath);
 
-              WindowManager.instance.addWindow(new ModImageFileViewer(graphic.imageFrame.frame));
+              WindowManager.instance.addWindow(new ModImageFileViewer(graphic.imageFrame.frame, '${pathObj.file}.${pathObj.ext}'));
           }
         }
       }

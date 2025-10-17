@@ -13,10 +13,11 @@ import haxe.ui.containers.windows.Window;
 ')
 class ModImageFileViewer extends Window
 {
-  override public function new(img:FlxFrame)
+  override public function new(img:FlxFrame, ?filename:String)
   {
     super();
 
+    if (filename != null) title += ' ($filename)';
     modWindowFileImage.resource = img;
   }
 }
