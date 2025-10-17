@@ -61,6 +61,8 @@ class ReloadAssetsDebugPlugin extends FlxBasic
   @:noCompletion
   function reload():Void
   {
+    if (FlxG.game.parent.contains(Main.debugDisplay)) Main.debugDisplay.x = 10;
+
     var state:Dynamic = FlxG.state;
     var isScripted:Bool = state is ScriptedMusicBeatState;
     if (isScripted)
