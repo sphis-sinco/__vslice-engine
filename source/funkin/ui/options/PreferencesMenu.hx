@@ -29,6 +29,16 @@ import lime.ui.WindowVSyncMode;
 
 class PreferencesMenu extends Page<OptionsState.OptionsMenuPageName>
 {
+  public static function isCurrentOptionsPage():Bool
+  {
+    if (OptionsState.instance == null) return false;
+    else
+    {
+      @:privateAccess
+      return OptionsState.instance.optionsCodex.currentName == OptionsState.OptionsMenuPageName.Preferences;
+    }
+  }
+
   var items:TextMenuList;
   var preferenceItems:FlxTypedSpriteGroup<FlxSprite>;
   var preferenceDesc:Array<String> = [];

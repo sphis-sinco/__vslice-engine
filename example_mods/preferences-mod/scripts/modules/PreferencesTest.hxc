@@ -1,5 +1,6 @@
 import funkin.modding.module.Module;
 
+import funkin.ui.options.OptionsState;
 import funkin.ui.options.PreferencesMenu;
 
 class PreferencesTest extends Module
@@ -7,17 +8,11 @@ class PreferencesTest extends Module
   override public function new()
   {
     super('preferences-test');
-      trace('Hi');
+    trace('Hi');
   }
 
-  public function onCreate(event:ScriptEvent)
+  public function onUpdate(event:UpdateScriptEvent)
   {
-    PreferencesMenu.postCreatePrefItems.add(function() {
-      trace('Adding preferences');
-      PreferencesMenu.instance.createPrefItemCheckbox('Test', 'Testing', function(value:Bool):Void {
-        trace(value);
-      },
-      null, true);
-    });
+    trace(PreferencesMenu.isCurrentOptionsPage());
   }
 }
