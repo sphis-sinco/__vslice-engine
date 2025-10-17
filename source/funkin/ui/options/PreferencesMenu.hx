@@ -1,5 +1,6 @@
 package funkin.ui.options;
 
+import flixel.util.FlxSignal;
 import flixel.FlxCamera;
 import flixel.FlxObject;
 import flixel.FlxSprite;
@@ -30,6 +31,9 @@ import lime.ui.WindowVSyncMode;
 class PreferencesMenu extends Page<OptionsState.OptionsMenuPageName>
 {
   public static var instance:PreferencesMenu = null;
+
+  public static var preCreatePrefItems:FlxSignal = new FlxSignal();
+  public static var postCreatePrefItems:FlxSignal = new FlxSignal();
 
   var items:TextMenuList;
   var preferenceItems:FlxTypedSpriteGroup<FlxSprite>;
@@ -64,8 +68,10 @@ class PreferencesMenu extends Page<OptionsState.OptionsMenuPageName>
     add(itemDesc = new FlxText(0, 0, 1180, null, 32));
     itemDesc.cameras = [hudCamera];
 
+    preCreatePrefItems.dispatch();
     createPrefItems();
     createPrefDescription();
+    postCreatePrefItems.dispatch();
 
     camFollow = new FlxObject(FlxG.width / 2, 0, 140, 70);
 

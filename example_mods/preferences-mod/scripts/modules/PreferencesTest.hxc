@@ -7,13 +7,17 @@ class PreferencesTest extends Module
   override public function new()
   {
     super('preferences-test');
+      trace('Hi');
   }
 
-  override public function onSubStateOpenEnd(event:SubStateScriptEvent)
+  public function onCreate(event:ScriptEvent)
   {
-    if (PreferencesMenu.instance != null)
-    {
-      trace('hewo');
-    }
+    PreferencesMenu.postCreatePrefItems.add(function() {
+      trace('Adding preferences');
+      PreferencesMenu.instance.createPrefItemCheckbox('Test', 'Testing', function(value:Bool):Void {
+        trace(value);
+      },
+      null, true);
+    });
   }
 }

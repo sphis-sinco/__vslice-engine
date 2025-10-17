@@ -8,8 +8,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.0] - 2025-10-16
 
-Mod API version rule has been changed to 0.0.0 or 0.1.0 to 0.2.0
-
 ### Changed
 
 - Some `FileUtil` functions are no longer Native(Sys)-only
