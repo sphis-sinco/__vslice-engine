@@ -47,7 +47,7 @@ class Constants
     #end
 
     #if FEATURE_GIT_INFO
-    returnString += '(';
+    returnString += ' (';
     returnString += GIT_BRANCH;
     returnString += ':';
     returnString += GIT_HASH;
