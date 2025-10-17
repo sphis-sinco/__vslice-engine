@@ -1,6 +1,5 @@
 package funkin.ui.options;
 
-import flixel.util.FlxSignal;
 import flixel.FlxCamera;
 import flixel.FlxObject;
 import flixel.FlxSprite;
@@ -30,11 +29,6 @@ import lime.ui.WindowVSyncMode;
 
 class PreferencesMenu extends Page<OptionsState.OptionsMenuPageName>
 {
-  public static var instance:PreferencesMenu = null;
-
-  public static var preCreatePrefItems:FlxSignal = new FlxSignal();
-  public static var postCreatePrefItems:FlxSignal = new FlxSignal();
-
   var items:TextMenuList;
   var preferenceItems:FlxTypedSpriteGroup<FlxSprite>;
   var preferenceDesc:Array<String> = [];
@@ -68,10 +62,8 @@ class PreferencesMenu extends Page<OptionsState.OptionsMenuPageName>
     add(itemDesc = new FlxText(0, 0, 1180, null, 32));
     itemDesc.cameras = [hudCamera];
 
-    preCreatePrefItems.dispatch();
     createPrefItems();
     createPrefDescription();
-    postCreatePrefItems.dispatch();
 
     camFollow = new FlxObject(FlxG.width / 2, 0, 140, 70);
 
@@ -88,9 +80,6 @@ class PreferencesMenu extends Page<OptionsState.OptionsMenuPageName>
     var backButton:FunkinBackButton = new FunkinBackButton(FlxG.width - 230, FlxG.height - 200, exit, 1.0);
     add(backButton);
     #end
-
-    if (instance != null) instance = null;
-    instance = this;
   }
 
   /**
@@ -270,7 +259,7 @@ class PreferencesMenu extends Page<OptionsState.OptionsMenuPageName>
    * @param onChange Gets called every time the player changes the value; use this to apply the value
    * @param defaultValue The value that is loaded in when the pref item is created (usually your Preferences.settingVariable)
    */
-  public function createPrefItemCheckbox(prefName:String, prefDesc:String, onChange:Bool->Void, defaultValue:Bool, available:Bool = true):Void
+  function createPrefItemCheckbox(prefName:String, prefDesc:String, onChange:Bool->Void, defaultValue:Bool, available:Bool = true):Void
   {
     var checkbox:CheckboxPreferenceItem = new CheckboxPreferenceItem(funkin.ui.FullScreenScaleMode.gameNotchSize.x, 120 * (items.length - 1 + 1),
       defaultValue, available);
@@ -295,7 +284,7 @@ class PreferencesMenu extends Page<OptionsState.OptionsMenuPageName>
    * @param step The value to increment/decrement by (default = 0.1)
    * @param precision Rounds decimals up to a `precision` amount of digits (ex: 4 -> 0.1234, 2 -> 0.12)
    */
-  public function createPrefItemNumber(prefName:String, prefDesc:String, onChange:Float->Void, ?valueFormatter:Float->String, defaultValue:Float, min:Float,
+  function createPrefItemNumber(prefName:String, prefDesc:String, onChange:Float->Void, ?valueFormatter:Float->String, defaultValue:Float, min:Float,
       max:Float, step:Float = 0.1, precision:Int):Void
   {
     var item = new NumberPreferenceItem(funkin.ui.FullScreenScaleMode.gameNotchSize.x, (120 * items.length) + 30, prefName, defaultValue, min, max, step,
@@ -312,7 +301,7 @@ class PreferencesMenu extends Page<OptionsState.OptionsMenuPageName>
    * @param min Minimum value (default = 0)
    * @param max Maximum value (default = 100)
    */
-  public function createPrefItemPercentage(prefName:String, prefDesc:String, onChange:Int->Void, defaultValue:Int, min:Int = 0, max:Int = 100):Void
+  function createPrefItemPercentage(prefName:String, prefDesc:String, onChange:Int->Void, defaultValue:Int, min:Int = 0, max:Int = 100):Void
   {
     var newCallback = function(value:Float) {
       onChange(Std.int(value));
@@ -333,7 +322,7 @@ class PreferencesMenu extends Page<OptionsState.OptionsMenuPageName>
    * @param onChange Gets called every time the player changes the value; use this to apply the value
    * @param defaultValue The value that is loaded in when the pref item is created (usually your Preferences.settingVariable)
    */
-  public function createPrefItemEnum<T>(prefName:String, prefDesc:String, values:Map<String, T>, onChange:String->T->Void, defaultKey:String):Void
+  function createPrefItemEnum<T>(prefName:String, prefDesc:String, values:Map<String, T>, onChange:String->T->Void, defaultKey:String):Void
   {
     var item = new EnumPreferenceItem<T>(funkin.ui.FullScreenScaleMode.gameNotchSize.x, (120 * items.length) + 30, prefName, values, defaultKey, onChange);
     items.addItem(prefName, item);
@@ -343,7 +332,6 @@ class PreferencesMenu extends Page<OptionsState.OptionsMenuPageName>
 
   override function exit():Void
   {
-    instance = null;
     camFollow.setPosition(640, 30);
     menuCamera.snapToTarget();
     super.exit();
