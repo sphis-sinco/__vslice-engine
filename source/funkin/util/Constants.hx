@@ -38,23 +38,25 @@ class Constants
     return '${Constants.TITLE} - ${Constants.VERSION}';
   }
 
-  /**
-   * A suffix to add to the game version.
-   * Add a suffix to prototype builds and remove it for releases.
-   */
-  public static final VERSION_SUFFIX:String = #if FEATURE_DEBUG_FUNCTIONS ' PROTOTYPE' #else '' #end;
+  static function get_VERSION():String
+  {
+    var returnString = 'v';
+    returnString += Application.current.meta.get('version');
+    #if FEATURE_DEBUG_FUNCTIONS
+    returnString += '-indev';
+    #end
 
-  #if FEATURE_DEBUG_FUNCTIONS
-  static function get_VERSION():String
-  {
-    return 'v${Application.current.meta.get('version')} (${GIT_BRANCH} : ${GIT_HASH}${GIT_HAS_LOCAL_CHANGES ? ' : MODIFIED' : ''})' + VERSION_SUFFIX;
+    #if FEATURE_GIT_INFO
+    returnString += '(';
+    returnString += GIT_BRANCH;
+    returnString += ':';
+    returnString += GIT_HASH;
+    #if FEATURE_DEBUG_FUNCTIONS if (GIT_HAS_LOCAL_CHANGES) returnString += ' : MODIFIED'; #end
+    returnString += ')';
+    #end
+
+    return returnString;
   }
-  #else
-  static function get_VERSION():String
-  {
-    return 'v${Application.current.meta.get('version')}' + VERSION_SUFFIX;
-  }
-  #end
 
   /**
    * Whether or not the game is a debug build.

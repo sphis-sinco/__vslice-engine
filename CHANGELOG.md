@@ -10,6 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Removed `Constants` `VERSION_SUFFIX` variable
+
+### Changed
+
+- Git info is included
+- `-indev` is added to the version string (pre-git info) instead of a suffix
 - It is now easier to add Preferences
 - The game data saves on exist now
 - Some `FileUtil` functions are no longer Native(Sys)-only
@@ -22,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `FEATURE_GIT_INFO` Feature Flag that controls if the `GIT_BRANCH`, `GIT_HASH` or (`FEATURE_DEBUG_FUNCTIONS` only) Git Modified / `GIT_HAS_LOCAL_CHANGES` status is included in the version
 - `PreferencesMenu` `instance` variable
 - `PreferencesMenu` `isCurrentOptionsPage` function
 - **MOD MENU** (Thanks again @KoloInDaCrib)

@@ -159,20 +159,6 @@ class Project extends HXProject
   //
 
   /**
-   * `-DFEATURE_FUNKIN_MOD`
-   * Whether to have the `funkin` mod included by default.
-   * Enabled by default on all platforms
-   */
-  static final FEATURE_FUNKIN_MOD:FeatureFlag = "FEATURE_FUNKIN_MOD";
-
-  /**
-   * `-DFEATURE_KOLO_MODMENU`
-   * Whether to have the `funkin` mod included by default.
-   * Enabled by default on all platforms
-   */
-  static final FEATURE_KOLO_MODMENU:FeatureFlag = "FEATURE_KOLO_MODMENU";
-
-  /**
    * `-DEMBED_ASSETS`
    * Whether to embed all asset libraries into the executable.
    * Enabled on web, usually disabled on desktop.
@@ -460,6 +446,28 @@ class Project extends HXProject
    * This requires the hxvlc library on desktop platforms.
    */
   static final FEATURE_VIDEO_PLAYBACK:FeatureFlag = "FEATURE_VIDEO_PLAYBACK";
+
+
+
+  /**
+   * `-DFEATURE_FUNKIN_MOD`
+   * Whether to have the `funkin` mod included in the build
+   * Enabled by default on all platforms
+   */
+  static final FEATURE_FUNKIN_MOD:FeatureFlag = "FEATURE_FUNKIN_MOD";
+
+  /**
+   * `-DFEATURE_KOLO_MODMENU`
+   * Whether to have the mod menu (created by `KoloInDaCrib`) inluded
+   * Enabled by default unless on web
+   */
+  static final FEATURE_KOLO_MODMENU:FeatureFlag = "FEATURE_KOLO_MODMENU";
+
+  /**
+   * `-DFEATURE_GIT_INFO`
+   * Whether to have the git info in the version string
+   */
+  static final FEATURE_GIT_INFO:FeatureFlag = "FEATURE_GIT_INFO";
 
   //
   // CONFIGURATION FUNCTIONS
@@ -783,6 +791,7 @@ class Project extends HXProject
     // FEATURE FLAGS
     //
 
+    FEATURE_GIT_INFO.apply(this, true);
     FEATURE_KOLO_MODMENU.apply(this, !isWeb());
     FEATURE_FUNKIN_MOD.apply(this, true);
 
