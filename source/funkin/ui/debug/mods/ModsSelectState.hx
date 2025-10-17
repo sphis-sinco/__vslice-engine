@@ -291,6 +291,7 @@ class ModsSelectState extends UISubState
     trace("Loading Mods: " + changeableModList);
 
     Save.instance.enabledModIds = changeableModList;
+    FlxG.save.data.mods.enabledMods = changeableModList;
     PolymodHandler.forceReloadAssets();
     modListApplyButton.disabled = true;
     Save.instance.flush();
