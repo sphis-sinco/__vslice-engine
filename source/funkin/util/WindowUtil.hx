@@ -112,6 +112,7 @@ class WindowUtil
 
     // onExit is called when the game window is closed.
     openfl.Lib.current.stage.application.onExit.add(function(exitCode:Int) {
+      funkin.save.Save.instance.flush();
       windowExit.dispatch(exitCode);
     });
 

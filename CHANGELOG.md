@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- The game data saves on exist now
 - Some `FileUtil` functions are no longer Native(Sys)-only
   - `pathExists`
   - `readDir`
