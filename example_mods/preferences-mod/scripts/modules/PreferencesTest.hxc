@@ -25,6 +25,11 @@ class PreferencesTest extends Module
     {
       addedNewPreferences = true;
       trace('Adding new preferences');
+
+      PreferencesMenu.instance.createPrefItemCheckbox('Test', 'Testing', function(value:Bool):Void {
+        trace(value);
+      },
+      null, true);
     }
   }
 }

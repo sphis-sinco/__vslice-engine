@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- It is now easier to add Preferences
 - The game data saves on exist now
 - Some `FileUtil` functions are no longer Native(Sys)-only
   - `pathExists`
@@ -21,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `PreferencesMenu` `instance` variable
 - `PreferencesMenu` `isCurrentOptionsPage` function
 - **MOD MENU** (Thanks again @KoloInDaCrib)
 - `FEATURE_KOLO_MODMENU` Feature Flag that adds the Mod Menu from [Kolo's Mod Menu PR](https://github.com/FunkinCrew/Funkin/pull/4223) (Thanks @KoloInDaCrib)
