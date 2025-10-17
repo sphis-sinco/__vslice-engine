@@ -6,7 +6,7 @@ import haxe.ui.containers.windows.Window;
   <?xml version="1.0" encoding="utf-8"?>
   <window title="Text File" width="350" height="350">
     <scrollview width="100%" height="100%" contentWidth="100%">
-      <textarea width="100%" height="100%" id="modWindowFileLabel"/>
+      <textarea id="modWindowFileLabel"/>
     </scrollview>
   </window>
 ')
