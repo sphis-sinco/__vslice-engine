@@ -293,6 +293,7 @@ class ModsSelectState extends UISubState
     Save.instance.enabledModIds = changeableModList;
     PolymodHandler.forceReloadAssets();
     modListApplyButton.disabled = true;
+    Save.instance.flush();
   }
 
   override public function update(elapsed:Float):Void
