@@ -1,35 +1,42 @@
-import funkin.modding.module.Module;
+import funkin.modding.module.PreferencesModule;
 
 import funkin.ui.options.OptionsState;
 import funkin.ui.options.PreferencesMenu;
 
-class PreferencesTest extends Module
+class PreferencesTest extends PreferencesModule
 {
-  public var addedNewPreferences:Bool = false;
+  public var randomValue = true;
+
+  public var addedTestPref = false;
 
   override public function new()
   {
     super('preferences-test');
-    trace('Hi');
   }
 
-  public function onUpdate(event:UpdateScriptEvent)
+
+  /**
+   * This is where the scripts should reset values that are only important with `addPreferences`
+   */
+  public function resetPreferencesValue():Void
   {
-    if (!PreferencesMenu.isCurrentOptionsPage() && addedNewPreferences)
-    {
-      addedNewPreferences = false;
-      trace('Not longer preference menu');
-    }
+    addedTestPref = addedTestPref;
+  }
 
-    if (PreferencesMenu.isCurrentOptionsPage() && !addedNewPreferences)
-    {
-      addedNewPreferences = true;
-      trace('Adding new preferences');
+  /**
+   * This is where the scripts should add their preferences
+   */
+  public function addPreferences():Void
+  {
 
-      PreferencesMenu.instance.createPrefItemCheckbox('Test', 'Testing', function(value:Bool):Void {
-        trace(value);
-      },
-      null, true);
-    }
+      if (!addedTestPref)
+      {
+        addedTestPref = true;
+        PreferencesMenu.instance.createPrefItemCheckbox('Test', 'Testing', function(value:Bool):Void {
+         trace('New random value: '+randomValue);
+         randomValue = value;
+        },
+        randomValue, true);
+      }
   }
 }
