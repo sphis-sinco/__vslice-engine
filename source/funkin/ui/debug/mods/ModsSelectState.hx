@@ -53,7 +53,7 @@ class ModsSelectState extends UISubState
     Cursor.show();
     WindowManager.instance.reset();
 
-    changeableModList = Save.instance.enabledModIds.copy();
+    changeableModList = Save.instance.enabledModIds;
     reloadModOrder();
 
     modListLoadAll.onClick = function(_) {
