@@ -22,7 +22,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `PreferencesModule` - A simple class to make the process of adding preferences easier via a class that already does the base functions
 - `PreferencesMenu` `instance` variable
 - `PreferencesMenu` `isCurrentOptionsPage` function
 - **MOD MENU** (Thanks again @KoloInDaCrib)

@@ -1,10 +1,12 @@
-import funkin.modding.module.PreferencesModule;
+import funkin.modding.module.Module;
 
 import funkin.ui.options.OptionsState;
 import funkin.ui.options.PreferencesMenu;
 
-class PreferencesTest extends PreferencesModule
+class PreferencesTest extends Module
 {
+  public var addedNewPreferences:Bool = false;
+
   public var randomValue = true;
 
   public var addedTestPref = false;
@@ -12,22 +14,23 @@ class PreferencesTest extends PreferencesModule
   override public function new()
   {
     super('preferences-test');
+    trace('Hi');
   }
 
-
-  /**
-   * This is where the scripts should reset values that are only important with `addPreferences`
-   */
-  public function resetPreferencesValue():Void
+  public function onUpdate(event:UpdateScriptEvent)
   {
-    addedTestPref = addedTestPref;
-  }
+    if (!PreferencesMenu.isCurrentOptionsPage() && addedNewPreferences)
+    {
+      addedNewPreferences = false;
+      trace('Not longer preference menu');
+    }
 
-  /**
-   * This is where the scripts should add their preferences
-   */
-  public function addPreferences():Void
-  {
+    if (PreferencesMenu.isCurrentOptionsPage() && !addedNewPreferences)
+    {
+      addedNewPreferences = true;
+      trace('Adding new preferences');
+
+      trace('Random value: '+randomValue);
 
       if (!addedTestPref)
       {
@@ -38,5 +41,6 @@ class PreferencesTest extends PreferencesModule
         },
         randomValue, true);
       }
+    }
   }
 }
