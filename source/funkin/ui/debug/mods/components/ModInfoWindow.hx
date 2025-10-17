@@ -198,7 +198,7 @@ class ModInfoWindow extends VBox
         newNode.onDblClick = function(_) {
           switch (pathObj.ext)
           {
-            case "txt" | "json" | "xml" | "hx" | "hxc" | "hscript" | "hxs":
+            default:
               WindowManager.instance.addWindow(new ModTxtFileViewer(#if sys FileUtil.readStringFromPath(fullPath) #else 'N/A' #end));
 
             case "png" | "jpg" | "jpeg":
