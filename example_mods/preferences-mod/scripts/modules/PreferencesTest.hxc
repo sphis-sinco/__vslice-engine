@@ -5,6 +5,8 @@ import funkin.ui.options.PreferencesMenu;
 
 class PreferencesTest extends Module
 {
+  public var addedNewPreferences:Bool = false;
+
   override public function new()
   {
     super('preferences-test');
@@ -13,6 +15,16 @@ class PreferencesTest extends Module
 
   public function onUpdate(event:UpdateScriptEvent)
   {
-    trace(PreferencesMenu.isCurrentOptionsPage());
+    if (!PreferencesMenu.isCurrentOptionsPage() && addedNewPreferences)
+    {
+      addedNewPreferences = false;
+      trace('Not longer preference menu');
+    }
+
+    if (PreferencesMenu.isCurrentOptionsPage() && !addedNewPreferences)
+    {
+      addedNewPreferences = true;
+      trace('Adding new preferences');
+    }
   }
 }
