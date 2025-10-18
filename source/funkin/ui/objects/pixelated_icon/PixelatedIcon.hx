@@ -1,4 +1,4 @@
-package funkin.ui;
+package funkin.ui.objects.pixelated_icon;
 
 import funkin.graphics.FlxFilteredSprite;
 

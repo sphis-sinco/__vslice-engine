@@ -24,7 +24,7 @@ import funkin.play.stage.Stage;
 import funkin.save.Save;
 import funkin.ui.freeplay.charselect.PlayableCharacter;
 import funkin.ui.freeplay.FreeplayState;
-import funkin.ui.PixelatedIcon;
+import funkin.ui.props.objects.pixelated_icon.PixelatedIcon;
 import funkin.util.MathUtil;
 import funkin.vis.dsp.SpectralAnalyzer;
 import openfl.display.BlendMode;

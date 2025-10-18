@@ -2,7 +2,8 @@
 
 ## [0.2.0] - 2025-10-17
 
-The changelog format will change after this version
+The changelog format will change after this version.
+But you can see small previews of the new format (kinda) in this changelog.
 
 ### Fixed
 
@@ -22,6 +23,8 @@ The changelog format will change after this version
 
 ### Changed
 
+- `funkin.ui.PixelatedIcon` has been moved to `funkin.ui.objects.pixelated_icon.PixelatedIcon`
+  - Backwards Compatability for this change has been added and `funkin.ui.objects.pixelated_icon.PixelatedIcon` is an import alias for `funkin.ui.PixelatedIcon`
 - `FreeplaySongData` has been split from `FreeplayState`
 - Freeplay OST Text will become blank for the random capsule
 - Freeplay OST Text will change to "UNOFFICIAL OST" for songs outside of the base game weeks
@@ -29,7 +32,7 @@ The changelog format will change after this version
 - Git info is included
 - `-indev` is added to the version string (pre-git info) instead of a suffix
 - It is now easier to add Preferences
-- The game data saves on exist now
+- The game data should save on exit now
 - Some `FileUtil` functions are no longer Native(Sys)-only
   - `pathExists`
   - `readDir`

@@ -20,7 +20,7 @@ import flixel.tweens.FlxTween;
 import flixel.addons.effects.FlxTrail;
 import funkin.play.scoring.Scoring.ScoringRank;
 import flixel.util.FlxColor;
-import funkin.ui.PixelatedIcon;
+import funkin.ui.objects.pixelated_icon.PixelatedIcon;
 import funkin.util.TouchUtil;
 import funkin.util.SwipeUtil;
 
