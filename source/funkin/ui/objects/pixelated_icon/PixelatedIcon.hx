@@ -65,24 +65,24 @@ class PixelatedIcon extends FlxFilteredSprite
 
     this.origin.x = PID?.origin[0] ?? 100;
     this.origin.y = PID?.origin[1] ?? 0;
-  }
 
-  if (isAnimated)
-  {
-    this.active = true;
-    this.animation.addByPrefix('idle', 'idle0', 10, true);
-    this.animation.addByPrefix('confirm', 'confirm0', 10, false);
-    this.animation.addByPrefix('confirm-hold', 'confirm-hold0', 10, true);
-    for (anim in PID?.additionalAnimations ?? [])
+    if (isAnimated)
     {
-      if (anim.assetPath == null) this.animation.addByPrefix(anim.name, anim.prefix, anim?.fps ?? 10, anim?.looped ?? false);
-      else
-        trace('PixelatedIcon does not support Multi-sparrow, you will have to merge animation: ${anim.name} into ${char}\'s icon')
+      this.active = true;
+      this.animation.addByPrefix('idle', 'idle0', 10, true);
+      this.animation.addByPrefix('confirm', 'confirm0', 10, false);
+      this.animation.addByPrefix('confirm-hold', 'confirm-hold0', 10, true);
+      for (anim in PID?.additionalAnimations ?? [])
+      {
+        if (anim.assetPath == null) this.animation.addByPrefix(anim.name, anim.prefix, anim?.fps ?? 10, anim?.looped ?? false);
+        else
+          trace('PixelatedIcon does not support Multi-sparrow, you will have to merge animation: ${anim.name} into ${char}\'s icon')
+      }
+      this.animation.onFinish.add(function(name:String):Void {
+        trace('Finish pixel animation: ${name}');
+        if (this.animation._animations.contains(name + '-hold')) this.animation.play(name + '-hold');
+      });
+      this.animation.play('idle');
     }
-    this.animation.onFinish.add(function(name:String):Void {
-      trace('Finish pixel animation: ${name}');
-      if (this.animation._animations.contains(name + '-hold')) this.animation.play(name + '-hold');
-    });
-    this.animation.play('idle');
   }
 }
