@@ -10,7 +10,7 @@ class CallbackEventDataGenerator
    * @param musicBeatState `funkin.ui.MusicBeatState` class
    * @return Dynamic
    */
-  public static function generateMusicbeatStateData(musicBeatState:MusicBeatState):Dynamic
+  public static function generateMusicbeatStateData(musicBeatState:funkin.ui.MusicBeatState):Dynamic
   {
     return {
       state: musicBeatState,
@@ -24,7 +24,7 @@ class CallbackEventDataGenerator
    * @param musicBeatSubState `funkin.ui.MusicBeatSubState` class
    * @return Dynamic
    */
-  public static function generateMusicbeatSubStateData(musicBeatSubState:MusicBeatSubState):Dynamic
+  public static function generateMusicbeatSubStateData(musicBeatSubState:funkin.ui.MusicBeatSubState):Dynamic
   {
     return {
       subState: musicBeatSubState,
