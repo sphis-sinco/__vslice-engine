@@ -9,16 +9,16 @@ class CallbackScriptEvent<T> extends ScriptEvent
     var type:ScriptEventType = switch (typeID)
     {
       case 1:
-        CALLBACKSCRIPTEVENT_CREATE
+        CALLBACKSCRIPTEVENT_CREATE;
 
       case 2:
-        CALLBACKSCRIPTEVENT_UPDATE
+        CALLBACKSCRIPTEVENT_UPDATE;
 
       case 3:
-        CALLBACKSCRIPTHOLDER_NEW
+        CALLBACKSCRIPTHOLDER_NEW;
 
       default:
-        CALLBACKSCRIPTEVENT_INIT
+        CALLBACKSCRIPTEVENT_INIT;
     };
 
     this.callbackEventHolder = callbackEventHolder;

@@ -37,7 +37,7 @@ import funkin.save.Save;
 import funkin.util.TouchUtil;
 import funkin.util.SwipeUtil;
 #end
-import funkin.modding.events.callback.CallbackEventHolder;
+import funkin.modding.events.callbacks.CallbackEventHolder;
 
 class TitleState extends MusicBeatState
 {
