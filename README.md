@@ -24,4 +24,4 @@ Feel free to start learning to mod the game by reading our [documentation](https
 
 # Credits and Special Thanks
 
-Full credits can be found in-game, or in the `credits.json` file which is located [here](/assets/exclude/data/credits.json) and for funkin, [here]((https://github.com/FunkinCrew/funkin.assets/blob/main/exclude/data/credits.json)).
+Full credits can be found in-game, or in the `credits.json` file which is located [here](/assets/exclude/data/credits.json) and for funkin, [here](https://github.com/FunkinCrew/funkin.assets/blob/main/exclude/data/credits.json).
