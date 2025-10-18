@@ -6,6 +6,7 @@ that will most likely change as we go.
 
 ## Freeplay
 
+- All private variables included in `funkin.modding.events.callbacks.CallbackEventDataGenerator.generateFreeplayData` are public now
 - Removed (Most likely) debug traces of `FlxG.width`, `FlxG.camera.zoom`, `FlxG.camera.initialZoom`, and `FlxCamera.defaultZoom`
 
 ## Scripts
@@ -36,6 +37,7 @@ that will most likely change as we go.
       - `backingCard`
       - `backingImage`
       - `fromResultsParams`
+      - `styleData`
 
     - `generateMusicbeatSubStateData(musicBeatSubState:MusicBeatSubState)` - Generates event data for `funkin.ui.MusicBeatSubState`
       - `subState`

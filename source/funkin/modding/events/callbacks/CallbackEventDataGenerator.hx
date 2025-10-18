@@ -36,6 +36,7 @@ class CallbackEventDataGenerator
       backingImage: freeplay.backingImage,
 
       fromResultsParams: freeplay.fromResultsParams,
+      styleData: freeplay.styleData
     }
   }
 

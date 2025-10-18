@@ -78,7 +78,7 @@ class FreeplayState extends MusicBeatSubState
    */
   final currentCharacterId:String;
 
-  final currentCharacter:PlayableCharacter;
+  public final currentCharacter:PlayableCharacter;
 
   /**
    * For the audio preview, the duration of the fade-in effect.
@@ -126,21 +126,22 @@ class FreeplayState extends MusicBeatSubState
    */
   public static final DEFAULT_DOTS_GROUP_POS:Array<Int> = [260, 170];
 
-  var songs:Array<Null<FreeplaySongData>> = [];
+  public var songs:Array<Null<FreeplaySongData>> = [];
 
-  var curSelected:Int = 0;
+  public var curSelected:Int = 0;
+
   // curSelectedFloat is used for mobile to get "inbetween" selections for swipe/scrolling/momentum stuff
   var curSelectedFloat:Float = 0;
 
   /**
    * Currently selected difficulty, in string form.
    */
-  var currentDifficulty:String = Constants.DEFAULT_DIFFICULTY;
+  public var currentDifficulty:String = Constants.DEFAULT_DIFFICULTY;
 
   /**
    *  Current variation: default, erect, pico, bf, etc.
    */
-  var currentVariation:String = Constants.DEFAULT_VARIATION;
+  public var currentVariation:String = Constants.DEFAULT_VARIATION;
 
   public var fp:FreeplayScore;
 
@@ -169,26 +170,27 @@ class FreeplayState extends MusicBeatSubState
   /**
    * Another utility var, this one gets our current selected capsule easily
    */
-  var currentCapsule(get, never):SongMenuItem;
+  public var currentCapsule(get, never):SongMenuItem;
 
   function get_currentCapsule():SongMenuItem
   {
     return grpCapsules.members[curSelected];
   }
 
-  var grpCapsules:FlxTypedGroup<SongMenuItem>;
+  public var grpCapsules:FlxTypedGroup<SongMenuItem>;
 
-  var dj:Null<FreeplayDJ> = null;
+  public var dj:Null<FreeplayDJ> = null;
+
   #if FEATURE_TOUCH_CONTROLS
   // For proper hitbox detection, flxanimate doesn't work with touch overlap!!
   var djHitbox:FlxObject = new FlxObject((CUTOUT_WIDTH * DJ_POS_MULTI), 320, 400, 400);
   var capsuleHitbox:FlxObject = new FlxObject((CUTOUT_WIDTH * SONGS_POS_MULTI) + 380, 150, CUTOUT_WIDTH + 590, 576);
   #end
 
-  var ostName:FlxText;
-  var albumRoll:AlbumRoll;
+  public var ostName:FlxText;
+  public var albumRoll:AlbumRoll;
 
-  var charSelectHint:FlxText;
+  public var charSelectHint:FlxText;
 
   var letterSort:LetterSort;
   var exitMovers:ExitMoverData = new Map();
@@ -232,7 +234,7 @@ class FreeplayState extends MusicBeatSubState
   /**
    * The card behind the DJ !
    */
-  var backingCard:BackingCard;
+  public var backingCard:BackingCard;
 
   /**
    * The backing card that has the toned dots, right now we just use that one dad graphic dave cooked up
@@ -243,9 +245,12 @@ class FreeplayState extends MusicBeatSubState
 
   var fadeShader:BlueFade = new BlueFade();
 
-  var fromResultsParams:Null<FromResultsParams> = null;
+  public var fromResultsParams:Null<FromResultsParams> = null;
+
   var prepForNewRank:Bool = false;
-  var styleData:Null<FreeplayStyle> = null;
+
+  public var styleData:Null<FreeplayStyle> = null;
+
   var fromCharSelect:Bool = false;
   var forceSkipIntro:Bool = false;
 
