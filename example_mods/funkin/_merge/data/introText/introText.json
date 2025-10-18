@@ -1,0 +1,115 @@
+[
+    {
+        "op": "add",
+        "path": "/texts/-",
+        "value": {
+            "firstText": "dope ass game",
+            "secondText": "playstation magazine",
+            "filter": "naughty"
+        }
+    },
+    {
+        "op": "add",
+        "path": "/texts/-",
+        "value": {
+            "firstText": "dope game",
+            "secondText": "playstation magazine",
+            "filter": "safe"
+        }
+    },
+
+    {
+        "op": "add",
+        "path": "/texts/-",
+        "value": {
+            "firstText": "this is a god damn prototype",
+            "secondText": "we workin on it okay",
+            "filter": "naughty"
+        }
+    },
+    {
+        "op": "add",
+        "path": "/texts/-",
+        "value": {
+            "firstText": "this is a prototype",
+            "secondText": "we workin on it okay",
+            "filter": "safe"
+        }
+    },
+
+    {
+        "op": "add",
+        "path": "/texts/-",
+        "value": {
+            "firstText": "good bye",
+            "secondText": "my penis",
+            "filter": "naughty"
+        }
+    },
+    {
+        "op": "add",
+        "path": "/texts/-",
+        "value": {
+            "firstText": "good bye",
+            "secondText": "my weewee",
+            "filter": "safe"
+        }
+    },
+
+    {
+        "op": "add",
+        "path": "/texts/-",
+        "value": {
+            "firstText": "cussing",
+            "secondText": "we have it",
+            "filter": "naughty"
+        }
+    },
+    {
+        "op": "add",
+        "path": "/texts/-",
+        "value": {
+            "firstText": "cussing",
+            "secondText": "we dont have it",
+            "filter": "safe"
+        }
+    },
+
+    {
+        "op": "add",
+        "path": "/texts/-",
+        "value": {
+            "firstText": "parental advisory",
+            "secondText": "explicit content",
+            "filter": "naughty"
+        }
+    },
+    {
+        "op": "add",
+        "path": "/texts/-",
+        "value": {
+            "firstText": "parental advisory",
+            "secondText": "entertaining content",
+            "filter": "safe"
+        }
+    },
+
+    {
+        "op": "add",
+        "path": "/texts/-",
+        "value": {
+            "firstText": "parental advisory",
+            "secondText": "explicit content",
+            "filter": "naughty"
+        }
+    },
+    {
+        "op": "add",
+        "path": "/texts/-",
+        "value": {
+            "firstText": "parental advisory",
+            "secondText": "explicit content",
+            "filter": "safe"
+        }
+    }
+]

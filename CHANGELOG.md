@@ -16,7 +16,15 @@ that will most likely change as we go.
 
 ### Intro Texts
 
+- [FUNKIN] Added censored intro texts (when naughtyness is off):
+  - `parental advisory--explicit content` -> `parental advisory--entertaining content`
+  - `cussing--we have it` -> `cussing--we dont have it`
+  - `good bye--my penis`-> `good bye--my weewee`
+  - `this is a god damn prototype--we workin on it okay` -> `this is a prototype--we workin on it okay`
+  - `dope ass game--playstation magazine` -> `dope game--playstation magazine`
+
 - Added `funkin.data.title.IntroTextDataEntry` - A typedef for json intro text entries
+  - `assets/data/introTexts/introText.json` is the only valid intro text JSON path
   - `firstText` - First entry of the intro text
   - `secondText` - Second entry of the intro text
   - `filter` - Depending on the value it controls if the entry will be included
