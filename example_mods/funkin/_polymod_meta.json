@@ -2,7 +2,7 @@
     "title": "Friday Night Funkin'",
     "description": "Friday Night Funkin'",
     "contributors": [{ "name": "The Funkin' Crew Inc." }],
-    "api_version": "0.2.0",
-    "mod_version": "0.7.6",
+    "api_version": "0.3.0",
+    "mod_version": "0.7.7",
     "license": "Apache-2.0"
 }

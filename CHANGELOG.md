@@ -1,5 +1,5 @@
-# [0.2.1] - 2025-10-18
-Mod API Version: `0.2.0`
+# [0.3.0] - 2025-10-18
+Mod API Version: `0.3.0`
 
 This version is the first showcase of the new changelog format
 that will most likely change as we go.
@@ -12,7 +12,7 @@ that will most likely change as we go.
   - Added `onCallbackEvent(event:CallbackScriptEvent)` to `funkin.modding.IScriptedClass.ICallbackEventClass`
   - `funkin.modding.module.Module` implements `ICallbackEventClass`
 
-- Added 4 new Script Event Types: `CALLBACKSCRIPTHOLDER_NEW`, `CALLBACKSCRIPTEVENT_INIT`, `CALLBACKSCRIPTEVENT_CREATE`, `CALLBACKSCRIPTEVENT_UPDATE`, `CALLBACKSCRIPTEVENT_CUSTOM`
+- Added new Script Event Types: `CALLBACKSCRIPTHOLDER_NEW`, `CALLBACKSCRIPTEVENT_INIT`, `CALLBACKSCRIPTEVENT_CREATE`, `CALLBACKSCRIPTEVENT_UPDATE`, `CALLBACKSCRIPTEVENT_CUSTOM`
 
 - Added `funkin.modding.events.callbacks.CallbackScriptEvent` - A class extending `funkin.modding.events.ScriptEvent` for Callback Event script events
   - Variables:
@@ -42,7 +42,7 @@ that will most likely change as we go.
 
 ## Playable Characters
 
-- The pause death names for Pico are "Blam" (Single) and "Blams" (Multiple) now
+- [FUNKIN] The pause death names for Pico are "Blam" (Single) and "Blams" (Multiple) now
 
 - Added new `funkin.ui.freeplay.charselect.PlayableCharacter` function
   - `getPauseDeathName` (Params: `death`, Return Type: `String`) - A simple function to return a string depending on the amount of deaths that have happened
