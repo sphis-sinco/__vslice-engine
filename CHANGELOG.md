@@ -16,6 +16,8 @@ that will most likely change as we go.
 
 ### Intro Texts
 
+- Moved `assets/data/introText.txt` to `assets/data/introText/introText.txt`
+
 - [FUNKIN] The following intro texts from base game have been brought back:
   - `The Funkin Crew Inc presents`
   - `In assosiation with Newgrounds`
