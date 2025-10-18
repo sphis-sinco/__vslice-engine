@@ -37,8 +37,11 @@ class CallbackEventHolder implements IFlxDestroyable
 
     callbackEvents.push(event);
 
-    event.onInit();
-    ModuleHandler.callEvent(new CallbackScriptEvent(0, event));
+    if (event.onInit != null)
+    {
+      event.onInit();
+      ModuleHandler.callEvent(new CallbackScriptEvent(0, event));
+    }
   }
 
   /**
@@ -49,8 +52,11 @@ class CallbackEventHolder implements IFlxDestroyable
   {
     for (event in callbackEvents)
     {
-      event.onCreate(data);
-      ModuleHandler.callEvent(new CallbackScriptEvent(1, event));
+      if (event.onCreate != null)
+      {
+        event.onCreate(data);
+        ModuleHandler.callEvent(new CallbackScriptEvent(1, event));
+      }
     }
   }
 
@@ -63,8 +69,11 @@ class CallbackEventHolder implements IFlxDestroyable
   {
     for (event in callbackEvents)
     {
-      event.onUpdate(data);
-      ModuleHandler.callEvent(new CallbackScriptEvent(2, event));
+      if (event.onUpdate != null)
+      {
+        event.onUpdate(data);
+        ModuleHandler.callEvent(new CallbackScriptEvent(2, event));
+      }
     }
   }
 
