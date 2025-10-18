@@ -20,7 +20,7 @@ class CallbackEventTest extends Module
       randomEvent.onInit = function() {
         trace('Hi');
       }
-      randomEvent.onCreate = function(state:TitleState) {
+      randomEvent.onCreate = function() {
         trace('Hi in title state');
       }
 

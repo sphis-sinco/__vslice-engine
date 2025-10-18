@@ -1,62 +1,61 @@
 package funkin.modding.events.callbacks;
 
 import funkin.modding.module.ModuleHandler;
+import flixel.FlxState;
 import flixel.util.FlxDestroyUtil.IFlxDestroyable;
 
 /**
  * A simple manager for `CallbackEvent` so each state won't require a unique one
  */
-class CallbackEventHolder<T> implements IFlxDestroyable
+class CallbackEventHolder implements IFlxDestroyable
 {
   public function new()
   {
     callbackEvents = [];
 
-    ModuleHandler.callEvent(new CallbackScriptEvent<T>(3, null));
+    ModuleHandler.callEvent(new CallbackScriptEvent(3, null));
   }
 
   /**
    * A container with all the callback events
    */
-  public var callbackEvents:Array<CallbackEvent<T>>;
+  public var callbackEvents:Array<CallbackEvent>;
 
   /**
    * Easy function to add callback events
    * without having to worry about referencing the Array
    * @param event The callback event you wanna add
    */
-  public function addCallbackEvent(event:CallbackEvent<T>):Void
+  public function addCallbackEvent(event:CallbackEvent):Void
   {
     callbackEvents.push(event);
 
     event.onInit();
-    ModuleHandler.callEvent(new CallbackScriptEvent<T>(0, event));
+    ModuleHandler.callEvent(new CallbackScriptEvent(0, event));
   }
 
   /**
    * Calls `onCreate` for all CE's
-   * @param state current state
    */
-  public function onCreate(state:T):Void
+  public function onCreate():Void
   {
     for (event in callbackEvents)
     {
-      event.onCreate(state);
-      ModuleHandler.callEvent(new CallbackScriptEvent<T>(1, event));
+      event.onCreate();
+      ModuleHandler.callEvent(new CallbackScriptEvent(1, event));
     }
   }
 
   /**
    * Calls `onUpdate` for all CE's
-   * @param state current state
    * @param elapsed elapsed cause it's the update loop
    */
-  public function onUpdate(state:T, elapsed:Float):Void
+  public function onUpdate(elapsed:Float):Void
   {
     for (event in callbackEvents)
     {
-      event.onUpdate(state, elapsed);
-      ModuleHandler.callEvent(new CallbackScriptEvent<T>(2, event));
+      event.onUpdate(elapsed);
+      ModuleHandler.callEvent(new CallbackScriptEvent(2, event));
     }
   }
 

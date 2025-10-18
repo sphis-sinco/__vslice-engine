@@ -1,9 +1,11 @@
 package funkin.modding.events.callbacks;
 
+import flixel.FlxState;
+
 /**
  * Callback event to allow scripts to do things in other states without requiring instances
  */
-class CallbackEvent<T>
+class CallbackEvent
 {
   public var id:String;
 
@@ -15,12 +17,12 @@ class CallbackEvent<T>
   /**
    * Called when `create` is done (For the state)
    */
-  public var onCreate:(state:T) -> Void;
+  public var onCreate:Void->Void;
 
   /**
    * Called when `update` is done (For the state)
    */
-  public var onUpdate:(state:T, elapsed:Float) -> Void;
+  public var onUpdate:(elapsed:Float) -> Void;
 
   public function new(id:String)
   {

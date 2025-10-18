@@ -49,7 +49,7 @@ class TitleState extends MusicBeatState
   /**
    * A holder for all the callback events
    */
-  public static var callbackEventHolder:CallbackEventHolder<TitleState>;
+  public static var callbackEventHolder:CallbackEventHolder;
 
   var blackScreen:FlxSprite;
   var credGroup:FlxGroup;
@@ -64,7 +64,7 @@ class TitleState extends MusicBeatState
   {
     super();
 
-    callbackEventHolder = new CallbackEventHolder<TitleState>();
+    callbackEventHolder = new CallbackEventHolder();
   }
 
   override public function create():Void
@@ -83,7 +83,7 @@ class TitleState extends MusicBeatState
     else
       startIntro();
 
-    callbackEventHolder.onCreate(this);
+    callbackEventHolder.onCreate();
   }
 
   var logoBl:FlxSprite;
@@ -348,7 +348,7 @@ class TitleState extends MusicBeatState
     if (!cheatActive && skippedIntro) cheatCodeShit();
     super.update(elapsed);
 
-    callbackEventHolder.onUpdate(this, elapsed);
+    callbackEventHolder.onUpdate(elapsed);
   }
 
   function moveToMainMenu():Void

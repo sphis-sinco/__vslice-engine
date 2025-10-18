@@ -6,7 +6,7 @@ that will most likely change as we go.
 
 ## Scripts
 
-- Added `callbackEventHolder:CallbackEventHolder<TitleState>` to `funkin.ui.title.TitleState`
+- Added `callbackEventHolder:CallbackEventHolder` to `funkin.ui.title.TitleState`
 - Added `onCallbackEvent(event:CallbackScriptEvent)` to `funkin.modding.module.Module`
 - Added `onCallbackEvent(event:CallbackScriptEvent)` to `funkin.modding.IScriptedClass`
 - Added 4 new Script Event Types: `CALLBACKSCRIPTHOLDER_NEW`, `CALLBACKSCRIPTEVENT_INIT`, `CALLBACKSCRIPTEVENT_CREATE`, `CALLBACKSCRIPTEVENT_UPDATE`

@@ -19,7 +19,7 @@ interface IScriptedClass
 
 interface ICallbackEventClass
 {
-  public function onCallbackEvent(event:CallbackScriptEvent<Any>):Void;
+  public function onCallbackEvent(event:CallbackScriptEvent):Void;
 }
 
 /**
