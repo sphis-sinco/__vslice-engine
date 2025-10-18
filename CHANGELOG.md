@@ -4,6 +4,25 @@ Mod API Version: `0.3.0`
 This version is the first showcase of the new changelog format
 that will most likely change as we go.
 
+## Title Screen
+
+### Intro Texts
+
+- Added 12 unique intro texts for V-Slice Engine:
+  - `jsons--we love em`
+  - `lua scripting--no`
+  - `haxe code--hell yeah`
+  - `mobile ads--ass`
+  - `vslice engine--made with the vslice engine`
+  - `alan--we are so fucked`
+  - `alan--becker`
+  - `go pico--fuck yeah`
+  - `go pico--oh`
+  - `fan--made`
+  - `sinco--you mean cinco right`
+  - `what the fuck--is a sphis`
+- [FUNKIN] Moved base game intro texts to the `funkin` mod
+
 ## Stages
 
 - [FUNKIN] Fixed incorrect image paths in the `limoRideErect` stage
