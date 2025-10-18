@@ -27,6 +27,11 @@ class CallbackEvent
    */
   public var onUpdate:(data:Dynamic) -> Void;
 
+  /**
+   * Custom callback that scripts can make
+   */
+  public var onCall:(id:String, data:Dynamic) -> Void;
+
   public function new(id:String)
   {
     this.id = id;
@@ -39,6 +44,7 @@ class CallbackEvent
     if (onInit != null) functions.push('onInit');
     if (onCreate != null) functions.push('onCreate');
     if (onUpdate != null) functions.push('onUpdate');
+    if (onCall != null) functions.push('onCall');
 
     return 'CallbackEvent(id=${this.id}, functions=${functions})';
   }

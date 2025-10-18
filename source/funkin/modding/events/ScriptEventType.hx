@@ -24,6 +24,11 @@ enum abstract ScriptEventType(String) from String to String
   var CALLBACKSCRIPTEVENT_UPDATE = 'CALLBACKSCRIPTEVENT_UPDATE';
 
   /**
+   * This is when `onCall` is called for callbackEvents.
+   */
+  var CALLBACKSCRIPTEVENT_CUSTOM = 'CALLBACKSCRIPTEVENT_CUSTOM';
+
+  /**
    * Called when the relevant object is created.
    * Keep in mind that the constructor may be called before the object is needed,
    * for the purposes of caching data or otherwise.

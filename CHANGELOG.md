@@ -12,7 +12,7 @@ that will most likely change as we go.
   - Added `onCallbackEvent(event:CallbackScriptEvent)` to `funkin.modding.IScriptedClass.ICallbackEventClass`
   - `funkin.modding.module.Module` implements `ICallbackEventClass`
 
-- Added 4 new Script Event Types: `CALLBACKSCRIPTHOLDER_NEW`, `CALLBACKSCRIPTEVENT_INIT`, `CALLBACKSCRIPTEVENT_CREATE`, `CALLBACKSCRIPTEVENT_UPDATE`
+- Added 4 new Script Event Types: `CALLBACKSCRIPTHOLDER_NEW`, `CALLBACKSCRIPTEVENT_INIT`, `CALLBACKSCRIPTEVENT_CREATE`, `CALLBACKSCRIPTEVENT_UPDATE`, `CALLBACKSCRIPTEVENT_CUSTOM`
 
 - Added `funkin.modding.events.callbacks.CallbackScriptEvent` - A class extending `funkin.modding.events.ScriptEvent` for Callback Event script events
   - Variables:
@@ -28,6 +28,7 @@ that will most likely change as we go.
     - `addCallbackEvent` - Easy function to add callback events without having to worry about referencing the Array and also prevents dupe events
     - `onCreate` - Calls `onCreate` for all CE's
     - `onUpdate` - Calls `onUpdate` for all CE's
+    - `onCall` - Calls `onCall` for all CE's
 
 - Added `funkin.modding.events.callbacks.CallbackEvent` - Callback event to allow scripts to do things in other states without requiring instances
   - Variables:
@@ -35,6 +36,7 @@ that will most likely change as we go.
     - `onInit:Void -> Void` - Called when added to a `CallbackEventHolder`
     - `onCreate:(data:Dynamic) -> Void` - Called when `create` is done (For the state)
     - `onUpdate:(data:Dynamic) -> Void` - Called when `update` is done (For the state)
+    - `onCall:(id:String, data:Dynamic) -> Void` - Custom callback that scripts can make
   - Functions:
     - `new(id:String)` - This will set the callback event identifier
 

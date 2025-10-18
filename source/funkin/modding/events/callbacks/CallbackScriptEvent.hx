@@ -23,6 +23,9 @@ class CallbackScriptEvent extends ScriptEvent
       case 3:
         CALLBACKSCRIPTHOLDER_NEW;
 
+      case 4:
+        CALLBACKSCRIPTHOLDER_CUSTOM;
+
       default:
         CALLBACKSCRIPTEVENT_INIT;
     };

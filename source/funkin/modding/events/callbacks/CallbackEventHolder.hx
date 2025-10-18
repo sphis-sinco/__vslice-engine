@@ -78,6 +78,23 @@ class CallbackEventHolder implements IFlxDestroyable
   }
 
   /**
+   * Calls `onCall` for all CE's
+   * @param id custom callback id
+   * @param data custom data for onCall
+   */
+  public function onCall(id:String, data:Dynamic):Void
+  {
+    for (event in callbackEvents)
+    {
+      if (event.onCall != null)
+      {
+        event.onCall(id, data);
+        ModuleHandler.callEvent(new CallbackScriptEvent(4, event));
+      }
+    }
+  }
+
+  /**
    *  Kill it.
    */
   public function destroy():Void
