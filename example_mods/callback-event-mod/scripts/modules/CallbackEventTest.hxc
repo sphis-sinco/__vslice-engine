@@ -1,3 +1,5 @@
+import flixel.FlxG;
+
 import funkin.modding.module.Module;
 
 import funkin.modding.events.callbacks.CallbackEvent;
@@ -35,12 +37,21 @@ class CallbackEventTest extends Module
     }
     anotherRandomTestingEvent.onCreate = function(eventdata:CallbackEventData) {
         trace('Hi in '+eventdata.id);
+
+        if (eventdata.id == 'mainmenustate')
+          eventdata.data.leftWatermarkText.text = 'Monkey';
     }
 
     freeplayTestingEvent.onUpdate = function(eventdata:CallbackEventData) {
       if (eventdata.id == "freeplaystate")
       {
-        eventdata.data.ostName.text = FlxG.random.int();
+        /*
+        if (eventdata.data.ostName != null)
+        {
+          FreeplayState.ostName.text = FlxG.random.int();
+          trace(FreeplayState.ostName.text);
+        }
+          */
       }
     }
   }

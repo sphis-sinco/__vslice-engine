@@ -2167,6 +2167,7 @@ class FreeplayState extends MusicBeatSubState
       _parentState.persistentDraw = true;
     }
 
+    callbackEventHolder.destroy();
     new FlxTimer().start(longestTimer, (_) -> {
       FlxTransitionableState.skipNextTransIn = true;
       FlxTransitionableState.skipNextTransOut = true;

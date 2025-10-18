@@ -12,32 +12,30 @@ class CallbackEventDataGenerator
    */
   public static function generateFreeplayData(freeplay:funkin.ui.freeplay.FreeplayState):Dynamic
   {
-    @:privateAccess {
-      return {
-        subState: freeplay,
+    return {
+      subState: freeplay,
 
-        songs: freeplay.songs,
+      songs: freeplay.songs,
 
-        curSelected: freeplay.curSelected,
-        currentDifficulty: freeplay.currentDifficulty,
-        currentVariation: freeplay.currentVariation,
-        currentCapsule: freeplay.currentCapsule,
+      curSelected: freeplay.curSelected,
+      currentDifficulty: freeplay.currentDifficulty,
+      currentVariation: freeplay.currentVariation,
+      currentCapsule: freeplay.currentCapsule,
 
-        grpCapsules: freeplay.grpCapsules,
+      grpCapsules: freeplay.grpCapsules,
 
-        dj: freeplay.dj,
+      dj: freeplay.dj,
 
-        ostName: freeplay.ostName,
-        albumRoll: freeplay.albumRoll,
-        charSelectHint: freeplay.charSelectHint,
+      ostName: freeplay.ostName,
+      albumRoll: freeplay.albumRoll,
+      charSelectHint: freeplay.charSelectHint,
 
-        currentCharacter: freeplay.currentCharacter,
+      currentCharacter: freeplay.currentCharacter,
 
-        backingCard: freeplay.backingCard,
-        backingImage: freeplay.backingImage,
+      backingCard: freeplay.backingCard,
+      backingImage: freeplay.backingImage,
 
-        fromResultsParams: freeplay.fromResultsParams,
-      }
+      fromResultsParams: freeplay.fromResultsParams,
     }
   }
 
