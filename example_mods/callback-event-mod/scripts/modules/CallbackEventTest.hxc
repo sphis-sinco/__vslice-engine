@@ -45,13 +45,38 @@ class CallbackEventTest extends Module
     freeplayTestingEvent.onUpdate = function(eventdata:CallbackEventData) {
       if (eventdata.id == "freeplaystate")
       {
-        /*
-        if (eventdata.data.ostName != null)
-        {
-          FreeplayState.ostName.text = FlxG.random.int();
-          trace(FreeplayState.ostName.text);
-        }
-          */
+          trace(eventdata.data.subState);
+
+          trace(eventdata.data.songs[0]);
+
+          trace(eventdata.data.curSelected);
+          trace(eventdata.data.currentDifficulty);
+          trace(eventdata.data.currentVariation);
+
+          if (eventdata.data.currentCapsule.freeplayData != null)
+            trace(eventdata.data.currentCapsule.freeplayData.fullSongName);
+
+          for (cap in eventdata.data.grpCapsules.members)
+          {
+            cap.songText.text = 'Gay';
+            trace(cap.songText.text);
+          }
+
+          trace(eventdata.data.dj.characterId);
+
+          eventdata.data.ostName.text = 'GAY OST';
+          trace(eventdata.data.ostName.text);
+
+          trace(eventdata.data.albumRoll.albumId);
+
+          eventdata.data.charSelectHint.text = 'You\'re gay';
+          trace(eventdata.data.charSelectHint.text);
+
+          trace(eventdata.data.currentCharacter.getPauseDeathName(eventdata.data.curSelected));
+          trace(eventdata.data.backingImage.graphic.key);
+          trace(eventdata.data.backingCard);
+          trace(eventdata.data.fromResultsParams);
+          trace(eventdata.data.styleData.getBgAssetKey());
       }
     }
   }
