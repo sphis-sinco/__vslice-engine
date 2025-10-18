@@ -239,6 +239,8 @@ class StoryMenuState extends MusicBeatState
     #if FEATURE_TOUCH_CONTROLS
     FlxG.touches.swipeThreshold.y = 100;
     #end
+
+    callbackEventHolder.onCreate(new CallbackEventData('storymenustate', CallbackEventDataGenerator.generateMusicbeatStateData(this)));
   }
 
   function rememberSelection():Void
@@ -344,6 +346,10 @@ class StoryMenuState extends MusicBeatState
     }
 
     super.update(elapsed);
+
+    var updateData = CallbackEventDataGenerator.generateMusicbeatStateData(this);
+    updateData.elapsed = elapsed;
+    callbackEventHolder.onUpdate(new CallbackEventData('storymenustate', updateData));
   }
 
   function handleKeyPresses():Void
@@ -630,6 +636,7 @@ class StoryMenuState extends MusicBeatState
       var targetVariation:String = targetSong.getFirstValidVariation(PlayStatePlaylist.campaignDifficulty);
 
       FlxG.camera.fade(FlxColor.BLACK, 0.2, false, function() {
+        callbackEventHolder.destroy();
         LoadingState.loadPlayState(
           {
             targetSong: targetSong,
@@ -735,6 +742,7 @@ class StoryMenuState extends MusicBeatState
 
     exitingMenu = true;
     FlxG.keys.enabled = false;
+    callbackEventHolder.destroy();
     FlxG.switchState(() -> new MainMenuState());
     FunkinSound.playOnce(Paths.sound('cancelMenu'));
   }

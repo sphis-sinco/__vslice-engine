@@ -12,8 +12,10 @@ that will most likely change as we go.
 
 ### Callbacks
 
-- Added `callbackEventHolder` to `funkin.ui.mainmenu.MainMenuState`
-- Added `callbackEventHolder` to `funkin.ui.title.TitleState`
+- Added `callbackEventHolder` to the following states:
+  - `funkin.ui.story.StoryMenuState`
+  - `funkin.ui.mainmenu.MainMenuState`
+  - `funkin.ui.title.TitleState`
 
 - Added `funkin.modding.events.callbacks.CallbackEventDataGenerator` - `CallbackEventData` data generator for different classes
   - Functions:
