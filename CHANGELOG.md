@@ -16,6 +16,17 @@ that will most likely change as we go.
 
 ### Intro Texts
 
+- Added `funkin.data.title.IntroTextDataEntry` - A typedef for json intro text entries
+  - `firstText` - First entry of the intro text
+  - `secondText` - Second entry of the intro text
+  - `filter` - Depending on the value it controls if the entry will be included
+    - Valid values:
+      - `both` - Always included
+      - `safe` - Included when naughtyness is off
+      - `naughty` - Included when naughtyness is on
+
+- Added `funkin.data.title.IntroTextData` - A container for json intro texts
+
 - Moved `assets/data/introText.txt` to `assets/data/introText/introText.txt`
 
 - [FUNKIN] The following intro texts from base game have been brought back:
