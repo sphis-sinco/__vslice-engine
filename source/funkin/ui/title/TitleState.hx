@@ -76,7 +76,7 @@ class TitleState extends MusicBeatState
     else
       startIntro();
 
-    callbackEventHolder.onCreate();
+    callbackEventHolder.onCreate(this);
   }
 
   var logoBl:FlxSprite;
@@ -340,7 +340,7 @@ class TitleState extends MusicBeatState
     if (!cheatActive && skippedIntro) cheatCodeShit();
     super.update(elapsed);
 
-    callbackEventHolder.onUpdate(elapsed);
+    callbackEventHolder.onUpdate(this, elapsed);
   }
 
   function moveToMainMenu():Void
