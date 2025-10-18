@@ -1,5 +1,8 @@
 package funkin.modding.events.callbacks;
 
+/**
+ * A class extending `funkin.modding.events.ScriptEvent` for Callback Event script events
+ */
 class CallbackScriptEvent extends ScriptEvent
 {
   /**
@@ -28,4 +31,7 @@ class CallbackScriptEvent extends ScriptEvent
 
     super(type, false);
   }
+
+  override public function toString():String
+    return 'CallbackScriptEvent(type=${this.type}, cancelable=${this.cancelable}, event=${this.event})';
 }

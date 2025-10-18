@@ -31,4 +31,15 @@ class CallbackEvent
   {
     this.id = id;
   }
+
+  public function toString():String
+  {
+    var functions = [];
+
+    if (onInit != null) functions.push('onInit');
+    if (onCreate != null) functions.push('onCreate');
+    if (onUpdate != null) functions.push('onUpdate');
+
+    return 'CallbackEvent(id=${this.id}, functions=${functions})';
+  }
 }
