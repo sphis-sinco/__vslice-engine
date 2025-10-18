@@ -6,6 +6,14 @@ that will most likely change as we go.
 
 ## Scripts
 
+### Callbacks
+- Added `funkin.modding.events.callbacks.CallbackEventData` - A holder of data for `CallbackEvent` functions
+  - Variables:
+    - `id` - A unique id to difference Callback Event Data Classes
+    - `data` - A container of custom data depending on the event
+  - Functions:
+    - `new(id:String, data:Dynamic)` - Initalizes the data
+
 - Added `callbackEventHolder:CallbackEventHolder` to `funkin.ui.title.TitleState`
 
 - Added `ICallbackEventClass` to `funkin.modding.IScriptedClass`
@@ -34,18 +42,22 @@ that will most likely change as we go.
   - Variables:
     - `id:String` - Unique ID for this Callback Event that also will be used in `CallbackEventHolder` to prevent dupe events
     - `onInit:Void -> Void` - Called when added to a `CallbackEventHolder`
-    - `onCreate:(data:Dynamic) -> Void` - Called when `create` is done (For the state)
-    - `onUpdate:(data:Dynamic) -> Void` - Called when `update` is done (For the state)
-    - `onCall:(id:String, data:Dynamic) -> Void` - Custom callback that scripts can make
+    - `onCreate:(eventdata:CallbackEventData) -> Void` - Called when `create` is done (For the state)
+    - `onUpdate:(eventdata:CallbackEventData) -> Void` - Called when `update` is done (For the state)
+    - `onCall:(id:String, eventdata:CallbackEventData) -> Void` - Custom callback that scripts can make
   - Functions:
     - `new(id:String)` - This will set the callback event identifier
 
 ## Playable Characters
 
+### Data
+
 - [FUNKIN] The pause death names for Pico are "Blam" (Single) and "Blams" (Multiple) now
 
 - Added new `funkin.ui.freeplay.charselect.PlayableCharacter` function
   - `getPauseDeathName` (Params: `death`, Return Type: `String`) - A simple function to return a string depending on the amount of deaths that have happened
+
+### Pause Screen
 
 - Added 2 new `funkin.data.freeplay.player.PlayerData` variables
   - `pauseDeathNameSingle` (Optional, Default: `Blue Ball`) - Text displayed in the PauseSubState for deaths when there is only 1 death

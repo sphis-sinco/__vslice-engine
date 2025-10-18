@@ -1,5 +1,6 @@
 import funkin.modding.module.Module;
 import funkin.modding.events.callbacks.CallbackEvent;
+import funkin.modding.events.callbacks.CallbackEventData;
 import funkin.modding.events.callbacks.CallbackEventHolder;
 import funkin.modding.events.callbacks.CallbackScriptEvent;
 import funkin.ui.title.TitleState;
@@ -16,8 +17,9 @@ class CallbackEventTest extends Module
     randomTestingEvent.onInit = function() {
       trace('Hi');
     }
-    randomTestingEvent.onCreate = function(data:Dynamic) {
-      trace('Hi in title state createa with data: '+data);
+    randomTestingEvent.onCreate = function(eventdata:CallbackEventData) {
+      if (eventdata.id == 'titlestate')
+        trace('Hi in title state createa with data: '+eventdata.data);
     }
   }
 

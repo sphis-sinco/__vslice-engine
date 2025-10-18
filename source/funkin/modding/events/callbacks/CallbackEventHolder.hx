@@ -47,15 +47,15 @@ class CallbackEventHolder implements IFlxDestroyable
 
   /**
    * Calls `onCreate` for all CE's
-   * @param data custom data for onCreate
+   * @param eventdata custom data for onCreate
    */
-  public function onCreate(data:Dynamic):Void
+  public function onCreate(eventdata:CallbackEventData):Void
   {
     for (event in callbackEvents)
     {
       if (event.onCreate != null)
       {
-        event.onCreate(data);
+        event.onCreate(eventdata);
         ModuleHandler.callEvent(new CallbackScriptEvent(1, event));
       }
     }
@@ -63,15 +63,15 @@ class CallbackEventHolder implements IFlxDestroyable
 
   /**
    * Calls `onUpdate` for all CE's
-   * @param data custom data for onUpdate
+   * @param eventdata custom data for onUpdate
    */
-  public function onUpdate(data:Dynamic):Void
+  public function onUpdate(eventdata:CallbackEventData):Void
   {
     for (event in callbackEvents)
     {
       if (event.onUpdate != null)
       {
-        event.onUpdate(data);
+        event.onUpdate(eventdata);
         ModuleHandler.callEvent(new CallbackScriptEvent(2, event));
       }
     }
@@ -80,15 +80,15 @@ class CallbackEventHolder implements IFlxDestroyable
   /**
    * Calls `onCall` for all CE's
    * @param id custom callback id
-   * @param data custom data for onCall
+   * @param eventdata custom data for onCall
    */
-  public function onCall(id:String, data:Dynamic):Void
+  public function onCall(id:String, eventdata:CallbackEventData):Void
   {
     for (event in callbackEvents)
     {
       if (event.onCall != null)
       {
-        event.onCall(id, data);
+        event.onCall(id, eventdata);
         ModuleHandler.callEvent(new CallbackScriptEvent(4, event));
       }
     }

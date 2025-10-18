@@ -38,6 +38,7 @@ import funkin.util.TouchUtil;
 import funkin.util.SwipeUtil;
 #end
 import funkin.modding.events.callbacks.CallbackEventHolder;
+import funkin.modding.events.callbacks.CallbackEventData;
 
 class TitleState extends MusicBeatState
 {
@@ -202,7 +203,7 @@ class TitleState extends MusicBeatState
     attractTimer = new FlxTimer().start(Constants.TITLE_ATTRACT_DELAY, (_:FlxTimer) -> moveToAttract());
     #end
 
-    callbackEventHolder.onCreate({});
+    callbackEventHolder.onCreate(new CallbackEventData('titlestate', {}));
   }
 
   /**
@@ -349,7 +350,7 @@ class TitleState extends MusicBeatState
     if (!cheatActive && skippedIntro) cheatCodeShit();
     super.update(elapsed);
 
-    callbackEventHolder.onUpdate({elapsed: elapsed});
+    callbackEventHolder.onUpdate(new CallbackEventData('titlestate', {elapsed: elapsed}));
   }
 
   function moveToMainMenu():Void

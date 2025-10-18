@@ -20,17 +20,17 @@ class CallbackEvent
   /**
    * Called when `create` is done (For the state)
    */
-  public var onCreate:(data:Dynamic) -> Void;
+  public var onCreate:(eventdata:CallbackEventData) -> Void;
 
   /**
    * Called when `update` is done (For the state)
    */
-  public var onUpdate:(data:Dynamic) -> Void;
+  public var onUpdate:(eventdata:CallbackEventData) -> Void;
 
   /**
    * Custom callback that scripts can make
    */
-  public var onCall:(id:String, data:Dynamic) -> Void;
+  public var onCall:(id:String, eventdata:CallbackEventData) -> Void;
 
   public function new(id:String)
   {
