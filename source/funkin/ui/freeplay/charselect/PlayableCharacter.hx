@@ -27,6 +27,20 @@ class PlayableCharacter implements IRegistryEntry<PlayerData>
   }
 
   /**
+   * A simple function to return a string depending
+   * on the amount of deaths that have happened
+   *
+   * @param deaths Amounts of deaths currently
+   * @return The desired death name
+   */
+  public function getPauseDeathName(deaths:Int = 0):String
+  {
+    if (deaths == 1) return _data?.pauseDeathNameSingle ?? "Blue Ball";
+    else
+      return _data?.pauseDeathNameMultiple ?? "Blue Balls";
+  }
+
+  /**
    * Retrieve the readable name of the playable character.
    */
   public function getName():String
