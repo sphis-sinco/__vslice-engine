@@ -58,8 +58,12 @@ class CallbackEventTest extends Module
 
           for (cap in eventdata.data.grpCapsules.members)
           {
-            cap.songText.text = 'Gay';
-            trace(cap.songText.text);
+            if (cap.songText.text != 'Gay')
+            {
+              trace(cap.songText.text);
+              cap.songText.text = 'Gay';
+              trace(cap.songText.text);
+            }
           }
 
           trace(eventdata.data.dj.characterId);
