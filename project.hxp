@@ -204,12 +204,6 @@ class Project extends HXProject
   static final REDIRECT_ASSETS_FOLDER:FeatureFlag = "REDIRECT_ASSETS_FOLDER";
 
   /**
-   * `-DTESTING_ADS`
-   * If this flag is enabled, mobile advertisements will use testing mode.
-   */
-  static final TESTING_ADS:FeatureFlag = "TESTING_ADS";
-
-  /**
    * `-DUNLOCK_EVERYTHING`
    * If this flag is enabled, the game will assume all songs have been beaten and all content is available.
    */
@@ -313,25 +307,6 @@ class Project extends HXProject
    */
   static final FEATURE_FILE_LOGGING:FeatureFlag = "FEATURE_FILE_LOGGING";
 
-  /**
-   * `-DFEATURE_MOBILE_ADVERTISEMENTS`
-   * If this flag is enabled, Google AdMob will be enabled.
-   * Banner and interstitial ads will sometimes appear.
-   */
-  static final FEATURE_MOBILE_ADVERTISEMENTS:FeatureFlag = "FEATURE_MOBILE_ADVERTISEMENTS";
-
-  /**
-   * `-DFEATURE_MOBILE_IAP`
-   * If this flag is enabled, in-app purchases will be enabled.
-   * This includes the in-app purchase to disable mobile advertisements.
-   */
-  static final FEATURE_MOBILE_IAP:FeatureFlag = "FEATURE_MOBILE_IAP";
-
-  /**
-   * `-DFEATURE_MOBILE_IAR`
-   * If this feature flag is enabled, the user may sometimes be prompted to review the app on their respective store.
-   */
-  static final FEATURE_MOBILE_IAR:FeatureFlag = "FEATURE_MOBILE_IAR";
 
   /**
    * `-DFEATURE_NAUGHTYNESS`
@@ -498,11 +473,6 @@ class Project extends HXProject
     if (!isLinux())
     {
       configureIcons();
-    }
-
-    if (FEATURE_MOBILE_ADVERTISEMENTS.isEnabled(this))
-    {
-      configureAdMobKeys();
     }
 
     if (isAndroid())
@@ -784,9 +754,6 @@ class Project extends HXProject
     // Should default to true on workspace builds and false on release builds.
     REDIRECT_ASSETS_FOLDER.apply(this, isDebug() && isDesktop());
 
-    // Should be true only on debug mobile builds.
-    TESTING_ADS.apply(this, isDebug() && FEATURE_MOBILE_ADVERTISEMENTS.isEnabled(this));
-
     //
     // FEATURE FLAGS
     //
@@ -846,11 +813,6 @@ class Project extends HXProject
     // Should be true only on mobile builds.
     FEATURE_HAPTICS.apply(this, isMobile());
     FEATURE_TOUCH_CONTROLS.apply(this, isMobile());
-
-    // Should be true only on mobile release builds. Remember you can add the flag manually for testing.
-    FEATURE_MOBILE_ADVERTISEMENTS.apply(this, (isMobile() && isRelease() && envConfig != null));
-    FEATURE_MOBILE_IAP.apply(this, (isMobile() && isRelease() && envConfig != null));
-    FEATURE_MOBILE_IAR.apply(this, (isMobile() && isRelease()));
 
     // The coveted ghost tapping feature.
     // Essential on mobile but delayed on desktop.
@@ -1202,24 +1164,9 @@ class Project extends HXProject
       addHaxelib('FlxPartialSound'); // Partial sound
     }
 
-    if (FEATURE_MOBILE_ADVERTISEMENTS.isEnabled(this))
-    {
-      addHaxelib('extension-admob'); // Ads Extension
-    }
-
     if (FEATURE_HAPTICS.isEnabled(this))
     {
       addHaxelib('extension-haptics'); // Haptic feedback
-    }
-
-    if (FEATURE_MOBILE_IAP.isEnabled(this))
-    {
-      addHaxelib('extension-iapcore'); // In-app purchases Extension
-    }
-
-    if (FEATURE_MOBILE_IAR.isEnabled(this))
-    {
-      addHaxelib('extension-iarcore'); // In-app reviews Extension
     }
   }
 
@@ -1343,16 +1290,6 @@ class Project extends HXProject
         runASTCCompressor();
       }
     }
-  }
-
-  /**
-   * Configure the platforms' Ad Mob application keys.
-   */
-  function configureAdMobKeys()
-  {
-    if (envConfig == null) return;
-
-    setenv("ADMOB_APPID", Std.string(envConfig.get('ADMOB_APP_ID')));
   }
 
   //

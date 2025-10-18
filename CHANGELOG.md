@@ -8,8 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.0] - 2025-10-17
 
-### Changed
+### Removed
 
+- Merch Mainmenu Button
+- [MOBILE] Upgrade Mainmenu Button
+- [MOBILE] Ads
+- [MOBILE] In-App Purcheses
 - Removed `Constants` `VERSION_SUFFIX` variable
 
 ### Changed

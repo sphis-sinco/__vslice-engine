@@ -26,9 +26,6 @@ import funkin.mobile.ui.FunkinBackButton;
 import funkin.mobile.input.ControlsHandler;
 import funkin.mobile.ui.options.ControlsSchemeMenu;
 #end
-#if FEATURE_MOBILE_IAP
-import funkin.mobile.util.InAppPurchasesUtil;
-#end
 import flixel.util.FlxColor;
 
 /**
@@ -190,11 +187,6 @@ class OptionsMenu extends Page<OptionsMenuPageName>
       });
 
       codex.switchPage(Offsets);
-    });
-    #end
-    #if FEATURE_MOBILE_IAP
-    createItem("RESTORE PURCHASES", function() {
-      InAppPurchasesUtil.restorePurchases();
     });
     #end
     #if android

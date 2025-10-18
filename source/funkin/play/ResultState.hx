@@ -42,12 +42,6 @@ import funkin.api.newgrounds.Medals;
 #end
 #if mobile
 import funkin.util.TouchUtil;
-#if FEATURE_MOBILE_ADVERTISEMENTS
-import funkin.mobile.util.AdMobUtil;
-#end
-#if FEATURE_MOBILE_IAR
-import funkin.mobile.util.InAppReviewUtil;
-#end
 #end
 import funkin.util.DeviceUtil;
 
@@ -915,28 +909,7 @@ class ResultState extends MusicBeatSubState
             });
         }
       }
-
-      #if FEATURE_MOBILE_ADVERTISEMENTS
-      // Shows a interstital ad on mobile devices each week victory.
-      if (PlayStatePlaylist.isStoryMode || (AdMobUtil.PLAYING_COUNTER >= AdMobUtil.MAX_BEFORE_AD))
-      {
-        busy = true;
-
-        AdMobUtil.loadInterstitial(function():Void {
-          AdMobUtil.PLAYING_COUNTER = 0;
-
-          busy = false;
-
-          transitionToState(targetState, targetStateFactory, shouldTween, shouldUseSubstate);
-        });
-      }
-      else
-      {
-        transitionToState(targetState, targetStateFactory, shouldTween, shouldUseSubstate);
-      }
-      #else
       transitionToState(targetState, targetStateFactory, shouldTween, shouldUseSubstate);
-      #end
     }
 
     super.update(elapsed);
@@ -950,8 +923,6 @@ class ResultState extends MusicBeatSubState
         {
           ease: FlxEase.expoOut,
           onComplete: function(_) {
-            requestReview();
-
             if (targetStateFactory != null)
             {
               targetState = targetStateFactory();
@@ -980,8 +951,6 @@ class ResultState extends MusicBeatSubState
     }
     else
     {
-      requestReview();
-
       if (targetStateFactory != null)
       {
         targetState = targetStateFactory();
@@ -1006,18 +975,6 @@ class ResultState extends MusicBeatSubState
         FlxG.switchState(() -> targetState);
       }
     }
-  }
-
-  function requestReview():Void
-  {
-    #if FEATURE_MOBILE_IAR
-    if (FlxG.random.bool(InAppReviewUtil.ODDS))
-    {
-      trace('Attempting to display in-app review!');
-
-      InAppReviewUtil.requestReview();
-    }
-    #end
   }
 }
 

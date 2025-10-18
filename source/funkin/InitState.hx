@@ -138,21 +138,6 @@ class InitState extends FlxState
       extension.haptics.Haptic.initialize();
       #end
 
-      #if FEATURE_MOBILE_ADVERTISEMENTS
-      // Setup Admob
-      funkin.mobile.util.AdMobUtil.init();
-      #end
-
-      #if FEATURE_MOBILE_IAP
-      // Setup In-App purchases
-      funkin.mobile.util.InAppPurchasesUtil.init();
-      #end
-
-      #if FEATURE_MOBILE_IAR
-      // Setup In-App reviews
-      funkin.mobile.util.InAppReviewUtil.init();
-      #end
-
       #if android
       // Setup Callback util.
       funkin.external.android.CallbackUtil.init();

@@ -24,9 +24,6 @@ import funkin.ui.FullScreenScaleMode;
 import funkin.ui.transition.stickers.StickerSubState;
 import funkin.util.SwipeUtil;
 import funkin.util.TouchUtil;
-#if FEATURE_MOBILE_ADVERTISEMENTS
-import funkin.mobile.util.AdMobUtil;
-#end
 
 /**
  * Parameters for initializing the PauseSubState.
@@ -243,13 +240,6 @@ class PauseSubState extends MusicBeatSubState
    */
   public override function create():Void
   {
-    // Add banner ad when game is state is first loaded.
-    #if FEATURE_MOBILE_ADVERTISEMENTS
-    // extension.admob.Admob.onEvent.add(onBannerEvent);
-
-    AdMobUtil.addBanner(extension.admob.AdmobBannerSize.BANNER, extension.admob.AdmobBannerAlign.TOP_LEFT);
-    #end
-
     if (onPause != null) onPause();
 
     super.create();
@@ -283,9 +273,6 @@ class PauseSubState extends MusicBeatSubState
    */
   public override function destroy():Void
   {
-    // #if FEATURE_MOBILE_ADVERTISEMENTS
-    // extension.admob.Admob.onEvent.remove(onBannerEvent);
-    // #end
     super.destroy();
     charterFadeTween.cancel();
     charterFadeTween = null;
@@ -301,37 +288,6 @@ class PauseSubState extends MusicBeatSubState
   // Initialization Functions
   // ===============
 
-  /*#if FEATURE_MOBILE_ADVERTISEMENTS
-    function onBannerEvent(event:extension.admob.AdmobEvent):Void
-    {
-      if (event.name.indexOf('BANNER') == -1) return;
-
-      if (event.errorCode != null && event.errorDescription != null)
-      {
-        if (failedAdPlaceHolder == null || members.indexOf(failedAdPlaceHolder) == -1)
-        {
-          var scale:Float = Math.min(FlxG.stage.stageWidth / FlxG.width, FlxG.stage.stageHeight / FlxG.height);
-
-          #if android
-          scale = Math.max(scale, 1);
-          #else
-          scale = Math.min(scale, 1);
-          #end
-
-          failedAdPlaceHolder = new FunkinSprite(0, 0);
-          failedAdPlaceHolder.makeSolidColor(Math.floor(320 * scale), Math.floor(50 * scale), FlxColor.RED);
-          failedAdPlaceHolder.updateHitbox();
-          failedAdPlaceHolder.screenCenter(X);
-          failedAdPlaceHolder.scrollFactor.set(0, 0);
-          add(failedAdPlaceHolder);
-        }
-      }
-      else if (failedAdPlaceHolder != null && members.indexOf(failedAdPlaceHolder) != -1)
-      {
-        remove(failedAdPlaceHolder);
-      }
-    }
-    #end */
   /**
    * Play the pause music.
    */
@@ -396,9 +352,7 @@ class PauseSubState extends MusicBeatSubState
     metadata.scrollFactor.set(0, 0);
     add(metadata);
 
-    var metadataSong:FlxText = new FlxText(20,
-      #if mobile (PlayState.instance?.isPracticeMode ?? false) ? camera.height - 185 : camera.height - 155 #else 15 #end,
-      camera.width - Math.max(40, funkin.ui.FullScreenScaleMode.gameNotchSize.x), 'Song Name');
+    var metadataSong:FlxText = new FlxText(20, 15, camera.width - Math.max(40, funkin.ui.FullScreenScaleMode.gameNotchSize.x), 'Song Name');
     metadataSong.setFormat(Paths.font('vcr.ttf'), 32, FlxColor.WHITE, FlxTextAlign.RIGHT);
     if (PlayState.instance?.currentChart != null)
     {
@@ -563,7 +517,7 @@ class PauseSubState extends MusicBeatSubState
     var delay:Float = 0.1;
     for (child in metadata.members)
     {
-      FlxTween.tween(child, {alpha: 1, y: #if mobile child.y - 5 #else child.y + 5 #end}, 1.8, {ease: FlxEase.quartOut, startDelay: delay});
+      FlxTween.tween(child, {alpha: 1, y: child.y + 5}, 1.8, {ease: FlxEase.quartOut, startDelay: delay});
       delay += 0.1;
     }
   }
@@ -880,16 +834,6 @@ class PauseSubState extends MusicBeatSubState
   {
     metadataPractice.visible = PlayState.instance?.isPracticeMode ?? false;
 
-    #if mobile
-    if (metadata.members[0].y != camera.height - 185 && metadataPractice.visible)
-    {
-      for (text in metadata)
-      {
-        text.y -= 30;
-      }
-    }
-    #end
-
     switch (this.currentMode)
     {
       case Standard | Difficulty:
@@ -915,9 +859,6 @@ class PauseSubState extends MusicBeatSubState
   {
     // Resume a paused video if it exists.
     VideoCutscene.resumeVideo();
-    #if FEATURE_MOBILE_ADVERTISEMENTS
-    AdMobUtil.removeBanner();
-    #end
     state.close();
   }
 
@@ -953,32 +894,7 @@ class PauseSubState extends MusicBeatSubState
 
     PlayState.instance.needsReset = true;
 
-    #if FEATURE_MOBILE_ADVERTISEMENTS
-    if (AdMobUtil.PLAYING_COUNTER < AdMobUtil.MAX_BEFORE_AD) AdMobUtil.PLAYING_COUNTER++;
-
-    if (AdMobUtil.PLAYING_COUNTER >= AdMobUtil.MAX_BEFORE_AD)
-    {
-      state.allowInput = false;
-
-      AdMobUtil.loadInterstitial(function():Void {
-        AdMobUtil.PLAYING_COUNTER = 0;
-
-        AdMobUtil.removeBanner();
-
-        state.allowInput = true;
-
-        state.close();
-      });
-    }
-    else
-    {
-      AdMobUtil.removeBanner();
-
-      state.close();
-    }
-    #else
     state.close();
-    #end
   }
 
   /**
@@ -989,32 +905,7 @@ class PauseSubState extends MusicBeatSubState
   {
     PlayState.instance.needsReset = true;
 
-    #if FEATURE_MOBILE_ADVERTISEMENTS
-    if (AdMobUtil.PLAYING_COUNTER < AdMobUtil.MAX_BEFORE_AD) AdMobUtil.PLAYING_COUNTER++;
-
-    if (AdMobUtil.PLAYING_COUNTER >= AdMobUtil.MAX_BEFORE_AD)
-    {
-      state.allowInput = false;
-
-      AdMobUtil.loadInterstitial(function():Void {
-        AdMobUtil.PLAYING_COUNTER = 0;
-
-        AdMobUtil.removeBanner();
-
-        state.allowInput = true;
-
-        state.close();
-      });
-    }
-    else
-    {
-      AdMobUtil.removeBanner();
-
-      state.close();
-    }
-    #else
     state.close();
-    #end
   }
 
   /**
@@ -1036,9 +927,6 @@ class PauseSubState extends MusicBeatSubState
   static function restartVideoCutscene(state:PauseSubState):Void
   {
     VideoCutscene.restartVideo();
-    #if FEATURE_MOBILE_ADVERTISEMENTS
-    AdMobUtil.removeBanner();
-    #end
     state.close();
   }
 
@@ -1049,9 +937,6 @@ class PauseSubState extends MusicBeatSubState
   static function skipVideoCutscene(state:PauseSubState):Void
   {
     VideoCutscene.finishVideo();
-    #if FEATURE_MOBILE_ADVERTISEMENTS
-    AdMobUtil.removeBanner();
-    #end
     state.close();
   }
 
@@ -1064,9 +949,6 @@ class PauseSubState extends MusicBeatSubState
     if (PlayState.instance?.currentConversation == null) return;
 
     PlayState.instance.currentConversation.resetConversation();
-    #if FEATURE_MOBILE_ADVERTISEMENTS
-    AdMobUtil.removeBanner();
-    #end
     state.close();
   }
 
@@ -1079,9 +961,6 @@ class PauseSubState extends MusicBeatSubState
     if (PlayState.instance?.currentConversation == null) return;
 
     PlayState.instance.currentConversation.skipConversation();
-    #if FEATURE_MOBILE_ADVERTISEMENTS
-    AdMobUtil.removeBanner();
-    #end
     state.close();
   }
 
@@ -1120,10 +999,6 @@ class PauseSubState extends MusicBeatSubState
       }
     }
 
-    #if FEATURE_MOBILE_ADVERTISEMENTS
-    AdMobUtil.removeBanner();
-    #end
-
     state.openSubState(new funkin.ui.transition.stickers.StickerSubState({targetState: targetState, stickerPack: stickerPackId}));
   }
 
@@ -1134,9 +1009,6 @@ class PauseSubState extends MusicBeatSubState
   @:access(funkin.play.PlayState)
   static function quitToChartEditor(state:PauseSubState):Void
   {
-    #if FEATURE_MOBILE_ADVERTISEMENTS
-    AdMobUtil.removeBanner();
-    #end
     // This should come first because the sounds list gets cleared!
     PlayState.instance?.forEachPausedSound(s -> s.destroy());
     state.close();

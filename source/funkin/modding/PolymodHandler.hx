@@ -287,20 +287,6 @@ class PolymodHandler
     // FlxSave.resolveFlixelClasses() can access blacklisted packages
     Polymod.blacklistImport('flixel.util.FlxSave');
 
-    // Disable access to AdMob Util
-    Polymod.blacklistImport('funkin.mobile.util.AdMobUtil');
-
-    // Disable access to In-App Purchases Util
-    Polymod.blacklistImport('funkin.mobile.util.InAppPurchasesUtil');
-
-    // Disable access to Admob Extension
-    for (cls in ClassMacro.listClassesInPackage('extension.admob'))
-    {
-      if (cls == null) continue;
-      var className:String = Type.getClassName(cls);
-      Polymod.blacklistImport(className);
-    }
-
     // Disable access to AndroidTools Extension
     for (cls in ClassMacro.listClassesInPackage('extension.androidtools'))
     {

@@ -67,9 +67,6 @@ import funkin.util.TouchUtil;
 import funkin.mobile.ui.FunkinHitbox;
 import funkin.mobile.input.ControlsHandler;
 import funkin.mobile.ui.FunkinHitbox.FunkinHitboxControlSchemes;
-#if FEATURE_MOBILE_ADVERTISEMENTS
-import funkin.mobile.util.AdMobUtil;
-#end
 #end
 #if FEATURE_DISCORD_RPC
 import funkin.api.discord.DiscordClient;
@@ -1214,10 +1211,6 @@ class PlayState extends MusicBeatSubState
         #end
 
         isPlayerDying = true;
-
-        #if FEATURE_MOBILE_ADVERTISEMENTS
-        if (AdMobUtil.PLAYING_COUNTER < AdMobUtil.MAX_BEFORE_AD) AdMobUtil.PLAYING_COUNTER++;
-        #end
 
         var deathPreTransitionDelay = currentStage?.getBoyfriend()?.getDeathPreTransitionDelay() ?? 0.0;
         if (deathPreTransitionDelay > 0)
@@ -3326,10 +3319,6 @@ class PlayState extends MusicBeatSubState
 
       if (scoreRank != null) Events.logEarnRank(scoreRank.toString());
     }
-    #end
-
-    #if FEATURE_MOBILE_ADVERTISEMENTS
-    if (AdMobUtil.PLAYING_COUNTER < AdMobUtil.MAX_BEFORE_AD) AdMobUtil.PLAYING_COUNTER++;
     #end
 
     if (PlayStatePlaylist.isStoryMode)

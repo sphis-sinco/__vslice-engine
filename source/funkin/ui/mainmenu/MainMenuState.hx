@@ -43,7 +43,6 @@ import funkin.api.newgrounds.NewgroundsClient;
 #end
 #if mobile
 import funkin.mobile.input.ControlsHandler;
-import funkin.mobile.util.InAppPurchasesUtil;
 #end
 #if FEATURE_POLYMOD_MODS
 import funkin.modding.PolymodHandler;
@@ -73,10 +72,6 @@ class MainMenuState extends MusicBeatState
 
   static var rememberedSelectedIndex:Int = 0;
 
-  // this should never be false on non-mobile targets.
-  var hasUpgraded:Bool = false;
-  var upgradeSparkles:FlxTypedSpriteGroup<UpgradeSparkle>;
-
   public function new(_overrideMusic:Bool = false)
   {
     super();
@@ -85,7 +80,6 @@ class MainMenuState extends MusicBeatState
     // Start in Entering state during screen fade in
     uiStateMachine.transition(Entering);
 
-    upgradeSparkles = new FlxTypedSpriteGroup<UpgradeSparkle>();
     magenta = new FlxSprite(Paths.image('menuBGMagenta'));
     camFollow = new FlxObject(0, 0, 1, 1);
 
@@ -104,16 +98,6 @@ class MainMenuState extends MusicBeatState
 
     transIn = FlxTransitionableState.defaultTransIn;
     transOut = FlxTransitionableState.defaultTransOut;
-
-    #if FEATURE_MOBILE_IAP
-    trace("hasInitialized: " + InAppPurchasesUtil.hasInitialized);
-    if (InAppPurchasesUtil.hasInitialized) Preferences.noAds = InAppPurchasesUtil.isPurchased(InAppPurchasesUtil.UPGRADE_PRODUCT_ID);
-    // If the user is faster than their shit wifi, it gets the saved noAds instead.
-    hasUpgraded = Preferences.noAds;
-    #else
-    // just to make sure its never accidentally turned off
-    hasUpgraded = true;
-    #end
 
     if (!overrideMusic) playMenuMusic();
 
@@ -177,41 +161,11 @@ class MainMenuState extends MusicBeatState
       var targetCharacter:Null<String> = FreeplayState.rememberedCharacterId;
       #end
 
-      if (!hasUpgraded)
-      {
-        for (i in 0...upgradeSparkles.length)
-        {
-          upgradeSparkles.members[i].cancelSparkle();
-        }
-      }
-
       openSubState(new FreeplayState(
         {
           character: targetCharacter
         }));
     });
-
-    if (hasUpgraded)
-    {
-      #if FEATURE_OPEN_URL
-      // In order to prevent popup blockers from triggering,
-      // we need to open the link as an immediate result of a keypress event,
-      // so we can't wait for the flicker animation to complete.
-      var hasPopupBlocker:Bool = #if web true #else false #end;
-      createMenuItem('merch', 'mainmenu/merch', selectMerch, hasPopupBlocker);
-      #end
-    }
-    else
-    {
-      add(upgradeSparkles);
-
-      createMenuItem('upgrade', 'mainmenu/upgrade', function() {
-        #if FEATURE_MOBILE_IAP
-        InAppPurchasesUtil.purchase(InAppPurchasesUtil.UPGRADE_PRODUCT_ID, FlxG.resetState);
-        uiStateMachine.transition(Idle);
-        #end
-      });
-    }
 
     if (#if mobile ControlsHandler.usingExternalInputDevice #else true #end)
     {
