@@ -8,6 +8,11 @@ that will most likely change as we go.
 
 ### Intro Texts
 
+- `funkin.ui.title.TitleState` calls `onCall` callback with id: `intro-text` during the intro text segment with the data:
+  - [FUNKIN] Used to bring back the OG intro texts
+  - `index`
+  - `curWacky`
+
 - Added 12 unique intro texts for V-Slice Engine:
   - `jsons--we love em`
   - `lua scripting--no`

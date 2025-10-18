@@ -499,6 +499,12 @@ class TitleState extends MusicBeatState
             case 16:
               skipIntro();
           }
+
+          callbackEventHolder.onCall('intro-text', new CallbackEventData('titlestate',
+            {
+              index: i + 1,
+              curWacky: curWacky
+            }));
         }
       }
       lastBeat = Conductor.instance.currentBeat;

@@ -1,0 +1,75 @@
+import flixel.FlxG;
+
+import funkin.modding.module.Module;
+
+import funkin.modding.events.callbacks.CallbackEvent;
+import funkin.modding.events.callbacks.CallbackEventData;
+import funkin.modding.events.callbacks.CallbackEventHolder;
+import funkin.modding.events.callbacks.CallbackScriptEvent;
+
+import funkin.ui.title.TitleState;
+import funkin.ui.mainmenu.MainMenuState;
+import funkin.ui.story.StoryMenuState;
+import funkin.ui.freeplay.FreeplayState;
+
+import funkin.util.ReflectUtil;
+
+class TitleStateIntroText extends Module
+{
+  var introTextEvent = new CallbackEvent('intro-text-event');
+
+  override public function new()
+  {
+    super('titlestate-intro-text');
+
+    introTextEvent.onCall = function(id:String, eventdata:CallbackEventData) {
+      if (id == 'intro-text' && eventdata.id == 'titlestate')
+      {
+        var data = eventdata.data;
+
+        var gimmeEndingTexts = function(friday:Bool, night:Bool, funkin:Bool)
+        {
+          TitleState.deleteCoolText();
+          if (friday)
+            TitleState.addMoreText('Friday');
+
+          if (night)
+          {
+            // easter egg for when the game is trending with the wrong spelling
+            // the random intro text would be "trending--only on x"
+
+            if (data.curWacky[0] == "trending")
+              TitleState.addMoreText('Nigth');
+            else
+              TitleState.addMoreText('Night');
+          }
+
+          if (funkin)
+            TitleState.addMoreText('Funkin');
+        }
+
+        switch(data.index)
+        {
+          case 1:
+            TitleState.deleteCoolText();
+            TitleState.createCoolText(['The', 'Funkin Crew Inc']);
+          case 5:
+            TitleState.deleteCoolText();
+            TitleState.createCoolText(['In association', 'with']);
+          case 13:
+            gimmeEndingTexts(true, false, false);
+          case 14:
+            gimmeEndingTexts(true, true, false);
+          case 15:
+            gimmeEndingTexts(true, true, true);
+        }
+      }
+    }
+  }
+
+  override public function onStateChangeEnd(event:StateChangeScriptEvent)
+  {
+    if (TitleState.callbackEventHolder != null)
+      TitleState.callbackEventHolder.addCallbackEvent(introTextEvent);
+  }
+}
