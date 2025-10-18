@@ -7,4 +7,4 @@ There's a few extra considerations when compiling FNF for Mac that *we* have to 
 
 ## Creating a Universal Binary
 
-Run the `art/macos-universal.sh` script, which automatically compiles release versions of both arm64 and x86 of Funkin. You can also see there for reference of how it's done.
+Run the `.dev/macos-universal.sh` script, which automatically compiles release versions of both arm64 and x86 of Funkin. You can also see there for reference of how it's done.
