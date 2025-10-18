@@ -41,7 +41,7 @@ class PixelatedIcon extends FlxFilteredSprite
       if (i < charIDParts.length - 1) pixelIconName += '-';
     }
 
-    PID_Path = lastValidPixelIconName + '.json';
+    PID_Path = lastValidPixelIconName;
 
     if (Assets.exists(PID_Path)) pixelatedIconData = haxe.Json.parse(Assets.getText(PID_Path));
     final IPS = pixelatedIconData.iconPathSuffix ?? 'pixel';
