@@ -8,24 +8,6 @@ class CallbackEventManager<T>
   public function new()
   {
     callbackEvents = [];
-
-    var scriptedCENames:Array<String> = ScriptedCallbackEvent.listScriptClasses();
-    trace('  Instantiating ${scriptedCENames.length} callback events...');
-    for (scriptedCE in scriptedCENames)
-    {
-      var newEvent = ScriptedCallbackEvent.init(scriptedCE, scriptedCE);
-
-      if (newEvent != null)
-      {
-        trace('    Loaded callback event: ${scriptedCE}');
-
-        addCallbackEvent(newEvent);
-      }
-      else
-      {
-        trace('    Failed to instantiate callback event: ${scriptedCE}');
-      }
-    }
   }
 
   /**
@@ -41,5 +23,36 @@ class CallbackEventManager<T>
   public function addCallbackEvent(event:CallbackEvent<T>):Void
   {
     callbackEvents.push(event);
+  }
+
+  /**
+   * Calls `onInit` for all CE's
+   * @param state current state
+   */
+  public function onInit(state:T):Void
+  {
+    for (event in callbackEvents)
+      event.onInit(state);
+  }
+
+  /**
+   * Calls `onCreate` for all CE's
+   * @param state current state
+   */
+  public function onCreate(state:T):Void
+  {
+    for (event in callbackEvents)
+      event.onCreate(state);
+  }
+
+  /**
+   * Calls `onUpdate` for all CE's
+   * @param state current state
+   * @param elapsed elapsed cause it's the update loop
+   */
+  public function onUpdate(state:T, elapsed:Float):Void
+  {
+    for (event in callbackEvents)
+      event.onUpdate(state, elapsed);
   }
 }
