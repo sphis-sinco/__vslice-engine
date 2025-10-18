@@ -1,4 +1,7 @@
 import funkin.modding.module.Module;
+import funkin.modding.events.callbacks.CallbackEvent;
+import funkin.modding.events.callbacks.CallbackEventHolder;
+import funkin.modding.events.callbacks.CallbackScriptEvent;
 import funkin.ui.title.TitleState;
 import funkin.util.ReflectUtil;
 
@@ -9,12 +12,24 @@ class CallbackEventTest extends Module
     super('ce-test');
   }
 
-  override public function onCallbackEvent(event:CallbackScriptEvent<Any>)
+  override public function onStateChangeEnd(event:StateChangeScriptEvent)
   {
-    trace(ReflectUtil.getClassNameOf(event));
-    if (event.type == 'CALLBACKSCRIPTHOLDER_NEW' && ReflectUtil.getClassNameOf(event) == 'CallbackScriptEvent')
+    if (TitleState.callbackEventHolder != null)
     {
-      trace('I can init callbacks!');
+      var randomEvent = new CallbackEvent();
+      randomEvent.onInit = function() {
+        trace('Hi');
+      }
+      randomEvent.onCreate = function(state:TitleState) {
+        trace('Hi in title state');
+      }
+
+      TitleState.callbackEventHolder.addCallbackEvent(randomEvent);
     }
+  }
+
+  override public function onCallbackEvent(event:CallbackScriptEvent)
+  {
+    trace(event);
   }
 }
