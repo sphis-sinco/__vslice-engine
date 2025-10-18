@@ -24,7 +24,7 @@ class CallbackScriptEvent extends ScriptEvent
         CALLBACKSCRIPTHOLDER_NEW;
 
       case 4:
-        CALLBACKSCRIPTHOLDER_CUSTOM;
+        CALLBACKSCRIPTEVENT_CUSTOM;
 
       default:
         CALLBACKSCRIPTEVENT_INIT;
@@ -36,5 +36,5 @@ class CallbackScriptEvent extends ScriptEvent
   }
 
   override public function toString():String
-    return 'CallbackScriptEvent(type=${this.type}, cancelable=${this.cancelable}, event=${this.event})';
+    return 'CallbackScriptEvent(type=${this.type}, cancelable=${this.cancelable}, event=${this.callbackEvent})';
 }

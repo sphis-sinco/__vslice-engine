@@ -100,6 +100,5 @@ class CallbackEventHolder implements IFlxDestroyable
   public function destroy():Void
   {
     callbackEvents = [];
-    this = null;
   }
 }
