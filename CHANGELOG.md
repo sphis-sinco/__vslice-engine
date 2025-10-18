@@ -4,7 +4,7 @@ Mod API Version: `0.2.0`
 This version is the first showcase of the new changelog format
 that will most likely change as we go.
 
-## Playable Character
+## Playable Characters
 
 - Added new `funkin.ui.freeplay.charselect.PlayableCharacter` function
   - `getPauseDeathName` (Params: `death`, Return Type: `String`) - A simple function to return a string depending on the amount of deaths that have happened
