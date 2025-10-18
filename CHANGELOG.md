@@ -1,6 +1,7 @@
 # Friday Night Funkin (V-Slice Engine)
 
 ## [0.2.0] - 2025-10-17
+Mod API Version: `0.2.0`
 
 The changelog format will change after this version.
 But you can see small previews of the new format (kinda) in this changelog.
@@ -43,6 +44,12 @@ But you can see small previews of the new format (kinda) in this changelog.
 
 ### Added
 
+- `funkin.ui.objects.pixelated_icons.PixelatedIconData` typedef
+  - `assets/data/ui/pixelated_icons/**.json` will be a valid path for `PixelatedIconData` JSONS
+  - `PixelatedIconData` JSON files have modifyable 3 fields
+    - `origin` (Optional, Default: `[100.0 , 0.0]`) - This is to change the origin.x and origin.y values, most likely for bigger icons
+    - `scale` (Optional, Default: `2.0`) - This is to change the icon scale for VERY big icons
+    - `additionalAnimations` (Optional, Default: `[]`) - Additional animations to add ontop of the base animations
 - `FEATURE_GIT_INFO` Feature Flag that controls if the `GIT_BRANCH`, `GIT_HASH` or (`FEATURE_DEBUG_FUNCTIONS` only) Git Modified / `GIT_HAS_LOCAL_CHANGES` status is included in the version
 - `PreferencesMenu` `instance` variable
 - `PreferencesMenu` `isCurrentOptionsPage` function
