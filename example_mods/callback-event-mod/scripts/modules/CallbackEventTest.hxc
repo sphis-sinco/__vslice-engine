@@ -1,14 +1,20 @@
 import funkin.modding.module.Module;
+
 import funkin.modding.events.callbacks.CallbackEvent;
 import funkin.modding.events.callbacks.CallbackEventData;
 import funkin.modding.events.callbacks.CallbackEventHolder;
 import funkin.modding.events.callbacks.CallbackScriptEvent;
+
 import funkin.ui.title.TitleState;
+import funkin.ui.mainmenu.MainMenuState;
+import funkin.ui.story.StoryMenuState;
+
 import funkin.util.ReflectUtil;
 
 class CallbackEventTest extends Module
 {
   var randomTestingEvent = new CallbackEvent('random-testing-event');
+  var anotherRandomTestingEvent = new CallbackEvent('another-random-testing-event');
 
   override public function new()
   {
@@ -21,14 +27,25 @@ class CallbackEventTest extends Module
       if (eventdata.id == 'titlestate')
         trace('Hi in title state createa with data: '+eventdata.data);
     }
+
+    anotherRandomTestingEvent.onCreate = function(eventdata:CallbackEventData) {
+      trace(eventdata.data);
+    }
   }
 
   override public function onStateChangeEnd(event:StateChangeScriptEvent)
   {
     if (TitleState.callbackEventHolder != null)
     {
+      TitleState.callbackEventHolder.addCallbackEvent(anotherRandomTestingEvent);
       TitleState.callbackEventHolder.addCallbackEvent(randomTestingEvent);
     }
+
+    if (MainMenuState.callbackEventHolder != null)
+      MainMenuState.callbackEventHolder.addCallbackEvent(anotherRandomTestingEvent);
+
+    if (StoryMenuState.callbackEventHolder != null)
+      StoryMenuState.callbackEventHolder.addCallbackEvent(anotherRandomTestingEvent);
   }
 
   override public function onCallbackEvent(event:CallbackScriptEvent)

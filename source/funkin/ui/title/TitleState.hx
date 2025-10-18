@@ -60,17 +60,11 @@ class TitleState extends MusicBeatState
    */
   public static var callbackEventHolder:CallbackEventHolder = null;
 
-  override public function new()
-  {
-    super();
-
-    callbackEventHolder = new CallbackEventHolder();
-  }
-
   override public function create():Void
   {
     super.create();
 
+    callbackEventHolder = new CallbackEventHolder();
     swagShader = new ColorSwap();
 
     curWacky = FlxG.random.getObject(getIntroTextShit());

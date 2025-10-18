@@ -250,6 +250,11 @@ class MainMenuState extends MusicBeatState
     // This has to come AFTER!
     initLeftWatermarkText();
 
+    onCreate();
+  }
+
+  function onCreate():Void
+  {
     callbackEventHolder.onCreate(new CallbackEventData('mainmenustate', CallbackEventDataGenerator.generateMusicbeatStateData(this)));
   }
 
