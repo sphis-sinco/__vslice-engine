@@ -229,7 +229,7 @@ class TitleState extends MusicBeatState
 
   function getIntroTextShit():Array<Array<String>>
   {
-    var fullText:String = Assets.getText(Paths.txt('introText'));
+    var fullText:String = Assets.getText(Paths.txt('introText/introText'));
 
     // Split into lines and remove empty lines
     var firstArray:Array<String> = fullText.split('\n').filter(function(s:String) return s != '');
