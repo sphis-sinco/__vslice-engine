@@ -21,12 +21,11 @@ class PixelatedIcon extends FlxFilteredSprite
    * This will change the icon displayed
    * @param char the character ID you are searching for
    */
-  @:nullSafety(Off)
   public function setCharacter(char:String):Void
   {
     final pixelatedIconData:PixelatedIconData = cast haxe.Json.parse(Assets.getText(Paths.json('ui/pixelated_icons/' + char)));
 
-    var charPath:String = pixelatedIconData?.iconPathPrefix ?? 'freeplay/icons/';
+    var charPath:String = pixelatedIconData.iconPathPrefix ?? 'freeplay/icons/';
 
     final charIDParts:Array<String> = char.split("-");
     var iconName:String = "";
@@ -35,7 +34,7 @@ class PixelatedIcon extends FlxFilteredSprite
     {
       iconName += charIDParts[i];
 
-      if (Assets.exists(Paths.image(charPath + '${iconName}${pixelatedIconData?.iconPathSuffix ?? 'pixel'}')))
+      if (Assets.exists(Paths.image(charPath + '${iconName}${pixelatedIconData.iconPathSuffix ?? 'pixel'}')))
       {
         lastValidIconName = iconName;
       }
@@ -43,7 +42,7 @@ class PixelatedIcon extends FlxFilteredSprite
       if (i < charIDParts.length - 1) iconName += '-';
     }
 
-    charPath += '${lastValidIconName}${pixelatedIconData?.iconPathSuffix ?? 'pixel'}';
+    charPath += '${lastValidIconName}${pixelatedIconData.iconPathSuffix ?? 'pixel'}';
 
     if (!Assets.exists(Paths.image(charPath)))
     {
@@ -56,16 +55,20 @@ class PixelatedIcon extends FlxFilteredSprite
       this.visible = true;
     }
 
-    var isAnimated = pixelatedIconData?.animated ?? false;
+    var isAnimated = pixelatedIconData.animated ?? false;
 
     if (isAnimated) this.frames = Paths.getSparrowAtlas(charPath);
     else
       this.loadGraphic(Paths.image(charPath));
 
-    this.scale.x = this.scale.y = pixelatedIconData?.scale ?? 2;
+    this.scale.x = this.scale.y = pixelatedIconData.scale ?? 2;
 
-    this.origin.x = pixelatedIconData?.origin[0] ?? 100;
-    this.origin.y = pixelatedIconData?.origin[1] ?? 0;
+    try
+    {
+      this.origin.x = pixelatedIconData.origin[0] ?? 100;
+      this.origin.y = pixelatedIconData.origin[1] ?? 0;
+    }
+    catch (e) {}
 
     if (isAnimated)
     {
@@ -73,9 +76,16 @@ class PixelatedIcon extends FlxFilteredSprite
       this.animation.addByPrefix('idle', 'idle0', 10, true);
       this.animation.addByPrefix('confirm', 'confirm0', 10, false);
       this.animation.addByPrefix('confirm-hold', 'confirm-hold0', 10, true);
-      for (anim in pixelatedIconData?.additionalAnimations ?? [])
+      for (anim in pixelatedIconData.additionalAnimations ?? [])
       {
-        if (anim.assetPath == null) this.animation.addByPrefix(anim.name, anim.prefix, anim?.frameRate ?? 10, anim?.looped ?? false);
+        final animName = anim.name;
+        final animPrefix = anim.prefix;
+        final animFrameRate = anim.frameRate ?? 10;
+        final animLooped = anim.looped ?? false;
+
+        if (animName == null || animPrefix == null) continue;
+
+        if (anim.assetPath == null) this.animation.addByPrefix(animName, animPrefix, animFramerate, animLooped);
         else
           trace('PixelatedIcon does not support Multi-sparrow, you will have to merge animation: ${anim.name} into ${char}\'s icon');
       }
