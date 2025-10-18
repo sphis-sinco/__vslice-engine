@@ -42,7 +42,7 @@ that will most likely change as we go.
   - `addMoreText`
   - `createCoolText`
 
-- Added 17 unique intro texts for V-Slice Engine:
+- Added 19 unique intro texts for V-Slice Engine:
   - `jsons--we love em`
   - `lua scripting--no`
   - `haxe code--hell yeah` - naughtyness only
@@ -60,6 +60,8 @@ that will most likely change as we go.
   - `sinco--you mean cinco right`
   - `what the fuck--is a sphis` - naughtyness only
   - `what--is a sphis` - safe only
+  - `true--ttur` (Recommended by @Trofem)
+  - `krue--kralse` (Recommended by @Trofem)
 
 - [FUNKIN] Moved base game intro texts to the `funkin` mod
 
