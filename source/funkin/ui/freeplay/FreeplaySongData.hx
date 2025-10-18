@@ -1,5 +1,6 @@
 package funkin.ui.freeplay;
 
+import funkin.ui.story.Level;
 import funkin.play.scoring.Scoring.ScoringRank;
 import funkin.play.song.Song;
 import funkin.data.song.SongRegistry;
