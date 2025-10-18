@@ -642,7 +642,6 @@ class FlxTypedSpriteGroup<T:FlxSprite> extends FlxSprite
    * @param   FunctionArray   `Array` of functions to transform sprites in this group.
    * @param   ValueArray      `Array` of values which will be passed to lambda functions
    */
-  @:generic
   public function multiTransformChildren<V>(FunctionArray:Array<T->V->Void>, ValueArray:Array<V>):Void
   {
     if (_skipTransformChildren || group == null) return;
