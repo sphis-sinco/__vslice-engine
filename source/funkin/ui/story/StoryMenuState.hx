@@ -29,6 +29,7 @@ import funkin.ui.FullScreenScaleMode;
 #if FEATURE_DISCORD_RPC
 import funkin.api.discord.DiscordClient;
 #end
+import funkin.modding.events.callbacks.*;
 
 class StoryMenuState extends MusicBeatState
 {
@@ -114,6 +115,11 @@ class StoryMenuState extends MusicBeatState
   static var rememberedLevelId:Null<String> = null;
   static var rememberedDifficulty:Null<String> = Constants.DEFAULT_DIFFICULTY;
 
+  /**
+   * A holder for all the callback events
+   */
+  public static var callbackEventHolder:CallbackEventHolder = null;
+
   public function new(?stickers:StickerSubState = null)
   {
     super();
@@ -122,6 +128,8 @@ class StoryMenuState extends MusicBeatState
     {
       stickerSubState = stickers;
     }
+
+    callbackEventHolder = new CallbackEventHolder();
   }
 
   override function create():Void

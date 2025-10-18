@@ -11,14 +11,16 @@ that will most likely change as we go.
 ## Scripts
 
 ### Callbacks
+
+- Added `callbackEventHolder` to `funkin.ui.mainmenu.MainMenuState`
+- Added `callbackEventHolder` to `funkin.ui.title.TitleState`
+
 - Added `funkin.modding.events.callbacks.CallbackEventData` - A holder of data for `CallbackEvent` functions
   - Variables:
     - `id` - A unique id to difference Callback Event Data Classes
     - `data` - A container of custom data depending on the event
   - Functions:
     - `new(id:String, data:Dynamic)` - Initalizes the data
-
-- Added `callbackEventHolder:CallbackEventHolder` to `funkin.ui.title.TitleState`
 
 - Added `ICallbackEventClass` to `funkin.modding.IScriptedClass`
   - Added `onCallbackEvent(event:CallbackScriptEvent)` to `funkin.modding.IScriptedClass.ICallbackEventClass`

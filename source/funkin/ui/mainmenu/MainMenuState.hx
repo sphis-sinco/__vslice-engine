@@ -47,6 +47,7 @@ import funkin.mobile.input.ControlsHandler;
 #if FEATURE_POLYMOD_MODS
 import funkin.modding.PolymodHandler;
 #end
+import funkin.modding.events.callbacks.*;
 
 @:nullSafety
 class MainMenuState extends MusicBeatState
@@ -72,6 +73,11 @@ class MainMenuState extends MusicBeatState
 
   static var rememberedSelectedIndex:Int = 0;
 
+  /**
+   * A holder for all the callback events
+   */
+  public static var callbackEventHolder:CallbackEventHolder = null;
+
   public function new(_overrideMusic:Bool = false)
   {
     super();
@@ -86,6 +92,8 @@ class MainMenuState extends MusicBeatState
     // TODO: enabling and disabling keys is a lil quirky,
     // we should move towards unifying the UI and it's inputs into this UIStateMachine managed system
     FlxG.keys.enabled = true;
+
+    callbackEventHolder = new CallbackEventHolder();
   }
 
   override function create():Void
@@ -140,6 +148,7 @@ class MainMenuState extends MusicBeatState
         funkin.FunkinMemory.clearFreeplay();
         funkin.FunkinMemory.purgeCache();
       });
+
       startExitState(() -> new StoryMenuState());
     });
 
@@ -239,6 +248,12 @@ class MainMenuState extends MusicBeatState
 
     // This has to come AFTER!
     initLeftWatermarkText();
+
+    callbackEventHolder.onCreate(new CallbackEventData('mainmenustate',
+      {
+        leftWatermarkText: this.leftWatermarkText,
+        rightWatermarkText: this.rightWatermarkText,
+      }));
   }
 
   function initLeftWatermarkText():Void
@@ -388,6 +403,7 @@ class MainMenuState extends MusicBeatState
 
     FlxTimer.wait(fadeOutDuration, () -> {
       trace('Exiting MainMenuState...');
+      callbackEventHolder.destroy();
       FlxG.switchState(state);
     });
   }
@@ -433,6 +449,8 @@ class MainMenuState extends MusicBeatState
       backButton.enabled = backButton.active;
     }
     #end
+
+    callbackEventHolder.onUpdate(new CallbackEventData('mainmenustate', {elapsed: elapsed}));
   }
 
   function handleInputs():Void
