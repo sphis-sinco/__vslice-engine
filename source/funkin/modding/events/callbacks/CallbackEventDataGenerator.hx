@@ -13,8 +13,9 @@ class CallbackEventDataGenerator
   public static function generateMusicbeatStateData(musicBeatState:MusicBeatState):Dynamic
   {
     return {
+      state: musicBeatState,
       leftWatermarkText: musicBeatState.leftWatermarkText,
-      rightWatermarkText: musicBeatState.rightWatermarkText,
+      rightWatermarkText: musicBeatState.rightWatermarkText
     }
   }
 
@@ -26,8 +27,9 @@ class CallbackEventDataGenerator
   public static function generateMusicbeatSubStateData(musicBeatSubState:MusicBeatSubState):Dynamic
   {
     return {
+      subState: musicBeatSubState,
       leftWatermarkText: musicBeatSubState.leftWatermarkText,
-      rightWatermarkText: musicBeatSubState.rightWatermarkText,
+      rightWatermarkText: musicBeatSubState.rightWatermarkText
     }
   }
 }

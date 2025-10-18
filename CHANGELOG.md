@@ -15,15 +15,23 @@ that will most likely change as we go.
 - Added `callbackEventHolder` to `funkin.ui.mainmenu.MainMenuState`
 - Added `callbackEventHolder` to `funkin.ui.title.TitleState`
 
-- Added `funkin.modding.events.callbacks.CallbackEventData` - `CallbackEventData` data generator for different classes
+- Added `funkin.modding.events.callbacks.CallbackEventDataGenerator` - `CallbackEventData` data generator for different classes
   - Functions:
     - `generateMusicbeatSubStateData(musicBeatSubState:MusicBeatSubState)` - Generates event data for `funkin.ui.MusicBeatSubState`
+      - `subState`
+      - `leftWatermarkText`
+      - `rightWatermarkText`
+
     - `generateMusicbeatStateData(musicBeatState:MusicBeatState)` - Generates event data for `funkin.ui.MusicBeatState`
+      - `state`
+      - `leftWatermarkText`
+      - `rightWatermarkText`
 
 - Added `funkin.modding.events.callbacks.CallbackEventData` - A holder of data for `CallbackEvent` functions
   - Variables:
     - `id` - A unique id to difference Callback Event Data Classes
     - `data` - A container of custom data depending on the event
+
   - Functions:
     - `new(id:String, data:Dynamic)` - Initalizes the data
 
@@ -36,12 +44,14 @@ that will most likely change as we go.
 - Added `funkin.modding.events.callbacks.CallbackScriptEvent` - A class extending `funkin.modding.events.ScriptEvent` for Callback Event script events
   - Variables:
     - `callbackEvent:CallbackEvent` - A variable to represent the event calling the script event
+
   - Functions:
     - `new(typeID:Int = 0, callbackEvent:CallbackEvent)` - initalizes the Script Event
 
 - Added `funkin.modding.events.callbacks.CallbackEventHolder` - A simple manager for `CallbackEvent` so each state won't require a unique one
   - Variables:
     - `callbackEvents:Array<CallbackEvent>` - A container with all the callback events
+
   - Functions:
     - `new()` - This will initalize `callbackEvents` and call the `CALLBACKSCRIPTHOLDER_NEW` `CallbackScriptEvent`
     - `addCallbackEvent` - Easy function to add callback events without having to worry about referencing the Array and also prevents dupe events
@@ -56,6 +66,7 @@ that will most likely change as we go.
     - `onCreate:(eventdata:CallbackEventData) -> Void` - Called when `create` is done (For the state)
     - `onUpdate:(eventdata:CallbackEventData) -> Void` - Called when `update` is done (For the state)
     - `onCall:(id:String, eventdata:CallbackEventData) -> Void` - Custom callback that scripts can make
+
   - Functions:
     - `new(id:String)` - This will set the callback event identifier
 
@@ -72,7 +83,7 @@ that will most likely change as we go.
 
 - Added 2 new `funkin.data.freeplay.player.PlayerData` variables
   - `pauseDeathNameSingle` (Optional, Default: `Blue Ball`) - Text displayed in the PauseSubState for deaths when there is only 1 death
-  - `pauseDeathNameMultiple` (Optional, Default: `Blue Balls`) - Text displayed in the PauseSubState for deaths when there is not only 1 death
+  - `pauseDeathNameMultiple` (Optional, Default: `Blue Balls`) - Text displayed in the PauseSubState for deaths by default
 
 # [0.2.0] - 2025-10-18
 Mod API Version: `0.2.0`

@@ -249,11 +249,7 @@ class MainMenuState extends MusicBeatState
     // This has to come AFTER!
     initLeftWatermarkText();
 
-    callbackEventHolder.onCreate(new CallbackEventData('mainmenustate',
-      {
-        leftWatermarkText: this.leftWatermarkText,
-        rightWatermarkText: this.rightWatermarkText,
-      }));
+    callbackEventHolder.onCreate(new CallbackEventData('mainmenustate', CallbackEventDataGenerator.generateMusicbeatStateData(this)));
   }
 
   function initLeftWatermarkText():Void
@@ -450,7 +446,9 @@ class MainMenuState extends MusicBeatState
     }
     #end
 
-    callbackEventHolder.onUpdate(new CallbackEventData('mainmenustate', {elapsed: elapsed}));
+    var updateData = CallbackEventDataGenerator.generateMusicbeatStateData(this);
+    updateData.elapsed = elapsed;
+    callbackEventHolder.onUpdate(new CallbackEventData('mainmenustate', updateData));
   }
 
   function handleInputs():Void
