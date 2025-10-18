@@ -21,6 +21,7 @@ class PixelatedIcon extends FlxFilteredSprite
    * This will change the icon displayed
    * @param char the character ID you are searching for
    */
+  @:nullSafety(Off)
   public function setCharacter(char:String):Void
   {
     final pixelatedIconData:PixelatedIconData = cast haxe.Json.parse(Assets.getText(Paths.json('ui/pixelated_icons/' + char)));
