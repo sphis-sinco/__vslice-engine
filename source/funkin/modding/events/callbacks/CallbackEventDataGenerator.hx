@@ -6,6 +6,42 @@ package funkin.modding.events.callbacks;
 class CallbackEventDataGenerator
 {
   /**
+   * Generates event data for `funkin.ui.freeplay.FreeplayState`
+   * @param freeplay `funkin.ui.freeplay.FreeplayState` class
+   * @return Dynamic
+   */
+  public static function generateFreeplayData(freeplay:funkin.ui.freeplay.FreeplayState):Dynamic
+  {
+    @:privateAccess {
+      return {
+        subState: freeplay,
+
+        songs: freeplay.songs,
+
+        curSelected: freeplay.curSelected,
+        currentDifficulty: freeplay.currentDifficulty,
+        currentVariation: freeplay.currentVariation,
+        currentCapsule: freeplay.currentCapsule,
+
+        grpCapsules: freeplay.grpCapsules,
+
+        dj: freeplay.dj,
+
+        ostName: freeplay.ostName,
+        albumRoll: freeplay.albumRoll,
+        charSelectHint: freeplay.charSelectHint,
+
+        currentCharacter: freeplay.currentCharacter,
+
+        backingCard: freeplay.backingCard,
+        backingImage: freeplay.backingImage,
+
+        fromResultsParams: freeplay.fromResultsParams,
+      }
+    }
+  }
+
+  /**
    * Generates event data for `funkin.ui.MusicBeatState`
    * @param musicBeatState `funkin.ui.MusicBeatState` class
    * @return Dynamic

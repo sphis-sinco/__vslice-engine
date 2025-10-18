@@ -13,12 +13,30 @@ that will most likely change as we go.
 ### Callbacks
 
 - Added `callbackEventHolder` to the following states:
+  - `funkin.ui.freeplay.FreeplayState`
   - `funkin.ui.story.StoryMenuState`
   - `funkin.ui.mainmenu.MainMenuState`
   - `funkin.ui.title.TitleState`
 
 - Added `funkin.modding.events.callbacks.CallbackEventDataGenerator` - `CallbackEventData` data generator for different classes
   - Functions:
+    - `generateFreeplayData(freeplay:FreeplayState)` - Generates event data for `funkin.ui.freeplay.FreeplayState`
+      - `subState`
+      - `songs`
+      - `curSelected`
+      - `currentDifficulty`
+      - `currentVariation`
+      - `currentCapsule`
+      - `grpCapsules`
+      - `dj`
+      - `ostName`
+      - `albumRoll`
+      - `charSelectHint`
+      - `currentCharacter`
+      - `backingCard`
+      - `backingImage`
+      - `fromResultsParams`
+
     - `generateMusicbeatSubStateData(musicBeatSubState:MusicBeatSubState)` - Generates event data for `funkin.ui.MusicBeatSubState`
       - `subState`
       - `leftWatermarkText`

@@ -333,9 +333,17 @@ class FreeplayState extends MusicBeatSubState
     diffSelRight = new DifficultySelector((CUTOUT_WIDTH * DJ_POS_MULTI) + 325, grpDifficulties.y - 10, true, controls, styleData);
   }
 
-  override function create():Void
+  /**
+   * A holder for all the callback events
+   */
+  public static var callbackEventHolder:CallbackEventHolder = null;
+
+  override public function create():Void
   {
     super.create();
+
+    callbackEventHolder = new CallbackEventHolder();
+    new FlxTimer().start(.01, _ -> callbackEventHolder.onCreate(new CallbackEventData('freeplaystate', CallbackEventDataGenerator.generateFreeplayData(this))));
 
     FlxG.state.persistentUpdate = false;
     FlxTransitionableState.skipNextTransIn = true;
@@ -1639,6 +1647,10 @@ class FreeplayState extends MusicBeatSubState
     if (dj != null) FlxG.watch.addQuick('dj-anim', dj.getCurrentAnimation());
     // If the allowPicoBulletsVibration is true, trigger vibration each update (for pico shooting bullets animation).
     if (allowPicoBulletsVibration) HapticUtil.vibrate(0, 0.01, (Constants.MAX_VIBRATION_AMPLITUDE / 3) * 2.5);
+
+    var updateData = CallbackEventDataGenerator.generateFreeplayData(this);
+    updateData.elapsed = elapsed;
+    callbackEventHolder.onUpdate(new CallbackEventData('freeplaystate', updateData));
   }
 
   function lerpScoreDisplays():Void
