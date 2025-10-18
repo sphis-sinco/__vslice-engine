@@ -17,7 +17,7 @@ interface IScriptedClass
   public function onUpdate(event:UpdateScriptEvent):Void;
 }
 
-interface ICallbackEventClass
+interface ICallbackEventClass extends IScriptedClass
 {
   public function onCallbackEvent(event:CallbackScriptEvent):Void;
 }
