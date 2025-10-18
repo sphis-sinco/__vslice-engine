@@ -195,28 +195,6 @@ class MainMenuState extends MusicBeatState
 
     menuItems.selectItem(rememberedSelectedIndex);
 
-    if (!hasUpgraded)
-    {
-      // the upgrade item
-      var targetItem = menuItems.members[2];
-      for (_ in 0...8)
-      {
-        var sparkle:UpgradeSparkle = new UpgradeSparkle(targetItem.x - (targetItem.width / 2), targetItem.y - (targetItem.height / 2), targetItem.width,
-          targetItem.height, FlxG.random.bool(80));
-        upgradeSparkles.add(sparkle);
-
-        sparkle.scrollFactor.x = 0.0;
-        sparkle.scrollFactor.y = 0.4;
-      }
-
-      subStateClosed.add(_ -> {
-        for (i in 0...upgradeSparkles.length)
-        {
-          upgradeSparkles.members[i].restartSparkle();
-        }
-      });
-    }
-
     resetCamStuff();
 
     // reset camera when debug menu is closed
