@@ -1,10 +1,10 @@
 package funkin.modding.events.callbacks;
 
-class CallbackScriptEvent<T> extends ScriptEvent
+class CallbackScriptEvent extends ScriptEvent
 {
-  public var callbackEventHolder:CallbackEventHolder<T>;
+  public var callbackEventHolder:CallbackEventHolder<Any>;
 
-  override public function new(typeID:Int = 0, callbackEventHolder:CallbackEventHolder<T>)
+  override public function new(typeID:Int = 0, callbackEventHolder:CallbackEventHolder<Any>)
   {
     var type:ScriptEventType = switch (typeID)
     {
