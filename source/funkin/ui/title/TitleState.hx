@@ -49,7 +49,7 @@ class TitleState extends MusicBeatState
   /**
    * A holder for all the callback events
    */
-  public static final callbackEventHolder:CallbackEventHolder<TitleState> = new CallbackEventHolder<TitleState>();
+  public static var callbackEventHolder:CallbackEventHolder<TitleState>;
 
   var blackScreen:FlxSprite;
   var credGroup:FlxGroup;
@@ -59,6 +59,13 @@ class TitleState extends MusicBeatState
   var curWacky:Array<String> = [];
   var lastBeat:Int = 0;
   var swagShader:ColorSwap;
+
+  override public function new()
+  {
+    super();
+
+    callbackEventHolder = new CallbackEventHolder<TitleState>();
+  }
 
   override public function create():Void
   {
@@ -204,6 +211,7 @@ class TitleState extends MusicBeatState
   {
     FlxG.sound.music.fadeOut(2.0, 0);
     FlxG.camera.fade(FlxColor.BLACK, 2.0, false, function() {
+      callbackEventHolder.destroy();
       FlxG.switchState(() -> new AttractState());
     });
   }
@@ -354,6 +362,7 @@ class TitleState extends MusicBeatState
     #end
 
     funkin.FunkinMemory.purgeCache();
+    callbackEventHolder.destroy();
     FlxG.switchState(() -> new MainMenuState());
   }
 

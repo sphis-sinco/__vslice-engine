@@ -1,11 +1,12 @@
 package funkin.modding.events.callbacks;
 
 import funkin.modding.module.ModuleHandler;
+import flixel.util.FlxDestroyUtil.IFlxDestroyable;
 
 /**
  * A simple manager for `CallbackEvent` so each state won't require a unique one
  */
-class CallbackEventHolder<T>
+class CallbackEventHolder<T> implements IFlxDestroyable
 {
   public function new()
   {
@@ -57,5 +58,13 @@ class CallbackEventHolder<T>
       event.onUpdate(state, elapsed);
       ModuleHandler.callEvent(new CallbackScriptEvent<T>(2, event));
     }
+  }
+
+  /**
+   *  Kill it.
+   */
+  public function destroy():Void
+  {
+    callbackEvents = [];
   }
 }
