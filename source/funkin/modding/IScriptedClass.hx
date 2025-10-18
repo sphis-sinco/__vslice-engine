@@ -1,6 +1,7 @@
 package funkin.modding;
 
 import funkin.modding.events.ScriptEvent;
+import funkin.modding.events.callbacks.CallbackScriptEvent;
 
 /**
  * Defines a set of callbacks available to all scripted classes.
@@ -10,7 +11,7 @@ import funkin.modding.events.ScriptEvent;
 interface IScriptedClass
 {
   public function onScriptEvent(event:ScriptEvent):Void;
-  public function onCallbackEvent(event:CallbackScriptEvent) {}
+  public function onCallbackEvent(event:CallbackScriptEvent):Void
 
   public function onCreate(event:ScriptEvent):Void;
   public function onDestroy(event:ScriptEvent):Void;
