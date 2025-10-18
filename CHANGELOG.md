@@ -17,6 +17,9 @@ that will most likely change as we go.
 - `funkin.ui.title.TitleState` calls `onCall` callback with id: `intro-text` during the intro text segment with the data:
   - `index`
   - `curWacky`
+  - `deleteCoolText`
+  - `addMoreText`
+  - `createCoolText`
 
 - Added 12 unique intro texts for V-Slice Engine:
   - `jsons--we love em`
