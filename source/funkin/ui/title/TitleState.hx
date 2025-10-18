@@ -37,6 +37,7 @@ import funkin.save.Save;
 import funkin.util.TouchUtil;
 import funkin.util.SwipeUtil;
 #end
+import funkin.modding.events.callback.CallbackEventHolder;
 
 class TitleState extends MusicBeatState
 {
@@ -44,6 +45,11 @@ class TitleState extends MusicBeatState
    * Only play the credits once per session.
    */
   public static var initialized:Bool = false;
+
+  /**
+   * A holder for all the callback events
+   */
+  public static final callbackEventHolder:CallbackEventHolder<TitleState> = new CallbackEventHolder<TitleState>();
 
   var blackScreen:FlxSprite;
   var credGroup:FlxGroup;
@@ -69,6 +75,8 @@ class TitleState extends MusicBeatState
     });
     else
       startIntro();
+
+    callbackEventHolder.onCreate();
   }
 
   var logoBl:FlxSprite;
@@ -331,6 +339,8 @@ class TitleState extends MusicBeatState
     if (controls.UI_RIGHT #if mobile || SwipeUtil.justSwipedRight #end) swagShader.update(elapsed * 0.1);
     if (!cheatActive && skippedIntro) cheatCodeShit();
     super.update(elapsed);
+
+    callbackEventHolder.onUpdate(elapsed);
   }
 
   function moveToMainMenu():Void
