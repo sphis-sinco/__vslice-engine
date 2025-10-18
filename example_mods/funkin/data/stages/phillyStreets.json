@@ -253,9 +253,9 @@
             "position": [920, 1045],
             "scale": [1, 1],
             "animType": "sparrow",
-            "name": "weekend1/spraycanPile",
+            "name": "spraycanPile",
             "isPixel": false,
-            "assetPath": "SpraycanPile",
+            "assetPath": "weekend1/SpraycanPile",
             "scroll": [1, 1],
             "alpha": 1,
             "animations": []
