@@ -5,6 +5,8 @@ package funkin.modding.events.callbacks;
  */
 class CallbackEvent<T>
 {
+  public var id:String;
+
   /**
    * Called when `new` is (For the CallbackEvent not the state)
    */
@@ -20,5 +22,8 @@ class CallbackEvent<T>
    */
   public var onUpdate:(state:T, elapsed:Float) -> Void;
 
-  public function new() {}
+  public function new(id:String)
+  {
+    this.id = id;
+  }
 }

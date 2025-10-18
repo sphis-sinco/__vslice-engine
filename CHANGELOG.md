@@ -4,6 +4,15 @@ Mod API Version: `0.2.0`
 This version is the first showcase of the new changelog format
 that will most likely change as we go.
 
+## Scripts
+
+- Added `onCallbackEvent(event:CallbackScriptEvent)` to `funkin.modding.module.Module`
+- Added `onCallbackEvent(event:CallbackScriptEvent)` to `funkin.modding.IScriptedClass`
+- Added 4 new Script Event Types: `CALLBACKSCRIPTHOLDER_NEW`, `CALLBACKSCRIPTEVENT_INIT`, `CALLBACKSCRIPTEVENT_CREATE`, `CALLBACKSCRIPTEVENT_UPDATE`
+- Added `funkin.modding.events.callbacks.CallbackScriptEvent` - A class extending `funkin.modding.events.ScriptEvent` for Callback Event script events
+- Added `funkin.modding.events.callbacks.CallbackEventHolder` - A simple manager for `CallbackEvent` so each state won't require a unique one
+- Added `funkin.modding.events.callbacks.CallbackEvent` - Callback event to allow scripts to do things in other states without requiring instances
+
 ## Playable Characters
 
 - The pause death names for Pico are "Blam" (Single) and "Blams" (Multiple) now
