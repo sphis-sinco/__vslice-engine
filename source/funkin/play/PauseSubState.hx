@@ -386,7 +386,7 @@ class PauseSubState extends MusicBeatSubState
     var playerCharacter = PlayerRegistry.instance.fetchEntry(playerCharacterId ?? 'bf');
 
     metadataDeaths = new FlxText(20, metadataDifficulty.y + 32, camera.width - Math.max(40, funkin.ui.FullScreenScaleMode.gameNotchSize.x),
-      '${PlayState.instance?.deathCounter} ${playerCharacter?.getPauseDeathName(PlayState.instance?.deathCounter ?? 0) ?? "Blue Balls"}');
+      '${PlayState.instance?.deathCounter} ${playerCharacter?.getPauseDeathName(PlayState.instance?.deathCounter ?? 0)}');
     metadataDeaths.setFormat(Paths.font('vcr.ttf'), 32, FlxColor.WHITE, FlxTextAlign.RIGHT);
     metadataDeaths.scrollFactor.set(0, 0);
     metadata.add(metadataDeaths);
