@@ -245,7 +245,7 @@ class TitleState extends MusicBeatState
     if (Assets.exists(Paths.json('introText/introText')))
     {
       var jsonText:IntroTextData = haxe.Json.parse(Assets.getText(Paths.json('introText/introText')));
-      for (entry in jsonText)
+      for (entry in jsonText.texts)
       {
         if (Preferences.naughtyness
           && (entry.filter == 'naughty' || entry.filter == 'both')) swagGoodArray.push([entry.firstText, entry.secondText]);
