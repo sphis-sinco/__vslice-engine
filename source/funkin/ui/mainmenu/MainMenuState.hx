@@ -76,7 +76,7 @@ class MainMenuState extends MusicBeatState
   /**
    * A holder for all the callback events
    */
-  public static var callbackEventHolder:CallbackEventHolder;
+  public static var callbackEventHolder:Null<CallbackEventHolder> = null;
 
   public function new(_overrideMusic:Bool = false)
   {
