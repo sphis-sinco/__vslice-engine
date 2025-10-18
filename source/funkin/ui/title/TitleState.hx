@@ -46,11 +46,6 @@ class TitleState extends MusicBeatState
    */
   public static var initialized:Bool = false;
 
-  /**
-   * A holder for all the callback events
-   */
-  public static var callbackEventHolder:CallbackEventHolder = null;
-
   var blackScreen:FlxSprite;
   var credGroup:FlxGroup;
   var textGroup:FlxGroup;
@@ -59,6 +54,11 @@ class TitleState extends MusicBeatState
   var curWacky:Array<String> = [];
   var lastBeat:Int = 0;
   var swagShader:ColorSwap;
+
+  /**
+   * A holder for all the callback events
+   */
+  public static var callbackEventHolder:CallbackEventHolder = null;
 
   override public function new()
   {
@@ -70,7 +70,6 @@ class TitleState extends MusicBeatState
   override public function create():Void
   {
     super.create();
-    callbackEventHolder.onCreate({});
 
     swagShader = new ColorSwap();
 
@@ -202,6 +201,8 @@ class TitleState extends MusicBeatState
     trace('Starting attract timer');
     attractTimer = new FlxTimer().start(Constants.TITLE_ATTRACT_DELAY, (_:FlxTimer) -> moveToAttract());
     #end
+
+    callbackEventHolder.onCreate({});
   }
 
   /**
