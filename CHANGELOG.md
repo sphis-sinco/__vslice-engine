@@ -1,18 +1,31 @@
-# Friday Night Funkin (V-Slice Engine)
+# [0.2.1] - 2025-10-18
+Mod API Version: `0.2.0`
 
-## [0.2.0] - 2025-10-18
+This version is the first showcase of the new changelog format
+that will most likely change as we go.
+
+## Playable Character
+
+- Added new `funkin.ui.freeplay.charselect.PlayableCharacter` function
+  - `getPauseDeathName` (Params: `death`, Return Type: `String`) - A simple function to return a string depending on the amount of deaths that have happened
+
+- Added 2 new `funkin.data.freeplay.player.PlayerData` variables
+  - `pauseDeathNameSingle` (Optional, Default: `Blue Ball`) - Text displayed in the PauseSubState for deaths when there is only 1 death
+  - `pauseDeathNameMultiple` (Optional, Default: `Blue Balls`) - Text displayed in the PauseSubState for deaths when there is not only 1 death
+
+# [0.2.0] - 2025-10-18
 Mod API Version: `0.2.0`
 
 The changelog format will change after this version.
 But you can see small previews of the new format (kinda) in this changelog.
 
-### Fixed
+## Fixed
 
 - [FUNKIN] Missing Assets
 - [FUNKIN] (Potential?) Crashes when trying to look for assets in library folders
 - Crash when trying to look for Abot assets in the non-shared folder
 
-### Removed
+## Removed
 
 - FNF Changelog
 - Abot from base engine assets (moved to `funkin` mod)
@@ -22,7 +35,7 @@ But you can see small previews of the new format (kinda) in this changelog.
 - [MOBILE] In-App Purcheses
 - Removed `Constants` `VERSION_SUFFIX` variable
 
-### Changed
+## Changed
 
 - The `PreferencesMenu` `itemDescBox` object changes height depending on the height of the description text always instead of just on the start
 
@@ -47,7 +60,7 @@ But you can see small previews of the new format (kinda) in this changelog.
 - `PolymodHandler`'s `modFileSystem` variable is `public static variable` now
 - `FUNKIN_MOD` Feature Flag has been renamed to `FEATURE_FUNKIN_MOD`
 
-### Added
+## Added
 
 - `PreferencesMenu` `createCategory(categoryName:String, ?categoryDescription:String)` function
 
@@ -73,17 +86,17 @@ But you can see small previews of the new format (kinda) in this changelog.
 - **MOD MENU** (Thanks again @KoloInDaCrib)
   - `FEATURE_KOLO_MODMENU` Feature Flag that adds the Mod Menu from [Kolo's Mod Menu PR](https://github.com/FunkinCrew/Funkin/pull/4223) (Thanks @KoloInDaCrib)
 
-## [0.1.1] - 2025-10-15
+# [0.1.1] - 2025-10-15
 
-### Changed
+## Changed
 
 - 0 mods loaded PolymodHandler message
 
-### Removed
+## Removed
 
 - PolymodHandler "Installed mods have replaced # __ files" message
 
-### Fixed
+## Fixed
 
 - Base game songs still being in the assets folder
 - `0.1.0` changelog entry date
@@ -92,9 +105,9 @@ But you can see small previews of the new format (kinda) in this changelog.
   - "In association with" -> "Not in association with"
   - "Friday Night Funkin" / "Friday Nigth Funkin" -> "V Slice Engine"
 
-## [0.1.0] - 2025-10-15
+# [0.1.0] - 2025-10-15
 
-### Added
+## Added
 
 - `FUNKIN_MOD` Feature Flag controlling if the `funkin` mod should be included
 - InitState Task Text (Not in sync but I think this can depend on ur pc, idk just a guess)
@@ -104,20 +117,20 @@ But you can see small previews of the new format (kinda) in this changelog.
 - Hashlink (`lime test hl` / `lime build hl`) support (Thanks @NotHyper-474)
 - `Friday Night Funkin (V-Slice Engine)` Credits
 
-### Removed
+## Removed
 
 - "killed line" msg in credits
 - Polymod duplicate imports warning in the terminal
 - Removed Level Libraries
 - `CENSOR_EXPLETIVES` feature flag
 
-### Fixed
+## Fixed
 
 - `assets/videos/videos/` folder (now just `assets/videos/`)
 - Lag with more then 10(?) mods installed (Thanks @PurSnake)
 - Prevent crash with missing credits.json with `-D NO_HARDCODED_CREDITS`
 
-### Changed
+## Changed
 
 - Discord RPC Client ID
 - Save company (`VSECrew`) and name (`FunkinVSE`)
