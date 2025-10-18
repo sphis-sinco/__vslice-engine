@@ -19,9 +19,6 @@ class CallbackEventTest extends Module
     randomTestingEvent.onCreate = function(data:Dynamic) {
       trace('Hi in title state createa with data: '+data);
     }
-    randomTestingEvent.onUpdate = function(data:Dynamic) {
-      // trace('Hi in title state update with data: '+data);
-    }
   }
 
   override public function onStateChangeEnd(event:StateChangeScriptEvent)
