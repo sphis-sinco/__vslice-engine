@@ -22,7 +22,7 @@ class TankmanBattlefieldStage extends Stage
   {
     super.buildStage();
 
-    clouds = new FlxTiledSprite(Paths.image('tankClouds'), 3200, 235, true, false);
+    clouds = new FlxTiledSprite(Paths.image('week7/tankClouds'), 3200, 235, true, false);
     clouds.setPosition(-1100, 20);
     clouds.scrollFactor.set(0.25, 0.25);
     clouds.zIndex = 12;

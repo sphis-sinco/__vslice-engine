@@ -4,6 +4,12 @@ Mod API Version: `0.3.0`
 This version is the first showcase of the new changelog format
 that will most likely change as we go.
 
+## Stages
+
+- [FUNKIN] Fixed incorrect image paths in the `limoRideErect` stage
+- [FUNKIN] Fixed incorrect image paths in the `phillyBlazin` stage
+- [FUNKIN] Fixed incorrect image paths in the `tankmanBattlefield` stage
+
 ## Freeplay
 
 - All private variables included in `funkin.modding.events.callbacks.CallbackEventDataGenerator.generateFreeplayData` are public now

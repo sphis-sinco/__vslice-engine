@@ -77,7 +77,7 @@ class PhillyBlazinStage extends Stage
     additionalLighten.blend = 0; // ADD
     additionalLighten.visible = false;
 
-    scrollingSky = new FlxTiledSprite(Paths.image('phillyBlazin/skyBlur'), 4000, 495, true, false);
+    scrollingSky = new FlxTiledSprite(Paths.image('weekend1/phillyBlazin/skyBlur'), 4000, 495, true, false);
     scrollingSky.setPosition(-700, -120);
     scrollingSky.scrollFactor.set(0, 0);
     scrollingSky.zIndex = 10;

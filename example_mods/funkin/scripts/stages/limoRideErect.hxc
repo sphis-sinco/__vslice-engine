@@ -32,7 +32,7 @@ class LimoRideErectStage extends Stage
 
     // Apply sky shader.
     var skyOverlay:OverlayBlend = new OverlayBlend();
-    var sunOverlay:FlxSprite = new FlxSprite().loadGraphic(Paths.image('limo/limoOverlay'));
+    var sunOverlay:FlxSprite = new FlxSprite().loadGraphic(Paths.image('week4/limo/limoOverlay'));
     sunOverlay.setGraphicSize(Std.int(sunOverlay.width * 2));
     sunOverlay.updateHitbox();
     skyOverlay.funnyShit.input = sunOverlay.pixels;
@@ -52,7 +52,7 @@ class LimoRideErectStage extends Stage
 
     colorShader = new AdjustColorShader();
 
-    mist1 = new FlxBackdrop(Paths.image('limo/erect/mistMid'), 0x01);
+    mist1 = new FlxBackdrop(Paths.image('week4//erect/mistMid'), 0x01);
     mist1.setPosition(-650, -100);
     mist1.scrollFactor.set(1.1, 1.1);
     mist1.zIndex = 400;
@@ -64,7 +64,7 @@ class LimoRideErectStage extends Stage
     PlayState.instance.currentStage.add(mist1);
     PlayState.instance.currentStage.refresh(); // Apply z-index.
 
-    mist2 = new FlxBackdrop(Paths.image('limo/erect/mistBack'), 0x01);
+    mist2 = new FlxBackdrop(Paths.image('week4/limo/erect/mistBack'), 0x01);
     mist2.setPosition(-650, -100);
     mist2.scrollFactor.set(1.2, 1.2);
     mist2.zIndex = 401;
@@ -77,7 +77,7 @@ class LimoRideErectStage extends Stage
     PlayState.instance.currentStage.add(mist2);
     PlayState.instance.currentStage.refresh(); // Apply z-index.
 
-    mist3 = new FlxBackdrop(Paths.image('limo/erect/mistMid'), 0x01);
+    mist3 = new FlxBackdrop(Paths.image('week4/limo/erect/mistMid'), 0x01);
     mist3.setPosition(-650, -100);
     mist3.scrollFactor.set(0.8, 0.8);
     mist3.zIndex = 99;
@@ -90,7 +90,7 @@ class LimoRideErectStage extends Stage
     PlayState.instance.currentStage.add(mist3);
     PlayState.instance.currentStage.refresh(); // Apply z-index.
 
-    mist4 = new FlxBackdrop(Paths.image('limo/erect/mistBack'), 0x01);
+    mist4 = new FlxBackdrop(Paths.image('week4/limo/erect/mistBack'), 0x01);
     mist4.setPosition(-650, -380);
     mist4.scrollFactor.set(0.6, 0.6);
     mist4.zIndex = 98;
@@ -103,7 +103,7 @@ class LimoRideErectStage extends Stage
     PlayState.instance.currentStage.add(mist4);
     PlayState.instance.currentStage.refresh(); // Apply z-index.
 
-    mist5 = new FlxBackdrop(Paths.image('limo/erect/mistMid'), 0x01);
+    mist5 = new FlxBackdrop(Paths.image('week4/limo/erect/mistMid'), 0x01);
     mist5.setPosition(-650, -400);
     mist5.scrollFactor.set(0.2, 0.2);
     mist5.zIndex = 15;
@@ -213,7 +213,7 @@ class LimoRideErectStage extends Stage
     var results:Array<String> = super.fetchAssetPaths();
 
     // This graphic is applied by shader to the background, so it's not included in the default stage function.
-    results.push(Paths.image('limo/limoOverlay'));
+    results.push(Paths.image('week4/limo/limoOverlay'));
     results.push(Paths.sound('carPass0'));
     results.push(Paths.sound('carPass1'));
 
