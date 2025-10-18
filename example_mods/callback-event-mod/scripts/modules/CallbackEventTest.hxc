@@ -1,0 +1,9 @@
+import funkin.modding.module.Module;
+
+class CallbackEventTest extends Module
+{
+  override public function new()
+  {
+    super('ce-test');
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "title": "Callback Event mod",
+    "description": "This mod is to test that callback events work",
+    "contributors": [{ "name": "Sphis" }],
+    "api_version": "0.2.0",
+    "mod_version": "1.0.0",
+    "license": "Apache-2.0"
+}
