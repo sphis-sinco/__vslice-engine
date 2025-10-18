@@ -24,6 +24,7 @@ class CallbackEventHolder implements IFlxDestroyable
   /**
    * Easy function to add callback events
    * without having to worry about referencing the Array
+   * and also prevents dupe events
    * @param event The callback event you wanna add
    */
   public function addCallbackEvent(event:CallbackEvent):Void
@@ -63,7 +64,6 @@ class CallbackEventHolder implements IFlxDestroyable
   /**
    * Calls `onUpdate` for all CE's
    * @param data custom data for onUpdate
-   * @param elapsed elapsed cause it's the update loop
    */
   public function onUpdate(data:Dynamic):Void
   {
@@ -83,5 +83,6 @@ class CallbackEventHolder implements IFlxDestroyable
   public function destroy():Void
   {
     callbackEvents = [];
+    this = null;
   }
 }

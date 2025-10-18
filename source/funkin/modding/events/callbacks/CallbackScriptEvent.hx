@@ -2,6 +2,9 @@ package funkin.modding.events.callbacks;
 
 class CallbackScriptEvent extends ScriptEvent
 {
+  /**
+   * A variable to represent the event calling the script event
+   */
   public var callbackEvent:CallbackEvent;
 
   override public function new(typeID:Int = 0, callbackEvent:CallbackEvent)

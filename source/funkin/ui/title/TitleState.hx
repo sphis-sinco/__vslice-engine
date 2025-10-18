@@ -49,7 +49,7 @@ class TitleState extends MusicBeatState
   /**
    * A holder for all the callback events
    */
-  public static var callbackEventHolder:CallbackEventHolder;
+  public static var callbackEventHolder:CallbackEventHolder = null;
 
   var blackScreen:FlxSprite;
   var credGroup:FlxGroup;
@@ -70,6 +70,8 @@ class TitleState extends MusicBeatState
   override public function create():Void
   {
     super.create();
+    callbackEventHolder.onCreate({});
+
     swagShader = new ColorSwap();
 
     curWacky = FlxG.random.getObject(getIntroTextShit());
@@ -82,8 +84,6 @@ class TitleState extends MusicBeatState
     });
     else
       startIntro();
-
-    callbackEventHolder.onCreate({});
   }
 
   var logoBl:FlxSprite;

@@ -7,12 +7,36 @@ that will most likely change as we go.
 ## Scripts
 
 - Added `callbackEventHolder:CallbackEventHolder` to `funkin.ui.title.TitleState`
-- Added `onCallbackEvent(event:CallbackScriptEvent)` to `funkin.modding.module.Module`
-- Added `onCallbackEvent(event:CallbackScriptEvent)` to `funkin.modding.IScriptedClass`
+
+- Added `ICallbackEventClass` to `funkin.modding.IScriptedClass`
+  - Added `onCallbackEvent(event:CallbackScriptEvent)` to `funkin.modding.IScriptedClass.ICallbackEventClass`
+  - `funkin.modding.module.Module` implements `ICallbackEventClass`
+
 - Added 4 new Script Event Types: `CALLBACKSCRIPTHOLDER_NEW`, `CALLBACKSCRIPTEVENT_INIT`, `CALLBACKSCRIPTEVENT_CREATE`, `CALLBACKSCRIPTEVENT_UPDATE`
+
 - Added `funkin.modding.events.callbacks.CallbackScriptEvent` - A class extending `funkin.modding.events.ScriptEvent` for Callback Event script events
+  - Variables:
+    - `callbackEvent:CallbackEvent` - A variable to represent the event calling the script event
+  - Functions:
+    - `new(typeID:Int = 0, callbackEvent:CallbackEvent)` - initalizes the Script Event
+
 - Added `funkin.modding.events.callbacks.CallbackEventHolder` - A simple manager for `CallbackEvent` so each state won't require a unique one
+  - Variables:
+    - `callbackEvents:Array<CallbackEvent>` - A container with all the callback events
+  - Functions:
+    - `new()` - This will initalize `callbackEvents` and call the `CALLBACKSCRIPTHOLDER_NEW` `CallbackScriptEvent`
+    - `addCallbackEvent` - Easy function to add callback events without having to worry about referencing the Array and also prevents dupe events
+    - `onCreate` - Calls `onCreate` for all CE's
+    - `onUpdate` - Calls `onUpdate` for all CE's
+
 - Added `funkin.modding.events.callbacks.CallbackEvent` - Callback event to allow scripts to do things in other states without requiring instances
+  - Variables:
+    - `id:String` - Unique ID for this Callback Event that also will be used in `CallbackEventHolder` to prevent dupe events
+    - `onInit:Void -> Void` - Called when added to a `CallbackEventHolder`
+    - `onCreate:(data:Dynamic) -> Void` - Called when `create` is done (For the state)
+    - `onUpdate:(data:Dynamic) -> Void` - Called when `update` is done (For the state)
+  - Functions:
+    - `new(id:String)` - This will set the callback event identifier
 
 ## Playable Characters
 

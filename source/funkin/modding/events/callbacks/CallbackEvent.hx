@@ -7,10 +7,13 @@ import flixel.FlxState;
  */
 class CallbackEvent
 {
+  /**
+   * Unique ID for this Callback Event that also will be used in `CallbackEventHolder` to prevent dupe events
+   */
   public var id:String;
 
   /**
-   * Called when `new` is (For the CallbackEvent not the state)
+   * Called when added to a `CallbackEventHolder`
    */
   public var onInit:Void->Void;
 
