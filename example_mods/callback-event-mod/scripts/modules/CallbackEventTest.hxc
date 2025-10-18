@@ -45,6 +45,15 @@ class CallbackEventTest extends Module
     }
   }
 
+  override public function onSubStateOpenEnd(event:SubStateScriptEvent)
+  {
+    if (FreeplayState.callbackEventHolder != null)
+    {
+      FreeplayState.callbackEventHolder.addCallbackEvent(anotherRandomTestingEvent);
+      FreeplayState.callbackEventHolder.addCallbackEvent(freeplayTestingEvent);
+    }
+  }
+
   override public function onStateChangeEnd(event:StateChangeScriptEvent)
   {
     if (TitleState.callbackEventHolder != null)
@@ -58,12 +67,6 @@ class CallbackEventTest extends Module
 
     if (StoryMenuState.callbackEventHolder != null)
       StoryMenuState.callbackEventHolder.addCallbackEvent(anotherRandomTestingEvent);
-
-    if (FreeplayState.callbackEventHolder != null)
-    {
-      FreeplayState.callbackEventHolder.addCallbackEvent(anotherRandomTestingEvent);
-      FreeplayState.callbackEventHolder.addCallbackEvent(freeplayTestingEvent);
-    }
   }
 
   override public function onCallbackEvent(event:CallbackScriptEvent)
