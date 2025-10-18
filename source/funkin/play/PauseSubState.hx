@@ -381,12 +381,7 @@ class PauseSubState extends MusicBeatSubState
     metadataDifficulty.scrollFactor.set(0, 0);
     metadata.add(metadataDifficulty);
 
-    // Fetch playable character data. Default to BF on the results screen if we can't find it.
-    var playerCharacterId = PlayerRegistry.instance.getCharacterOwnerId(PlayState.instance?.currentChart?.characters?.player ?? 'bf');
-    var playerCharacter = PlayerRegistry.instance.fetchEntry(playerCharacterId ?? 'bf');
-
-    metadataDeaths = new FlxText(20, metadataDifficulty.y + 32, camera.width - Math.max(40, funkin.ui.FullScreenScaleMode.gameNotchSize.x),
-      '${PlayState.instance?.deathCounter} ${playerCharacter?.getPauseDeathName(PlayState.instance?.deathCounter ?? 0)}');
+    metadataDeaths = new FlxText(20, metadataDifficulty.y + 32, camera.width - Math.max(40, funkin.ui.FullScreenScaleMode.gameNotchSize.x), 'What the fuck.');
     metadataDeaths.setFormat(Paths.font('vcr.ttf'), 32, FlxColor.WHITE, FlxTextAlign.RIGHT);
     metadataDeaths.scrollFactor.set(0, 0);
     metadata.add(metadataDeaths);
@@ -838,10 +833,14 @@ class PauseSubState extends MusicBeatSubState
   {
     metadataPractice.visible = PlayState.instance?.isPracticeMode ?? false;
 
+    // Fetch playable character data. Default to BF on the results screen if we can't find it.
+    var playerCharacterId = PlayerRegistry.instance.getCharacterOwnerId(PlayState.instance?.currentChart?.characters?.player ?? 'bf');
+    var playerCharacter = PlayerRegistry.instance.fetchEntry(playerCharacterId ?? 'bf');
+
     switch (this.currentMode)
     {
       case Standard | Difficulty:
-        metadataDeaths.text = '${PlayState.instance?.deathCounter} Blue Balls';
+        metadataDeaths.text = '${PlayState.instance?.deathCounter} ${playerCharacter?.getPauseDeathName(PlayState.instance?.deathCounter ?? 0)}';
       case Charting:
         metadataDeaths.text = 'Chart Editor Preview';
       case Conversation:
