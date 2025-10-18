@@ -36,25 +36,27 @@ class CallbackEventHolder implements IFlxDestroyable
 
   /**
    * Calls `onCreate` for all CE's
+   * @param data custom data for onCreate
    */
-  public function onCreate():Void
+  public function onCreate(data:Dynamic = {}):Void
   {
     for (event in callbackEvents)
     {
-      event.onCreate();
+      event.onCreate(data);
       ModuleHandler.callEvent(new CallbackScriptEvent(1, event));
     }
   }
 
   /**
    * Calls `onUpdate` for all CE's
+   * @param data custom data for onUpdate
    * @param elapsed elapsed cause it's the update loop
    */
-  public function onUpdate(elapsed:Float):Void
+  public function onUpdate(data:Dynamic = {}):Void
   {
     for (event in callbackEvents)
     {
-      event.onUpdate(elapsed);
+      event.onUpdate(data);
       ModuleHandler.callEvent(new CallbackScriptEvent(2, event));
     }
   }

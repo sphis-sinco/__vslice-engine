@@ -17,12 +17,12 @@ class CallbackEvent
   /**
    * Called when `create` is done (For the state)
    */
-  public var onCreate:Void->Void;
+  public var onCreate:(data:Dynamic) -> Void;
 
   /**
    * Called when `update` is done (For the state)
    */
-  public var onUpdate:(elapsed:Float) -> Void;
+  public var onUpdate:(data:Dynamic) -> Void;
 
   public function new(id:String)
   {
