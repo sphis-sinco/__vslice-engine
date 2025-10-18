@@ -3,6 +3,10 @@ package funkin.modding.events;
 @:nullSafety
 enum abstract ScriptEventType(String) from String to String
 {
+  var CALLBACKSCRIPTEVENT_INIT = 'CALLBACKSCRIPTEVENT_INIT';
+  var CALLBACKSCRIPTEVENT_CREATE = 'CALLBACKSCRIPTEVENT_CREATE';
+  var CALLBACKSCRIPTEVENT_UPDATE = 'CALLBACKSCRIPTEVENT_UPDATE';
+
   /**
    * Called when the relevant object is created.
    * Keep in mind that the constructor may be called before the object is needed,

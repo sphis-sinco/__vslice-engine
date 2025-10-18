@@ -2,6 +2,7 @@ package funkin.modding.module;
 
 import funkin.modding.IScriptedClass.IPlayStateScriptedClass;
 import funkin.modding.IScriptedClass.IStateChangingScriptedClass;
+import funkin.modding.events.callbacks.CallbackScriptEvent;
 import funkin.modding.events.ScriptEvent;
 
 /**
@@ -85,6 +86,11 @@ class Module implements IPlayStateScriptedClass implements IStateChangingScripte
    * Called when ANY script event is dispatched.
    */
   public function onScriptEvent(event:ScriptEvent) {}
+
+  /**
+   * Called when one of the `CallbackEvent`'s do something
+   */
+  public function onCallbackEvent(event:CallbackScriptEvent) {}
 
   /**
    * Called when the module is first created.
@@ -234,6 +240,7 @@ class Module implements IPlayStateScriptedClass implements IStateChangingScripte
    * Called when the song has been restarted.
    */
   public function onSongRetry(event:SongRetryEvent) {}
+
   /**
    * Called when any state is created.
    */

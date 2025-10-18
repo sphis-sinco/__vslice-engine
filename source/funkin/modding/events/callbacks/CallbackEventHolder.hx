@@ -3,7 +3,7 @@ package funkin.modding.events.callbacks;
 /**
  * A simple manager for `CallbackEvent` so each state won't require a unique one
  */
-class CallbackEventManager<T>
+class CallbackEventHolder<T>
 {
   public function new()
   {
