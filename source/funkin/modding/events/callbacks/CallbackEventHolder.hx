@@ -27,19 +27,9 @@ class CallbackEventHolder<T>
   public function addCallbackEvent(event:CallbackEvent<T>):Void
   {
     callbackEvents.push(event);
-  }
 
-  /**
-   * Calls `onInit` for all CE's
-   * @param state current state
-   */
-  public function onInit(state:T):Void
-  {
-    for (event in callbackEvents)
-    {
-      event.onInit(state);
-      ModuleHandler.callEvent(new CallbackScriptEvent<T>(0, event));
-    }
+    event.onInit();
+    ModuleHandler.callEvent(new CallbackScriptEvent<T>(0, event));
   }
 
   /**

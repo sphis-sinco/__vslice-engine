@@ -10,7 +10,7 @@ class CallbackEvent<T>
   /**
    * Called when `new` is (For the CallbackEvent not the state)
    */
-  public var onInit:(state:T) -> Void;
+  public var onInit:Void->Void;
 
   /**
    * Called when `create` is done (For the state)
