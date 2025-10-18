@@ -4,6 +4,10 @@ Mod API Version: `0.3.0`
 This version is the first showcase of the new changelog format
 that will most likely change as we go.
 
+## Freeplay
+
+- Removed (Most likely) debug traces of `FlxG.width`, `FlxG.camera.zoom`, `FlxG.camera.initialZoom`, and `FlxCamera.defaultZoom`
+
 ## Scripts
 
 ### Callbacks

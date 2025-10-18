@@ -401,11 +401,6 @@ class FreeplayState extends MusicBeatSubState
 
     // LOAD CHARACTERS
 
-    trace(FlxG.width);
-    trace(FlxG.camera.zoom);
-    trace(FlxG.camera.initialZoom);
-    trace(FlxCamera.defaultZoom);
-
     backingCard.instance = this;
     add(backingCard);
     ScriptEventDispatcher.callEvent(backingCard, new ScriptEvent(CREATE, false));
