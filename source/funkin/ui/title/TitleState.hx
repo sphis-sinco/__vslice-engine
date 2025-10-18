@@ -505,9 +505,13 @@ class TitleState extends MusicBeatState
               index: i + 1,
               curWacky: curWacky,
 
-              deleteCoolText: this.deleteCoolText,
-              addMoreText: (text:String) -> this.addMoreText,
-              createCoolText: (text:Array<String>) -> this.createCoolText,
+              deleteCoolText: deleteCoolText,
+              addMoreText: function(text:String) {
+                addMoreText(text);
+              },
+              createCoolText: function(text:Array<String>) {
+                createCoolText(text);
+              },
             }));
         }
       }
