@@ -91,7 +91,7 @@ class Module implements IPlayStateScriptedClass implements IStateChangingScripte
   /**
    * Called when one of the `CallbackEvent`'s do something
    */
-  public function onCallbackEvent(event:CallbackScriptEvent) {}
+  public function onCallbackEvent(event:CallbackScriptEvent<Any>) {}
 
   /**
    * Called when the module is first created.
