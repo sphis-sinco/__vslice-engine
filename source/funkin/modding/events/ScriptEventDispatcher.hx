@@ -30,9 +30,6 @@ class ScriptEventDispatcher
     // IScriptedClass
     switch (event.type)
     {
-      case CALLBACKSCRIPTHOLDER_NEW, CALLBACKSCRIPTEVENT_INIT, CALLBACKSCRIPTEVENT_CREATE, CALLBACKSCRIPTEVENT_UPDATE:
-        target.onCallbackEvent(event);
-        return;
       case CREATE:
         target.onCreate(event);
         return;
@@ -50,6 +47,18 @@ class ScriptEventDispatcher
         target.onUpdate(cast event);
         return;
       default: // Continue;
+    }
+
+    if (Std.isOfType(target, ICallbackEventClass))
+    {
+      var t:ICallbackEventClass = cast(target, ICallbackEventClass);
+      switch (event.type)
+      {
+        case CALLBACKSCRIPTHOLDER_NEW, CALLBACKSCRIPTEVENT_INIT, CALLBACKSCRIPTEVENT_CREATE, CALLBACKSCRIPTEVENT_UPDATE:
+          target.onCallbackEvent(event);
+          return;
+        default: // Continue;
+      }
     }
 
     if (Std.isOfType(target, IStateStageProp))

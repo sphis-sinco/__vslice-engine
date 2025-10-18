@@ -18,6 +18,11 @@ interface IScriptedClass
   public function onUpdate(event:UpdateScriptEvent):Void;
 }
 
+interface ICallbackEventClass
+{
+  public function onCallbackEvent(event:CallbackScriptEvent):Void;
+}
+
 /**
  * Defines an element which can receive script events.
  * For example, the PlayState dispatches the event to all its child elements.
