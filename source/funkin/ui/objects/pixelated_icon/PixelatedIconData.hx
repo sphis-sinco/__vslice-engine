@@ -31,12 +31,20 @@ typedef PixelatedIconData =
   var animated:Null<Bool>;
 
   /**
-   * This is to change the origin.x and origin.y values,
+   * This is to change the origin.x value,
    * most likely for bigger icons
    */
   @:optional
-  @:default([100.0, 0.0])
-  var origin:Null<Array<Float>>;
+  @:default(100.0)
+  var originX:Null<Float>;
+
+  /**
+   * This is to change the origin.y value,
+   * most likely for bigger icons
+   */
+  @:optional
+  @:default(100.0)
+  var originY:Null<Float>;
 
   /**
    * This is to change the icon scale for VERY big icons

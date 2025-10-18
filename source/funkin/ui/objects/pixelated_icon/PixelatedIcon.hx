@@ -24,14 +24,28 @@ class PixelatedIcon extends FlxFilteredSprite
   public function setCharacter(char:String):Void
   {
     var pixelatedIconData:PixelatedIconData = {};
-    final PID_Path = Paths.json('ui/pixelated_icons/' + char);
+    var PID_Path = Paths.json('ui/pixelated_icons/' + char);
+
+    final charIDParts:Array<String> = char.split("-");
+    var pixelIconName:String = "";
+    var lastValidPixelIconName:String = "";
+    for (i in 0...charIDParts.length)
+    {
+      pixelIconName += Paths.json('ui/pixelated_icons/' + charIDParts[i]);
+
+      if (Assets.exists(PID_Path))
+      {
+        lastValidPixelIconName = pixelIconName;
+      }
+
+      if (i < charIDParts.length - 1) pixelIconName += '-';
+    }
 
     if (Assets.exists(PID_Path)) pixelatedIconData = haxe.Json.parse(Assets.getText(PID_Path));
     final IPS = pixelatedIconData.iconPathSuffix ?? 'pixel';
 
     var charPath:String = pixelatedIconData.iconPathPrefix ?? 'freeplay/icons/';
 
-    final charIDParts:Array<String> = char.split("-");
     var iconName:String = "";
     var lastValidIconName:String = "";
     for (i in 0...charIDParts.length)
@@ -69,10 +83,11 @@ class PixelatedIcon extends FlxFilteredSprite
 
     this.scale.x = this.scale.y = newScale;
 
-    var newOrigin = pixelatedIconData.origin ?? [100, 0];
+    var newOriginX = pixelatedIconData.originX ?? 100;
+    var newOriginY = pixelatedIconData.originY;
 
-    this.origin.x = newOrigin[0];
-    this.origin.y = newOrigin[1];
+    this.origin.x = newOriginX;
+    if (newOriginY != null) this.origin.y = newOriginY;
 
     if (isAnimated)
     {

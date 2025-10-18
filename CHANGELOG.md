@@ -53,7 +53,8 @@ But you can see small previews of the new format (kinda) in this changelog.
     - `iconPathPrefix` (Optional, Default: `freeplay/icons/`) - This is to change the image folder where the pixelated icon is found
     - `iconPathSuffix` (Optional, Default: `pixel`) - This is to change the pixelated icon suffix, probably to remove the `pixel` part at the end
     - `animated` (Optional, Default: `false`) - This is the new controller for if a pixelated icon is animated
-    - `origin` (Optional, Default: `[100.0 , 0.0]`) - This is to change the origin.x and origin.y values, most likely for bigger icons
+    - `originX` (Optional, Default: `100.0`) - This is to change the origin.x value, most likely for bigger icons
+    - `originY` (Optional) - This is to change the origin.y value, most likely for bigger icons
     - `scale` (Optional, Default: `2.0`) - This is to change the icon scale for VERY big icons
     - `additionalAnimations` (Optional, Default: `[]`) - Additional animations to add ontop of the base animations
 - `FEATURE_GIT_INFO` Feature Flag that controls if the `GIT_BRANCH`, `GIT_HASH` or (`FEATURE_DEBUG_FUNCTIONS` only) Git Modified / `GIT_HAS_LOCAL_CHANGES` status is included in the version
