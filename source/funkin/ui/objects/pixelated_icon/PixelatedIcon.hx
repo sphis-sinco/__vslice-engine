@@ -80,7 +80,7 @@ class PixelatedIcon extends FlxFilteredSprite
       {
         final animName = anim.name;
         final animPrefix = anim.prefix;
-        final animFrameRate = anim.frameRate ?? 10;
+        final animFramerate = anim.frameRate ?? 10;
         final animLooped = anim.looped ?? false;
 
         if (animName == null || animPrefix == null) continue;
