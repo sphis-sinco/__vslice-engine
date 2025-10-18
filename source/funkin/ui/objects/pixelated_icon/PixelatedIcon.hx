@@ -76,7 +76,7 @@ class PixelatedIcon extends FlxFilteredSprite
       {
         if (anim.assetPath == null) this.animation.addByPrefix(anim.name, anim.prefix, anim?.fps ?? 10, anim?.looped ?? false);
         else
-          trace('PixelatedIcon does not support Multi-sparrow, you will have to merge animation: ${anim.name} into ${char}\'s icon')
+          trace('PixelatedIcon does not support Multi-sparrow, you will have to merge animation: ${anim.name} into ${char}\'s icon');
       }
       this.animation.onFinish.add(function(name:String):Void {
         trace('Finish pixel animation: ${name}');
