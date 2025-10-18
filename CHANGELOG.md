@@ -4,6 +4,12 @@ Mod API Version: `0.3.0`
 This version is the first showcase of the new changelog format
 that will most likely change as we go.
 
+## Gameplay
+
+## Unlocks
+
+- The `UNLOCK_EVERYTHING` feature flag is disabled by default
+
 ## Credits
 
 - The following variables are now public:
