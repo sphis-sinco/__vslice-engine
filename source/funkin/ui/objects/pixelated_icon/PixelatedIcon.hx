@@ -74,7 +74,7 @@ class PixelatedIcon extends FlxFilteredSprite
       this.animation.addByPrefix('confirm-hold', 'confirm-hold0', 10, true);
       for (anim in pixelatedIconData?.additionalAnimations ?? [])
       {
-        if (anim.assetPath == null) this.animation.addByPrefix(anim.name, anim.prefix, anim?.fps ?? 10, anim?.looped ?? false);
+        if (anim.assetPath == null) this.animation.addByPrefix(anim.name, anim.prefix, anim?.frameRate ?? 10, anim?.looped ?? false);
         else
           trace('PixelatedIcon does not support Multi-sparrow, you will have to merge animation: ${anim.name} into ${char}\'s icon');
       }
