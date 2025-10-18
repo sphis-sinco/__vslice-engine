@@ -42,9 +42,9 @@ class CallbackEvent
     var functions = [];
 
     if (onInit != null) functions.push('onInit');
-    if (onCreate != null) functions.push('onCreate');
-    if (onUpdate != null) functions.push('onUpdate');
-    if (onCall != null) functions.push('onCall');
+    if (onCreate != null) functions.push('onCreate(eventdata.id=${onCreate.eventdata.id})');
+    if (onUpdate != null) functions.push('onUpdate(eventdata.id=${onUpdate.eventdata.id})');
+    if (onCall != null) functions.push('onCall(id=${onCall.id}, eventdata.id=${onCall.eventdata.id})');
 
     return 'CallbackEvent(id=${this.id}, functions=${functions})';
   }
