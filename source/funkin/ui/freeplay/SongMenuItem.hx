@@ -41,7 +41,7 @@ class SongMenuItem extends FlxSpriteGroup
   public var selected(default, set):Bool;
   public var forceHighlight(default, set):Bool;
 
-  var songText:CapsuleText;
+  public var songText:CapsuleText;
 
   public var favIconBlurred:FlxSprite;
   public var favIcon:FlxSprite;

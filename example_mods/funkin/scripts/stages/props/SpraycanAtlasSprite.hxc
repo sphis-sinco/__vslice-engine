@@ -14,7 +14,7 @@ class SpraycanAtlasSprite extends FlxAtlasSprite
 
   public function new(x:Float, y:Float)
   {
-    super(x, y, Paths.animateAtlas("spraycanAtlas", "weekend1"),
+    super(x, y, Paths.animateAtlas("weekend1/spraycanAtlas"),
       {
         FrameRate: 24.0,
         Reversed: false,

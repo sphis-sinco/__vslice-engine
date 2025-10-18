@@ -12,7 +12,7 @@ class TankmanEndingSprite extends FlxAtlasSprite
 {
   public function new(x:Float, y:Float)
   {
-    super(x, y, Paths.animateAtlas("erect/cutscene/tankmanEnding", "week7"),
+    super(x, y, Paths.animateAtlas("week7/erect/cutscene/tankmanEnding"),
       {
         FrameRate: 24.0,
         Reversed: false,

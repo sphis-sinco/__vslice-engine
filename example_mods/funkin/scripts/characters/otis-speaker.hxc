@@ -98,7 +98,7 @@ class OtisSpeakerCharacter extends SparrowCharacter
     this.playAnimation('idle', true, true);
 
     muzzleFlash = new FlxSprite(0, 0);
-    muzzleFlash.frames = Paths.getSparrowAtlas("erect/otis_flashes");
+    muzzleFlash.frames = Paths.getSparrowAtlas("week7/erect/otis_flashes");
     muzzleFlash.animation.addByPrefix('shoot1', 'shoot back0', 24, false);
     muzzleFlash.animation.addByPrefix('shoot2', 'shoot back low0', 24, false);
     muzzleFlash.animation.addByPrefix('shoot3', 'shoot forward0', 24, false);

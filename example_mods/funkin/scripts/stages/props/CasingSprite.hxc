@@ -16,7 +16,7 @@ class CasingSprite extends FunkinSprite
 
     zIndex = 1900;
 
-    loadSparrow('PicoBullet');
+    loadSparrow('weekend1/PicoBullet');
 
     // Active needs to be true to enable updates.
     // This includes velocity/acceleration and frame animations.

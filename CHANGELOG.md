@@ -8,8 +8,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.0] - 2025-10-17
 
+### Fixed
+
+- [FUNKIN] Missing Assets
+- [FUNKIN] (Potential?) Crashes when trying to look for assets in library folders
+- Crash when trying to look for Abot assets in the non-shared folder
+
 ### Removed
 
+- Abot from base engine assets (moved to `funkin` mod)
 - Merch Mainmenu Button
 - [MOBILE] Upgrade Mainmenu Button
 - [MOBILE] Ads
@@ -18,6 +25,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Freeplay OST Text will become blank for the random capsule
+- Freeplay OST Text will change to "UNOFFICIAL OST" for songs outside of the base game weeks
+- Freeplay Character Select Hint X Position (shifted over to the left)
 - Git info is included
 - `-indev` is added to the version string (pre-git info) instead of a suffix
 - It is now easier to add Preferences

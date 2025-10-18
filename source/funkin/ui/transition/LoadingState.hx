@@ -308,7 +308,7 @@ class LoadingState extends MusicBeatSubState
           "Lightning1",
           "Lightning2",
           "Lightning3",
-          "Pico_Bonk",
+          "Pico_Bonk", // ha
           "Shoot_1",
           "shot1",
           "shot2",
@@ -320,7 +320,7 @@ class LoadingState extends MusicBeatSubState
         {
           trace('Queueing $sprite to preload.');
           // new Future<String>(function() {
-          var path = Paths.image(sprite, "weekend1");
+          var path = Paths.image('weekend1/' + sprite);
           funkin.FunkinMemory.cacheTexture(path);
           // Another dumb hack: FlxAnimate fetches from OpenFL's BitmapData cache directly and skips the FlxGraphic cache.
           // Since FlxGraphic tells OpenFL to not cache it, we have to do it manually.
@@ -337,7 +337,7 @@ class LoadingState extends MusicBeatSubState
         {
           trace('Queueing $sound to preload.');
           new Future<String>(function() {
-            var path = Paths.sound(sound, "weekend1");
+            var path = Paths.sound(sound);
             funkin.FunkinMemory.cacheSound(path);
             return '${path} successfuly loaded.';
           }, true);

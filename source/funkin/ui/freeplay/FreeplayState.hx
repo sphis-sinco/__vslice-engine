@@ -324,7 +324,7 @@ class FreeplayState extends MusicBeatSubState
     txtCompletion = new AtlasText(FlxG.width - (FullScreenScaleMode.gameNotchSize.x + 95), 87, '69', AtlasFont.FREEPLAY_CLEAR);
 
     ostName = new FlxText(8 - FullScreenScaleMode.gameNotchSize.x, 8, FlxG.width - 8 - 8, 'OFFICIAL OST', 48);
-    charSelectHint = new FlxText(-40, 18, FlxG.width - 8 - 8, 'Press [ LOL ] to change characters', 32);
+    charSelectHint = new FlxText(-25, 18, FlxG.width - 8 - 8, 'Press [ LOL ] to change characters', 32);
 
     backingImage = FunkinSprite.create(backingCard.pinkBack.width * 0.74, 0, styleData == null ? 'freeplay/freeplayBGweek1-bf' : styleData.getBgAssetKey());
 
@@ -1580,11 +1580,17 @@ class FreeplayState extends MusicBeatSubState
 
   var backTransitioning:Bool = false;
 
+  @:nullSafety(Off)
   override function update(elapsed:Float):Void
   {
     super.update(elapsed);
 
     Conductor.instance.update(FlxG.sound?.music?.time ?? 0.0);
+
+    if (LevelRegistry.instance.listBaseGameEntryIds().contains(currentCapsule?.freeplayData?.levelId)) ostName.text = "OFFICIAL OST";
+    else if (currentCapsule.songText.text.toLowerCase() == 'random') ostName.text = "";
+    else
+      ostName.text = "UNOFFICIAL OST";
 
     #if FEATURE_TOUCH_CONTROLS
     if (backButton != null && !backTransitioning)
@@ -1597,14 +1603,12 @@ class FreeplayState extends MusicBeatSubState
       backButton.enabled = controls.active;
     }
     #end
-
     if (charSelectHint != null)
     {
       hintTimer += elapsed * 2;
       var targetAmt:Float = (Math.sin(hintTimer) + 1) / 2;
       charSelectHint.alpha = FlxMath.lerp(0.3, 0.9, targetAmt);
     }
-
     #if FEATURE_DEBUG_FUNCTIONS
     if (FlxG.keys.justPressed.P)
     {
@@ -1615,7 +1619,6 @@ class FreeplayState extends MusicBeatSubState
           }
         }));
     }
-
     if (FlxG.keys.justPressed.T)
     {
       rankAnimStart(fromResultsParams ??
@@ -1627,24 +1630,18 @@ class FreeplayState extends MusicBeatSubState
         }, currentCapsule);
     }
     #end // ^<-- FEATURE_DEBUG_FUNCTIONS
-
     if ((controls.FREEPLAY_CHAR_SELECT #if FEATURE_TOUCH_CONTROLS
       || (TouchUtil.pressAction(djHitbox, funnyCam, false) && !SwipeUtil.swipeAny) #end)
       && controls.active)
     {
       tryOpenCharSelect();
     }
-
     if (controls.FREEPLAY_FAVORITE && controls.active) favoriteSong();
     if (controls.FREEPLAY_JUMP_TO_TOP && controls.active) changeSelection(-curSelected);
     if (controls.FREEPLAY_JUMP_TO_BOTTOM && controls.active) changeSelection(grpCapsules.countLiving() - curSelected - 1);
-
     lerpScoreDisplays();
-
     handleInputs(elapsed);
-
     if (dj != null) FlxG.watch.addQuick('dj-anim', dj.getCurrentAnimation());
-
     // If the allowPicoBulletsVibration is true, trigger vibration each update (for pico shooting bullets animation).
     if (allowPicoBulletsVibration) HapticUtil.vibrate(0, 0.01, (Constants.MAX_VIBRATION_AMPLITUDE / 3) * 2.5);
   }
@@ -3001,8 +2998,7 @@ class FreeplayState extends MusicBeatSubState
 
 /**
  * The difficulty selector arrows to the left and right of the difficulty.
- */
-@:nullSafety
+ */ @:nullSafety
 class DifficultySelector extends FlxSprite
 {
   var controls:Controls;

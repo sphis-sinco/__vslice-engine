@@ -17,7 +17,7 @@ class PicoDopplegangerSprite extends FlxAtlasSprite
 
   public function new(x:Float, y:Float)
   {
-    super(x, y, Paths.animateAtlas("philly/erect/pico_doppleganger", "week3"),
+    super(x, y, Paths.animateAtlas("week3/philly/erect/pico_doppleganger"),
       {
         FrameRate: 24.0,
         Reversed: false,

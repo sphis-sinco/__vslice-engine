@@ -17,7 +17,7 @@ class PicoBloodPool extends FlxAtlasSprite
   public function new(x:Float, y:Float)
   {
     // Use bloodPool as the path since the animation isn't implemented in-game atm.
-    super(x, y, Paths.animateAtlas("philly/erect/bloodPool", "week3"),
+    super(x, y, Paths.animateAtlas("week3/philly/erect/bloodPool"),
       {
         FrameRate: 24.0,
         Reversed: false,
