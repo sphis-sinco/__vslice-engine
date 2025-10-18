@@ -4,6 +4,10 @@ Mod API Version: `0.3.0`
 This version is the first showcase of the new changelog format
 that will most likely change as we go.
 
+## Constants
+
+- `PRELOADER_MIN_STAGE_TIME` has been changed to 0.0
+
 ## Gameplay
 
 ## Unlocks
