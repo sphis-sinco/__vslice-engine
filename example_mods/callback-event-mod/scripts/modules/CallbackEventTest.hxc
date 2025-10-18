@@ -8,6 +8,7 @@ import funkin.modding.events.callbacks.CallbackScriptEvent;
 import funkin.ui.title.TitleState;
 import funkin.ui.mainmenu.MainMenuState;
 import funkin.ui.story.StoryMenuState;
+import funkin.ui.freeplay.FreeplayState;
 
 import funkin.util.ReflectUtil;
 
@@ -15,6 +16,7 @@ class CallbackEventTest extends Module
 {
   var randomTestingEvent = new CallbackEvent('random-testing-event');
   var anotherRandomTestingEvent = new CallbackEvent('another-random-testing-event');
+  var freeplayTestingEvent = new CallbackEvent('freeplay-testing-event');
 
   override public function new()
   {
@@ -34,6 +36,13 @@ class CallbackEventTest extends Module
     anotherRandomTestingEvent.onCreate = function(eventdata:CallbackEventData) {
         trace('Hi in '+eventdata.id);
     }
+
+    freeplayTestingEvent.onUpdate = function(eventdata:CallbackEventData) {
+      if (eventdata.id == "freeplaystate")
+      {
+        eventdata.data.ostName.text = FlxG.random.int();
+      }
+    }
   }
 
   override public function onStateChangeEnd(event:StateChangeScriptEvent)
@@ -49,6 +58,12 @@ class CallbackEventTest extends Module
 
     if (StoryMenuState.callbackEventHolder != null)
       StoryMenuState.callbackEventHolder.addCallbackEvent(anotherRandomTestingEvent);
+
+    if (FreeplayState.callbackEventHolder != null)
+    {
+      FreeplayState.callbackEventHolder.addCallbackEvent(anotherRandomTestingEvent);
+      FreeplayState.callbackEventHolder.addCallbackEvent(freeplayTestingEvent);
+    }
   }
 
   override public function onCallbackEvent(event:CallbackScriptEvent)
