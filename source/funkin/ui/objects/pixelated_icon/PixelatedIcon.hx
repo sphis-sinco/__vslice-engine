@@ -27,21 +27,21 @@ class PixelatedIcon extends FlxFilteredSprite
     var PID_Path = Paths.json('ui/pixelated_icons/' + char);
 
     final charIDParts:Array<String> = char.split("-");
-    var pixelIconName:String = "";
+    var pixelIconName:String = Paths.json('ui/pixelated_icons/').replace('.json', '');
     var lastValidPixelIconName:String = "";
     for (i in 0...charIDParts.length)
     {
-      pixelIconName += Paths.json('ui/pixelated_icons/' + charIDParts[i]);
+      pixelIconName += charIDParts[i];
 
-      if (Assets.exists(PID_Path))
+      if (Assets.exists(pixelIconName + '.json'))
       {
-        lastValidPixelIconName = pixelIconName;
+        lastValidPixelIconName = pixelIconName + '.json';
       }
 
       if (i < charIDParts.length - 1) pixelIconName += '-';
     }
 
-    PID_Path = lastValidPixelIconName;
+    PID_Path = lastValidPixelIconName + '.json';
 
     if (Assets.exists(PID_Path)) pixelatedIconData = haxe.Json.parse(Assets.getText(PID_Path));
     final IPS = pixelatedIconData.iconPathSuffix ?? 'pixel';
