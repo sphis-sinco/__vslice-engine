@@ -25,6 +25,20 @@ class PlayerData
   public var ownedChars:Array<String> = [];
 
   /**
+   * Text displayed in the PauseSubState for deaths when there is only 1 death
+   */
+  @:optional
+  @:default("Blue Ball")
+  var pauseDeathNameSingle:String;
+
+  /**
+   * Text displayed in the PauseSubState for deaths when there is not only 1 death
+   */
+  @:optional
+  @:default("Blue Balls")
+  var pauseDeathNameMultiple:String;
+
+  /**
    * Whether to show songs with character IDs that aren't associated with any specific character.
    */
   @:optional
