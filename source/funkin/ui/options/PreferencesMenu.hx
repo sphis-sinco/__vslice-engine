@@ -123,6 +123,7 @@ class PreferencesMenu extends Page<OptionsState.OptionsMenuPageName>
    */
   function createPrefItems():Void
   {
+    createCategory('Gameplay', 'Settings related to Gameplay');
     #if FEATURE_NAUGHTYNESS
     createPrefItemCheckbox('Naughtyness', 'If enabled, raunchy content (such as swearing, etc.) will be displayed.', function(value:Bool):Void {
       Preferences.naughtyness = value;
@@ -161,6 +162,8 @@ class PreferencesMenu extends Page<OptionsState.OptionsMenuPageName>
       Preferences.zoomCamera = value;
     }, Preferences.zoomCamera);
     #if !mobile
+    createCategory('Debug', 'Debug settings');
+
     createPrefItemEnum('Debug Display', 'If enabled, FPS and other debug stats will be displayed.', [
       "Advanced" => DebugDisplayMode.ADVANCED,
       "Simple" => DebugDisplayMode.SIMPLE,
@@ -176,6 +179,9 @@ class PreferencesMenu extends Page<OptionsState.OptionsMenuPageName>
     createPrefItemPercentage('Debug Display BG', "Change debug display's background opacity", function(value:Int):Void {
       Preferences.debugDisplayBGOpacity = value;
     }, Preferences.debugDisplayBGOpacity);
+
+    createCategory('Window', 'Settings related to the game window');
+
     createPrefItemCheckbox('Pause on Unfocus', 'If enabled, game automatically pauses when it loses focus.', function(value:Bool):Void {
       Preferences.autoPause = value;
     }, Preferences.autoPause);
@@ -184,6 +190,7 @@ class PreferencesMenu extends Page<OptionsState.OptionsMenuPageName>
     }, Preferences.autoFullscreen);
     #end
 
+    createCategory('Framerate', 'Settings related to Framerate');
     #if web
     createPrefItemCheckbox('Unlocked Framerate', 'If enabled, the framerate will be unlocked.', function(value:Bool):Void {
       Preferences.unlockedFramerate = value;
@@ -214,6 +221,7 @@ class PreferencesMenu extends Page<OptionsState.OptionsMenuPageName>
     #end
 
     #if FEATURE_SCREENSHOTS
+    createCategory('Screenshots', 'Settings related to Screenshots');
     createPrefItemCheckbox('Hide Mouse', 'If enabled, the mouse will be hidden when taking a screenshot.', function(value:Bool):Void {
       Preferences.shouldHideMouse = value;
     }, Preferences.shouldHideMouse);
@@ -229,6 +237,9 @@ class PreferencesMenu extends Page<OptionsState.OptionsMenuPageName>
   override function update(elapsed:Float):Void
   {
     super.update(elapsed);
+
+    itemDescBox.setGraphicSize(Std.int(itemDesc.width + 20), Std.int(itemDesc.height + 25));
+    itemDescBox.updateHitbox();
 
     // Positions the camera to the selected item.
     if (items != null) camFollow.y = items.selectedItem.y;
@@ -268,6 +279,20 @@ class PreferencesMenu extends Page<OptionsState.OptionsMenuPageName>
 
   // - Preference item creation methods -
   // Should be moved into a separate PreferenceItems class but you can't access PreferencesMenu.items and PreferencesMenu.preferenceItems from outside.
+
+  /**
+   * Add an item to the page that purely is there to tell you:
+   * You're in a new category of Preferences
+   *
+   * @param categoryName The category name, used as the item text and as a fallback variable when `categoryDescription` is null
+   * @param categoryDescription The category description, if null changes to "Category $`categoryName`"
+   * otherwise a description of the current category
+   */
+  public function createCategory(categoryName:String, ?categoryDescription:String):Void
+  {
+    items.createItem(0, (120 * items.length) + 30, categoryName, AtlasFont.BOLD, null, false, true);
+    preferenceDesc.push(categoryDescription ?? 'Category: $categoryName');
+  }
 
   /**
    * Creates a pref item that works with booleans

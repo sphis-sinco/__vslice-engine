@@ -24,6 +24,7 @@ But you can see small previews of the new format (kinda) in this changelog.
 
 ### Changed
 
+- The `PreferencesMenu` `itemDescBox` object changes height depending on the height of the description text always instead of just on the start
 - `funkin.ui.PixelatedIcon` has been moved to `funkin.ui.objects.pixelated_icon.PixelatedIcon`
   - Backwards Compatability for this change has been added and `funkin.ui.objects.pixelated_icon.PixelatedIcon` is an import alias for `funkin.ui.PixelatedIcon`
 - `FreeplaySongData` has been split from `FreeplayState`
@@ -44,6 +45,8 @@ But you can see small previews of the new format (kinda) in this changelog.
 
 ### Added
 
+- `PreferencesMenu` Categories
+  - `PreferencesMenu` `createCategory(categoryName:String, ?categoryDescription:String)` function
 - `funkin.ui.objects.pixelated_icons.PixelatedIconData` typedef
   - `assets/data/ui/pixelated_icons/**.json` will be a valid path for `PixelatedIconData` JSONS
   - `PixelatedIconData` JSON files have modifyable 3 fields
