@@ -47,6 +47,9 @@ But you can see small previews of the new format (kinda) in this changelog.
 - `funkin.ui.objects.pixelated_icons.PixelatedIconData` typedef
   - `assets/data/ui/pixelated_icons/**.json` will be a valid path for `PixelatedIconData` JSONS
   - `PixelatedIconData` JSON files have modifyable 3 fields
+    - `iconPathPrefix` (Optional, Default: `freeplay/icons/`) - This is to change the image folder where the pixelated icon is found
+    - `iconPathSuffix` (Optional, Default: `pixel`) - This is to change the pixelated icon suffix, probably to remove the `pixel` part at the end
+    - `animated` (Optional, Default: `false`) - This is the new controller for if a pixelated icon is animated
     - `origin` (Optional, Default: `[100.0 , 0.0]`) - This is to change the origin.x and origin.y values, most likely for bigger icons
     - `scale` (Optional, Default: `2.0`) - This is to change the icon scale for VERY big icons
     - `additionalAnimations` (Optional, Default: `[]`) - Additional animations to add ontop of the base animations

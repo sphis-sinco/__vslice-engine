@@ -8,6 +8,29 @@ import funkin.data.animation.AnimationData;
 typedef PixelatedIconData =
 {
   /**
+   * This is to change the image folder where the pixelated icon is found
+   */
+  @:optional
+  @:default('freeplay/icons/')
+  var iconPathPrefix:Null<String>;
+
+  /**
+   * This is to change the pixelated icon suffix,
+   * probably to remove the `pixel` part at the end
+   */
+  @:optional
+  @:default('pixel')
+  var iconPathSuffix:Null<String>;
+
+  /**
+   * This is the new controller for if a pixelated icon is animated,
+   * rather then looking for an xml
+   */
+  @:optional
+  @:default(false)
+  var animated:Null<Bool>;
+
+  /**
    * This is to change the origin.x and origin.y values,
    * most likely for bigger icons
    */

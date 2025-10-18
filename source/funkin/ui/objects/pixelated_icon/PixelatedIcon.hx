@@ -17,9 +17,15 @@ class PixelatedIcon extends FlxFilteredSprite
     this.active = false;
   }
 
+  /**
+   * This will change the icon displayed
+   * @param char the character ID you are searching for
+   */
   public function setCharacter(char:String):Void
   {
-    var charPath:String = "freeplay/icons/";
+    final PID:PixelatedIconData = cast Json.parse(Assets.getText(Paths.json('ui/pixelated_icons/' + char)));
+
+    var charPath:String = PID?.iconPathPrefix ?? 'freeplay/icons/';
 
     final charIDParts:Array<String> = char.split("-");
     var iconName:String = "";
@@ -28,7 +34,7 @@ class PixelatedIcon extends FlxFilteredSprite
     {
       iconName += charIDParts[i];
 
-      if (Assets.exists(Paths.image(charPath + '${iconName}pixel')))
+      if (Assets.exists(Paths.image(charPath + '${iconName}${PID?.iconPathSuffix ?? 'pixel'}')))
       {
         lastValidIconName = iconName;
       }
@@ -36,7 +42,7 @@ class PixelatedIcon extends FlxFilteredSprite
       if (i < charIDParts.length - 1) iconName += '-';
     }
 
-    charPath += '${lastValidIconName}pixel';
+    charPath += '${lastValidIconName}${PID?.iconPathSuffix ?? 'pixel'}';
 
     if (!Assets.exists(Paths.image(charPath)))
     {
@@ -49,40 +55,34 @@ class PixelatedIcon extends FlxFilteredSprite
       this.visible = true;
     }
 
-    var isAnimated = Assets.exists(Paths.file('images/$charPath.xml'));
+    var isAnimated = PID?.animated ?? false;
 
-    if (isAnimated)
-    {
-      this.frames = Paths.getSparrowAtlas(charPath);
-    }
+    if (isAnimated) this.frames = Paths.getSparrowAtlas(charPath);
     else
-    {
       this.loadGraphic(Paths.image(charPath));
-    }
 
-    this.scale.x = this.scale.y = 2;
+    this.scale.x = this.scale.y = PID?.scale ?? 2;
 
-    switch (char)
+    this.origin.x = PID?.origin[0] ?? 100;
+    this.origin.y = PID?.origin[1] ?? 0;
+  }
+
+  if (isAnimated)
+  {
+    this.active = true;
+    this.animation.addByPrefix('idle', 'idle0', 10, true);
+    this.animation.addByPrefix('confirm', 'confirm0', 10, false);
+    this.animation.addByPrefix('confirm-hold', 'confirm-hold0', 10, true);
+    for (anim in PID?.additionalAnimations ?? [])
     {
-      case 'parents-christmas':
-        this.origin.x = 140;
-      default:
-        this.origin.x = 100;
+      if (anim.assetPath == null) this.animation.addByPrefix(anim.name, anim.prefix, anim?.fps ?? 10, anim?.looped ?? false);
+      else
+        trace('PixelatedIcon does not support Multi-sparrow, you will have to merge animation: ${anim.name} into ${char}\'s icon')
     }
-
-    if (isAnimated)
-    {
-      this.active = true;
-      this.animation.addByPrefix('idle', 'idle0', 10, true);
-      this.animation.addByPrefix('confirm', 'confirm0', 10, false);
-      this.animation.addByPrefix('confirm-hold', 'confirm-hold0', 10, true);
-
-      this.animation.onFinish.add(function(name:String):Void {
-        trace('Finish pixel animation: ${name}');
-        if (name == 'confirm') this.animation.play('confirm-hold');
-      });
-
-      this.animation.play('idle');
-    }
+    this.animation.onFinish.add(function(name:String):Void {
+      trace('Finish pixel animation: ${name}');
+      if (this.animation._animations.contains(name + '-hold')) this.animation.play(name + '-hold');
+    });
+    this.animation.play('idle');
   }
 }
