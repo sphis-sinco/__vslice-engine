@@ -244,7 +244,7 @@ class TitleState extends MusicBeatState
 
     if (Assets.exists(Paths.json('introText/introText')))
     {
-      var jsonText:IntroTextData = Json.parse(Assets.getText(Paths.json('introText/introText')));
+      var jsonText:IntroTextData = haxe.Json.parse(Assets.getText(Paths.json('introText/introText')));
       for (entry in jsonText)
       {
         if (Preferences.naughtyness
