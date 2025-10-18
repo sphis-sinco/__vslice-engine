@@ -1,6 +1,6 @@
 # Friday Night Funkin (V-Slice Engine)
 
-## [0.2.0] - 2025-10-17
+## [0.2.0] - 2025-10-18
 Mod API Version: `0.2.0`
 
 The changelog format will change after this version.
