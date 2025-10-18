@@ -23,7 +23,7 @@ class PixelatedIcon extends FlxFilteredSprite
    */
   public function setCharacter(char:String):Void
   {
-    final pixelatedIconData:PixelatedIconData = cast haxe.Json.parse(Assets.getText(Paths.json('ui/pixelated_icons/' + char)));
+    final pixelatedIconData:PixelatedIconData = haxe.Json.parse(Assets.getText(Paths.json('ui/pixelated_icons/' + char)));
     final IPS = pixelatedIconData.iconPathSuffix ?? 'pixel';
 
     var charPath:String = pixelatedIconData.iconPathPrefix ?? 'freeplay/icons/';
