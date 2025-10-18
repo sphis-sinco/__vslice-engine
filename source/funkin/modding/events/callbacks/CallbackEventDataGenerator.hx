@@ -49,8 +49,12 @@ class CallbackEventDataGenerator
   {
     return {
       state: musicBeatState,
+
       leftWatermarkText: musicBeatState.leftWatermarkText,
-      rightWatermarkText: musicBeatState.rightWatermarkText
+      rightWatermarkText: musicBeatState.rightWatermarkText,
+
+      curBeat: musicBeatState.conductorInUse.currentBeat,
+      curStep: musicBeatState.conductorInUse.currentStep,
     }
   }
 
@@ -63,8 +67,12 @@ class CallbackEventDataGenerator
   {
     return {
       subState: musicBeatSubState,
+
       leftWatermarkText: musicBeatSubState.leftWatermarkText,
-      rightWatermarkText: musicBeatSubState.rightWatermarkText
+      rightWatermarkText: musicBeatSubState.rightWatermarkText,
+
+      curBeat: musicBeatSubState.conductorInUse.currentBeat,
+      curStep: musicBeatSubState.conductorInUse.currentStep,
     }
   }
 }
