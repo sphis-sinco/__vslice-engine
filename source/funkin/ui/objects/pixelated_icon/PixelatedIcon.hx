@@ -24,6 +24,7 @@ class PixelatedIcon extends FlxFilteredSprite
   public function setCharacter(char:String):Void
   {
     final pixelatedIconData:PixelatedIconData = cast haxe.Json.parse(Assets.getText(Paths.json('ui/pixelated_icons/' + char)));
+    final IPS = pixelatedIconData.iconPathSuffix ?? 'pixel';
 
     var charPath:String = pixelatedIconData.iconPathPrefix ?? 'freeplay/icons/';
 
@@ -34,7 +35,7 @@ class PixelatedIcon extends FlxFilteredSprite
     {
       iconName += charIDParts[i];
 
-      if (Assets.exists(Paths.image(charPath + '${iconName}${pixelatedIconData.iconPathSuffix ?? 'pixel'}')))
+      if (Assets.exists(Paths.image(charPath + '${iconName}${IPS}')))
       {
         lastValidIconName = iconName;
       }
@@ -42,7 +43,7 @@ class PixelatedIcon extends FlxFilteredSprite
       if (i < charIDParts.length - 1) iconName += '-';
     }
 
-    charPath += '${lastValidIconName}${pixelatedIconData.iconPathSuffix ?? 'pixel'}';
+    charPath += '${lastValidIconName}${IPS}';
 
     if (!Assets.exists(Paths.image(charPath)))
     {
@@ -61,14 +62,14 @@ class PixelatedIcon extends FlxFilteredSprite
     else
       this.loadGraphic(Paths.image(charPath));
 
-    this.scale.x = this.scale.y = pixelatedIconData.scale ?? 2;
+    var newScale = pixelatedIconData.scale ?? 2;
 
-    try
-    {
-      this.origin.x = pixelatedIconData.origin[0] ?? 100;
-      this.origin.y = pixelatedIconData.origin[1] ?? 0;
-    }
-    catch (e) {}
+    this.scale.x = this.scale.y = newScale;
+
+    var newOrigin = pixelatedIconData.origin ?? [100, 0];
+
+    this.origin.x = newOrigin[0];
+    this.origin.y = newOrigin[1];
 
     if (isAnimated)
     {
