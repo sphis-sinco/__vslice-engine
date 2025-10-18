@@ -42,19 +42,24 @@ that will most likely change as we go.
   - `addMoreText`
   - `createCoolText`
 
-- Added 12 unique intro texts for V-Slice Engine:
+- Added 17 unique intro texts for V-Slice Engine:
   - `jsons--we love em`
   - `lua scripting--no`
-  - `haxe code--hell yeah`
-  - `mobile ads--ass`
+  - `haxe code--hell yeah` - naughtyness only
+  - `haxe code--yeah` - safe only
+  - `mobile ads--ass` - naughtyness only
+  - `mobile ads--garbage` - safe only
   - `vslice engine--made with the vslice engine`
-  - `alan--we are so fucked`
+  - `alan--we are so fucked` - naughtyness only
+  - `alan--we are so done` - safe only
   - `alan--becker`
-  - `go pico--fuck yeah`
+  - `go pico--fuck yeah` - naughtyness only
+  - `go pico--yeah yeah` - safe only
   - `go pico--oh`
   - `fan--made`
   - `sinco--you mean cinco right`
-  - `what the fuck--is a sphis`
+  - `what the fuck--is a sphis` - naughtyness only
+  - `what--is a sphis` - safe only
 
 - [FUNKIN] Moved base game intro texts to the `funkin` mod
 

@@ -38,6 +38,8 @@ import funkin.util.TouchUtil;
 import funkin.util.SwipeUtil;
 #end
 import funkin.modding.events.callbacks.*;
+import funkin.data.title.IntroTextData;
+import funkin.data.title.IntroTextDataEntry;
 
 class TitleState extends MusicBeatState
 {
@@ -238,6 +240,18 @@ class TitleState extends MusicBeatState
     for (i in firstArray)
     {
       swagGoodArray.push(i.split('--'));
+    }
+
+    if (Assets.exists(Paths.json('introText/introText')))
+    {
+      var jsonText:IntroTextData = Json.parse(Assets.getText(Paths.json('introText/introText')));
+      for (entry in jsonText)
+      {
+        if (Preferences.naughtyness
+          && (entry.filter == 'naughty' || entry.filter == 'both')) swagGoodArray.push([entry.firstText, entry.secondText]);
+        if (!Preferences.naughtyness
+          && (entry.filter == 'safe' || entry.filter == 'both')) swagGoodArray.push([entry.firstText, entry.secondText]);
+      }
     }
 
     return swagGoodArray;

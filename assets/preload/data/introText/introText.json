@@ -1,0 +1,64 @@
+{
+    "texts": [
+        {
+            "firstText": "go pico",
+            "secondText": "fuck yeah",
+            "filter": "naughty"
+        },
+        {
+            "firstText": "haxe code",
+            "secondText": "hell yeah",
+
+            "filter": "naughty"
+        },
+        {
+            "firstText": "mobile ads",
+            "secondText": "ass",
+
+            "filter": "naughty"
+        },
+        {
+            "firstText": "alan",
+            "secondText": "we are so fucked",
+
+            "filter": "naughty"
+        },
+        {
+            "firstText": "what the fuck",
+            "secondText": "is a sphis",
+
+            "filter": "naughty"
+        },
+
+        {
+            "firstText": "go pico",
+            "secondText": "yeah yeah",
+
+            "filter": "safe"
+        },
+        {
+            "firstText": "haxe code",
+            "secondText": "yeah",
+
+            "filter": "safe"
+        },
+        {
+            "firstText": "mobile ads",
+            "secondText": "garbaged",
+
+            "filter": "safe"
+        },
+        {
+            "firstText": "alan",
+            "secondText": "we are so done",
+
+            "filter": "safe"
+        },
+        {
+            "firstText": "what",
+            "secondText": "is a sphis",
+
+            "filter": "safe"
+        }
+    ]
+}
