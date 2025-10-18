@@ -11,7 +11,7 @@ class CallbackEventHolder<T>
   {
     callbackEvents = [];
 
-    ModuleHandler.callEvent(new CallbackScriptEvent(3, null));
+    ModuleHandler.callEvent(new CallbackScriptEvent<T>(3, null));
   }
 
   /**
@@ -29,7 +29,7 @@ class CallbackEventHolder<T>
     callbackEvents.push(event);
 
     event.onInit();
-    ModuleHandler.callEvent(new CallbackScriptEvent(0, event));
+    ModuleHandler.callEvent(new CallbackScriptEvent<T>(0, event));
   }
 
   /**
@@ -41,7 +41,7 @@ class CallbackEventHolder<T>
     for (event in callbackEvents)
     {
       event.onCreate(state);
-      ModuleHandler.callEvent(new CallbackScriptEvent(1, event));
+      ModuleHandler.callEvent(new CallbackScriptEvent<T>(1, event));
     }
   }
 
@@ -55,7 +55,7 @@ class CallbackEventHolder<T>
     for (event in callbackEvents)
     {
       event.onUpdate(state, elapsed);
-      ModuleHandler.callEvent(new CallbackScriptEvent(2, event));
+      ModuleHandler.callEvent(new CallbackScriptEvent<T>(2, event));
     }
   }
 }
