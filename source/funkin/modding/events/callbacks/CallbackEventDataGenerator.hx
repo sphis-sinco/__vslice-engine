@@ -6,6 +6,28 @@ package funkin.modding.events.callbacks;
 class CallbackEventDataGenerator
 {
   /**
+   * Generates event data for `funkin.ui.credits.CreditsState`
+   * @param credits `funkin.ui.credits.CreditsState` class
+   * @return Dynamic
+   */
+  public static function generateCreditsStateData(credits:funkin.ui.credits.CreditsState):Dynamic
+  {
+    return {
+      credits: credits,
+
+      leftWatermarkText: credits.leftWatermarkText,
+      rightWatermarkText: credits.rightWatermarkText,
+
+      curBeat: credits.conductorInUse.currentBeat,
+      curStep: credits.conductorInUse.currentStep,
+
+      entriesToBuild: credits.entriesToBuild,
+
+      scrollPaused: credits.scrollPaused,
+    }
+  }
+
+  /**
    * Generates event data for `funkin.ui.freeplay.FreeplayState`
    * @param freeplay `funkin.ui.freeplay.FreeplayState` class
    * @return Dynamic

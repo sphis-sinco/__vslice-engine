@@ -82,12 +82,12 @@ class CreditsState extends MusicBeatState
   /**
    * The actual sprites and text used to display the credits.
    */
-  var creditsGroup:FlxSpriteGroup;
+  public var creditsGroup:FlxSpriteGroup;
 
-  var scrollPaused:Bool = false;
+  public var scrollPaused:Bool = false;
 
-  var backersToBuild:Array<String>;
-  var entriesToBuild:Array<CreditsEntry>;
+  public var backersToBuild:Array<String>;
+  public var entriesToBuild:Array<CreditsEntry>;
 
   public function new()
   {
@@ -165,7 +165,7 @@ class CreditsState extends MusicBeatState
     #end
 
     new FlxTimer().start(.01,
-      _ -> callbackEventHolder.onCreate(new CallbackEventData('creditsstate', CallbackEventDataGenerator.generateMusicbeatStateData(this))));
+      _ -> callbackEventHolder.onCreate(new CallbackEventData('creditsstate', CallbackEventDataGenerator.generateCreditsStateData(this))));
   }
 
   var creditsLineY:Float = 0;
@@ -301,7 +301,7 @@ class CreditsState extends MusicBeatState
       exit();
     }
 
-    var updateData = CallbackEventDataGenerator.generateMusicbeatStateData(this);
+    var updateData = CallbackEventDataGenerator.generateCreditsStateData(this);
     updateData.elapsed = elapsed;
     callbackEventHolder.onUpdate(new CallbackEventData('creditsstate', updateData));
   }

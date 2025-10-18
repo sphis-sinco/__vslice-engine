@@ -4,6 +4,14 @@ Mod API Version: `0.3.0`
 This version is the first showcase of the new changelog format
 that will most likely change as we go.
 
+## Credits
+
+- The following variables are now public:
+  - `creditsGroup`
+  - `scrollPaused`
+  - `backersToBuild`
+  - `entriesToBuild`
+
 ## Title Screen
 
 ### Intro Texts
@@ -61,6 +69,15 @@ that will most likely change as we go.
 
 - Added `funkin.modding.events.callbacks.CallbackEventDataGenerator` - `CallbackEventData` data generator for different classes
   - Functions:
+    - `generateCreditsStateData(credits:CreditsState)` - Generates event data for `funkin.ui.credits.CreditsState`
+      - `credits`
+      - `leftWatermarkText`
+      - `rightWatermarkText`
+      - `curBeat`
+      - `curStep`
+      - `entriesToBuild`
+      - `scrollPaused`
+
     - `generateFreeplayData(freeplay:FreeplayState)` - Generates event data for `funkin.ui.freeplay.FreeplayState`
       - `subState`
       - `songs`
