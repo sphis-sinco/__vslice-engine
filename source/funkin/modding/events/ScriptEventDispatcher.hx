@@ -55,7 +55,7 @@ class ScriptEventDispatcher
       switch (event.type)
       {
         case CALLBACKSCRIPTHOLDER_NEW, CALLBACKSCRIPTEVENT_INIT, CALLBACKSCRIPTEVENT_CREATE, CALLBACKSCRIPTEVENT_UPDATE:
-          t.onCallbackEvent(event);
+          t.onCallbackEvent(cast event);
           return;
         default: // Continue;
       }
