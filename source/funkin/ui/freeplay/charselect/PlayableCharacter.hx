@@ -37,8 +37,8 @@ class PlayableCharacter implements IRegistryEntry<PlayerData>
   {
     trace('Getting PDN($deaths)');
     if (deaths == 1) return _data?.pauseDeathNameSingle ?? "Blue Ball";
-    else
-      return _data?.pauseDeathNameMultiple ?? "Blue Balls";
+
+    return _data?.pauseDeathNameMultiple ?? "Blue Balls";
   }
 
   /**

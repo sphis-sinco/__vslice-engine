@@ -29,14 +29,14 @@ class PlayerData
    */
   @:optional
   @:default("Blue Ball")
-  public var pauseDeathNameSingle:String = "Blue Ball";
+  public var pauseDeathNameSingle:Null<String>;
 
   /**
    * Text displayed in the PauseSubState for deaths when there is not only 1 death
    */
   @:optional
   @:default("Blue Balls")
-  public var pauseDeathNameMultiple:String = "Blue Balls";
+  public var pauseDeathNameMultiple:Null<String>;
 
   /**
    * Whether to show songs with character IDs that aren't associated with any specific character.
