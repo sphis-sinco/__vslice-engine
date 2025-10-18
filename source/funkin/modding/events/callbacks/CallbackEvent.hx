@@ -19,4 +19,6 @@ class CallbackEvent<T>
    * Called when `update` is done (For the state)
    */
   public var onUpdate:(state:T, elapsed:Float) -> Void;
+
+  public function new() {}
 }

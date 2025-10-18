@@ -8,6 +8,24 @@ class CallbackEventManager<T>
   public function new()
   {
     callbackEvents = [];
+
+    var scriptedCENames:Array<String> = ScriptedCallbackEvent.listScriptClasses();
+    trace('  Instantiating ${scriptedCENames.length} callback events...');
+    for (scriptedCE in scriptedCENames)
+    {
+      var newEvent = ScriptedCallbackEvent.init(scriptedCE, scriptedCE);
+
+      if (newEvent != null)
+      {
+        trace('    Loaded callback event: ${scriptedCE}');
+
+        addCallbackEvent(newEvent);
+      }
+      else
+      {
+        trace('    Failed to instantiate callback event: ${scriptedCE}');
+      }
+    }
   }
 
   /**
