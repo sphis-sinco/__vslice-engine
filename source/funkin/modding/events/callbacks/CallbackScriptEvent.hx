@@ -1,6 +1,6 @@
 package funkin.modding.events.callbacks;
 
-class CallbackScriptEvent extends ScriptEvent
+class CallbackScriptEvent<Any> extends ScriptEvent
 {
   public var callbackEventHolder:CallbackEventHolder<Any>;
 
