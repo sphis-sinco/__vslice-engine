@@ -7,24 +7,28 @@ import funkin.util.ReflectUtil;
 
 class CallbackEventTest extends Module
 {
+  var randomTestingEvent = new CallbackEvent('random-testing-event');
+
   override public function new()
   {
     super('ce-test');
+
+    randomTestingEvent.onInit = function() {
+      trace('Hi');
+    }
+    randomTestingEvent.onCreate = function(data:Dynamic) {
+      trace('Hi in title state createa with data: '+data);
+    }
+    randomTestingEvent.onUpdate = function(data:Dynamic) {
+      // trace('Hi in title state update with data: '+data);
+    }
   }
 
   override public function onStateChangeEnd(event:StateChangeScriptEvent)
   {
     if (TitleState.callbackEventHolder != null)
     {
-      var randomEvent = new CallbackEvent();
-      randomEvent.onInit = function() {
-        trace('Hi');
-      }
-      randomEvent.onCreate = function(data:Dynamic) {
-        trace('Hi in title state with data: '+data);
-      }
-
-      TitleState.callbackEventHolder.addCallbackEvent(randomEvent);
+      TitleState.callbackEventHolder.addCallbackEvent(randomTestingEvent);
     }
   }
 
