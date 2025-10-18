@@ -1,5 +1,6 @@
 package funkin.modding.module;
 
+import funkin.modding.IScriptedClass.ICallbackEventClass;
 import funkin.modding.IScriptedClass.IPlayStateScriptedClass;
 import funkin.modding.IScriptedClass.IStateChangingScriptedClass;
 import funkin.modding.events.callbacks.CallbackScriptEvent;
@@ -22,7 +23,7 @@ typedef ModuleParams =
  * You may have the module active at all times, or only when another script enables it.
  */
 @:nullSafety
-class Module implements IPlayStateScriptedClass implements IStateChangingScriptedClass
+class Module implements IPlayStateScriptedClass implements IStateChangingScriptedClass implements ICallbackEventClass
 {
   /**
    * Whether the module is currently active.
