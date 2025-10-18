@@ -53,6 +53,7 @@ that will most likely change as we go.
 ### Callbacks
 
 - Added `callbackEventHolder` to the following states:
+  - `funkin.ui.credits.CreditsState`
   - `funkin.ui.freeplay.FreeplayState`
   - `funkin.ui.story.StoryMenuState`
   - `funkin.ui.mainmenu.MainMenuState`
@@ -82,11 +83,15 @@ that will most likely change as we go.
       - `subState`
       - `leftWatermarkText`
       - `rightWatermarkText`
+      - `curBeat`
+      - `curStep`
 
     - `generateMusicbeatStateData(musicBeatState:MusicBeatState)` - Generates event data for `funkin.ui.MusicBeatState`
       - `state`
       - `leftWatermarkText`
       - `rightWatermarkText`
+      - `curBeat`
+      - `curStep`
 
 - Added `funkin.modding.events.callbacks.CallbackEventData` - A holder of data for `CallbackEvent` functions
   - Variables:

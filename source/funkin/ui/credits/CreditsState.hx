@@ -1,5 +1,6 @@
 package funkin.ui.credits;
 
+import flixel.util.FlxTimer;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import funkin.audio.FunkinSound;
@@ -9,6 +10,7 @@ import flixel.group.FlxSpriteGroup;
 import funkin.util.TouchUtil;
 import funkin.ui.credits.CreditsData.CreditsDataRole;
 import funkin.ui.credits.CreditsData.CreditsDataMember;
+import funkin.modding.events.callbacks.*;
 
 /**
  * The state used to display the credits scroll.
@@ -92,9 +94,16 @@ class CreditsState extends MusicBeatState
     super();
   }
 
-  public override function create():Void
+  /**
+   * A holder for all the callback events
+   */
+  public static var callbackEventHolder:CallbackEventHolder = null;
+
+  override public function create():Void
   {
     super.create();
+
+    callbackEventHolder = new CallbackEventHolder();
 
     #if ios
     var fix = new FlxText();
@@ -154,6 +163,9 @@ class CreditsState extends MusicBeatState
     #if mobile
     addBackButton(FlxG.width - 230, FlxG.height - 200, FlxColor.WHITE, exit, 0.7);
     #end
+
+    new FlxTimer().start(.01,
+      _ -> callbackEventHolder.onCreate(new CallbackEventData('creditsstate', CallbackEventDataGenerator.generateMusicbeatStateData(this))));
   }
 
   var creditsLineY:Float = 0;
@@ -288,6 +300,10 @@ class CreditsState extends MusicBeatState
     {
       exit();
     }
+
+    var updateData = CallbackEventDataGenerator.generateMusicbeatStateData(this);
+    updateData.elapsed = elapsed;
+    callbackEventHolder.onUpdate(new CallbackEventData('creditsstate', updateData));
   }
 
   function hasEnded():Bool

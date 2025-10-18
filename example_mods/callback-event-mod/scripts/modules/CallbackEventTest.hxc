@@ -11,6 +11,7 @@ import funkin.ui.title.TitleState;
 import funkin.ui.mainmenu.MainMenuState;
 import funkin.ui.story.StoryMenuState;
 import funkin.ui.freeplay.FreeplayState;
+import funkin.ui.credits.CreditsState;
 
 import funkin.util.ReflectUtil;
 
@@ -40,6 +41,8 @@ class CallbackEventTest extends Module
 
         if (eventdata.id == 'mainmenustate')
           eventdata.data.leftWatermarkText.text = 'Monkey';
+        if (eventdata.id == 'creditsstate')
+          eventdata.data.rightWatermarkText.text = '[REDACTED]';
     }
 
     freeplayTestingEvent.onUpdate = function(eventdata:CallbackEventData) {
@@ -107,6 +110,9 @@ class CallbackEventTest extends Module
 
     if (StoryMenuState.callbackEventHolder != null)
       StoryMenuState.callbackEventHolder.addCallbackEvent(anotherRandomTestingEvent);
+
+    if (CreditsState.callbackEventHolder != null)
+      CreditsState.callbackEventHolder.addCallbackEvent(anotherRandomTestingEvent);
   }
 
   override public function onCallbackEvent(event:CallbackScriptEvent)
