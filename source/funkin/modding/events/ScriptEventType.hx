@@ -3,8 +3,24 @@ package funkin.modding.events;
 @:nullSafety
 enum abstract ScriptEventType(String) from String to String
 {
+  /**
+   * This is when `new` is called for callback event holders.
+   */
+  var CALLBACKSCRIPTHOLDER_NEW = 'CALLBACKSCRIPTHOLDER_NEW';
+
+  /**
+   * This is when `onInit` is called for callbackEvents.
+   */
   var CALLBACKSCRIPTEVENT_INIT = 'CALLBACKSCRIPTEVENT_INIT';
+
+  /**
+   * This is when `onCreate` is called for callbackEvents.
+   */
   var CALLBACKSCRIPTEVENT_CREATE = 'CALLBACKSCRIPTEVENT_CREATE';
+
+  /**
+   * This is when `onUpdate` is called for callbackEvents.
+   */
   var CALLBACKSCRIPTEVENT_UPDATE = 'CALLBACKSCRIPTEVENT_UPDATE';
 
   /**

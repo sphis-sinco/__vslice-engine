@@ -14,12 +14,15 @@ class CallbackScriptEvent<T> extends ScriptEvent
       case 2:
         CALLBACKSCRIPTEVENT_UPDATE
 
+      case 3:
+        CALLBACKSCRIPTHOLDER_NEW
+
       default:
         CALLBACKSCRIPTEVENT_INIT
     };
 
     this.callbackEventHolder = callbackEventHolder;
 
-    super(type);
+    super(type, false);
   }
 }
