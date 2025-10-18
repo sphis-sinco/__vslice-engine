@@ -25,30 +25,35 @@ But you can see small previews of the new format (kinda) in this changelog.
 ### Changed
 
 - The `PreferencesMenu` `itemDescBox` object changes height depending on the height of the description text always instead of just on the start
+
 - `funkin.ui.PixelatedIcon` has been moved to `funkin.ui.objects.pixelated_icon.PixelatedIcon`
   - Backwards Compatability for this change has been added and `funkin.ui.objects.pixelated_icon.PixelatedIcon` is an import alias for `funkin.ui.PixelatedIcon`
+
 - `FreeplaySongData` has been split from `FreeplayState`
-- Freeplay OST Text will become blank for the random capsule
-- Freeplay OST Text will change to "UNOFFICIAL OST" for songs outside of the base game weeks
+
+- Freeplay OST Text
+  - Freeplay OST Text will become blank for the random capsule
+  - Freeplay OST Text will change to "UNOFFICIAL OST" for songs outside of the base game weeks
+
 - Freeplay Character Select Hint X Position (shifted over to the left)
-- Git info is included
 - `-indev` is added to the version string (pre-git info) instead of a suffix
-- It is now easier to add Preferences
 - The game data should save on exit now
-- Some `FileUtil` functions are no longer Native(Sys)-only
-  - `pathExists`
-  - `readDir`
-  - `directoryExists`
-- `FunkinVSE.exe` is a Protected Path now
-- `PolymodHandler`'s `modFileSystem` variable is public static now
+- `FileUtil` changes
+  - Some `FileUtil` functions are no longer Native(Sys)-only thanks to `PolymodHandler.modFileSystem`
+    - `pathExists`
+    - `readDir`
+    - `directoryExists`
+  - `FunkinVSE.exe` is a Protected Path now
+- `PolymodHandler`'s `modFileSystem` variable is `public static variable` now
 - `FUNKIN_MOD` Feature Flag has been renamed to `FEATURE_FUNKIN_MOD`
 
 ### Added
 
-- `PreferencesMenu` Categories
-  - `PreferencesMenu` `createCategory(categoryName:String, ?categoryDescription:String)` function
+- `PreferencesMenu` `createCategory(categoryName:String, ?categoryDescription:String)` function
+
 - `funkin.ui.objects.pixelated_icons.PixelatedIconData` typedef
-  - `assets/data/ui/pixelated_icons/**.json` will be a valid path for `PixelatedIconData` JSONS
+  - `assets/data/ui/pixelated_icons/**.json` is the valid path for `PixelatedIconData` JSONS
+
   - `PixelatedIconData` JSON files have modifyable 3 fields
     - `iconPathPrefix` (Optional, Default: `freeplay/icons/`) - This is to change the image folder where the pixelated icon is found
     - `iconPathSuffix` (Optional, Default: `pixel`) - This is to change the pixelated icon suffix, probably to remove the `pixel` part at the end
@@ -57,11 +62,16 @@ But you can see small previews of the new format (kinda) in this changelog.
     - `originY` (Optional) - This is to change the origin.y value, most likely for bigger icons
     - `scale` (Optional, Default: `2.0`) - This is to change the icon scale for VERY big icons
     - `additionalAnimations` (Optional, Default: `[]`) - Additional animations to add ontop of the base animations
+
 - `FEATURE_GIT_INFO` Feature Flag that controls if the `GIT_BRANCH`, `GIT_HASH` or (`FEATURE_DEBUG_FUNCTIONS` only) Git Modified / `GIT_HAS_LOCAL_CHANGES` status is included in the version
-- `PreferencesMenu` `instance` variable
-- `PreferencesMenu` `isCurrentOptionsPage` function
+  - Git info is included in the version string by default now
+
+- `PreferencesMenu` Script / Mod related changes
+  - `PreferencesMenu` `instance` variable
+  - `PreferencesMenu` `isCurrentOptionsPage` function
+
 - **MOD MENU** (Thanks again @KoloInDaCrib)
-- `FEATURE_KOLO_MODMENU` Feature Flag that adds the Mod Menu from [Kolo's Mod Menu PR](https://github.com/FunkinCrew/Funkin/pull/4223) (Thanks @KoloInDaCrib)
+  - `FEATURE_KOLO_MODMENU` Feature Flag that adds the Mod Menu from [Kolo's Mod Menu PR](https://github.com/FunkinCrew/Funkin/pull/4223) (Thanks @KoloInDaCrib)
 
 ## [0.1.1] - 2025-10-15
 
