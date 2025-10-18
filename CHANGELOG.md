@@ -6,6 +6,8 @@ that will most likely change as we go.
 
 ## Playable Characters
 
+- The pause death names for Pico are "Blam" (Single) and "Blams" (Multiple) now
+
 - Added new `funkin.ui.freeplay.charselect.PlayableCharacter` function
   - `getPauseDeathName` (Params: `death`, Return Type: `String`) - A simple function to return a string depending on the amount of deaths that have happened
 
