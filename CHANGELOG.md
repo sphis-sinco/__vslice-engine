@@ -8,8 +8,13 @@ that will most likely change as we go.
 
 ### Intro Texts
 
+- [FUNKIN] The following intro texts from base game have been brought back:
+  - `The Funkin Crew Inc presents`
+  - `In assosiation with Newgrounds`
+  - `Friday Night Funkin`
+  - `Friday Nigth Funkin`
+
 - `funkin.ui.title.TitleState` calls `onCall` callback with id: `intro-text` during the intro text segment with the data:
-  - [FUNKIN] Used to bring back the OG intro texts
   - `index`
   - `curWacky`
 
@@ -26,6 +31,7 @@ that will most likely change as we go.
   - `fan--made`
   - `sinco--you mean cinco right`
   - `what the fuck--is a sphis`
+
 - [FUNKIN] Moved base game intro texts to the `funkin` mod
 
 ## Stages

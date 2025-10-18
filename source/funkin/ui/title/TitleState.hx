@@ -503,7 +503,11 @@ class TitleState extends MusicBeatState
           callbackEventHolder.onCall('intro-text', new CallbackEventData('titlestate',
             {
               index: i + 1,
-              curWacky: curWacky
+              curWacky: curWacky,
+
+              deleteCoolText: this.deleteCoolText,
+              addMoreText: (text:String) -> this.addMoreText,
+              createCoolText: (text:Array<String>) -> this.createCoolText,
             }));
         }
       }

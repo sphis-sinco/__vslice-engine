@@ -29,9 +29,9 @@ class TitleStateIntroText extends Module
 
         var gimmeEndingTexts = function(friday:Bool, night:Bool, funkin:Bool)
         {
-          TitleState.deleteCoolText();
+          data.deleteCoolText();
           if (friday)
-            TitleState.addMoreText('Friday');
+            data.addMoreText('Friday');
 
           if (night)
           {
@@ -39,23 +39,23 @@ class TitleStateIntroText extends Module
             // the random intro text would be "trending--only on x"
 
             if (data.curWacky[0] == "trending")
-              TitleState.addMoreText('Nigth');
+              data.addMoreText('Nigth');
             else
-              TitleState.addMoreText('Night');
+              data.addMoreText('Night');
           }
 
           if (funkin)
-            TitleState.addMoreText('Funkin');
+            data.addMoreText('Funkin');
         }
 
         switch(data.index)
         {
           case 1:
-            TitleState.deleteCoolText();
-            TitleState.createCoolText(['The', 'Funkin Crew Inc']);
+            data.deleteCoolText();
+            data.createCoolText(['The', 'Funkin Crew Inc']);
           case 5:
-            TitleState.deleteCoolText();
-            TitleState.createCoolText(['In association', 'with']);
+            data.deleteCoolText();
+            data.createCoolText(['In association', 'with']);
           case 13:
             gimmeEndingTexts(true, false, false);
           case 14:
