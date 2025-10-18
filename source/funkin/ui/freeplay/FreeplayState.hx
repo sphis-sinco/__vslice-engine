@@ -60,6 +60,7 @@ import funkin.util.TouchUtil;
 import funkin.util.SwipeUtil;
 import funkin.mobile.input.ControlsHandler;
 #end
+import funkin.modding.events.callbacks.*;
 
 /**
  * The state for the freeplay menu, allowing the player to select any song to play.
