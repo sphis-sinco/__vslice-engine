@@ -54,7 +54,7 @@ class ScriptEventDispatcher
       var t:ICallbackEventClass = cast(target, ICallbackEventClass);
       switch (event.type)
       {
-        case CALLBACKSCRIPTHOLDER_NEW, CALLBACKSCRIPTEVENT_INIT, CALLBACKSCRIPTEVENT_CREATE, CALLBACKSCRIPTEVENT_UPDATE:
+        case CALLBACKSCRIPTHOLDER_NEW, CALLBACKSCRIPTEVENT_INIT, CALLBACKSCRIPTEVENT_CREATE, CALLBACKSCRIPTEVENT_UPDATE, CALLBACKSCRIPTEVENT_CUSTOM:
           t.onCallbackEvent(cast event);
           return;
         default: // Continue;
