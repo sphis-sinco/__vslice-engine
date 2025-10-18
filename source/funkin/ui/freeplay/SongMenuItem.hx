@@ -1,7 +1,7 @@
 package funkin.ui.freeplay;
 
 import funkin.ui.FullScreenScaleMode;
-import funkin.ui.freeplay.FreeplayState.FreeplaySongData;
+import funkin.ui.freeplay.FreeplaySongData;
 import funkin.graphics.shaders.HSVShader;
 import funkin.graphics.shaders.GaussianBlurShader;
 import flixel.group.FlxGroup;
