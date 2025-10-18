@@ -10,6 +10,7 @@ import funkin.modding.events.ScriptEvent;
 interface IScriptedClass
 {
   public function onScriptEvent(event:ScriptEvent):Void;
+  public function onCallbackEvent(event:CallbackScriptEvent) {}
 
   public function onCreate(event:ScriptEvent):Void;
   public function onDestroy(event:ScriptEvent):Void;

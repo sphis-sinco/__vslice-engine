@@ -1,5 +1,7 @@
 package funkin.modding.events.callbacks;
 
+import funkin.modding.module.ModuleHandler;
+
 /**
  * A simple manager for `CallbackEvent` so each state won't require a unique one
  */
@@ -8,6 +10,8 @@ class CallbackEventHolder<T>
   public function new()
   {
     callbackEvents = [];
+
+    ModuleHandler.callEvent(new CallbackScriptEvent<T>(3, null));
   }
 
   /**
@@ -32,7 +36,10 @@ class CallbackEventHolder<T>
   public function onInit(state:T):Void
   {
     for (event in callbackEvents)
+    {
       event.onInit(state);
+      ModuleHandler.callEvent(new CallbackScriptEvent<T>(0, event));
+    }
   }
 
   /**
@@ -42,7 +49,10 @@ class CallbackEventHolder<T>
   public function onCreate(state:T):Void
   {
     for (event in callbackEvents)
+    {
       event.onCreate(state);
+      ModuleHandler.callEvent(new CallbackScriptEvent<T>(1, event));
+    }
   }
 
   /**
@@ -53,6 +63,9 @@ class CallbackEventHolder<T>
   public function onUpdate(state:T, elapsed:Float):Void
   {
     for (event in callbackEvents)
+    {
       event.onUpdate(state, elapsed);
+      ModuleHandler.callEvent(new CallbackScriptEvent<T>(2, event));
+    }
   }
 }

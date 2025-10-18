@@ -30,6 +30,9 @@ class ScriptEventDispatcher
     // IScriptedClass
     switch (event.type)
     {
+      case CALLBACKSCRIPTHOLDER_NEW, CALLBACKSCRIPTEVENT_INIT, CALLBACKSCRIPTEVENT_CREATE, CALLBACKSCRIPTEVENT_UPDATE:
+        target.onCallbackEvent(event);
+        return;
       case CREATE:
         target.onCreate(event);
         return;
