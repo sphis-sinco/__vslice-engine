@@ -1,9 +1,20 @@
 import funkin.modding.module.Module;
+import funkin.ui.title.TitleState;
+import funkin.util.ReflectUtil;
 
 class CallbackEventTest extends Module
 {
   override public function new()
   {
     super('ce-test');
+  }
+
+  override public function onCallbackEvent(event:CallbackScriptEvent<Any>)
+  {
+    trace(ReflectUtil.getClassNameOf(event));
+    if (event.type == 'CALLBACKSCRIPTHOLDER_NEW' && ReflectUtil.getClassNameOf(event) == 'CallbackScriptEvent')
+    {
+      trace('I can init callbacks!');
+    }
   }
 }
