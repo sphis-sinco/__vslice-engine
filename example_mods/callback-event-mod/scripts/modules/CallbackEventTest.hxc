@@ -28,8 +28,11 @@ class CallbackEventTest extends Module
         trace('Hi in title state createa with data: '+eventdata.data);
     }
 
+    anotherRandomTestingEvent.onInit = function() {
+      trace('Hi I exist');
+    }
     anotherRandomTestingEvent.onCreate = function(eventdata:CallbackEventData) {
-      trace(eventdata.data);
+        trace('Hi in '+eventdata.id);
     }
   }
 

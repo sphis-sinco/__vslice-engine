@@ -240,12 +240,8 @@ class StoryMenuState extends MusicBeatState
     FlxG.touches.swipeThreshold.y = 100;
     #end
 
-    onCreate();
-  }
-
-  function onCreate():Void
-  {
-    callbackEventHolder.onCreate(new CallbackEventData('storymenustate', CallbackEventDataGenerator.generateMusicbeatStateData(this)));
+    new FlxTimer().start(.01,
+      _ -> callbackEventHolder.onCreate(new CallbackEventData('storymenustate', CallbackEventDataGenerator.generateMusicbeatStateData(this))));
   }
 
   function rememberSelection():Void
