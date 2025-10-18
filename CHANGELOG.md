@@ -15,6 +15,11 @@ that will most likely change as we go.
 - Added `callbackEventHolder` to `funkin.ui.mainmenu.MainMenuState`
 - Added `callbackEventHolder` to `funkin.ui.title.TitleState`
 
+- Added `funkin.modding.events.callbacks.CallbackEventData` - `CallbackEventData` data generator for different classes
+  - Functions:
+    - `generateMusicbeatSubStateData(musicBeatSubState:MusicBeatSubState)` - Generates event data for `funkin.ui.MusicBeatSubState`
+    - `generateMusicbeatStateData(musicBeatState:MusicBeatState)` - Generates event data for `funkin.ui.MusicBeatState`
+
 - Added `funkin.modding.events.callbacks.CallbackEventData` - A holder of data for `CallbackEvent` functions
   - Variables:
     - `id` - A unique id to difference Callback Event Data Classes
