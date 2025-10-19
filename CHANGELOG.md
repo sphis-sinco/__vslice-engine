@@ -10,7 +10,19 @@ that will most likely change as we go.
 
 ## Gameplay
 
-## Unlocks
+### Results
+
+- The following variables are now public:
+  - `params`
+  - `rank`
+  - `songName`
+  - `characterAtlasAnimations`
+  - `characterSparrowAnimations`
+  - `playerCharacterId`
+  - `playerCharacter`
+  - `introMusicAudio`
+
+### Unlocks
 
 - The `UNLOCK_EVERYTHING` feature flag is disabled by default
 
@@ -99,6 +111,7 @@ that will most likely change as we go.
 ### Callbacks
 
 - Added `callbackEventHolder` to the following states:
+  - `funkin.play.ResultState`
   - `funkin.ui.credits.CreditsState`
   - `funkin.ui.freeplay.FreeplayState`
   - `funkin.ui.story.StoryMenuState`
@@ -107,6 +120,10 @@ that will most likely change as we go.
 
 - Added `funkin.modding.events.callbacks.CallbackEventDataGenerator` - `CallbackEventData` data generator for different classes
   - Functions:
+    - `generateCreditsStateData(resultState:ResultState)` - Generates event data for `funkin.play.ResultState`
+      - `resultState`
+      - `params`
+
     - `generateCreditsStateData(credits:CreditsState)` - Generates event data for `funkin.ui.credits.CreditsState`
       - `credits`
       - `leftWatermarkText`

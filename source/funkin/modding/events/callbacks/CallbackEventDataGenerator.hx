@@ -6,6 +6,30 @@ package funkin.modding.events.callbacks;
 class CallbackEventDataGenerator
 {
   /**
+   * Generates event data for `funkin.play.ResultState`
+   * @param resultState `funkin.play.ResultState` class
+   * @return Dynamic
+   */
+  public static function generateResultsData(resultState:funkin.play.ResultState):Dynamic
+  {
+    return {
+      resultState: resultState,
+
+      params: resultState.params,
+      rank: resultState.rank,
+      songName: resultState.songName,
+
+      characterAtlasAnimations: resultState.characterAtlasAnimations,
+      characterSparrowAnimations: resultState.characterSparrowAnimations,
+
+      playerCharacterId: resultState.playerCharacterId,
+      playerCharacter: resultState.playerCharacter,
+
+      introMusicAudio: resultState.introMusicAudio,
+    }
+  }
+
+  /**
    * Generates event data for `funkin.ui.credits.CreditsState`
    * @param credits `funkin.ui.credits.CreditsState` class
    * @return Dynamic

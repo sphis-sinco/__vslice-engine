@@ -44,6 +44,7 @@ import funkin.api.newgrounds.Medals;
 import funkin.util.TouchUtil;
 #end
 import funkin.util.DeviceUtil;
+import funkin.modding.events.callbacks.*;
 
 /**
  * The state for the results screen after a song or week is finished.
@@ -51,10 +52,11 @@ import funkin.util.DeviceUtil;
 @:nullSafety
 class ResultState extends MusicBeatSubState
 {
-  final params:ResultsStateParams;
+  public final params:ResultsStateParams;
 
-  final rank:ScoringRank;
-  final songName:FlxBitmapText;
+  public final rank:ScoringRank;
+  public final songName:FlxBitmapText;
+
   final difficulty:FlxSprite;
   final clearPercentSmall:ClearPercentCounter;
 
@@ -70,7 +72,7 @@ class ResultState extends MusicBeatSubState
   final highscoreNew:FlxSprite;
   final score:ResultScore;
 
-  var characterAtlasAnimations:Array<
+  public var characterAtlasAnimations:Array<
     {
       sprite:FlxAtlasSprite,
       delay:Float,
@@ -78,16 +80,16 @@ class ResultState extends MusicBeatSubState
       startFrameLabel:String,
       sound:String
     }> = [];
-  var characterSparrowAnimations:Array<
+  public var characterSparrowAnimations:Array<
     {
       sprite:FunkinSprite,
       delay:Float
     }> = [];
 
-  var playerCharacterId:Null<String> = null;
-  var playerCharacter:Null<PlayableCharacter> = null;
+  public var playerCharacterId:Null<String> = null;
+  public var playerCharacter:Null<PlayableCharacter> = null;
 
-  var introMusicAudio:Null<FunkinSound> = null;
+  public var introMusicAudio:Null<FunkinSound> = null;
 
   var rankBg:FunkinSprite;
   final cameraBG:FunkinCamera;
@@ -142,8 +144,14 @@ class ResultState extends MusicBeatSubState
     rankBg = new FunkinSprite(0, 0);
   }
 
-  override function create():Void
+  /**
+   * A holder for all the callback events
+   */
+  public static var callbackEventHolder:CallbackEventHolder = null;
+
+  override public function create():Void
   {
+    callbackEventHolder = new CallbackEventHolder();
     if (FlxG.sound.music != null) FlxG.sound.music.stop();
 
     // We need multiple cameras so we can put one at an angle.
@@ -505,6 +513,8 @@ class ResultState extends MusicBeatSubState
     refresh();
 
     super.create();
+
+    new FlxTimer().start(.01, _ -> callbackEventHolder.onCreate(new CallbackEventData('resultstate', CallbackEventDataGenerator.generateResultsData(this))));
   }
 
   function getMusicPath(playerCharacter:Null<PlayableCharacter>, rank:ScoringRank):String
@@ -913,6 +923,10 @@ class ResultState extends MusicBeatSubState
     }
 
     super.update(elapsed);
+
+    var updateData = CallbackEventDataGenerator.generateResultsData(this);
+    updateData.elapsed = elapsed;
+    callbackEventHolder.onUpdate(new CallbackEventData('resultstate', updateData));
   }
 
   function transitionToState(targetState:FlxState, targetStateFactory:Null<Void->StickerSubState>, shouldTween:Bool, shouldUseSubstate:Bool):Void
