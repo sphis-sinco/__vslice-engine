@@ -147,7 +147,8 @@ class ResultState extends MusicBeatSubState
   /**
    * A holder for all the callback events
    */
-  public static var callbackEventHolder:CallbackEventHolder = null;
+  @:nullSafety(Off)
+  public static var callbackEventHolder:CallbackEventHolder;
 
   override public function create():Void
   {
