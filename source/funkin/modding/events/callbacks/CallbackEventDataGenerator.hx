@@ -24,6 +24,18 @@ class CallbackEventDataGenerator
       currentMenuEntries: pauseSubState.currentMenuEntries,
       currentEntry: pauseSubState.currentEntry,
       currentMode: pauseSubState.currentMode,
+
+      background: pauseSubState.background,
+
+      metadata: pauseSubState.metadata,
+      metadataPractice: pauseSubState.metadataPractice,
+      metadataDeaths: pauseSubState.metadataDeaths,
+      metadataArtist: pauseSubState.metadata,
+
+      offsetText: pauseSubState.offsetText,
+      offsetTextInfo: pauseSubState.offsetTextInfo,
+
+      menuEntryText: pauseSubState.menuEntryText,
     }
   }
 

@@ -21,6 +21,14 @@ that will most likely change as we go.
   - `currentMenuEntries`
   - `currentEntry`
   - `currentMode`
+  - `background`
+  - `metadata`
+  - `metadataPractice`
+  - `metadataDeaths`
+  - `metadataArtist`
+  - `offsetText`
+  - `offsetTextInfo`
+  - `menuEntryText`
 
 ### Results
 
@@ -143,6 +151,14 @@ that will most likely change as we go.
       - `currentMenuEntries`
       - `currentEntry`
       - `currentMode`
+      - `background`
+      - `metadata`
+      - `metadataPractice`
+      - `metadataDeaths`
+      - `metadataArtist`
+      - `offsetText`
+      - `offsetTextInfo`
+      - `menuEntryText`
 
     - `generateResultsData(resultState:ResultState)` - Generates event data for `funkin.play.ResultState`
       - `resultState`

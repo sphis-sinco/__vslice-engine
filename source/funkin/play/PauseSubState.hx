@@ -173,43 +173,43 @@ class PauseSubState extends MusicBeatSubState
   /**
    * The semi-transparent black background that appears when the game is paused.
    */
-  var background:FunkinSprite;
+  public var background:FunkinSprite;
 
   /**
    * The metadata displayed in the top right.
    */
-  var metadata:FlxTypedSpriteGroup<FlxText>;
+  public var metadata:FlxTypedSpriteGroup<FlxText>;
 
   /**
    * A text object that displays the current practice mode status.
    */
-  var metadataPractice:FlxText;
+  public var metadataPractice:FlxText;
 
   /**
    * A text object that displays the current death count.
    */
-  var metadataDeaths:FlxText;
+  public var metadataDeaths:FlxText;
 
   /**
    * A text object which displays the current song's artist.
    * Fades to the charter after a period before fading back.
    */
-  var metadataArtist:FlxText;
+  public var metadataArtist:FlxText;
 
   /**
    * A text object that displays the current global offset.
    */
-  var offsetText:FlxText;
+  public var offsetText:FlxText;
 
   /**
    * A text object that displays information about the current global offset.
    */
-  var offsetTextInfo:FlxText;
+  public var offsetTextInfo:FlxText;
 
   /**
    * The actual text objects for the menu entries.
    */
-  var menuEntryText:FlxTypedSpriteGroup<AtlasText>;
+  public var menuEntryText:FlxTypedSpriteGroup<AtlasText>;
 
   /**
    * Callback that gets called once substate gets open.

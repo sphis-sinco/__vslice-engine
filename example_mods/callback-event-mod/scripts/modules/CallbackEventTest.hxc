@@ -13,6 +13,9 @@ import funkin.ui.story.StoryMenuState;
 import funkin.ui.freeplay.FreeplayState;
 import funkin.ui.credits.CreditsState;
 
+import funkin.play.ResultState;
+import funkin.play.PauseSubState;
+
 import funkin.util.ReflectUtil;
 
 class CallbackEventTest extends Module
@@ -20,6 +23,8 @@ class CallbackEventTest extends Module
   var randomTestingEvent = new CallbackEvent('random-testing-event');
   var anotherRandomTestingEvent = new CallbackEvent('another-random-testing-event');
   var freeplayTestingEvent = new CallbackEvent('freeplay-testing-event');
+  var resultsTestingEvent = new CallbackEvent('results-testing-event');
+  var pauseTestingEvent = new CallbackEvent('pause-testing-event');
 
   override public function new()
   {
@@ -39,8 +44,8 @@ class CallbackEventTest extends Module
     anotherRandomTestingEvent.onCreate = function(eventdata:CallbackEventData) {
         trace('Hi in '+eventdata.id);
 
-        if (eventdata.id == 'mainmenustate')
-          eventdata.data.leftWatermarkText.text = 'Monkey';
+        // if (eventdata.id == 'mainmenustate')
+          // eventdata.data.leftWatermarkText.text = 'Monkey';
         if (eventdata.id == 'creditsstate')
           eventdata.data.rightWatermarkText.text = '[REDACTED]';
     }
@@ -86,6 +91,21 @@ class CallbackEventTest extends Module
           trace(eventdata.data.styleData.getBgAssetKey());
       }
     }
+
+    resultsTestingEvent.onCreate = function(eventdata:CallbackEventData) {
+      if (eventdata.id == 'resultsstate')
+      {}
+    }
+
+    pauseTestingEvent.onCreate = function(eventdata:CallbackEventData) {
+      if (eventdata.id == 'pausesubstate')
+      {
+        for (entry in eventdata.data.currentMenuEntries)
+        {
+          entry.text = 'Deez';
+        }
+      }
+    }
   }
 
   override public function onSubStateOpenEnd(event:SubStateScriptEvent)
@@ -93,7 +113,19 @@ class CallbackEventTest extends Module
     if (FreeplayState.callbackEventHolder != null)
     {
       FreeplayState.callbackEventHolder.addCallbackEvent(anotherRandomTestingEvent);
-      FreeplayState.callbackEventHolder.addCallbackEvent(freeplayTestingEvent);
+      // FreeplayState.callbackEventHolder.addCallbackEvent(freeplayTestingEvent);
+    }
+
+    if (ResultState.callbackEventHolder != null)
+    {
+      ResultState.callbackEventHolder.addCallbackEvent(anotherRandomTestingEvent);
+      ResultState.callbackEventHolder.addCallbackEvent(resultsTestingEvent);
+    }
+
+    if (PauseSubState.callbackEventHolder != null)
+    {
+      PauseSubState.callbackEventHolder.addCallbackEvent(anotherRandomTestingEvent);
+      PauseSubState.callbackEventHolder.addCallbackEvent(pauseTestingEvent);
     }
   }
 
