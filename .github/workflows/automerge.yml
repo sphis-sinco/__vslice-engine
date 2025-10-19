@@ -1,0 +1,18 @@
+name: automerge
+on:
+  label:
+    types: [created, edited]
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - id: automerge
+        name: automerge
+        uses: "pascalgn/automerge-action@v0.16.4"
+        env:
+          MERGE_LABELS: "action: automerge"
+          MERGE_REMOVE_LABELS: "action: automerge"
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
