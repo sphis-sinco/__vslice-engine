@@ -49,7 +49,7 @@ class PauseSubState extends MusicBeatSubState
   /**
    * Pause menu entries for when the game is paused during a song.
    */
-  static final PAUSE_MENU_ENTRIES_STANDARD:Array<PauseMenuEntry> = [
+  public var PAUSE_MENU_ENTRIES_STANDARD:Array<PauseMenuEntry> = [
     {text: 'Resume', callback: resume},
     {text: 'Restart Song', callback: restartPlayState},
     {text: 'Change Difficulty', callback: switchMode.bind(_, Difficulty)},
@@ -60,7 +60,7 @@ class PauseSubState extends MusicBeatSubState
   /**
    * Pause menu entries for when the game is paused in the Chart Editor preview.
    */
-  static final PAUSE_MENU_ENTRIES_CHARTING:Array<PauseMenuEntry> = [
+  public var PAUSE_MENU_ENTRIES_CHARTING:Array<PauseMenuEntry> = [
     {text: 'Resume', callback: resume},
     {text: 'Restart Song', callback: restartPlayState},
     {text: 'Return to Chart Editor', callback: quitToChartEditor},
@@ -69,7 +69,7 @@ class PauseSubState extends MusicBeatSubState
   /**
    * Pause menu entries for when the user selects "Change Difficulty".
    */
-  static final PAUSE_MENU_ENTRIES_DIFFICULTY:Array<PauseMenuEntry> = [
+  public var PAUSE_MENU_ENTRIES_DIFFICULTY:Array<PauseMenuEntry> = [
     {text: 'Back', callback: switchMode.bind(_, Standard)}
     // Other entries are added dynamically.
   ];
@@ -77,7 +77,7 @@ class PauseSubState extends MusicBeatSubState
   /**
    * Pause menu entries for when the game is paused during a video cutscene.
    */
-  static final PAUSE_MENU_ENTRIES_VIDEO_CUTSCENE:Array<PauseMenuEntry> = [
+  public var PAUSE_MENU_ENTRIES_VIDEO_CUTSCENE:Array<PauseMenuEntry> = [
     {text: 'Resume', callback: resume},
     {text: 'Skip Cutscene', callback: skipVideoCutscene},
     {text: 'Restart Cutscene', callback: restartVideoCutscene},
@@ -87,7 +87,7 @@ class PauseSubState extends MusicBeatSubState
   /**
    * Pause menu entries for when the game is paused during a conversation.
    */
-  static final PAUSE_MENU_ENTRIES_CONVERSATION:Array<PauseMenuEntry> = [
+  public var PAUSE_MENU_ENTRIES_CONVERSATION:Array<PauseMenuEntry> = [
     {text: 'Resume', callback: resume},
     {text: 'Skip Dialogue', callback: skipConversation},
     {text: 'Restart Dialogue', callback: restartConversation},
@@ -137,17 +137,17 @@ class PauseSubState extends MusicBeatSubState
   /**
    * The entries currently displayed in the pause menu.
    */
-  var currentMenuEntries:Array<PauseMenuEntry>;
+  public var currentMenuEntries:Array<PauseMenuEntry>;
 
   /**
    * The index of `currentMenuEntries` that is currently selected.
    */
-  var currentEntry:Int = 0;
+  public var currentEntry:Int = 0;
 
   /**
    * The mode that the pause menu is currently in.
    */
-  var currentMode:PauseMode;
+  public var currentMode:PauseMode;
 
   // ===============
   // Graphics Variables

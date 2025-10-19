@@ -13,7 +13,17 @@ class CallbackEventDataGenerator
   public static function generatePauseData(pauseSubState:funkin.play.PauseSubState):Dynamic
   {
     return {
-      pauseSubState: pauseSubState
+      pauseSubState: pauseSubState,
+
+      PAUSE_MENU_ENTRIES_STANDARD: pauseSubState.PAUSE_MENU_ENTRIES_STANDARD,
+      PAUSE_MENU_ENTRIES_CHARTING: pauseSubState.PAUSE_MENU_ENTRIES_CHARTING,
+      PAUSE_MENU_ENTRIES_DIFFICULTY: pauseSubState.PAUSE_MENU_ENTRIES_DIFFICULTY,
+      PAUSE_MENU_ENTRIES_VIDEO_CUTSCENE: pauseSubState.PAUSE_MENU_ENTRIES_VIDEO_CUTSCENE,
+      PAUSE_MENU_ENTRIES_CONVERSATION: pauseSubState.PAUSE_MENU_ENTRIES_CONVERSATION,
+
+      currentMenuEntries: pauseSubState.currentMenuEntries,
+      currentEntry: pauseSubState.currentEntry,
+      currentMode: pauseSubState.currentMode,
     }
   }
 

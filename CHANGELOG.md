@@ -10,6 +10,18 @@ that will most likely change as we go.
 
 ## Gameplay
 
+### Pause Screen
+
+- The following variables are now public:
+  - `PAUSE_MENU_ENTRIES_STANDARD`
+  - `PAUSE_MENU_ENTRIES_CHARTING`
+  - `PAUSE_MENU_ENTRIES_DIFFICULTY`
+  - `PAUSE_MENU_ENTRIES_VIDEO_CUTSCENE`
+  - `PAUSE_MENU_ENTRIES_CONVERSATION`
+  - `currentMenuEntries`
+  - `currentEntry`
+  - `currentMode`
+
 ### Results
 
 - The following variables are now public:
@@ -121,7 +133,18 @@ that will most likely change as we go.
 
 - Added `funkin.modding.events.callbacks.CallbackEventDataGenerator` - `CallbackEventData` data generator for different classes
   - Functions:
-    - `generateCreditsStateData(resultState:ResultState)` - Generates event data for `funkin.play.ResultState`
+    - `generatePauseData(pauseSubState:PauseSubState)` - Generates event data for `funkin.play.PauseSubState`
+      - `pauseSubState`
+      - `PAUSE_MENU_ENTRIES_STANDARD`
+      - `PAUSE_MENU_ENTRIES_CHARTING`
+      - `PAUSE_MENU_ENTRIES_DIFFICULTY`
+      - `PAUSE_MENU_ENTRIES_VIDEO_CUTSCENE`
+      - `PAUSE_MENU_ENTRIES_CONVERSATION`
+      - `currentMenuEntries`
+      - `currentEntry`
+      - `currentMode`
+
+    - `generateResultsData(resultState:ResultState)` - Generates event data for `funkin.play.ResultState`
       - `resultState`
       - `params`
 
@@ -211,14 +234,10 @@ that will most likely change as we go.
 
 ## Playable Characters
 
-### Data
-
 - [FUNKIN] The pause death names for Pico are "Blam" (Single) and "Blams" (Multiple) now
 
 - Added new `funkin.ui.freeplay.charselect.PlayableCharacter` function
   - `getPauseDeathName` (Params: `death`, Return Type: `String`) - A simple function to return a string depending on the amount of deaths that have happened
-
-### Pause Screen
 
 - Added 2 new `funkin.data.freeplay.player.PlayerData` variables
   - `pauseDeathNameSingle` (Optional, Default: `Blue Ball`) - Text displayed in the PauseSubState for deaths when there is only 1 death
