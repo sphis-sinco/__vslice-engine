@@ -24,6 +24,7 @@ import funkin.ui.FullScreenScaleMode;
 import funkin.ui.transition.stickers.StickerSubState;
 import funkin.util.SwipeUtil;
 import funkin.util.TouchUtil;
+import funkin.modding.events.callbacks.*;
 
 /**
  * Parameters for initializing the PauseSubState.
@@ -236,10 +237,17 @@ class PauseSubState extends MusicBeatSubState
   // ===============
 
   /**
+   * A holder for all the callback events
+   */
+  @:nullSafety(Off)
+  public static var callbackEventHolder:CallbackEventHolder;
+
+  /**
    * Called when the state is first loaded.
    */
-  public override function create():Void
+  override public function create():Void
   {
+    callbackEventHolder = new CallbackEventHolder();
     if (onPause != null) onPause();
 
     super.create();
@@ -255,6 +263,8 @@ class PauseSubState extends MusicBeatSubState
     transitionIn();
 
     startCharterTimer();
+
+    new FlxTimer().start(.01, _ -> callbackEventHolder.onCreate(new CallbackEventData('pausesubstate', CallbackEventDataGenerator.generatePauseData(this))));
   }
 
   /**
@@ -266,6 +276,10 @@ class PauseSubState extends MusicBeatSubState
     super.update(elapsed);
 
     handleInputs();
+
+    var updateData = CallbackEventDataGenerator.generatePauseData(this);
+    updateData.elapsed = elapsed;
+    callbackEventHolder.onUpdate(new CallbackEventData('pausesubstate', updateData));
   }
 
   /**

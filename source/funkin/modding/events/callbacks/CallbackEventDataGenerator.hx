@@ -6,6 +6,18 @@ package funkin.modding.events.callbacks;
 class CallbackEventDataGenerator
 {
   /**
+   * Generates event data for `funkin.play.PauseSubState`
+   * @param pauseSubState `funkin.play.PauseSubState` class
+   * @return Dynamic
+   */
+  public static function generatePauseData(pauseSubState:funkin.play.PauseSubState):Dynamic
+  {
+    return {
+      pauseSubState: pauseSubState
+    }
+  }
+
+  /**
    * Generates event data for `funkin.play.ResultState`
    * @param resultState `funkin.play.ResultState` class
    * @return Dynamic

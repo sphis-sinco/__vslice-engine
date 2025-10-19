@@ -111,6 +111,7 @@ that will most likely change as we go.
 ### Callbacks
 
 - Added `callbackEventHolder` to the following states:
+  - `funkin.play.PauseSubState`
   - `funkin.play.ResultState`
   - `funkin.ui.credits.CreditsState`
   - `funkin.ui.freeplay.FreeplayState`
