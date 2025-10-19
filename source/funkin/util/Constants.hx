@@ -400,7 +400,7 @@ class Constants
    * 1 = The preloader waits for 1 second before moving to the next step.
    *     The progress bare is automatically rescaled to match.
    */
-  public static final PRELOADER_MIN_STAGE_TIME:Float = 0;
+  public static final PRELOADER_MIN_STAGE_TIME:Float = 0.1;
 
   /**
    * Time (in seconds) to wait on the Title Screen before entering the Attract State.
