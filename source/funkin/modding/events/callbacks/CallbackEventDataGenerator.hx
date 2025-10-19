@@ -30,7 +30,7 @@ class CallbackEventDataGenerator
       metadata: pauseSubState.metadata,
       metadataPractice: pauseSubState.metadataPractice,
       metadataDeaths: pauseSubState.metadataDeaths,
-      metadataArtist: pauseSubState.metadata,
+      // metadataArtist: pauseSubState.metadata,
 
       offsetText: pauseSubState.offsetText,
       offsetTextInfo: pauseSubState.offsetTextInfo,

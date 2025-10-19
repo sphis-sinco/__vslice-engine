@@ -157,7 +157,6 @@ that will most likely change as we go.
       - `metadata`
       - `metadataPractice`
       - `metadataDeaths`
-      - `metadataArtist`
       - `offsetText`
       - `offsetTextInfo`
       - `menuEntryText`

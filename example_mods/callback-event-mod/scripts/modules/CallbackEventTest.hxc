@@ -103,11 +103,14 @@ class CallbackEventTest extends Module
         eventdata.data.pauseSubState.getArtistText = function():String return 'Your Mother';
         eventdata.data.pauseSubState.getCharterText = function():String return 'Your Father';
 
+        eventdata.data.pauseSubState.buildMetadata();
+
         for (entry in eventdata.data.currentMenuEntries)
         {
           entry.text = 'Deez';
         }
 
+        // eventdata.data.metadataArtist.text = 'Your Mother';
         eventdata.data.metadataDeaths.text = 'Your Brother';
         eventdata.data.metadataPractice.text = 'Your Sister';
         eventdata.data.offsetText.text = 'Confess your love';
