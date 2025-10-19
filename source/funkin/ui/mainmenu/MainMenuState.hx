@@ -254,6 +254,8 @@ class MainMenuState extends MusicBeatState
       _ -> callbackEventHolder.onCreate(new CallbackEventData('mainmenustate', CallbackEventDataGenerator.generateMusicbeatStateData(this))));
   }
 
+  var modSep:String = '\n| ';
+
   function initLeftWatermarkText():Void
   {
     if (leftWatermarkText == null) return;
@@ -261,12 +263,35 @@ class MainMenuState extends MusicBeatState
     leftWatermarkText.text = '';
 
     #if FEATURE_POLYMOD_MODS
-    var modList:Array<String> = PolymodHandler.getAllModsList();
-    if (modList.length > 0)
-    {
-      leftWatermarkText.text += 'Mods:\n' + modList.join("\n") + "\n\n";
-      leftWatermarkText.y -= (modList.length + 2) * 15;
-    }
+    #if FEATURE_TROFEM_MODLIST
+
+      var enabledModList:Array<String> = PolymodHandler.getModsList(true);
+
+      #if FEATURE_KOLO_MODMENU
+      var disabledModList:Array<String> = PolymodHandler.getModsList(false);
+      #end
+
+      var modsText:String = '';
+
+      if (enabledModList.length > 0)
+      {
+        modsText += 'Loaded Mods:$modSep${enabledModList.join(modSep)}\n\n';
+      }
+
+      #if FEATURE_KOLO_MODMENU
+      if (disabledModList.length > 0)
+      {
+        modsText += 'Unloaded Mods:$modSep${disabledModList.join(modSep)}\n\n';
+      }
+      #end
+
+      if (modsText != '')
+      {
+        leftWatermarkText.text += modsText;
+        leftWatermarkText.y -= (modsText.split("\n").length - 1) * 15;
+      }
+
+    #end
     #end
 
     leftWatermarkText.text += 'V-Slice Engine ${Constants.VERSION}';

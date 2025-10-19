@@ -431,6 +431,13 @@ class Project extends HXProject
    */
   static final FEATURE_FUNKIN_MOD:FeatureFlag = "FEATURE_FUNKIN_MOD";
 
+   /**
+   * `-DFFEATURE_TROFEM_MODLIST`
+   * Whether to have the main menu mod list (created by `Trofem`) inluded
+   * Enabled by default unless on web
+   */
+  static final FEATURE_TROFEM_MODLIST:FeatureFlag = "FEATURE_TROFEM_MODLIST";
+
   /**
    * `-DFEATURE_KOLO_MODMENU`
    * Whether to have the mod menu (created by `KoloInDaCrib`) inluded
@@ -760,6 +767,7 @@ class Project extends HXProject
     //
 
     FEATURE_GIT_INFO.apply(this, true);
+    FEATURE_TROFEM_MODLIST.apply(this, !isWeb());
     FEATURE_KOLO_MODMENU.apply(this, !isWeb());
     FEATURE_FUNKIN_MOD.apply(this, true);
 
