@@ -4,13 +4,15 @@ Mod API Version: `0.3.0`
 This version is the first showcase of the new changelog format
 that will most likely change as we go.
 
-## Constants
-
-- `PRELOADER_MIN_STAGE_TIME` has been changed to 0.0
-
 ## Gameplay
 
 ### Pause Screen
+
+- Added null fallback for if the current song artist is null to pause screen artist text (constants default artist variable)
+- Changed charter text to use the constants default charter variable as a null fallback for if the current song chart charter is null
+
+- Added `getArtistText():String` public dynamic function to make getting the artist text easier and to allow callback events to change them via `pauseSubState.getArtistText = function():String {}`
+- Added `getCharterText():String` public dynamic function to make getting the charter text easier and to allow callback events to change them via `pauseSubState.getCharterText = function():String {}`
 
 - The following variables are now public:
   - `PAUSE_MENU_ENTRIES_STANDARD`

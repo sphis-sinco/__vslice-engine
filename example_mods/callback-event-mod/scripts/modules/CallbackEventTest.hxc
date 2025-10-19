@@ -100,10 +100,18 @@ class CallbackEventTest extends Module
     pauseTestingEvent.onCreate = function(eventdata:CallbackEventData) {
       if (eventdata.id == 'pausesubstate')
       {
+        eventdata.data.pauseSubState.getArtistText = function():String return 'Your Mother';
+        eventdata.data.pauseSubState.getCharterText = function():String return 'Your Father';
+
         for (entry in eventdata.data.currentMenuEntries)
         {
           entry.text = 'Deez';
         }
+
+        eventdata.data.metadataDeaths.text = 'Your Brother';
+        eventdata.data.metadataPractice.text = 'Your Sister';
+        eventdata.data.offsetText.text = 'Confess your love';
+        eventdata.data.offsetTextInfo.text = 'Let me say';
       }
     }
   }
