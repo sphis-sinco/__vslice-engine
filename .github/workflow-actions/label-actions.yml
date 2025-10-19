@@ -1,0 +1,49 @@
+# Configuration for Label Actions - https://github.com/dessant/label-actions
+
+'status: fixed':
+  issues:
+    comment: >
+      This issue has been fixed! Yay!
+    close: false
+    close-reason: 'Fixed!!!'
+    unlabel:
+      - 'status: accepted'
+      - 'status: changes requested'
+      - 'status: in review'
+      - 'status: new'
+      - 'status: rejected'
+      - 'status: review required'
+
+'-status: fixed':
+  issues:
+    comment: >
+      This issue has apparently not been fixed. Crap.
+    reopen: true
+    label:
+      - 'status: review required'
+
+'status: rejected':
+  pr:
+    comment: >
+      This pull request has been rejected.
+    close: false
+    unlabel:
+      - 'status: accepted'
+      - 'status: changes requested'
+      - 'status: fixed'
+      - 'status: in review'
+      - 'status: new'
+      - 'status: review required'
+
+'-status: rejected':
+  pr:
+    comment: >
+      This pull request has been un-rejected! Woah!
+    reopen: true
+    label:
+      - 'status: review required'
+
+'status: new':
+  label:
+    - 'priority: low'
+    - 'topic: unknown'

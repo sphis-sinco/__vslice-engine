@@ -1,0 +1,19 @@
+# branch:
+"branch: main":
+  - base-branch: 'main'
+
+"branch: develop":
+  - base-branch: 'develop'
+
+# action:
+
+# priority:
+
+# status:
+
+# topic:
+
+# type:
+"type: pull request":
+  - changed-files:
+    - any-glob-to-any-file: '**/*.hx'
