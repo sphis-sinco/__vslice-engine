@@ -4,6 +4,22 @@ Mod API Version: `0.3.0`
 This version is the first showcase of the new changelog format
 that will most likely change as we go.
 
+## HaxeUI
+
+- Fixed crashes related to missing .xml assets
+
+## Chart Editor
+
+- Fixed song metadata `playData.characters.opponentVocals` not being accurate to the `playData.characters.opponent` field
+- Fixed song metadata `playData.characters.playerVocals` not being accurate to the `playData.characters.player` field
+
+## Mods
+
+### Funkin
+
+- [FUNKIN] Removed .mp3 files
+  - [FUNKIN] But in the Google Drive `0.3.0` folder there is a `funkin-0.7.7-mp3.zip` file including the original .mp3 files
+
 ## Gameplay
 
 ### Pause Screen

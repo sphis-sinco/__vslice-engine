@@ -1,18 +1,18 @@
 package funkin.ui.debug.charting.handlers;
 
-import funkin.data.song.SongNoteDataUtils;
-import funkin.util.VersionUtil;
-import funkin.util.DateUtil;
-import haxe.io.Path;
-import funkin.util.SortUtil;
-import funkin.util.FileUtil;
-import funkin.util.FileUtil.FileWriteMode;
-import haxe.io.Bytes;
-import funkin.play.song.Song;
 import funkin.data.song.SongData.SongChartData;
 import funkin.data.song.SongData.SongMetadata;
+import funkin.data.song.SongNoteDataUtils;
 import funkin.data.song.SongRegistry;
 import funkin.data.song.importer.ChartManifestData;
+import funkin.play.song.Song;
+import funkin.util.DateUtil;
+import funkin.util.FileUtil.FileWriteMode;
+import funkin.util.FileUtil;
+import funkin.util.SortUtil;
+import funkin.util.VersionUtil;
+import haxe.io.Bytes;
+import haxe.io.Path;
 import thx.semver.Version as SemverVersion;
 
 /**
@@ -411,6 +411,12 @@ class ChartEditorImportExportHandler
       {
         variationId = '';
       }
+      @:nullSafety(Off)
+      if (state.songMetadata.get(variation) != null)
+      {
+        state.songMetadata.get(variation).playData.characters.playerVocals = [state.songMetadata.get(variation).playData.characters.player];
+        state.songMetadata.get(variation).playData.characters.opponentVocals = [state.songMetadata.get(variation).playData.characters.opponent];
+      }
 
       if (variationId == '')
       {
@@ -463,7 +469,7 @@ class ChartEditorImportExportHandler
         if (state.currentSongId == '') state.currentSongName = 'New Chart'; // Hopefully no one notices this silliness
         targetPath = Path.join([
           BACKUPS_PATH,
-            'chart-editor-${state.currentSongId}-${DateUtil.generateTimestamp()}.${Constants.EXT_CHART}'
+          'chart-editor-${state.currentSongId}-${DateUtil.generateTimestamp()}.${Constants.EXT_CHART}'
         ]);
         // We have to force write because the program will die before the save dialog is closed.
         trace('Force exporting to $targetPath...');
