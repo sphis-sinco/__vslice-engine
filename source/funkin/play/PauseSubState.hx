@@ -248,6 +248,8 @@ class PauseSubState extends MusicBeatSubState
   override public function create():Void
   {
     callbackEventHolder = new CallbackEventHolder();
+    new FlxTimer().start(.01, _ -> callbackEventHolder.onCreate(new CallbackEventData('pausesubstate', CallbackEventDataGenerator.generatePauseData(this))));
+
     if (onPause != null) onPause();
 
     super.create();
@@ -263,8 +265,6 @@ class PauseSubState extends MusicBeatSubState
     transitionIn();
 
     startCharterTimer();
-
-    new FlxTimer().start(.01, _ -> callbackEventHolder.onCreate(new CallbackEventData('pausesubstate', CallbackEventDataGenerator.generatePauseData(this))));
   }
 
   /**
