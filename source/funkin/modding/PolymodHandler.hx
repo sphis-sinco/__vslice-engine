@@ -450,23 +450,39 @@ class PolymodHandler
     }
   }
 
+  #if FEATURE_TROFEM_MODLIST
   /**
-   * Retrieve a list of title and version of all enabled mods.
-   * @return An array of active mod along side with its version
+   * Formats the given mod's title and version.
+   * @return A formatted string, containing: '$Title v$Version'.
    */
-  public static function getAllModsList():Array<String>
+  inline static function formatModTitle(mod:ModMetadata):String
   {
-    var modMetadata:Array<ModMetadata> = getEnabledMods();
+    var title = mod.title?.trim();
+    if (title == null || title == '') title = mod.id;
+    var version = mod.modVersion?.toString().trim();
+    return '$title v$version';
+  }
+
+  /**
+   * Retrieves a list of titles and versions for all mods.
+   * @param enabled Whether to return enabled or disabled mods.
+   * @return An array of mod titles along side with its version
+   */
+  public static function getModsList(enabled:Bool = true):Array<String>
+  {
+    var modMetadata:Array<ModMetadata> = getAllMods();
+    #if FEATURE_KOLO_MODMENU
+    var enabledIds = [for (i in getEnabledMods()) i.id];
+
     return [
       for (mod in modMetadata)
-      {
-        var title = mod.title?.trim();
-        if (title == null || title == '') title = mod.id;
-        var version = mod.modVersion?.toString().trim();
-        '$title v$version';
-      }
+        if ((enabledIds.indexOf(mod.id) != -1) == enabled) formatModTitle(mod)
     ];
+    #else
+    return [for (mod in modMetadata) formatModTitle(mod)];
+    #end
   }
+  #end
 
   /**
    * Retrieve a list of metadata for ALL installed mods, including disabled mods.
