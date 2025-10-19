@@ -4,6 +4,10 @@ Mod API Version: `0.3.0`
 This version is the first showcase of the new changelog format
 that will most likely change as we go.
 
+## Main Menu
+
+- [Enchancement] Reworked Main Menu Modlist by @Trofem in https://github.com/sphis-sinco/__vslice-engine/pull/1
+
 ## HaxeUI
 
 - Fixed crashes related to missing .xml assets
